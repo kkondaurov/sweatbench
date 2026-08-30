@@ -442,9 +442,24 @@ The two improved Luna systems do not fail in the same way. Relative to baseline 
 - OpenCode cuts hotel-credit failures from 4/5 to 2/5, while delegated Codex remains at 4/5; and
 - OpenCode has no transfer-shortfall-composition failures, while delegated Codex has 2/5.
 
-Similar aggregate means therefore conceal different operating profiles. In this sample, delegated
-Codex has fewer historical-upgrade failures, while OpenCode does better on some deterministic
-business-rule and composition details. The aggregate data do not establish why.
+Trajectory-level inspection narrows those differences substantially. Every hotel-credit miss in
+the two cohorts is the same one-day `expires_on` representation choice: the implementation stores
+the first invalid day rather than the last valid day. The ordering and restoration logic named by
+the family is otherwise correct in these runs. Several delegated audits explicitly endorsed that
+alternate convention, while three OpenCode parents and one delegated Codex parent chose the
+evaluator's convention.
+
+The two delegated transfer-shortfall misses are also downstream of the basic absorption rule. One
+preserves lot provenance and absorbs the restoration correctly but reconstructs the report's
+opening liability as zero instead of 700. The other crashes in report projection on a string-key
+versus atom-key mismatch. Both pass dedicated earlier shortfall checks. OpenCode's five parents all
+complete the composed reporting path, but two do so without any stage-6 child task.
+
+The defensible interpretation is therefore narrower than the family counts suggest: OpenCode's
+parent trajectories produce more robust stage-6 projections in this sample, while the hotel split
+is a convention/cohort effect. Codex also spawns more child sessions than it receives useful final
+audit reports; several children return interim status, inspect a changing worktree, or time out.
+See [Luna harness trajectory deep dive](LUNA_HARNESS_TRAJECTORIES.md) for the ten-run evidence.
 
 The operational hypothesis worth testing is not "launch as many agents as possible." It is:
 

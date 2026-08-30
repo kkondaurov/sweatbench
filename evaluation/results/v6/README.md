@@ -4,11 +4,13 @@ This directory is the frozen public record for the v6 pre-disclosure cohort.
 
 - `index.html` is a self-contained interactive dashboard.
 - `RETROSPECTIVE.md` is the full methodological and behavioral analysis.
+- `LUNA_HARNESS_TRAJECTORIES.md` traces the two family-level differences between OpenCode Luna and
+  delegated Codex Luna through candidate code, tests, and parent/child review behavior.
 - `accepted-runs.json` contains all 85 accepted trajectories and the derived tables used by the
   report.
 - `analyze.py` independently validates the population and recomputes group headline metrics from
   the run records.
-- `SHA256SUMS` fixes the released dataset, dashboard, and retrospective bytes.
+- `SHA256SUMS` fixes the released dataset, dashboard, and analysis bytes.
 
 Run the verifier from the repository root:
 
