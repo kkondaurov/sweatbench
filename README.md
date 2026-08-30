@@ -49,7 +49,7 @@ suite therefore tests cumulative engineering judgment, not just endpoint impleme
 ### What the model does
 
 In the reference v6 `handoff` protocol, every milestone starts a fresh model session. The new
-engineer receives the repository left by the previous engineer, the accumulated product, API, and
+session receives the repository left by the preceding session, the accumulated product, API, and
 runbook documents, the current request, and any candidate-authored tests. It does not receive
 future requests, evaluator-shaped examples for the incoming change, or private-evaluation
 feedback. The repository is the durable handoff memory.
