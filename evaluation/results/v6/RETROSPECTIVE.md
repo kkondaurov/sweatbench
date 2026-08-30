@@ -72,9 +72,11 @@ The strongest substantive lessons are:
   explicit delegation prompt averages 37.0 and 8.0 at $4.23. These interventions change prompt,
   context allocation, child-session count, and inference budget together; they do not isolate a
   single audit mechanism.
-- Delegation is not monotonically beneficial. OpenCode makes Sol and Terra launch many more child
-  sessions without a corresponding general quality gain. The benefit depends on the model and on
-  whether the delegated work attacks a real weakness.
+- Child-session count is not monotonically beneficial. OpenCode makes Sol and Terra launch many
+  more child sessions without a corresponding general quality gain, and Sol high's observed
+  decline is dominated by one run's operational boot defect rather than a broad semantic
+  regression. The benefit depends on the model and on whether the delegated work attacks a real
+  weakness.
 - More code, more tests, and more wall-clock time are not reliable proxies for quality. Opus writes
   roughly six thousand test lines; Qwen writes nearly eight thousand. Both still miss compact
   hidden invariants that a much smaller test suite can cover when it asks the right question.
@@ -95,11 +97,13 @@ and report model-plus-harness systems as first-class experimental conditions.
   runtime, descendant-session cost reconstruction, cache volume, and the existence of repeated
   failure signatures. These are regenerated from 85 unique accepted sources and reconcile across
   run, family, and scenario grains.
-- **Moderate confidence:** the interpretation of the period-close revival, hotel-credit, and
-  migration failures. It is supported by failing private scenarios, co-failure patterns, and
-  targeted inspection of passing and failing implementations and candidate tests. That inspection
-  was not a systematic mechanism coding of all 60 model-view trajectories, so examples below are
-  evidence-backed hypotheses rather than population estimates of implementation strategy.
+- **High confidence:** the period-close revival failure mechanism. A first-failing-assertion
+  census covers all 47 main-view revival failures and shows that 46 preserve the closed report but
+  fail to append the required compensating history.
+- **Moderate confidence:** the interpretation of hotel-credit and migration failures. It is
+  supported by failing private scenarios, co-failure patterns, and targeted inspection of passing
+  and failing implementations and candidate tests, but is not a complete mechanism census of all
+  relevant trajectories.
 - **Moderate confidence:** economic-frontier and model-selection conclusions. They accurately
   describe the tested samples and pricing snapshot but can move with more samples or new prices.
 - **Low to moderate confidence:** exact sweep probabilities, Claude Opus reliability, and causal
@@ -386,10 +390,10 @@ salience and child-session behavior, and permits a larger inference budget.
 
 ### What the harness comparison says
 
-For Sol high and medium, OpenCode causes substantially more delegation but slightly lower observed
-quality. For Terra, OpenCode gains 1.0 Core and 0.6 Maintenance. For Luna, it gains 4.0 Core and
-1.4 Maintenance. The harness is therefore not a universal multiplier. It changes how each model
-allocates work, context, review, and output.
+OpenCode causes substantially more delegation for Sol high and medium, with slightly lower
+official scores. For Terra, OpenCode gains 1.0 Core and 0.6 Maintenance. For Luna, it gains 4.0
+Core and 1.4 Maintenance. The harness is therefore not a universal multiplier. It changes how each
+model allocates work, context, review, and output.
 
 Small-sample exact permutation tests are exploratory but useful here:
 
@@ -405,6 +409,23 @@ Small-sample exact permutation tests are exploratory but useful here:
 These are independent five-run samples, not paired trajectories, so the p-values should not be
 read as definitive causal estimates. The Luna association is large enough to motivate a controlled
 follow-up, but the present samples do not identify which part of the intervention caused it.
+
+The Sol-high aggregate needs one further decomposition. One OpenCode run loses four Core and four
+Maintenance points because a synchronous accounting initializer locks SQLite during boot and
+starves the connection pool. Its private behavioral scenarios otherwise pass. The official run
+and official 38.2/8.8 mean remain valid end-to-end results, but those eight failed checks are one
+operational defect rather than eight semantic misses. Removing only that timeout-class defect
+produces a diagnostic semantic-only mean of 39.0/9.5. At five runs, the evidence therefore detects
+no Sol-high semantic harness difference; it does show lower operational reliability in the tested
+OpenCode cohort.
+
+Family fingerprints also show that OpenCode relocates some OpenAI-model failures. Revival improves
+slightly, while ship-time migration and history scars appear more often. All 29 such scar-family
+failures in the 20 OpenAI-on-OpenCode trajectories were introduced at uninterrupted milestones, so
+resume behavior does not explain that pattern. Across the external OpenCode models, interrupted
+milestones and scars are associated instead: introducing-milestone checks fail at 25% after an
+interruption versus 12% without one, with a model-stratified pooled odds ratio of 2.39. That is an
+observational association, not evidence that interruption causes the failures.
 
 ### What the Luna intervention says
 
@@ -422,11 +443,17 @@ averages 17.8 candidate subagents rather than zero and $4.15 rather than $1.42 i
 an association under the controlled prompt variant; five independent runs do not identify a
 precise causal effect size.
 
-One plausible mechanism, visible in the targeted trajectories inspected, is a second pass over
-hidden-future risk rather than raw parallel implementation. Delegated jobs often inspect
-requirements, provenance, migrations, restoration, and cross-milestone interactions. This was not
-systematically coded across all runs, and the intervention also buys more inference, so it remains
-a mechanism hypothesis.
+The intervention is chiefly an audit pipeline. Of 89 candidate-launched children, 87 receive an
+explicit read-only audit assignment. Two children, both in the strongest delegated run, own
+bounded implementation slices with disjoint write scopes. No child is assigned test writing. The
+parent often continues working while an audit runs, so the pipeline is parallel in time without
+being broad concurrent implementation.
+
+One stage-7 trajectory contains a complete audit-to-fix chain: the child identifies the interaction
+between closed history and restored liability, and the parent implements the compensating entry
+and adds tests before finishing. That is direct mechanism evidence for one run, not a cohort-wide
+causal estimate. Across the cohort, the intervention also buys more inference and changes review
+salience, so its aggregate gain cannot be attributed to child count alone.
 
 OpenCode Luna uses 7.6 subagents on average and scores 36.6/7.6. Delegated Codex Luna uses 17.8 and
 scores 37.0/8.0, at an additional $1.61 mean cost. This is descriptive, not a delegation dose-
@@ -609,11 +636,19 @@ Failure on the Core late-adjustment family by main configuration:
 | Flash high | 4/4 |
 | Flash max | 4/4 |
 
-In the targeted failing implementations inspected for mechanism evidence, the closed report is
-preserved, which is only half the invariant. Those examples either mutate current lot state without
-emitting a compensating movement, move the old expiry, or recompute a snapshot from current
-remaining credit. The open report then shows zero restoration. This is illustrative trajectory
-evidence, not a coded prevalence estimate over all failing runs.
+A first-failing-assertion census of all 47 main-view revival failures finds:
+
+- 32 runs emit no restoration;
+- 11 restore the liability silently on the backdated effective day rather than the first open day;
+- 2 over-restore it;
+- 1 restores it under the wrong movement classification; and
+- 1 mutates the closed report.
+
+The closed report is therefore preserved in 46 of the 47 failing runs and 59 of all 60 main
+trajectories. The dominant defect is not rewriting published history; it is failing to append the
+correct compensating entry while changing current lot state. This conclusion is specific to the
+revival scenario. The neighboring finance-close-immutability family still fails in 8 of 60 runs,
+so the corpus does not establish that historical immutability is generally solved.
 
 Passing implementations explicitly model the correction. In simplified form:
 
@@ -680,6 +715,12 @@ The 49 family points are not 49 independent trials:
 Dependence is not inherently bad. A production defect often affects several user-visible and
 maintenance properties. The problem is interpretive: adding the points implies more independent
 evidence than the benchmark contains.
+
+The score also gives root defects accidental exchange rates. The missing revival compensation
+usually costs three family points, while the Sol-high/OpenCode boot-lock defect costs eight. Both
+are legitimate contract failures, so the official score should retain them. They are not three and
+eight independent engineering mistakes. Family totals measure affected behavioral surface; they
+do not count root causes.
 
 The observed outcome geometry makes the concentration concrete. The 49 family columns contain
 only 29 distinct pass/fail vectors across the 60 runs, and their centered matrix has rank 26. The
@@ -1069,6 +1110,13 @@ Provide a realistic fixture large enough to expose N+1 queries, unbounded scans,
 recomputation. Score explicit latency or query budgets alongside correctness, with deterministic
 hardware-independent proxies where possible.
 
+#### Operational robustness
+
+Exercise cold boot against a large legacy fixture, lock discipline under concurrent requests,
+connection-pool starvation, migration runtime budgets, and recovery after a partial start. Score
+these as an operational capability rather than allowing one infrastructure defect to alias into
+several semantic transition families.
+
 #### Observability and diagnosis
 
 Give the agent symptoms, logs, and metrics rather than a complete defect location. Require a fix
@@ -1121,6 +1169,10 @@ It is acceptable for one defect to have several diagnostic checks. It should not
 three independent headline points. Group correlated checks into a capability cluster or assign one
 headline point with multiple diagnostics.
 
+Record the first failing assertion or evaluator-authored mechanism label for every failed scenario,
+along with a coarse semantic, operational, or rejection-cascade class. Root-cause interpretation
+should be queryable from accepted results rather than reconstructed from logs after the fact.
+
 ### 7. Keep Core and Maintenance, add capability clusters
 
 Core and Maintenance should remain separate. Add a second aggregation layer:
@@ -1142,7 +1194,8 @@ Future leaderboards should record a system identifier containing:
 - harness and version;
 - base prompt and repository instruction hash;
 - subagent policy;
-- session and continuation policy; and
+- session and continuation policy;
+- interruption and resume counts by milestone; and
 - pricing snapshot.
 
 A model-only view can still exist, but only for a declared canonical harness. Harness and prompt
@@ -1159,8 +1212,10 @@ folklore:
 - unconstrained proactive delegation.
 
 Hold the total inference budget fixed where possible. Measure quality, cost, child-session count,
-overlap, and whether findings changed the final diff. Repeat this on at least one strong and one
-weak model. The likely optimum is model-dependent.
+overlap, child assignment type, and whether findings changed the final diff. Classify children from
+their complete assignments and actual write scopes, separating audits, implementation slices, test
+work, and other jobs. Repeat this on at least one strong and one weak model. The likely optimum is
+model-dependent.
 
 Subagent count should remain descriptive. Rewarding count directly would invite waste.
 
@@ -1171,7 +1226,9 @@ public invariant in a plausible way. Report:
 
 - candidate-test mutation detection rate;
 - distinct requirement families exercised by candidate tests;
-- whether tests fail for the intended reason; and
+- whether tests fail for the intended reason;
+- whether tests reject a correct implementation because they entrench the candidate's mistaken
+  semantics; and
 - whether a later session uses the tests to prevent regression.
 
 This would distinguish Opus-style broad test generation from tests that encode the particular
