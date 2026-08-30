@@ -16,21 +16,64 @@ labeled post-disclosure and must not be pooled silently with the reference resul
 - [Human review guide](REVIEW_GUIDE.md)
 - [Disclosure policy](DISCLOSURE.md)
 
-## What it measures
+## Benchmark design
 
-The benchmark starts with an empty Group Stay service and reveals seven requests in order:
+Sweat Bench does not present seven independent feature tickets. It asks a coding system to evolve
+one stateful product while every earlier contract, migration, and persisted record remains in
+force. The candidate starts with an empty Group Stay service and receives these releases in order:
 
-1. operational deposit accounting;
-2. cancellation economics and hotel credit;
-3. durable idempotent operations;
-4. room accounting, payments, reductions, and chargebacks;
-5. cross-group deposit transfers;
-6. effective-dated daily finance reports; and
-7. immutable period close with late adjustments.
+| Milestone | Product change | Engineering pressure |
+|---|---|---|
+| 1 | Launch group setup, deposit pricing, payments, cancellations, and partner batches | Establish the domain model, API contracts, revisions, and monetary invariants |
+| 2 | Add versioned cancellation policies and hotel credit | Preserve policy history, expiry ordering, consumption, reversal, and provenance |
+| 3 | Make partner operations durably idempotent | Survive retries and process restarts without duplicate or partial effects |
+| 4 | Add room accounting, payment reductions, chargebacks, and statements | Migrate existing data and reconcile room, payment, and funding history |
+| 5 | Add cross-group deposit transfers and corrections | Preserve identity, provenance, revisions, and conservation across aggregates |
+| 6 | Add effective-dated daily finance reporting | Project operational history deterministically across cash, credit, and reporting inception |
+| 7 | Add finance period close and late adjustments | Keep published history immutable while posting later corrections to the proper open period |
 
-Candidates see the product documents, the current request, and the code left by the previous
-milestone. They do not see future requests or the evaluator. The reference protocol uses a fresh
-agent session at each handoff and asks the candidate to author its own tests.
+A locally reasonable choice in an early milestone can become a liability several releases later.
+New milestone-4 records may work while records created under milestone 3 fail during migration.
+Current balances may be correct while the historical projection needed by milestone 7 is not. The
+suite therefore tests cumulative engineering judgment, not just endpoint implementation.
+
+### What the model does
+
+In the reference v6 `handoff` protocol, every milestone starts a fresh model session. The new
+engineer receives the repository left by the previous engineer, the accumulated product, API, and
+runbook documents, the current request, and any candidate-authored tests. It does not receive
+future requests, evaluator-shaped examples for the incoming change, or private-evaluation
+feedback. The repository is the durable handoff memory.
+
+The prompt is deliberately ordinary: inspect the existing system, implement the request
+completely, preserve earlier behavior, decide what automated coverage is needed, run the full test
+suite, and repair failures. Before exiting, the agent gets one final review-and-repair pass against
+the current requirements and reruns the relevant tests. The private evaluator runs only after the
+agent exits.
+
+### What makes it difficult
+
+The hard part is not Phoenix syntax or the number of endpoints. Later releases force the
+implementation to preserve several notions of time, identity, and provenance simultaneously:
+
+- operation date versus commit order;
+- current state versus immutable historical projection;
+- retry identity versus request payload;
+- original funding source versus its later holder or form; and
+- a business correction versus a reversal of already published history.
+
+The evaluator exercises the public HTTP API, persistence across process restarts, and upgrades
+from databases written by the preceding milestone. Compact hidden scenarios ask questions such as
+whether a late event appends the correct compensating history without retroactively changing a
+closed report. A large implementation and a large candidate test suite can still miss that
+invariant.
+
+For the exact candidate-visible sequence, read [`candidate/PRODUCT.md`](candidate/PRODUCT.md),
+[`candidate/API.md`](candidate/API.md), and the seven files under
+[`candidate/requests/`](candidate/requests/). The [human review guide](REVIEW_GUIDE.md) explains the
+evaluation contract in more detail.
+
+### How results are reported
 
 Results keep two scales separate:
 
