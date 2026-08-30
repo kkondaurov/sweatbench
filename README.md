@@ -18,9 +18,18 @@ labeled post-disclosure and must not be pooled silently with the reference resul
 
 ## Benchmark design
 
-Sweat Bench does not present seven independent feature tickets. It asks a coding system to evolve
-one stateful product while every earlier contract, migration, and persisted record remains in
-force. The candidate starts with an empty Group Stay service and receives these releases in order:
+GroupStay is a fictional B2B service for Northstar Hotels, a twelve-property city-hotel operator.
+Corporate travel desks and event agencies reserve blocks of rooms and pay deposits before guests
+arrive. The hotels' property-management systems handle room inventory and final folio billing, but
+they do not provide one consistent view of group deposits across properties. GroupStay fills that
+gap: partner gateways submit reservation and payment operations, while support and finance use its
+records to understand what was charged, refunded, retained, transferred, or converted to hotel
+credit.
+
+The benchmark follows this product from its first partner integration to finance-grade reporting
+and period close. A coding system starts with an empty Phoenix service and evolves the same
+application through seven releases, while earlier contracts, migrations, and persisted records
+remain in force:
 
 | Milestone | Product change | Engineering pressure |
 |---|---|---|
