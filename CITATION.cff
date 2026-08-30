@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use Sweat Bench, cite this release."
+title: "Sweat Bench v6"
+type: software
+authors:
+  - family-names: Kondaurov
+    given-names: Konstantin
+repository-code: "https://github.com/kkondaurov/sweatbench"
+url: "https://github.com/kkondaurov/sweatbench"
+version: 6.0.0
+date-released: 2026-08-30
+license: MIT
+keywords:
+  - coding agents
+  - software engineering benchmark
+  - sequential product development
+  - LLM evaluation

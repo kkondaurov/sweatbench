@@ -1,0 +1,650 @@
+{
+  "name": "sweat-bench-group-stay",
+  "version": 6,
+  "starter": "candidate/starter",
+  "shared_candidate_files": [
+    "candidate/PRODUCT.md",
+    "candidate/API.md",
+    "candidate/RUNBOOK.md"
+  ],
+  "stages": [
+    {
+      "id": 1,
+      "name": "operational-core",
+      "expected_private_cases": 12,
+      "request": "candidate/requests/01-operational-core.md",
+      "public_test": "candidate/public_tests/01_operational_core_test.exs",
+      "private_tests": [
+        "evaluation/private_tests/01_launch_deposit_api_test.exs",
+        "evaluation/private_tests/01_rescheduling_test.exs",
+        "evaluation/private_tests/01_revision_test.exs"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "cancellation-economics",
+      "expected_private_cases": 22,
+      "request": "candidate/requests/02-cancellation-economics.md",
+      "public_test": "candidate/public_tests/02_cancellation_economics_test.exs",
+      "private_tests": [
+        "evaluation/private_tests/02_policy_change_test.exs",
+        "evaluation/private_tests/03_hotel_credit_test.exs",
+        "evaluation/private_tests/02_composed_economics_test.exs",
+        "evaluation/private_tests/02_revision_economics_test.exs"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "durable-operations",
+      "expected_private_cases": 29,
+      "request": "candidate/requests/03-durable-operations.md",
+      "public_test": "candidate/public_tests/03_durable_operations_test.exs",
+      "private_tests": [
+        "evaluation/private_tests/05_durable_idempotency_test.exs",
+        "evaluation/private_tests/03_composed_durability_test.exs",
+        "evaluation/private_tests/03_revision_durability_test.exs"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "room-accounting-and-payment-reductions",
+      "expected_private_cases": 50,
+      "request": "candidate/requests/04-room-accounting-and-payment-reductions.md",
+      "public_test": "candidate/public_tests/04_room_accounting_test.exs",
+      "private_tests": [
+        "evaluation/private_tests/04_partial_room_cancellation_test.exs",
+        "evaluation/private_tests/04_composed_room_accounting_test.exs",
+        "evaluation/private_tests/04_payment_reduction_test.exs",
+        "evaluation/private_tests/04_chargeback_test.exs",
+        "evaluation/private_tests/04_ledger_contract_test.exs",
+        "evaluation/private_tests/04_payment_statement_test.exs"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "deposit-transfers",
+      "expected_private_cases": 61,
+      "request": "candidate/requests/05-deposit-transfers.md",
+      "public_test": "candidate/public_tests/05_deposit_transfer_test.exs",
+      "private_tests": [
+        "evaluation/private_tests/05_deposit_transfer_test.exs"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "daily-finance-report",
+      "expected_private_cases": 73,
+      "request": "candidate/requests/06-daily-finance-report.md",
+      "public_test": "candidate/public_tests/06_daily_finance_report_test.exs",
+      "private_tests": [
+        "evaluation/private_tests/06_daily_finance_report_test.exs",
+        "evaluation/private_tests/06_judgment_composition_test.exs"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "period-close",
+      "expected_private_cases": 83,
+      "request": "candidate/requests/07-period-close.md",
+      "public_test": "candidate/public_tests/07_period_close_test.exs",
+      "private_tests": [
+        "evaluation/private_tests/07_period_close_test.exs",
+        "evaluation/private_tests/07_judgment_composition_test.exs"
+      ]
+    }
+  ],
+  "system_checks": [
+    {
+      "after_stage": 2,
+      "command": "policy-upgrade",
+      "scenario": "evaluation/system_scenarios/02_policy_upgrade.md"
+    },
+    {
+      "after_stage": 2,
+      "command": "policy-history-upgrade",
+      "scenario": "evaluation/system_scenarios/02_policy_history_upgrade.md"
+    },
+    {
+      "after_stage": 3,
+      "command": "idempotency-restart",
+      "scenario": "evaluation/system_scenarios/03_idempotency_restart.md"
+    },
+    {
+      "after_stage": 4,
+      "command": "payment-reduction-upgrade",
+      "scenario": "evaluation/system_scenarios/04_payment_reduction_upgrade.md"
+    },
+    {
+      "after_stage": 4,
+      "command": "room-history-upgrade",
+      "scenario": "evaluation/system_scenarios/04_room_history_upgrade.md"
+    },
+    {
+      "after_stage": 5,
+      "command": "transfer-upgrade",
+      "scenario": "evaluation/system_scenarios/05_transfer_upgrade.md"
+    },
+    {
+      "after_stage": 5,
+      "command": "payment-history-upgrade",
+      "scenario": "evaluation/system_scenarios/05_payment_history_upgrade.md"
+    },
+    {
+      "after_stage": 6,
+      "command": "finance-reporting-upgrade",
+      "scenario": "evaluation/system_scenarios/06_finance_reporting_upgrade.md"
+    },
+    {
+      "after_stage": 6,
+      "command": "projection-history-upgrade",
+      "scenario": "evaluation/system_scenarios/06_projection_history_upgrade.md"
+    },
+    {
+      "after_stage": 7,
+      "command": "finance-close-upgrade",
+      "scenario": "evaluation/system_scenarios/07_finance_close_upgrade.md"
+    },
+    {
+      "after_stage": 7,
+      "command": "close-history-upgrade",
+      "scenario": "evaluation/system_scenarios/07_close_history_upgrade.md"
+    }
+  ],
+  "families": [
+    {
+      "id": "deposit-pricing",
+      "stage": 1,
+      "concern": "Per-room deposit calculation and rounding for both rate plans",
+      "members": [
+        "GroupStay.Private.LaunchDepositApiTest::test a flexible group sums separately rounded room deposits"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "payment-acceptance",
+      "stage": 1,
+      "concern": "Cash payment validation against outstanding deposit",
+      "members": [
+        "GroupStay.Private.LaunchDepositApiTest::test non-positive payments are rejected without changing the balance"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "cancellation-settlement",
+      "stage": 1,
+      "concern": "Cancellation policy, refund versus retention, and ledger movement",
+      "members": [
+        "GroupStay.Private.LaunchDepositApiTest::test flexible deposits round correctly and the refund boundary is inclusive",
+        "GroupStay.Private.LaunchDepositApiTest::test advance purchase requires the full stay amount and is never refundable"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "batch-protocol-validation",
+      "stage": 1,
+      "concern": "Batch processing, atomic rejection, continuation, and input errors",
+      "members": [
+        "GroupStay.Private.LaunchDepositApiTest::test a rejected operation has no partial effect and later operations continue",
+        "GroupStay.Private.LaunchDepositApiTest::test invalid group fields reject independently without creating records",
+        "GroupStay.Private.LaunchDepositApiTest::test malformed batches and missing groups use the documented HTTP errors",
+        "GroupStay.Private.LaunchDepositApiTest::test an unknown operation is rejected and does not stop the batch"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "rescheduling",
+      "stage": 1,
+      "concern": "Stay moves, validation, and refund-boundary effects",
+      "members": [
+        "GroupStay.Private.ReschedulingTest::test moving a group preserves stay length and moves the refund boundary",
+        "GroupStay.Private.ReschedulingTest::test invalid, missing, and inactive reschedules leave state coherent"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "occ-core",
+      "stage": 1,
+      "concern": "Revision counters and optimistic guards on core operations",
+      "members": [
+        "GroupStay.Private.RevisionTest::test revisions advance once for applied operations and never for rejections",
+        "GroupStay.Private.RevisionTest::test same-batch guards see prior writes and staleness precedes domain validation"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "policy-versioning",
+      "stage": 2,
+      "concern": "Effective-dated policy versions and recomputation across moves",
+      "members": [
+        "GroupStay.Private.PolicyChangeTest::test the 30-day policy starts on its effective booking date",
+        "GroupStay.Private.PolicyChangeTest::test a grandfathered policy survives a move while its deadline follows arrival",
+        "GroupStay.Private.ComposedEconomicsTest::test rescheduling can move groups into and out of refundable territory"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "hotel-credit-lifecycle",
+      "stage": 2,
+      "concern": "Credit issuance, rounding, ordering, expiry, and restoration",
+      "members": [
+        "GroupStay.Private.HotelCreditTest::test credit consumes earliest expiry first and restored credit keeps its origin",
+        "GroupStay.Private.HotelCreditTest::test an expired lot cannot fund a group and no longer contributes to liability",
+        "GroupStay.Private.HotelCreditTest::test the credit bonus rounds an exact half-cent upward",
+        "GroupStay.Private.HotelCreditTest::test equal-expiry lots are consumed by source operation identifier"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "refund-method-gate",
+      "stage": 2,
+      "concern": "Hotel credit cannot bypass non-refundable policy",
+      "members": [
+        "GroupStay.Private.HotelCreditTest::test hotel credit cannot be selected for a non-refundable cancellation"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "occ-economics",
+      "stage": 2,
+      "concern": "Revision behavior over cancellation and credit operations",
+      "members": [
+        "GroupStay.Private.RevisionEconomicsTest::test a rejected refund method leaves the cancellation revision available",
+        "GroupStay.Private.RevisionEconomicsTest::test credit applications use the target revision without advancing it on failure"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "m2-migration",
+      "stage": 2,
+      "concern": "Migration of pre-release groups to their booking-date policy",
+      "members": [],
+      "system_checks": ["policy-upgrade"]
+    },
+    {
+      "id": "durable-idempotency",
+      "stage": 3,
+      "concern": "At-most-once effects, payload identity, and stored-result immutability",
+      "members": [
+        "GroupStay.Private.DurableIdempotencyTest::test a rejected result remains stable after domain state changes",
+        "GroupStay.Private.DurableIdempotencyTest::test a conflict cannot replace the original record or duplicate its effects",
+        "GroupStay.Private.DurableIdempotencyTest::test object key order does not distinguish retries",
+        "GroupStay.Private.DurableIdempotencyTest::test an unknown operation identifier has the documented read error",
+        "GroupStay.Private.ComposedDurabilityTest::test retries preserve cancellation and credit side effects"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "occ-durability",
+      "stage": 3,
+      "concern": "Interaction of optimistic revisions and durable retries",
+      "members": [
+        "GroupStay.Private.RevisionDurabilityTest::test a remembered stale rejection wins over a corrected revision under the same id",
+        "GroupStay.Private.RevisionDurabilityTest::test an applied retry preserves its old revision after later changes"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "m3-restart",
+      "stage": 3,
+      "concern": "Durability across a process restart",
+      "members": [],
+      "system_checks": ["idempotency-restart"]
+    },
+    {
+      "id": "room-funding-allocation",
+      "stage": 4,
+      "concern": "Room-level allocation order and group exhaustion",
+      "members": [
+        "GroupStay.Private.ComposedRoomAccountingTest::test partial cancellation reallocates around cancelled rooms and can exhaust a group"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "partial-cancellation-settlement",
+      "stage": 4,
+      "concern": "Selected-room validation and settlement",
+      "members": [
+        "GroupStay.Private.PartialRoomCancellationTest::test partial settlement returns only the selected rooms' cash and credit",
+        "GroupStay.Private.PartialRoomCancellationTest::test one bad room identifier rejects the entire partial cancellation",
+        "GroupStay.Private.PartialRoomCancellationTest::test the same room cannot appear twice in a partial cancellation",
+        "GroupStay.Private.ComposedRoomAccountingTest::test partial settlements combine bonus rounding and preserve advance-purchase rules",
+        "GroupStay.Private.ComposedRoomAccountingTest::test applied credit survives lot expiry but expires when restored"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "payment-reduction",
+      "stage": 4,
+      "concern": "Provider corrections against held cash",
+      "members": [
+        "GroupStay.Private.PaymentReductionTest::test a payment retains reducible provenance after one funded room is settled",
+        "GroupStay.Private.PaymentReductionTest::test reduction errors distinguish existence, permanence, amount, and capacity",
+        "GroupStay.Private.PaymentReductionTest::test a reduction reopens room for credit and later credit issuance uses remaining cash",
+        "GroupStay.Private.PaymentReductionTest::test payment and reduction retries preserve their original results",
+        "GroupStay.Private.PaymentReductionTest::test settled cash is immovable and exhaustion is not a group-state error"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "chargeback-reclassification",
+      "stage": 4,
+      "concern": "Full-payment disposition reversal and durable reclassification",
+      "members": [
+        "GroupStay.Private.ChargebackTest::test a chargeback composes with reductions and reopens held deposit",
+        "GroupStay.Private.ChargebackTest::test refunded and converted portions are reclassified without replaying settlement",
+        "GroupStay.Private.ChargebackTest::test one partially reduced payment can be clawed from several lots without rewriting history"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "entitlement-clawback-shortfall",
+      "stage": 4,
+      "concern": "Credit entitlement attribution and the shortfall lifecycle",
+      "members": [
+        "GroupStay.Private.ChargebackTest::test cumulative-difference attribution exposes only the spent entitlement as shortfall",
+        "GroupStay.Private.ChargebackTest::test restoration absorbs shortfall before an expired lot can return",
+        "GroupStay.Private.ChargebackTest::test non-refundable consumption removes the active-credit shortfall cap"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "ledger-conservation-contract",
+      "stage": 4,
+      "concern": "Complete ledger response surface and cash conservation identity",
+      "members": [
+        "GroupStay.Private.LedgerContractTest::test a fresh ledger exposes every cumulative field at zero",
+        "GroupStay.Private.LedgerContractTest::test the ledger conserves recorded cash across every disposition"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "payment-statement",
+      "stage": 4,
+      "concern": "Per-payment reconciliation and error semantics",
+      "members": [
+        "GroupStay.Private.PaymentStatementTest::test a payment statement reconciles every cash disposition with group and ledger views",
+        "GroupStay.Private.PaymentStatementTest::test payment statements distinguish missing and non-payment operations"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "m4-migration",
+      "stage": 4,
+      "concern": "Room-accounting and payment provenance migration through restart",
+      "members": [],
+      "system_checks": ["payment-reduction-upgrade"]
+    },
+    {
+      "id": "transfer-mechanics",
+      "stage": 5,
+      "concern": "Funding draw, destination fill, caps, and transfer validation",
+      "members": [
+        "GroupStay.Private.DepositTransferTest::test transfers draw held funding in reverse allocation order and fill destination rooms in order",
+        "GroupStay.Private.DepositTransferTest::test transfer validation distinguishes identity, amount, funding, capacity, and group errors"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "multi-group-occ",
+      "stage": 5,
+      "concern": "Dual transfer guards and revisions for every changed group",
+      "members": [
+        "GroupStay.Private.DepositTransferTest::test a transfer guards both groups and advances both revisions exactly once",
+        "GroupStay.Private.DepositTransferTest::test corrections bump every group whose funding they change while guarding the origin"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "cross-group-correction-provenance",
+      "stage": 5,
+      "concern": "Payment reductions and chargebacks following allocations across groups",
+      "members": [
+        "GroupStay.Private.DepositTransferTest::test a reduction follows one payment across groups in reverse allocation order",
+        "GroupStay.Private.DepositTransferTest::test a chargeback reclassifies one payment across groups without touching other funding"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "transferred-credit-settlement",
+      "stage": 5,
+      "concern": "Destination settlement and original-lot restoration of transferred funding",
+      "members": [
+        "GroupStay.Private.DepositTransferTest::test destination policy settles transferred cash and computes its credit bonus",
+        "GroupStay.Private.DepositTransferTest::test transferred credit restores to its original lot and respects expiry"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "statement-evolution",
+      "stage": 5,
+      "concern": "Payment statements surviving cross-group payment allocation",
+      "members": [
+        "GroupStay.Private.DepositTransferTest::test a payment statement reports held cash by group after transfer and settlement"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "transfer-invariance-isolation",
+      "stage": 5,
+      "concern": "Batch equivalence, ledger invariance, and unrelated-group isolation",
+      "members": [
+        "GroupStay.Private.DepositTransferTest::test batched and sequential transfer histories have identical outcomes and final reads",
+        "GroupStay.Private.DepositTransferTest::test a transfer leaves ledger totals and an unrelated group unchanged"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "m5-migration",
+      "stage": 5,
+      "concern": "Transfer migration, restart, and retry under the live payment statement contract",
+      "members": [],
+      "system_checks": ["transfer-upgrade"]
+    },
+    {
+      "id": "finance-report-correctness",
+      "stage": 6,
+      "concern": "Per-property cash and company-wide credit movement reconciliation",
+      "members": [
+        "GroupStay.Private.DailyFinanceReportTest::test cash movements bridge properties and reconcile to current held balances",
+        "GroupStay.Private.DailyFinanceReportTest::test credit issuance and consumption reconcile the company liability",
+        "GroupStay.Private.DailyFinanceReportTest::test cash properties are isolated, complete, and ordered"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "reporting-inception",
+      "stage": 6,
+      "concern": "One-time reporting start, opening position, and same-batch boundary",
+      "members": [
+        "GroupStay.Private.DailyFinanceReportTest::test reporting inception uses current state as opening and rejects unavailable dates",
+        "GroupStay.Private.DailyFinanceReportTest::test same-batch operations on opposite sides of inception are classified differently"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "finance-effective-dating",
+      "stage": 6,
+      "concern": "Posting-date floor and signed classification reversals",
+      "members": [
+        "GroupStay.Private.DailyFinanceReportTest::test backdated operations use the reporting inception floor",
+        "GroupStay.Private.DailyFinanceReportTest::test a chargeback reports signed reversal classifications without inventing held cash"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "finance-report-determinism",
+      "stage": 6,
+      "concern": "Operation-free expiry, equivalent histories, and side-effect-free reads",
+      "members": [
+        "GroupStay.Private.DailyFinanceReportTest::test unused credit expiry appears on the first day after its expiry without an operation",
+        "GroupStay.Private.DailyFinanceReportTest::test equivalent batched and sequential histories produce equivalent reports"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "finance-report-atomicity",
+      "stage": 6,
+      "concern": "Rejected operations and durable retries cannot corrupt report movements",
+      "members": [
+        "GroupStay.Private.DailyFinanceReportTest::test rejections and durable retries neither erase nor duplicate reporting movements"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "m6-finance-upgrade",
+      "stage": 6,
+      "concern": "Reporting inception over milestone-5 state through restart and retry",
+      "members": [],
+      "system_checks": ["finance-reporting-upgrade"]
+    },
+    {
+      "id": "finance-close-immutability",
+      "stage": 7,
+      "concern": "Published cash and credit reports remain stable after close",
+      "members": [
+        "GroupStay.Private.PeriodCloseTest::test a closed report remains identical after a late cash movement",
+        "GroupStay.Private.PeriodCloseTest::test closing freezes credit expiry and classification figures through the cutoff"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "late-adjustment-posting",
+      "stage": 7,
+      "concern": "Close-aware posting dates and visible signed late classifications",
+      "members": [
+        "GroupStay.Private.PeriodCloseTest::test an old-dated payment posts as a visible late adjustment on the first open day",
+        "GroupStay.Private.PeriodCloseTest::test a zero-net late reclassification retains both signed cash classifications",
+        "GroupStay.Private.PeriodCloseTest::test an adjustment keeps its first-open posting date across later closes",
+        "GroupStay.Private.PeriodCloseTest::test same-batch close ordering separates an ordinary movement from a late one",
+        "GroupStay.Private.PeriodCloseTest::test a late application restores liability without rewriting a closed credit expiry"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "finance-close-contract",
+      "stage": 7,
+      "concern": "Monotonic durable closes and same-batch ordering",
+      "members": [
+        "GroupStay.Private.PeriodCloseTest::test close validation, durable replay, and conflict preserve the published cutoff"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "m7-close-upgrade",
+      "stage": 7,
+      "concern": "Period close over milestone-6 reports through late correction and restart",
+      "members": [],
+      "system_checks": ["finance-close-upgrade"]
+    },
+    {
+      "id": "judgment-r1-policy-history",
+      "track": "judgment",
+      "stage": 2,
+      "concern": "Effective-dated policy and completed settlement across the policy upgrade",
+      "definition": "evaluation/judgment/r1-policy-history.md",
+      "definition_sha256": "d49314e3f0b3e5f6586d172006602cb19a1278a595da97d17cc30dcb7c17970a",
+      "members": [],
+      "system_checks": ["policy-history-upgrade"]
+    },
+    {
+      "id": "judgment-r2-room-history",
+      "track": "judgment",
+      "stage": 4,
+      "concern": "Durable funding provenance reconstructed into room allocations",
+      "definition": "evaluation/judgment/r2-room-history.md",
+      "definition_sha256": "9dd9cf9433e84ace97cd6066231e34d1bd9ceb57d852fab2ab118d3d047363f8",
+      "members": [],
+      "system_checks": ["room-history-upgrade"]
+    },
+    {
+      "id": "judgment-r3-payment-history",
+      "track": "judgment",
+      "stage": 5,
+      "concern": "Partially settled payment provenance through transfer and correction",
+      "definition": "evaluation/judgment/r3-payment-history.md",
+      "definition_sha256": "fc4bcc0a89f2746d4606cc4830609c8028d2d50758336080f815e474f45f2fd7",
+      "members": [],
+      "system_checks": ["payment-history-upgrade"]
+    },
+    {
+      "id": "judgment-r4-projection-history",
+      "track": "judgment",
+      "stage": 6,
+      "concern": "Reporting opening over rich committed history and later expiry",
+      "definition": "evaluation/judgment/r4-projection-history.md",
+      "definition_sha256": "ac69428d5c0f33857ea2b737b8af39a9b2970014536aab0b9fead6343d2098c3",
+      "members": [],
+      "system_checks": ["projection-history-upgrade"]
+    },
+    {
+      "id": "judgment-r5-close-history",
+      "track": "judgment",
+      "stage": 7,
+      "concern": "Close migration over pre-existing commit-defined report history",
+      "definition": "evaluation/judgment/r5-close-history.md",
+      "definition_sha256": "9a562229b5a31540e862f01163deda1734ec499f26e3022bd55dd7013d58df6f",
+      "members": [],
+      "system_checks": ["close-history-upgrade"]
+    },
+    {
+      "id": "judgment-c1-revival",
+      "track": "judgment",
+      "stage": 7,
+      "concern": "Expired credit revived by a late application without rewriting close",
+      "definition": "evaluation/judgment/c1-revival.md",
+      "definition_sha256": "4b030279e4d17946fb7bc47e109d12cc65600c873b88a5541429c5462bf5a930",
+      "members": [
+        "GroupStay.Private.PeriodCloseTest::test a late application restores liability without rewriting a closed credit expiry"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "judgment-c2-late-cross-property-chargeback",
+      "track": "judgment",
+      "stage": 7,
+      "concern": "Post-close correction follows transferred cash to its settlement property",
+      "definition": "evaluation/judgment/c2-late-cross-property-chargeback.md",
+      "definition_sha256": "e8282345d7df4545a5939217783796eecdd5b4766dd5e3d9602a1d1b491de943",
+      "members": [
+        "GroupStay.Private.JudgmentCompositionSevenTest::test a late chargeback follows transferred refunded cash to its settlement property"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "judgment-c3-transfer-shortfall-absorption",
+      "track": "judgment",
+      "stage": 6,
+      "concern": "Transferred credit restoration absorbs original-lot shortfall",
+      "definition": "evaluation/judgment/c3-transfer-shortfall-absorption.md",
+      "definition_sha256": "2321f30fbe73da743a4a5069541fbc11291cd54a4c70b214b93228e274b301d6",
+      "members": [
+        "GroupStay.Private.JudgmentCompositionSixTest::test restored transferred credit absorbs its original lot shortfall before availability"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "judgment-c4-reporting-replay-purity",
+      "track": "judgment",
+      "stage": 6,
+      "concern": "Pre-reporting durable retry cannot create a reporting movement",
+      "definition": "evaluation/judgment/c4-reporting-replay-purity.md",
+      "definition_sha256": "3d43fc327211a35b84521008ce53c64ae877365f6898e0c57648b7b586431ccb",
+      "members": [
+        "GroupStay.Private.JudgmentCompositionSixTest::test a pre-reporting durable payment retry leaves the opening and movements unchanged"
+      ],
+      "system_checks": []
+    },
+    {
+      "id": "judgment-c5-double-revival",
+      "track": "judgment",
+      "stage": 7,
+      "concern": "Revived expiry and later consumption reconcile across every view",
+      "definition": "evaluation/judgment/c5-double-revival.md",
+      "definition_sha256": "14dc6028218d07da63d3f6cf83ef9ebf8a9015e178ec4fd94e405670c655d750",
+      "members": [
+        "GroupStay.Private.JudgmentCompositionSevenTest::test revived expired credit can be consumed without rewriting or netting its history"
+      ],
+      "system_checks": []
+    }
+  ]
+}
