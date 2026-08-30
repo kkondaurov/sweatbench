@@ -129,8 +129,12 @@ idempotency, and compatibility with earlier API behavior.
 Each milestone starts a fresh model session. The model receives the repository as left by the
 previous milestone, along with the accumulated product, API, and runbook documents and any tests
 the candidate wrote. The ordinary prompt asks it to inspect the repository, implement the current
-request completely, preserve all earlier behavior, run the full test suite, repair failures, and
-review the final diff.
+request completely, preserve all earlier behavior, run the full test suite, repair failures, then
+review the full implementation and diff. It explicitly tells the model to fix anything it would
+not ship and rerun the relevant tests before ending the turn. The private evaluator runs only after
+that review-and-repair opportunity has ended. The protocol requests one explicit final
+review-and-repair pass; it does not place the model in a repeated review loop or return evaluator
+findings for another attempt.
 
 This protocol measures a particular kind of engineering agent:
 
