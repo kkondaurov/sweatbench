@@ -1,12 +1,12 @@
 # Sweat Bench v6 results
 
-This directory is the frozen public record for the v6 pre-disclosure cohort.
+This directory contains the public results for the frozen v6 benchmark.
 
 - `index.html` is a self-contained interactive dashboard.
 - `RETROSPECTIVE.md` is the full methodological and behavioral analysis.
 - `LUNA_HARNESS_TRAJECTORIES.md` traces the two family-level differences between OpenCode Luna and
   delegated Codex Luna through candidate code, tests, and parent/child review behavior.
-- `accepted-runs.json` contains all 85 accepted trajectories and the derived tables used by the
+- `accepted-runs.json` contains all 86 completed trajectories and the derived tables used by the
   report.
 - `analyze.py` independently validates the population and recomputes group headline metrics from
   the run records.
@@ -18,8 +18,10 @@ Run the verifier from the repository root:
 python3 evaluation/results/v6/analyze.py
 ```
 
-The dataset has two views. `models` contains 60 model-comparison trajectories. `harness` contains
+The dataset has two views. `models` contains 61 model-comparison trajectories. `harness` contains
 25 controlled harness or delegation trajectories and is not pooled into the model leaderboard.
+The Meta Muse Spark 1.3 row contains one completed run; its interrupted follow-on sample is not a
+result and is not included.
 
 Costs with `cost_basis: recorded` are provider charges captured for the complete accepted run.
 Costs with `cost_basis: estimated` apply the documented production token rates to recorded parent

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sweat Bench v6 - Accepted Results</title>
+  <title>Sweat Bench v6 - Completed Results</title>
   <style>
     :root {
       color-scheme: light dark;
@@ -623,11 +623,11 @@
     <header>
       <div>
         <h1>Sweat Bench v6</h1>
-        <p class="subtitle">Accepted results · frozen benchmark comparison</p>
+        <p class="subtitle">Completed results · frozen benchmark comparison</p>
       </div>
       <div class="stamp">
-        13 configurations · 60 accepted runs<br>
-        Pricing snapshot: 30 August 2026
+        14 configurations · 61 completed runs<br>
+        Results updated: 4 September 2026
       </div>
     </header>
 
@@ -643,8 +643,8 @@
         <div class="method-value">Frozen commit <code>5fda9a0</code> · seven milestones · Core /39 · Maintenance /10</div>
       </div>
       <div class="method-item">
-        <span class="method-label">Accepted sample</span>
-        <div class="method-value">Five completed, valid runs per configuration, except four each for GLM-5.3 Flash high and max after repeated provider failures were abandoned, and two Opus 5 runs. Infrastructure-debug and incomplete attempts are excluded; displayed run numbers are clean sample labels, not source lane IDs.</div>
+        <span class="method-label">Completed sample</span>
+        <div class="method-value">Five completed, valid runs per configuration, except four each for GLM-5.3 Flash high and max, two Opus 5 runs, and one Muse Spark 1.3 run. Infrastructure-debug, incomplete, abandoned, and interrupted attempts are excluded; displayed run numbers are clean sample labels, not source lane IDs.</div>
       </div>
       <div class="method-item">
         <span class="method-label">Cost basis</span>
@@ -748,7 +748,7 @@
       <p>OpenCode totals include continuation calls and descendant task sessions required to finish each accepted run. Abandoned, incomplete, evaluator-invalid, and infrastructure-debug runs are excluded entirely. The audited totals are preserved in <code>accepted-runs.json</code> and checked by <code>analyze.py</code>.</p>
       <p>DeepSeek Run 2 includes $0.32 from a redundant same-session review caused by a retry-classifier false positive. The extra review made no file edits, so the scored artifact was unchanged; the displayed cost remains the spend actually incurred.</p>
       <p>DeepSeek Run 4 runtime excludes a documented 10h 52m machine interruption inside its resumed first-milestone log. Model activity before and after the interruption is retained; the inactive wall-clock gap is not counted as agent runtime.</p>
-      <p>Official sources: <a href="https://developers.openai.com/api/docs/models/gpt-5.5">GPT-5.5</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-sol">Sol</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-terra">Terra</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-luna">Luna</a>, <a href="https://docs.x.ai/developers/models/grok-4.6">Grok 4.6</a>, <a href="https://openrouter.ai/qwen/qwen3.8-max">Qwen3.8 Max</a>, <a href="https://openrouter.ai/deepseek/deepseek-v4-pro-0813">DeepSeek V4 Pro 0813</a>, and <a href="https://z.ai/blog/glm-5.3-flash">GLM-5.3-Flash</a>.</p>
+      <p>Official sources: <a href="https://developers.openai.com/api/docs/models/gpt-5.5">GPT-5.5</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-sol">Sol</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-terra">Terra</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-luna">Luna</a>, <a href="https://openrouter.ai/meta/muse-spark-1.3">Muse Spark 1.3</a>, <a href="https://docs.x.ai/developers/models/grok-4.6">Grok 4.6</a>, <a href="https://openrouter.ai/qwen/qwen3.8-max">Qwen3.8 Max</a>, <a href="https://openrouter.ai/deepseek/deepseek-v4-pro-0813">DeepSeek V4 Pro 0813</a>, and <a href="https://z.ai/blog/glm-5.3-flash">GLM-5.3-Flash</a>.</p>
     </footer>
     </div>
 
@@ -832,7 +832,8 @@
         <p>Codex reports cached input as a subset of total input; OpenCode reports uncached input and cached reads separately. The calculation normalizes those schemas before applying Sol $4 / $0.40 cached / $20 output, Terra $2 / $0.20 / $12, and Luna $0.20 / $0.02 / $1.20 per million tokens.</p>
         <p>Subagents counts unique child agent sessions explicitly launched by the candidate during an accepted run. Fixed harness-owned workers such as Codex auto-review are excluded.</p>
         <p>OpenCode descendants come from its persisted run databases. Codex descendants come from the session rollouts referenced by each accepted root thread; <code>codex-auto-review</code> sessions use Luna pricing. This keeps the estimate symmetric without adding a separate review metric.</p>
-        <p>Only runs with all seven milestones and a completed private evaluation appear here. All planned five-run Codex and OpenCode trajectories are represented.</p>
+        <p>The Muse Spark 1.3 row is one completed high-effort trajectory through OpenCode 1.18.27. Its $53.61 total is the recorded OpenRouter charge, including two automatic continuations after turn-length limits. No candidate subagents were launched.</p>
+        <p>Only runs with all seven milestones and a completed private evaluation appear here. The interrupted remainder of the Muse campaign is not included.</p>
         <p>Audit values are ordered standard Codex / OpenCode / delegated Codex where a third value appears. Each Luna variant now contains five accepted runs.</p>
       </footer>
     </section>
@@ -878,6 +879,9 @@
       { id: "claude-opus5-high", model: "Claude Opus 5", effort: "high", harness: "Claude Code", costBasis: "estimated", runs: [
         { core: 38, judgment: 9, ship: 91, final: 91, cost: 43.9582735, prodLoc: 4466, testLoc: 6384, runtimeSeconds: 7006.813 },
         { core: 39, judgment: 10, ship: 94, final: 94, cost: 51.3476205, prodLoc: 4393, testLoc: 6463, runtimeSeconds: 7835.688 }
+      ]},
+      { id: "meta-muse-spark-1-3-high", model: "Meta Muse Spark 1.3", effort: "high", harness: "OpenCode", note: "one completed run", costBasis: "recorded", runs: [
+        { core: 29, judgment: 3, ship: 63, final: 74, cost: 53.60925695, prodLoc: 6506, testLoc: 2824, runtimeSeconds: 34003.452 }
       ]},
       { id: "grok-4-6-xhigh", model: "Grok 4.6", effort: "xhigh", harness: "OpenCode", costBasis: "recorded", runs: [
         { core: 36, judgment: 7, ship: 88, final: 89, cost: 13.615378, prodLoc: 3966, testLoc: 5561, runtimeSeconds: 7437.198 },
@@ -974,6 +978,7 @@
       "luna-xhigh": [0, 0, 0, 0, 0],
       "gpt-5-5-xhigh": [0, 0, 0, 0, 0],
       "claude-opus5-high": [0, 0],
+      "meta-muse-spark-1-3-high": [0],
       "grok-4-6-xhigh": [0, 0, 0, 0, 0],
       "qwen3-8-max-xhigh": [0, 0, 0, 0, 0],
       "deepseek-v4-pro-0813-max": [0, 0, 0, 0, 0],
@@ -1321,7 +1326,7 @@
       const margin = { top: 32, right: 175, bottom: 66, left: 72 };
       const innerWidth = width - margin.left - margin.right;
       const innerHeight = height - margin.top - margin.bottom;
-      const xMax = 48;
+      const xMax = 60;
       const yMin = 25;
       const yMax = 40;
       const x = value => margin.left + (value / xMax) * innerWidth;
@@ -1346,6 +1351,7 @@
         "luna-xhigh": { dx: 18, dy: 15, anchor: "start" },
         "gpt-5-5-xhigh": { dx: 18, dy: -15, anchor: "start" },
         "claude-opus5-high": { dx: 18, dy: -9, anchor: "start" },
+        "meta-muse-spark-1-3-high": { dx: -18, dy: -14, anchor: "end" },
         "grok-4-6-xhigh": { dx: 18, dy: 18, anchor: "start" },
         "qwen3-8-max-xhigh": { dx: -22, dy: -38, anchor: "end" },
         "deepseek-v4-pro-0813-max": { dx: 18, dy: 18, anchor: "start" },
@@ -1355,7 +1361,7 @@
         "ox-alpha-max": { dx: 18, dy: 17, anchor: "start" }
       };
 
-      [0, 8, 16, 24, 32, 40, 48].forEach(tick => {
+      [0, 10, 20, 30, 40, 50, 60].forEach(tick => {
         add("line", { x1: x(tick), x2: x(tick), y1: margin.top, y2: height - margin.bottom, stroke: gridColor, "stroke-width": 1 });
         const label = add("text", { x: x(tick), y: height - margin.bottom + 24, fill: textColor, "font-size": 12, "text-anchor": "middle" });
         label.textContent = `$${tick}`;

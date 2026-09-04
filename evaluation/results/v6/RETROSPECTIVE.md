@@ -1,6 +1,6 @@
 # Sweat Bench v6 Retrospective
 
-Snapshot: 30 August 2026
+Snapshot: 30 August 2026; updated 4 September 2026
 
 Public release: `v6.0.0`
 
@@ -10,24 +10,23 @@ Source benchmark-content commit: `5fda9a09255529b027cadf836c0c16c867a039e5`
 
 This report studies the accepted Sweat Bench v6 evidence available in the repository:
 
-- 60 accepted trajectories in the main model comparison;
+- 61 completed trajectories in the main model comparison;
 - 20 accepted OpenAI-model trajectories under OpenCode; and
 - 5 accepted GPT-5.6 Luna trajectories under Codex CLI with an explicit delegation instruction.
 
-That gives 85 complete accepted trajectories across 18 model, harness, effort, and prompt
-configurations. The main leaderboard contains 13 configurations. Most have five samples; Claude
-Opus 5 has two, and both GLM-5.3 Flash configurations have four.
+That gives 86 complete trajectories across 19 model, harness, effort, and prompt configurations.
+The main leaderboard contains 14 configurations. Most have five samples; Claude Opus 5 has two,
+both GLM-5.3 Flash configurations have four, and Meta Muse Spark 1.3 has one.
 
 Invalidated, abandoned, interrupted, and infrastructure-debug attempts are intentionally outside
 the analysis. They are exclusions, not model outcomes. This is not an infrastructure postmortem.
 
-The quantitative companion is `accepted-runs.json`. Before disclosure, the source analysis
-reconstructed every accepted run from its private state, verified all seven milestones and the
-final private evaluation, checked displayed scores against evaluator artifacts, and joined scores
-with full-session cost, runtime, LOC, source structure, candidate tests, and candidate-launched
-subagents. The public release removes machine-local state paths and assigns each trajectory a
-stable group/sample identifier. `analyze.py` independently validates the released population and
-recomputes every group headline from those run records.
+The quantitative companion is `accepted-runs.json`. Each published run is reconstructed from its
+saved state, checked across all seven milestones and the final private evaluation, and joined with
+full-session cost, runtime, LOC, source structure, candidate tests, and candidate-launched
+subagents. Machine-local paths are removed and each trajectory receives a stable group/sample
+identifier. `analyze.py` independently validates the released population and recomputes every
+group headline from those run records.
 
 ## Executive verdict
 
@@ -37,9 +36,9 @@ also reaching the end of its useful life as a frontier discriminator.
 
 The right description is not simply "saturated." It is **lopsided**:
 
-1. Nineteen of the 49 scored families never fail in any of the 60 main trajectories.
+1. Eighteen of the 49 scored families never fail in any of the 61 main trajectories.
 2. A small hard core accounts for much of the remaining separation.
-3. Three period-close families fail in 47 or 48 of 60 runs.
+3. Three period-close families fail in 48 or 49 of 61 runs.
 4. Several nominally separate points are statistically the same underlying behavior.
 5. The final request is much harder than earlier requests and has no later milestone in which a
    model can repair it.
@@ -57,6 +56,10 @@ The strongest substantive lessons are:
 - Claude Opus 5 high is provisionally in the same quality region as Sol high, but only two runs
   exist and its $47.65 median cost is much higher. Its uncertainty is too large for a reliability
   ranking.
+- Meta Muse Spark 1.3 high completes one valid trajectory at 29/39 Core and 3/10 Maintenance. It
+  recovers from an unfinished finance-report release, but remains below every other configuration
+  mean while taking 9.45 model-hours and $53.61 of recorded inference. One run is diagnostic, not a
+  reliability estimate.
 - The tested GPT-5.5 xhigh configuration is dominated by GPT-5.6 Sol medium in both quality and
   efficiency. GPT-5.5 averages 37.0/39 and 7.6/10 at $27.57; Sol medium averages 38.2 and 8.8 at
   roughly half the median cost. Because tier, effort, and cohort differ, this is not an isolated
@@ -93,13 +96,14 @@ and report model-plus-harness systems as first-class experimental conditions.
 
 ## Confidence levels
 
-- **High confidence:** accepted population, score and failure counts, group summaries, LOC,
+- **High confidence:** published population, score and failure counts, group summaries, LOC,
   runtime, descendant-session cost reconstruction, cache volume, and the existence of repeated
-  failure signatures. These are regenerated from 85 unique accepted sources and reconcile across
+  failure signatures. These are regenerated from 86 complete trajectories and reconcile across
   run, family, and scenario grains.
-- **High confidence:** the period-close revival failure mechanism. A first-failing-assertion
-  census covers all 47 main-view revival failures and shows that 46 preserve the closed report but
-  fail to append the required compensating history.
+- **High confidence:** the dominant period-close revival failure mechanism. A
+  first-failing-assertion census of the original 47 failures shows that 46 preserve the closed
+  report but fail to append the required compensating history; Muse adds a distinct transaction
+  deadlock on the same scenario.
 - **Moderate confidence:** the interpretation of hotel-credit and migration failures. It is
   supported by failing private scenarios, co-failure patterns, and targeted inspection of passing
   and failing implementations and candidate tests, but is not a complete mechanism census of all
@@ -204,6 +208,7 @@ time.
 | GPT-5.6 Luna xhigh / Codex | 5 | 32.6 (27-37) | 6.2 (2-8) | 0 | ~$1.50 | 1.99 |
 | GPT-5.5 xhigh / Codex | 5 | 37.0 (36-38) | 7.6 (7-9) | 0 | ~$27.57 | 1.67 |
 | Claude Opus 5 high / Claude Code | 2 | 38.5 (38-39) | 9.5 (9-10) | 1 | ~$47.65 | 2.06 |
+| Meta Muse Spark 1.3 high / OpenCode | 1 | 29.0 | 3.0 | 0 | $53.61 | 9.45 |
 | Grok 4.6 xhigh / OpenCode | 5 | 37.6 (36-38) | 7.8 (7-8) | 0 | $14.71 | 2.05 |
 | Qwen3.8 Max xhigh / OpenCode | 5 | 35.8 (31-38) | 7.6 (6-10) | 0 | $25.34 | 4.22 |
 | DeepSeek V4 Pro max / OpenCode | 5 | 35.0 (34-37) | 6.4 (6-7) | 0 | $8.87 | 4.38 |
@@ -226,6 +231,9 @@ estimate sweep probabilities precisely. Wilson 95% intervals make this visible:
 The point estimates are still useful. Sol high is clearly more reliable in this sample than a
 system that repeatedly produces the same 38/8 result. But claims such as "the true sweep rate is
 80%" would be false precision.
+
+Muse has only one completed run. Its result can identify concrete failure mechanisms and operating
+cost, but it cannot establish a stable mean, range, or sweep probability.
 
 ### Model-specific reading
 
@@ -284,6 +292,50 @@ first Opus run still misses an off-by-one date.
 The lesson is not that the tests are useless; it is that test volume is not test coverage of the
 right semantic boundary.
 
+#### Meta Muse Spark 1.3 high
+
+The single Muse run finishes at 29/39 Core, 3/10 Maintenance, and 74/94 scenarios. It costs $53.61
+of recorded OpenRouter inference and takes 9.45 model-hours. That is below every other
+configuration mean in the main view; only the weakest individual Luna run is lower, at 27/39 and
+2/10. The result is valid, but `n=1` makes it a trajectory study rather than a model ranking.
+
+Its progression is revealing. Muse passes milestone 1 completely, reaches 22/24 scenarios at
+milestone 2, and passes all three new durability families at milestone 3. The first broad break is
+milestone 4: room accounting ends at 42/52 scenarios and only 2/9 new families. Milestone 6 then
+ships at 52/75 with none of its nine new Core or Maintenance families passing. It adds no candidate
+tests in that release and hits the turn-length limit, leaving finance reporting substantially
+scaffolded rather than complete. Milestone 7 repairs much of that work and the final evaluation
+recovers 11 scenarios, but the historical upgrades and several cross-feature compositions remain
+broken.
+
+The residual defects are not random endpoint omissions:
+
+- hotel-credit expiry is calculated as `cancellation date + 366 days`, which is one day late when
+  the interval crosses a leap day; the lot-order query itself is deterministic, but the wrong
+  expiry changes which lot should be consumed;
+- partial cancellation, payment reduction, chargeback, and payment-statement failures share
+  reconciliation errors between stored payment provenance and the aggregate ledger read paths;
+- current-state finance reports become functional during milestone 7, but databases created by
+  earlier milestones still fail the finance-reporting and close-history upgrades; and
+- the late credit-revival path performs a reporting read from inside an active operation
+  transaction and times out waiting for another database connection. This is an implementation
+  deadlock, not evaluator instability.
+
+The implementation concentrates 5,390 of 6,506 production lines in `batches.ex`, launches no
+subagents, and ends with 42 candidate tests. Test declarations remain at 39 through milestone 6
+and rise to only 42 at milestone 7. The 9.45 hours therefore buy substantial repeated reading and
+editing of one growing module, not broader decomposition or an independent requirements audit.
+
+The closest headline result is Luna run 2 at 27/39, 2/10, and 72/94 scenarios. They share 12
+failed families, including hotel credit, historical upgrades, and period-close revival. Their
+profiles differ: Luna also misses several basic finance-report and restart/migration families,
+while Muse uniquely retains a cluster of milestone-4 settlement and statement defects. The
+closest family-failure pattern is Flash max run 2 at 31/39 and 6/10. Flash fails more at report
+determinism and close immutability; Muse fails more at historical operability and payment
+reconciliation. Muse is thus not merely a slower copy of a similarly scoring system. It is strong
+at additive protocol and replay machinery, but weak at reconciling old state through later read
+models and cross-feature transactions.
+
 #### Grok 4.6 xhigh
 
 Grok scores 36/7 once and 38/8 four times. The repeated 38/8 outcomes share the period-close
@@ -324,7 +376,7 @@ produce large cached-read charges despite discounted cache pricing.
 GLM 5.3 has the widest mixture of success and instability among the large OpenCode models. It
 produces one 39/10 sweep, but the five runs span 33-39 Core and 6-10 Maintenance. One trajectory
 introduces a large stage-6 regression and repairs much of it at stage 7, yielding 11 recorded
-regression episodes where 57 of 60 main trajectories have none.
+regression episodes where 58 of 61 main trajectories have none.
 
 The sweep proves that the capability is present. The distribution says that model selection based
 only on the best run would be badly misleading.
@@ -545,11 +597,13 @@ same OpenAI API list prices? Subscription economics and inference efficiency mus
 
 ### OpenCode external-model costs
 
-The external-model audit finds no missing descendant cost for Grok, Qwen, DeepSeek, or GLM 5.3.
-One Kimi child session changes one run materially. The accepted-sample totals are:
+The external-model audit finds no missing descendant cost for Muse, Grok, Qwen, DeepSeek, or GLM
+5.3. Muse launches no child sessions. One Kimi child session changes one run materially. The
+completed-sample totals are:
 
 | Configuration | n | Median cost | Sample total | Mean prompt tokens/run | Aggregate cache hit |
 |---|---:|---:|---:|---:|---:|
+| Meta Muse Spark 1.3 high | 1 | $53.61 | $53.61 | 127.9M | 83.8% |
 | Grok 4.6 xhigh | 5 | $14.71 | $73.55 | 18.9M | 90.6% |
 | Qwen3.8 Max xhigh | 5 | $25.34 | $127.76 | 53.4M | 91.6% |
 | DeepSeek V4 Pro max | 5 | $8.87 | $46.62 | 89.4M | 96.4% |
@@ -562,6 +616,11 @@ This explains the initially suspicious Kimi and GLM totals. Cached input is disc
 discount applies to tens of millions of replayed tokens. A 90%-98% cache hit on a very large
 denominator can still dominate cost. Kimi's cache reads account for roughly $12-$14 per run and
 GLM 5.3's for roughly $13-$22.
+
+Muse is an even more extreme one-run example: 127.9 million prompt tokens, a lower 83.8% aggregate
+cache hit, 341,619 output tokens, and $53.61 of recorded spend. Those figures describe this
+trajectory's long, repeatedly replayed working context; they are not a stable estimate for the
+model from one sample.
 
 That cost is neither private-evaluator traffic nor an accounting error. It arises from how the
 OpenCode conversation repeatedly presents a growing working context to those models. It is best
@@ -588,23 +647,23 @@ feature, or a high-consequence migration.
 
 ### The hard families
 
-The following are final-state failures among the 60 main trajectories:
+The following are final-state failures among the 61 main trajectories:
 
 | Family | Stage | Track | Failed runs | Failure rate |
 |---|---:|---|---:|---:|
-| Late-adjustment posting | 7 | Core | 48 | 80.0% |
-| C5 double revival | 7 | Maintenance | 48 | 80.0% |
-| C1 revival | 7 | Maintenance | 47 | 78.3% |
-| Hotel-credit lifecycle | 2 | Core | 30 | 50.0% |
-| M4 payment-reduction upgrade | 4 | Core | 24 | 40.0% |
-| R2 room-history upgrade | 4 | Maintenance | 22 | 36.7% |
-| Finance report determinism | 6 | Core | 14 | 23.3% |
-| R4 projection-history upgrade | 6 | Maintenance | 13 | 21.7% |
-| C3 transfer-shortfall absorption | 6 | Maintenance | 9 | 15.0% |
-| Finance-close immutability | 7 | Core | 8 | 13.3% |
+| Late-adjustment posting | 7 | Core | 49 | 80.3% |
+| C5 double revival | 7 | Maintenance | 49 | 80.3% |
+| C1 revival | 7 | Maintenance | 48 | 78.7% |
+| Hotel-credit lifecycle | 2 | Core | 31 | 50.8% |
+| M4 payment-reduction upgrade | 4 | Core | 25 | 41.0% |
+| R2 room-history upgrade | 4 | Maintenance | 23 | 37.7% |
+| Finance report determinism | 6 | Core | 14 | 23.0% |
+| R4 projection-history upgrade | 6 | Maintenance | 14 | 23.0% |
+| C3 transfer-shortfall absorption | 6 | Maintenance | 10 | 16.4% |
+| Finance-close immutability | 7 | Core | 8 | 13.1% |
 
-The distribution is highly concentrated. The three revival-related families account for 143
-failed family-points. Nineteen families account for none.
+The distribution is highly concentrated. The three revival-related families account for 146
+failed family-points. Eighteen families account for none.
 
 ### The central failure: immutable history plus restored liability
 
@@ -628,6 +687,7 @@ Failure on the Core late-adjustment family by main configuration:
 | Luna baseline | 5/5 |
 | GPT-5.5 | 4/5 |
 | Opus 5 | 0/2 |
+| Meta Muse Spark 1.3 | 1/1 |
 | Grok 4.6 | 5/5 |
 | Qwen3.8 Max | 4/5 |
 | DeepSeek V4 Pro | 5/5 |
@@ -636,7 +696,7 @@ Failure on the Core late-adjustment family by main configuration:
 | Flash high | 4/4 |
 | Flash max | 4/4 |
 
-A first-failing-assertion census of all 47 main-view revival failures finds:
+A first-failing-assertion census of the original 47 main-view revival failures finds:
 
 - 32 runs emit no restoration;
 - 11 restore the liability silently on the backdated effective day rather than the first open day;
@@ -644,11 +704,13 @@ A first-failing-assertion census of all 47 main-view revival failures finds:
 - 1 restores it under the wrong movement classification; and
 - 1 mutates the closed report.
 
-The closed report is therefore preserved in 46 of the 47 failing runs and 59 of all 60 main
-trajectories. The dominant defect is not rewriting published history; it is failing to append the
-correct compensating entry while changing current lot state. This conclusion is specific to the
-revival scenario. The neighboring finance-close-immutability family still fails in 8 of 60 runs,
-so the corpus does not establish that historical immutability is generally solved.
+The closed report is therefore preserved in 46 of those 47 failing runs and 59 of the original 60
+main trajectories. The dominant defect is not rewriting published history; it is failing to
+append the correct compensating entry while changing current lot state. Muse adds a 48th failure
+through a different mechanism: its late-application transaction calls the reporting read path and
+times out waiting for another database connection. The neighboring finance-close-immutability
+family still fails in 8 of 61 runs, so the corpus does not establish that historical immutability
+is generally solved.
 
 Passing implementations explicitly model the correction. In simplified form:
 
@@ -667,7 +729,7 @@ This is a good benchmark problem. It is compact, realistic, hard to bluff, and d
 snapshot-oriented implementations from append-only historical models.
 
 It is also overrepresented in the score. `late-adjustment-posting` and C5 have identical pass/fail
-vectors across all 60 runs. C1 co-fails with them in 47 of the 48 failures. One conceptual defect
+vectors across all 61 runs. C1 co-fails with them in 48 of the 49 failures. One conceptual defect
 therefore costs one Core point and usually two Maintenance points.
 
 ### Hotel-credit lifecycle
@@ -679,10 +741,16 @@ The second-largest cluster is older and more varied. Correct behavior requires:
 - source-operation-ID ordering for equal expiries; and
 - restoration to the original lot and origin after reversal.
 
-Thirty runs fail the family. The two ordering scenarios fail 30 and 28 runs respectively, but
+Thirty-one runs fail the family. The two ordering scenarios fail 31 and 29 runs respectively, but
 individual trajectories also miss date arithmetic or provenance restoration. Opus run 1 is an
 instructive near miss: its architecture and test volume are strong, but the private check exposes
 an off-by-one expiry date.
+
+Muse adds a different concrete instance of the same boundary error. Its implementation stores
+credit expiry as cancellation plus 366 elapsed days. That happens to satisfy its non-leap
+candidate example, but crosses the wrong calendar date when a leap day intervenes. The ordering
+query correctly sorts by expiry and source operation ID; the wrong dates corrupt the ordering
+input before that tie-breaker can help.
 
 This family earns its place because it combines calendar semantics with deterministic identity and
 reversal provenance. Unlike the revival cluster, its failures are not all the same mechanism.
@@ -694,8 +762,8 @@ The upgraded system must reconstruct funding types and commit order, preserve a 
 block, retain per-payment provenance through settlement and reduction, survive restart, and remain
 idempotent.
 
-The Core migration family fails 24 runs; the corresponding Maintenance room-history family fails
-22. They co-fail in 22 of 24 Core failures, a Jaccard similarity of 91.7%.
+The Core migration family fails 25 runs; the corresponding Maintenance room-history family fails
+23. They co-fail in 23 of 25 Core failures, a Jaccard similarity of 92.0%.
 
 This is another genuine hard axis: can the model evolve the schema and interpretation of old data,
 not just create correct new rows? It should remain in the successor, but its Core and Maintenance
@@ -706,11 +774,11 @@ more independent evidence.
 
 The 49 family points are not 49 independent trials:
 
-- 19 families have identical all-pass vectors;
-- late-adjustment posting and C5 have identical 48-failure vectors;
-- C1 overlaps those failures in 47 runs;
+- 18 families have identical all-pass vectors;
+- late-adjustment posting and C5 have identical 49-failure vectors;
+- C1 overlaps those failures in 48 runs;
 - M2 migration and R1 policy history have identical two-failure vectors; and
-- M4 migration and R2 room history overlap in 22 runs.
+- M4 migration and R2 room history overlap in 23 runs.
 
 Dependence is not inherently bad. A production defect often affects several user-visible and
 maintenance properties. The problem is interpretive: adding the points implies more independent
@@ -723,14 +791,14 @@ eight independent engineering mistakes. Family totals measure affected behaviora
 do not count root causes.
 
 The observed outcome geometry makes the concentration concrete. The 49 family columns contain
-only 29 distinct pass/fail vectors across the 60 runs, and their centered matrix has rank 26. The
-participation ratio of the family-failure covariance is about 7.2, meaning that the observed
-variance is concentrated in a small number of co-moving directions. At scenario grain, only 41 of
-94 scenarios fail even once; 53 are saturated in this sample. These are descriptive properties of
+only 30 distinct pass/fail vectors across the 61 runs, and their centered matrix has rank 27. The
+participation ratio of the family-failure covariance is about 7.4, meaning that the observed
+variance is concentrated in a small number of co-moving directions. At scenario grain, only 42 of
+94 scenarios fail even once; 52 are saturated in this sample. These are descriptive properties of
 the current outcome matrix, not an estimate that software engineering has seven latent abilities.
 
 The same scenario can also belong to more than one scored family. Summing failing family members
-produces 368 scenario incidences, while deduplicating by trajectory and scenario produces 321
+produces 389 scenario incidences, while deduplicating by trajectory and scenario produces 341
 unique failed scenario/run cells. That reuse is diagnostically reasonable, but it is another reason
 not to interpret every family point as independent evidence.
 
@@ -760,37 +828,37 @@ removes that cluster entirely. These are diagnostics, not proposed official scor
 | Grok 4.6 | 45.4 | 45.4 | 45.4 |
 
 Removing the cluster moves Grok ahead of both Opus and Sol medium; collapsing it preserves their
-order but narrows the gaps. Core and Maintenance are themselves strongly associated across the 60
-main runs (Spearman `rho = 0.813`). The headline ordering is therefore a weighting choice over
+order but narrows the gaps. Core and Maintenance are themselves strongly associated across the 61
+main runs (Spearman `rho = 0.823`). The headline ordering is therefore a weighting choice over
 dependent evidence, not a ranking assembled from 49 independent trials.
 
 ## Position, recovery, and trajectory dynamics
 
 ### Difficulty by stage
 
-Two denominators are useful. A family-cell rate counts passed family/run cells out of `60 x the
+Two denominators are useful. A family-cell rate counts passed family/run cells out of `61 x the
 number of families in the stage`. A whole-stage rate counts trajectories that pass every family
 in that stage.
 
 | Stage | Track | Families | Ship family cells | Final family cells | Final whole-stage runs |
 |---|---|---:|---:|---:|---:|
-| 1 | Core | 6 | 97.8% | 99.4% | 58/60 (96.7%) |
-| 2 | Core | 5 | 87.3% | 89.3% | 29/60 (48.3%) |
-| 2 | Maintenance | 1 | 96.7% | 96.7% | 58/60 (96.7%) |
-| 3 | Core | 3 | 96.1% | 98.3% | 57/60 (95.0%) |
-| 4 | Core | 8 | 90.2% | 92.1% | 31/60 (51.7%) |
-| 4 | Maintenance | 1 | 63.3% | 63.3% | 38/60 (63.3%) |
-| 5 | Core | 7 | 96.2% | 97.1% | 51/60 (85.0%) |
-| 5 | Maintenance | 1 | 91.7% | 91.7% | 55/60 (91.7%) |
-| 6 | Core | 6 | 90.6% | 92.5% | 45/60 (75.0%) |
-| 6 | Maintenance | 3 | 86.1% | 87.8% | 42/60 (70.0%) |
-| 7 | Core | 4 | 75.8% | 75.8% | 12/60 (20.0%) |
-| 7 | Maintenance | 4 | 58.3% | 58.3% | 12/60 (20.0%) |
+| 1 | Core | 6 | 97.8% | 99.5% | 59/61 (96.7%) |
+| 2 | Core | 5 | 87.2% | 89.2% | 29/61 (47.5%) |
+| 2 | Maintenance | 1 | 96.7% | 96.7% | 59/61 (96.7%) |
+| 3 | Core | 3 | 96.2% | 98.4% | 58/61 (95.1%) |
+| 4 | Core | 8 | 89.1% | 91.0% | 31/61 (50.8%) |
+| 4 | Maintenance | 1 | 62.3% | 62.3% | 38/61 (62.3%) |
+| 5 | Core | 7 | 96.0% | 97.0% | 51/61 (83.6%) |
+| 5 | Maintenance | 1 | 90.2% | 90.2% | 55/61 (90.2%) |
+| 6 | Core | 6 | 89.1% | 92.3% | 45/61 (73.8%) |
+| 6 | Maintenance | 3 | 84.7% | 86.9% | 42/61 (68.9%) |
+| 7 | Core | 4 | 75.8% | 75.8% | 12/61 (19.7%) |
+| 7 | Maintenance | 4 | 57.8% | 57.8% | 12/61 (19.7%) |
 
 Stage 7 is plainly hardest, but content and position are confounded. Earlier requests have later
 milestones in which incidental refactoring or new tests can repair them. Stage 7 has no such
 opportunity, so its ship and final rates are necessarily identical. Earlier stages improve only
-modestly from ship to final and 51/60 trajectories never recover any scenarios, so placement alone
+modestly from ship to final and 51/61 trajectories never recover any scenarios, so placement alone
 does not explain the Stage-7 deficit.
 
 The successor should treat position as an unestimated hypothesis. Put the same hard block in
@@ -800,9 +868,10 @@ for the original feature task.
 
 ### Recovery is uncommon and heterogeneous
 
-Fifty-one of 60 main trajectories show no scenario recovery. The remaining nine gain between 1
-and 21 scenarios. Kimi accounts for much of the large recovery. One GLM run has a catastrophic
-temporary regression and later repair.
+Fifty-one of 61 main trajectories show no scenario recovery. The remaining ten gain between 1 and
+21 scenarios. Kimi accounts for much of the large recovery. Muse gains 11 because milestone 7
+finishes much of the finance-report work left incomplete at milestone 6. One GLM run has a
+catastrophic temporary regression and later repair.
 
 This means the current `average recovery` metric combines at least three phenomena:
 
@@ -819,10 +888,10 @@ Those are not equivalent. The successor should report them separately:
 ### Prefix depth is too coarse
 
 Final prefix depth counts the number of consecutive stages from stage 1 with every family passing.
-Among the 60 main runs, depths are:
+Among the 61 main runs, depths are:
 
 - 0: 3 runs;
-- 1: 29;
+- 1: 30;
 - 2: 1;
 - 3: 10;
 - 4: 1;
@@ -835,7 +904,7 @@ as a strict prefix gate, not as a substitute for final coverage.
 
 ### Regression episodes are sparse
 
-Fifty-seven runs have zero recorded regression episodes, two have one, and one GLM run has 11.
+Fifty-eight runs have zero recorded regression episodes, two have one, and one GLM run has 11.
 The metric is therefore dominated by one trajectory. This may accurately describe v6, but it is
 not yet a stable model discriminator.
 
@@ -857,6 +926,7 @@ Median final snapshots show very different implementation styles:
 | Luna baseline | 4,299 | 2,354 | 37 | 75% |
 | GPT-5.5 | 4,438 | 3,569 | 42 | 66% |
 | Opus 5 | 4,430 | 6,424 | 327 | 16% |
+| Meta Muse Spark 1.3 | 6,506 | 2,824 | 42 | 83% |
 | Grok 4.6 | 4,111 | 5,883 | 158 | 58% |
 | Qwen3.8 Max | 4,241 | 7,839 | 286 | 35% |
 | DeepSeek V4 Pro | 4,401 | 6,523 | 197 | 33% |
@@ -875,17 +945,17 @@ still improves substantially, so modularity is not the mechanism of its gain.
 
 ### Simple code metrics do not explain quality
 
-Across the 60 main trajectories, Spearman correlations with final Core are:
+Across the 61 main trajectories, Spearman correlations with final Core are:
 
-- displayed inference cost under each row's stated basis: `+0.42`;
-- runtime: `-0.50`;
-- production LOC: `-0.43`;
-- test LOC: `-0.20`;
+- displayed inference cost under each row's stated basis: `+0.35`;
+- runtime: `-0.52`;
+- production LOC: `-0.46`;
+- test LOC: `-0.17`;
 - candidate subagents: `+0.45`;
-- largest production-file share: `+0.06`;
-- production-file count: `-0.04`;
-- test-file count: `-0.18`; and
-- test declarations: `-0.12`.
+- largest production-file share: `+0.01`;
+- production-file count: `-0.02`;
+- test-file count: `-0.15`; and
+- test declarations: `-0.08`.
 
 These are confounded cross-model correlations, not causal estimates. The negative runtime and LOC
 relationships mostly reflect which models are slow and verbose. The important conclusion is
@@ -989,7 +1059,7 @@ name alone would be tempting.
 
 ### One domain, one stack, one product topology
 
-All 60 main runs solve the same Phoenix JSON API in the same accounting domain. A model can be
+All 61 main runs solve the same Phoenix JSON API in the same accounting domain. A model can be
 excellent at repository-scale TypeScript or systems Rust and still underperform here; another can
 have a strong learned prior for ledger-like CRUD APIs and look more general than it is.
 
@@ -1004,7 +1074,7 @@ cannot tell how much of stage 7's difficulty is content and how much is placemen
 
 ### Saturated and dependent families
 
-Nineteen of 49 families contribute no discrimination in the main sample. Several hard families
+Eighteen of 49 families contribute no discrimination in the main sample. Several hard families
 are duplicate or near-duplicate outcome vectors. The nominal 49-dimensional score has a much
 smaller effective dimension.
 
@@ -1338,7 +1408,7 @@ correct and systems that preserve identity and append the right correction after
 published. That is real engineering signal.
 
 Its central weakness is concentration. Too much of the remaining frontier signal now comes from
-one accounting concept at the final position, while 19 families are inert and several points are
+one accounting concept at the final position, while 18 families are inert and several points are
 dependent. More frontier generations will compress the top further without teaching us much more.
 
 The suite should therefore be frozen, not discarded. Use it to track regression, cost, harness,

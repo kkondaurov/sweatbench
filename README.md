@@ -5,9 +5,9 @@ one Phoenix application through seven product releases. Every release adds a rea
 while all earlier behavior, persisted data, migrations, retry semantics, and accounting invariants
 remain in force.
 
-Version 6 is frozen and public. Its evaluator is disclosed, so the included results are the final
-pre-disclosure reference cohort. New v6 runs can be useful for engineering experiments, but must be
-labeled post-disclosure and must not be pooled silently with the reference results.
+Version 6 is frozen and public. The evaluator and accumulated results are available for inspection,
+comparison, and further experiments. New rows should identify the exact model, harness, effort,
+sample count, and whether cost is recorded or estimated.
 
 - [Interactive results dashboard](https://kkondaurov.github.io/sweatbench/)
 - [Dashboard source](evaluation/results/v6/index.html)
@@ -95,7 +95,7 @@ for diagnosis; they are not collapsed into one synthetic score.
 
 ## Reference results
 
-The model-comparison view contains 60 accepted trajectories. Every listed trajectory completed all
+The model-comparison view contains 61 completed trajectories. Every listed trajectory completed all
 seven milestones and passed the benchmark's integrity checks. Low-scoring valid runs are included;
 incomplete, invalid, and infrastructure-debug attempts are not model results and are excluded.
 
@@ -107,6 +107,7 @@ incomplete, invalid, and infrastructure-debug attempts are not model results and
 | GPT-5.6 Luna xhigh, Codex CLI | 5 | 32.6 | 6.2 | 0/5 | ~= $1.50 |
 | GPT-5.5 xhigh, Codex CLI | 5 | 37.0 | 7.6 | 0/5 | ~= $27.57 |
 | Claude Opus 5 high, Claude Code | 2 | 38.5 | 9.5 | 1/2 | ~= $47.65 |
+| Meta Muse Spark 1.3 high, OpenCode | 1 | 29.0 | 3.0 | 0/1 | $53.61 |
 | Grok 4.6 xhigh, OpenCode | 5 | 37.6 | 7.8 | 0/5 | $14.71 |
 | Qwen3.8 Max xhigh, OpenCode | 5 | 35.8 | 7.6 | 0/5 | $25.34 |
 | DeepSeek V4 Pro 0813 max, OpenCode | 5 | 35.0 | 6.4 | 0/5 | $8.87 |
@@ -117,7 +118,8 @@ incomplete, invalid, and infrastructure-debug attempts are not model results and
 
 `~=` marks an API-equivalent estimate from recorded token usage. Unmarked OpenCode costs are
 recorded provider charges. The dashboard documents model-specific rates, cached input treatment,
-descendant sessions, and harness-owned review work.
+descendant sessions, and harness-owned review work. The Muse figure is one recorded OpenRouter run,
+not a reliability estimate.
 
 An additional 25 accepted trajectories form a controlled harness view: the same four GPT-5.6
 model/effort configurations under OpenCode, plus a Codex Luna condition explicitly instructed to
