@@ -1264,9 +1264,9 @@
       document.getElementById("results-body").innerHTML = sorted.map(row => {
         const estimateClass = row.costBasis === "estimated" ? "cost-estimate" : "";
         const expanded = expandedRows.has(row.id);
-        const totalCost = row.runs.length > 1
-          ? `<span class="summary-number summary-cost ${estimateClass}">${money(row.totalCost)}</span>`
-          : '<span class="summary-number unavailable">—</span>';
+        const totalCost = row.totalCost === null
+          ? '<span class="summary-number unavailable">—</span>'
+          : `<span class="summary-number summary-cost ${estimateClass}">${money(row.totalCost)}</span>`;
         return `
           <tr class="summary-row" data-row-id="${row.id}" aria-expanded="${expanded}">
             <td>
