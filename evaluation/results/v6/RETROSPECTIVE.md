@@ -10,13 +10,13 @@ Source benchmark-content commit: `5fda9a09255529b027cadf836c0c16c867a039e5`
 
 This report studies the accepted Sweat Bench v6 evidence available in the repository:
 
-- 64 completed trajectories in the main model comparison;
+- 67 completed trajectories in the main model comparison;
 - 20 accepted OpenAI-model trajectories under OpenCode; and
 - 5 accepted GPT-5.6 Luna trajectories under Codex CLI with an explicit delegation instruction.
 
-That gives 89 complete trajectories across 22 model, harness, effort, and prompt configurations.
+That gives 92 complete trajectories across 22 model, harness, effort, and prompt configurations.
 The main leaderboard contains 17 configurations. Most have five samples; Claude Opus 5 has two,
-both GLM-5.3 Flash configurations have four, Meta Muse Spark 1.3 has one, and GPT-6 Astra has one
+both GLM-5.3 Flash configurations have four, Meta Muse Spark 1.3 has one, and GPT-6 Astra has two
 at each of low, medium, and high reasoning effort.
 
 Invalidated, abandoned, interrupted, and infrastructure-debug attempts are intentionally outside
@@ -37,9 +37,9 @@ also reaching the end of its useful life as a frontier discriminator.
 
 The right description is not simply "saturated." It is **lopsided**:
 
-1. Eighteen of the 49 scored families never fail in any of the 64 main trajectories.
+1. Eighteen of the 49 scored families never fail in any of the 67 main trajectories.
 2. A small hard core accounts for much of the remaining separation.
-3. Three period-close families fail in 48 or 49 of 64 runs, although all three Astra observations pass them.
+3. Three period-close families fail in 48 or 49 of 67 runs, although all six Astra observations pass them.
 4. Several nominally separate points are statistically the same underlying behavior.
 5. The final request is much harder than earlier requests and has no later milestone in which a
    model can repair it.
@@ -54,11 +54,12 @@ The strongest substantive lessons are:
   Maintenance, and four complete sweeps in five runs.
 - GPT-5.6 Sol medium remains the best-replicated high-quality economic compromise: 38.2/39, 8.8/10, and a
   $13.90 median API-equivalent cost.
-- GPT-6 Astra low, medium, and high score 39/8, 38/7, and 38/7 at $11.64, $16.43, and $19.42.
-  They solve the difficult revival/composition cases but miss historical-data upgrades. Low adds
-  an interesting observed cost-quality tradeoff; one run per effort cannot establish reliability
-  or show that lower reasoning effort is better. Astra also uses a newer Codex CLI than the earlier
-  GPT cohort, so this is a comparison of tested systems, not isolated model weights.
+- GPT-6 Astra low, medium, and high average 39/9, 38/7, and 38.5/8.5 over two runs each, at
+  median costs of $12.36, $14.95, and $18.45. Low and high sweep on their second samples; medium
+  repeats its migration-decoding and cold-replay defects. All six solve revival/composition.
+  Low improves the observed cost-quality frontier, but two samples cannot establish reliability
+  or an effort ranking. Astra uses a newer Codex CLI than the earlier GPT cohort, so this compares
+  tested systems, not isolated model weights.
 - Claude Opus 5 high is provisionally in the same quality region as Sol high, but only two runs
   exist and its $47.65 median cost is much higher. Its uncertainty is too large for a reliability
   ranking.
@@ -104,7 +105,7 @@ and report model-plus-harness systems as first-class experimental conditions.
 
 - **High confidence:** published population, score and failure counts, group summaries, LOC,
   runtime, descendant-session cost reconstruction, cache volume, and the existence of repeated
-  failure signatures. These are regenerated from 89 complete trajectories and reconcile across
+  failure signatures. These are regenerated from 92 complete trajectories and reconcile across
   run, family, and scenario grains.
 - **High confidence:** the dominant period-close revival failure mechanism. A
   first-failing-assertion census of the original 47 failures shows that 46 preserve the closed
@@ -209,9 +210,9 @@ time.
 
 | Configuration | n | Core mean (range) | Maint. mean (range) | Sweeps | Median cost | Mean hours |
 |---|---:|---:|---:|---:|---:|---:|
-| GPT-6 Astra low / Codex | 1 | 39.0 | 8.0 | 0 | ~$11.64 | 0.69 |
-| GPT-6 Astra medium / Codex | 1 | 38.0 | 7.0 | 0 | ~$16.43 | 0.96 |
-| GPT-6 Astra high / Codex | 1 | 38.0 | 7.0 | 0 | ~$19.42 | 1.29 |
+| GPT-6 Astra low / Codex | 2 | 39.0 (39-39) | 9.0 (8-10) | 1 | ~$12.36 | 0.72 |
+| GPT-6 Astra medium / Codex | 2 | 38.0 (38-38) | 7.0 (7-7) | 0 | ~$14.95 | 0.93 |
+| GPT-6 Astra high / Codex | 2 | 38.5 (38-39) | 8.5 (7-10) | 1 | ~$18.45 | 1.30 |
 | GPT-5.6 Sol high / Codex | 5 | 38.8 (38-39) | 9.6 (8-10) | 4 | ~$22.37 | 1.50 |
 | GPT-5.6 Sol medium / Codex | 5 | 38.2 (37-39) | 8.8 (6-10) | 2 | ~$13.90 | 1.28 |
 | GPT-5.6 Terra xhigh / Codex | 5 | 36.6 (36-37) | 7.0 (6-8) | 0 | ~$9.96 | 1.52 |
@@ -242,41 +243,46 @@ The point estimates are still useful. Sol high is clearly more reliable in this 
 system that repeatedly produces the same 38/8 result. But claims such as "the true sweep rate is
 80%" would be false precision.
 
-Muse and each Astra effort have only one completed run. These results can identify concrete failure
-mechanisms and operating cost, but cannot establish a stable mean, range, or sweep probability.
+Muse has one completed run; each Astra effort has two. These identify concrete mechanisms and
+operating costs, but cannot establish stable means, variance estimates, or sweep probabilities.
 
 ### Model-specific reading
 
 #### GPT-6 Astra low, medium, and high
 
-Astra's three observations are fast and compact: 42, 57, and 77 model-minutes, about 2,000-2,240
-production lines, and $11.64, $16.43, and $19.42 in standard API-equivalent inference. They score
-39/8, 38/7, and 38/7. All clear the late-credit-revival cluster and all five cross-domain
-Maintenance checks. Their deficits instead expose two compatibility assumptions.
+Astra's six observations are fast and compact: 42-79 model-minutes, 1,979-2,242 production
+lines, and $11.64-$19.42 in standard API-equivalent inference. Low averages 39/9, medium 38/7,
+and high 38.5/8.5. Low and high each sweep on their second sample; medium repeats 38/7. All six
+clear the late-credit-revival cluster and all five cross-domain Maintenance checks.
 
-Medium and high decode a legacy room column as an array of maps, although the preceding
-application actually wrote an array of JSON strings. Both migrations crash. Their populated
-migration tests hand-insert the imagined format and therefore pass. Low's typed Ecto loading
-avoids that crash, although its fixture is no more realistic.
+The repeated M4 failure is a legacy room decoder that expects maps where the preceding Ecto
+writer stored JSON strings. Both medium samples and high 01 hand-insert an imagined format
+in their migration fixtures, and both real upgrades crash. High 02 initially writes the same
+decoder, but preserves typed insertion in an inherited test. That test exposes the crash; the
+agent adds an inner decode before handoff, and both real upgrades pass. Low uses typed loading
+in both runs; low 02 additionally freezes migration-local schemas instead of relying on evolving
+application code.
 
-All three restore durable operation results with `String.to_existing_atom`. A cold replay of
-reporting start or period close bypasses the finance module that defines the new result-key atoms.
-The first request after restart can therefore fail, even though reporting and accounting worked
-before the restart. Low's tests keep the VM alive; medium's fresh-VM script loads the finance
-module during compilation; high's fresh-VM test reads reports but does not cold-replay the
-operation. Each approach inadvertently warms the state needed by its own assertion.
+The cold-replay failure also changes across samples. All first-round runs restore saved JSON
+keys with `String.to_existing_atom` while new finance fields are defined in a separate module.
+A first-request retry after restart bypasses that module and can fail. Medium 02 repeats this
+arrangement; its subprocess coverage never grows beyond the M3 result kinds. Low 02 instead
+returns JSON-shaped results directly from M3 onward, removing the atom dependency. High 02
+still converts keys, but defines the finance result literals in the same module as replay, making
+them available on a cold start. It passes the current contract without making the decoder
+independent of future module layout.
 
-This is a different profile from the dominant earlier semantic failures. An earlier
-Sol-high/OpenCode trajectory exhibits the same cold-replay defect, but Sol-medium/Codex's R4/R5
-failures arise from structural rather than chronological date comparison. Shared family labels
-are insufficient to identify a shared mechanism.
+The score improvement is therefore neither newly solving revival nor simply adding more tests.
+High 02 succeeds with 108 declared tests versus high 01's 111; medium 02 has 82 versus 73 and
+does not improve. Preserving one useful inherited fixture explains the observed migration repair.
+The six runs remain independent samples with no feedback from earlier runs.
 
-Higher effort produces more reasoning, more tests, and more modular code, but not a better result
-in these observations. Low's 55 test declarations grow to high's 111 while the same replay
-assumption survives. One run per effort does not establish an effort ranking. Nor do three
-non-sweeps establish broad frontier headroom: the missing points repeat two compact defects,
-while the previously dominant accounting problem is solved. The [Astra trajectory analysis](ASTRA_TRAJECTORIES.md)
-traces the code, tests, cold-process behavior, cost accounting, and implications for the successor.
+An earlier Sol-high/OpenCode trajectory exhibits the same cold-replay defect; Sol-medium/Codex's
+R4/R5 failures instead arise from structural date comparison. Shared labels are insufficient to
+identify a shared mechanism. Nor do Astra's four non-sweeps establish broad headroom: their
+fourteen missing family-points repeat two compact boundary defects, while all six solve the
+previously dominant accounting problem. The [Astra trajectory analysis](ASTRA_TRAJECTORIES.md)
+covers the source, tests, runtime evidence, costs, and implications for the successor.
 
 #### GPT-5.6 Sol high
 
@@ -417,7 +423,7 @@ produce large cached-read charges despite discounted cache pricing.
 GLM 5.3 has the widest mixture of success and instability among the large OpenCode models. It
 produces one 39/10 sweep, but the five runs span 33-39 Core and 6-10 Maintenance. One trajectory
 introduces a large stage-6 regression and repairs much of it at stage 7, yielding 11 recorded
-regression episodes where 61 of 64 main trajectories have none.
+regression episodes where 64 of 67 main trajectories have none.
 
 The sweep proves that the capability is present. The distribution says that model selection based
 only on the best run would be badly misleading.
@@ -444,8 +450,7 @@ objectives, the descriptive Pareto frontier among arms with reconstructed estima
 | Luna xhigh / OpenCode | 36.6 | 7.6 | ~$2.55 |
 | Luna xhigh / delegated Codex | 37.0 | 8.0 | ~$4.23 |
 | Terra xhigh / OpenCode | 37.6 | 7.6 | ~$11.50 |
-| Astra low / Codex (n=1) | 39.0 | 8.0 | ~$11.64 |
-| Sol medium / Codex | 38.2 | 8.8 | ~$13.90 |
+| Astra low / Codex (n=2) | 39.0 | 9.0 | ~$12.36 |
 | Sol high / Codex | 38.8 | 9.6 | ~$22.37 |
 
 Paid external-model rows are excluded from this dominance calculation because their recorded
@@ -456,9 +461,12 @@ the estimate-basis arms, it suggests provisional operating points rather than wi
 
 - low-cost exploratory work: baseline Luna or Flash;
 - low-cost work where a stronger review process is acceptable: delegated Luna;
-- a promising single-run high-Core observation: Astra low, with historical-upgrade misses;
-- high-quality routine work: Sol medium;
+- a promising high-quality operating point: Astra low, with one sweep and one historical-replay miss;
 - maximum demonstrated v6 reliability: Sol high.
+
+Sol medium leaves this point-estimate frontier because Astra low has higher mean scores and a
+lower median cost. Sol medium remains the better-replicated routine-work comparator; two Astra
+samples are not enough to establish reliable dominance.
 
 Opus is absent because its observed quality is slightly below Sol high while its cost is more than
 twice as high. That is an economic statement about the current two-run sample, not a general claim
@@ -690,21 +698,21 @@ feature, or a high-consequence migration.
 
 ### The hard families
 
-The following are final-score failures among the 64 main trajectories:
+The following are final-score failures among the 67 main trajectories:
 
 | Family | Stage | Track | Failed runs | Failure rate |
 |---|---:|---|---:|---:|
-| Late-adjustment posting | 7 | Core | 49 | 76.6% |
-| C5 double revival | 7 | Maintenance | 49 | 76.6% |
-| C1 revival | 7 | Maintenance | 48 | 75.0% |
-| Hotel-credit lifecycle | 2 | Core | 31 | 48.4% |
-| M4 payment-reduction upgrade | 4 | Core | 27 | 42.2% |
-| R2 room-history upgrade | 4 | Maintenance | 25 | 39.1% |
-| R4 projection-history upgrade | 6 | Maintenance | 17 | 26.6% |
-| Finance report determinism | 6 | Core | 14 | 21.9% |
-| C3 transfer-shortfall absorption | 6 | Maintenance | 10 | 15.6% |
-| R5 close-history upgrade | 7 | Maintenance | 9 | 14.1% |
-| Finance-close immutability | 7 | Core | 8 | 12.5% |
+| Late-adjustment posting | 7 | Core | 49 | 73.1% |
+| C5 double revival | 7 | Maintenance | 49 | 73.1% |
+| C1 revival | 7 | Maintenance | 48 | 71.6% |
+| Hotel-credit lifecycle | 2 | Core | 31 | 46.3% |
+| M4 payment-reduction upgrade | 4 | Core | 28 | 41.8% |
+| R2 room-history upgrade | 4 | Maintenance | 26 | 38.8% |
+| R4 projection-history upgrade | 6 | Maintenance | 18 | 26.9% |
+| Finance report determinism | 6 | Core | 14 | 20.9% |
+| C3 transfer-shortfall absorption | 6 | Maintenance | 10 | 14.9% |
+| R5 close-history upgrade | 7 | Maintenance | 10 | 14.9% |
+| Finance-close immutability | 7 | Core | 8 | 11.9% |
 
 The distribution is highly concentrated. The three revival-related families account for 146
 failed family-points. Eighteen families account for none.
@@ -725,9 +733,9 @@ Failure on the Core late-adjustment family by main configuration:
 
 | Configuration | Failed / n |
 |---|---:|
-| Astra low | 0/1 |
-| Astra medium | 0/1 |
-| Astra high | 0/1 |
+| Astra low | 0/2 |
+| Astra medium | 0/2 |
+| Astra high | 0/2 |
 | Sol high | 1/5 |
 | Sol medium | 2/5 |
 | Terra | 5/5 |
@@ -756,7 +764,7 @@ main trajectories. The dominant defect is not rewriting published history; it is
 append the correct compensating entry while changing current lot state. Muse adds a 48th failure
 through a different mechanism: its late-application transaction calls the reporting read path and
 times out waiting for another database connection. The neighboring finance-close-immutability
-family still fails in 8 of 64 runs, so the corpus does not establish that historical immutability
+family still fails in 8 of 67 runs, so the corpus does not establish that historical immutability
 is generally solved.
 
 Passing implementations explicitly model the correction. In simplified form:
@@ -776,7 +784,7 @@ This is a good benchmark problem. It is compact, realistic, hard to bluff, and d
 snapshot-oriented implementations from append-only historical models.
 
 It is also overrepresented in the score. `late-adjustment-posting` and C5 have identical pass/fail
-vectors across all 64 runs. C1 co-fails with them in 48 of the 49 failures. One conceptual defect
+vectors across all 67 runs. C1 co-fails with them in 48 of the 49 failures. One conceptual defect
 therefore costs one Core point and usually two Maintenance points.
 
 ### Hotel-credit lifecycle
@@ -809,8 +817,8 @@ The upgraded system must reconstruct funding types and commit order, preserve a 
 block, retain per-payment provenance through settlement and reduction, survive restart, and remain
 idempotent.
 
-The Core migration family fails 27 runs; the corresponding Maintenance room-history family fails
-25. They co-fail in 25 of 27 Core failures, a Jaccard similarity of 92.6%.
+The Core migration family fails 28 runs; the corresponding Maintenance room-history family fails
+26. They co-fail in 26 of 28 Core failures, a Jaccard similarity of 92.9%.
 
 This is another genuine hard axis: can the model evolve the schema and interpretation of old data,
 not just create correct new rows? It should remain in the successor, but its Core and Maintenance
@@ -825,7 +833,7 @@ The 49 family points are not 49 independent trials:
 - late-adjustment posting and C5 have identical 49-failure vectors;
 - C1 overlaps those failures in 48 runs;
 - M2 migration and R1 policy history have identical two-failure vectors; and
-- M4 migration and R2 room history overlap in 25 runs.
+- M4 migration and R2 room history overlap in 26 runs.
 
 Dependence is not inherently bad. A production defect often affects several user-visible and
 maintenance properties. The problem is interpretive: adding the points implies more independent
@@ -838,14 +846,14 @@ eight independent engineering mistakes. Family totals measure affected behaviora
 do not count root causes.
 
 The observed outcome geometry makes the concentration concrete. The 49 family columns contain
-only 30 distinct pass/fail vectors across the 64 runs, and their centered matrix has rank 27. The
-participation ratio of the family-failure covariance is about 7.5, meaning that the observed
+only 30 distinct pass/fail vectors across the 67 runs, and their centered matrix has rank 27. The
+participation ratio of the family-failure covariance is about 7.1, meaning that the observed
 variance is concentrated in a small number of co-moving directions. At scenario grain, only 42 of
 94 scenarios fail even once; 52 are saturated in this sample. These are descriptive properties of
 the current outcome matrix, not an estimate that software engineering has seven latent abilities.
 
 The same scenario can also belong to more than one scored family. Summing failing family members
-produces 399 scenario incidences, while deduplicating by trajectory and scenario produces 351
+produces 403 scenario incidences, while deduplicating by trajectory and scenario produces 355
 unique failed scenario/run cells. That reuse is diagnostically reasonable, but it is another reason
 not to interpret every family point as independent evidence.
 
@@ -875,37 +883,37 @@ removes that cluster entirely. These are diagnostics, not proposed official scor
 | Grok 4.6 | 45.4 | 45.4 | 45.4 |
 
 Removing the cluster moves Grok ahead of both Opus and Sol medium; collapsing it preserves their
-order but narrows the gaps. Core and Maintenance are themselves strongly associated across the 64
-main runs (Spearman `rho = 0.801`). The headline ordering is therefore a weighting choice over
+order but narrows the gaps. Core and Maintenance are themselves strongly associated across the 67
+main runs (Spearman `rho = 0.808`). The headline ordering is therefore a weighting choice over
 dependent evidence, not a ranking assembled from 49 independent trials.
 
 ## Position, recovery, and trajectory dynamics
 
 ### Difficulty by stage
 
-Two denominators are useful. A family-cell rate counts passed family/run cells out of `64 x the
+Two denominators are useful. A family-cell rate counts passed family/run cells out of `67 x the
 number of families in the stage`. A whole-stage rate counts trajectories that pass every family
 in that stage.
 
 | Stage | Track | Families | Ship family cells | Final family cells | Final whole-stage runs |
 |---|---|---:|---:|---:|---:|
-| 1 | Core | 6 | 97.9% | 99.5% | 62/64 (96.9%) |
-| 2 | Core | 5 | 87.8% | 89.7% | 32/64 (50.0%) |
-| 2 | Maintenance | 1 | 96.9% | 96.9% | 62/64 (96.9%) |
-| 3 | Core | 3 | 96.4% | 98.4% | 61/64 (95.3%) |
-| 4 | Core | 8 | 89.3% | 91.0% | 32/64 (50.0%) |
-| 4 | Maintenance | 1 | 60.9% | 60.9% | 39/64 (60.9%) |
-| 5 | Core | 7 | 96.2% | 97.1% | 54/64 (84.4%) |
-| 5 | Maintenance | 1 | 90.6% | 90.6% | 58/64 (90.6%) |
-| 6 | Core | 6 | 89.6% | 92.7% | 48/64 (75.0%) |
-| 6 | Maintenance | 3 | 83.9% | 85.9% | 42/64 (65.6%) |
-| 7 | Core | 4 | 77.0% | 77.0% | 15/64 (23.4%) |
-| 7 | Maintenance | 4 | 58.6% | 58.6% | 12/64 (18.8%) |
+| 1 | Core | 6 | 98.0% | 99.5% | 65/67 (97.0%) |
+| 2 | Core | 5 | 88.4% | 90.1% | 35/67 (52.2%) |
+| 2 | Maintenance | 1 | 97.0% | 97.0% | 65/67 (97.0%) |
+| 3 | Core | 3 | 96.5% | 98.5% | 64/67 (95.5%) |
+| 4 | Core | 8 | 89.6% | 91.2% | 34/67 (50.7%) |
+| 4 | Maintenance | 1 | 61.2% | 61.2% | 41/67 (61.2%) |
+| 5 | Core | 7 | 96.4% | 97.2% | 57/67 (85.1%) |
+| 5 | Maintenance | 1 | 91.0% | 91.0% | 61/67 (91.0%) |
+| 6 | Core | 6 | 90.0% | 93.0% | 51/67 (76.1%) |
+| 6 | Maintenance | 3 | 84.1% | 86.1% | 44/67 (65.7%) |
+| 7 | Core | 4 | 78.0% | 78.0% | 18/67 (26.9%) |
+| 7 | Maintenance | 4 | 60.1% | 60.1% | 14/67 (20.9%) |
 
 Stage 7 is plainly hardest, but content and position are confounded. Earlier requests have later
 milestones in which incidental refactoring or new tests can repair them. Stage 7 has no such
 opportunity, so its ship and final rates are necessarily identical. Earlier stages improve only
-modestly from ship to final and 54/64 trajectories never recover any scenarios, so placement alone
+modestly from ship to final and 57/67 trajectories never recover any scenarios, so placement alone
 does not explain the Stage-7 deficit.
 
 The successor should treat position as an unestimated hypothesis. Put the same hard block in
@@ -915,7 +923,7 @@ for the original feature task.
 
 ### Recovery is uncommon and heterogeneous
 
-Fifty-four of 64 main trajectories show no scenario recovery. The remaining ten gain between 1 and
+Fifty-seven of 67 main trajectories show no scenario recovery. The remaining ten gain between 1 and
 21 scenarios. Kimi accounts for much of the large recovery. Muse gains 11 because milestone 7
 finishes much of the finance-report work left incomplete at milestone 6. One GLM run has a
 catastrophic temporary regression and later repair.
@@ -936,17 +944,17 @@ Those are not equivalent. The successor should report them separately:
 
 Prefix depth counts the uninterrupted sequence of checkpoints from milestone 1 with all
 introduced Core families passing. It is Core-only and stops at the first failed checkpoint;
-later repair does not extend it. Low Astra therefore has prefix depth 7 despite two Maintenance
-failures.
-Among the 64 main runs, depths are:
+later repair does not extend it. Astra low 01 therefore has prefix depth 7 despite two Maintenance
+failures; low 02 and high 02 have depth 7 and full sweeps.
+Among the 67 main runs, depths are:
 
 - 0: 3 runs;
 - 1: 30;
 - 2: 1;
-- 3: 12;
+- 3: 13;
 - 4: 1;
 - 6: 8; and
-- 7: 9.
+- 7: 11.
 
 One small stage-2 miss sends an otherwise excellent run to depth 1. That makes the measure useful
 for strict release-gate reasoning but weak as a general quality summary. Keep it only if labeled
@@ -954,15 +962,16 @@ as a strict prefix gate, not as a substitute for final coverage.
 
 ### Regression episodes are sparse
 
-Sixty-one runs have zero recorded Core-family regression episodes, two have one, and one GLM run has 11.
+Sixty-four runs have zero recorded Core-family regression episodes, two have one, and one GLM run has 11.
 The metric is therefore dominated by one trajectory. This may accurately describe v6, but it is
 not yet a stable model discriminator.
 
 These counters do not capture Maintenance regressions, and historical system-check outcomes are
 carried forward rather than rerun against every later implementation. A final score therefore
-combines current private-test behavior with upgrade-time evidence. Astra's M7 evaluations each
-pass 83/83 private tests and one of two system checks; the published totals of 92/94, 90/94, and
-90/94 also include nine earlier system-check outcomes. That distinction must be preserved when
+combines current private-test behavior with upgrade-time evidence. All six Astra M7 evaluations
+pass 83/83 private tests. Low 02 and high 02 also pass both current system checks; the other four
+pass one of two. Their published /94 totals include nine earlier system-check outcomes as well.
+That distinction must be preserved when
 claiming a later repair or persistent defect.
 
 A successor designed to test maintenance should deliberately create more opportunities for
@@ -977,9 +986,9 @@ Median final snapshots show very different implementation styles:
 
 | Configuration | Production LOC | Test LOC | Test declarations | Largest production file share |
 |---|---:|---:|---:|---:|
-| Astra low | 1,979 | 2,311 | 55 | 43% |
-| Astra medium | 2,242 | 3,447 | 73 | 25% |
-| Astra high | 2,230 | 4,903 | 111 | 23% |
+| Astra low | 2,018 | 2,371 | 54.5 | 40% |
+| Astra medium | 2,148 | 3,409.5 | 77.5 | 29% |
+| Astra high | 2,166 | 5,046 | 109.5 | 29% |
 | Sol high | 3,660 | 2,767 | 50 | 47% |
 | Sol medium | 3,389 | 2,476 | 50 | 58% |
 | Terra | 4,392 | 2,576 | 35 | 57% |
@@ -1005,17 +1014,17 @@ still improves substantially, so modularity is not the mechanism of its gain.
 
 ### Simple code metrics do not explain quality
 
-Across the 64 main trajectories, Spearman correlations with final Core are:
+Across the 67 main trajectories, Spearman correlations with final Core are:
 
-- displayed inference cost under each row's stated basis: `+0.33`;
-- runtime: `-0.56`;
-- production LOC: `-0.51`;
-- test LOC: `-0.21`;
-- candidate subagents: `+0.42`;
-- largest production-file share: `-0.03`;
-- production-file count: `-0.11`;
-- test-file count: `-0.14`; and
-- test declarations: `-0.10`.
+- displayed inference cost under each row's stated basis: `+0.31`;
+- runtime: `-0.60`;
+- production LOC: `-0.56`;
+- test LOC: `-0.22`;
+- candidate subagents: `+0.38`;
+- largest production-file share: `-0.06`;
+- production-file count: `-0.20`;
+- test-file count: `-0.11`; and
+- test declarations: `-0.12`.
 
 These are confounded cross-model correlations, not causal estimates. The negative runtime and LOC
 relationships mostly reflect which models are slow and verbose. The important conclusion is
@@ -1119,7 +1128,7 @@ name alone would be tempting.
 
 ### One domain, one stack, one product topology
 
-All 64 main runs solve the same Phoenix JSON API in the same accounting domain. A model can be
+All 67 main runs solve the same Phoenix JSON API in the same accounting domain. A model can be
 excellent at repository-scale TypeScript or systems Rust and still underperform here; another can
 have a strong learned prior for ledger-like CRUD APIs and look more general than it is.
 
@@ -1469,9 +1478,10 @@ published. That is real engineering signal.
 
 Its central weakness is concentration. Too much of the remaining frontier signal now comes from
 one accounting concept at the final position, while 18 families are inert and several points are
-dependent. Astra clears that accounting concept in all three observations, but loses repeated
-points to migration decoding and cold replay. These are real reliability defects, not evidence
-that the instrument has regained broad frontier headroom. Generational comparison needs the
+dependent. Astra clears that accounting concept in all six observations. Two samples sweep;
+the other four lose repeated points to migration decoding and cold replay. These are real
+reliability defects, not evidence that the instrument has regained broad frontier headroom.
+Generational comparison needs the
 mechanism analysis as well as the totals.
 
 The suite should therefore be frozen, not discarded. Use it to track regression, cost, harness,
