@@ -4,6 +4,8 @@ This directory contains the public results for the frozen v6 benchmark.
 
 - `index.html` is a self-contained interactive dashboard.
 - `RETROSPECTIVE.md` is the full methodological and behavioral analysis.
+- `ASTRA_TRAJECTORIES.md` examines the three Astra efforts, their costs, migration and cold-replay
+  failures, comparison with earlier GPT systems, and implications for the next benchmark.
 - `LUNA_HARNESS_TRAJECTORIES.md` traces the two family-level differences between OpenCode Luna and
   delegated Codex Luna through candidate code, tests, and parent/child review behavior.
 - `accepted-runs.json` contains all 89 completed trajectories and the derived tables used by the
