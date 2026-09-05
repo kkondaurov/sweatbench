@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Compare coding agents across seven milestones of an evolving product. Completed Sweat Bench v6 runs, costs, code size, and harness comparisons.">
+  <meta name="description" content="Sweat Bench tests how coding agents maintain a hotel-deposit application through seven changes in requirements. Compare their results, cost, runtime and code size.">
   <title>Sweat Bench v6 - Completed Results</title>
   <link rel="stylesheet" href="results.css">
 </head>
@@ -13,7 +13,7 @@
     <header class="masthead">
       <div>
         <div class="title-line"><h1>Sweat Bench</h1><span class="version">v6</span></div>
-        <p class="subtitle">Coding agents. One evolving product. Seven milestones.</p>
+        <p class="subtitle">How well do coding agents handle a product that keeps changing?</p>
       </div>
       <div class="header-right">
         <span class="updated">Updated <time datetime="2026-09-05">5 Sep 2026</time></span>
@@ -30,7 +30,7 @@
 
     <section id="models-view" class="view-panel" role="tabpanel" aria-labelledby="models-tab">
       <div class="section-heading overview-heading">
-        <div><h2>Capability &amp; cost</h2><p class="section-note"><span id="sample-summary">17 configurations · 67 completed runs</span><span class="note-separator"> / </span>1–5 runs each; small samples.</p></div>
+        <div><h2>Model comparison</h2><p class="section-note"><span id="sample-summary">17 configurations · 67 completed runs</span><span class="note-separator"> / </span>1–5 runs per configuration</p></div>
         <div class="chart-controls">
           <div class="segmented" role="group" aria-label="Chart score">
             <button data-score="core" aria-pressed="true">Core <span>/39</span></button>
@@ -58,7 +58,7 @@
 
       <section class="comparison-section" aria-labelledby="results-title">
         <div class="section-heading table-heading">
-          <div><h2 id="results-title">Model results <span id="visible-count" class="heading-count">17</span></h2><p class="section-note">Scores &amp; runtime: mean. Cost &amp; code size: median.</p></div>
+          <div><h2 id="results-title">Model results <span id="visible-count" class="heading-count">17</span></h2><p class="section-note">Average scores and runtime; median cost and code size.</p></div>
           <div class="table-controls">
             <label class="search-field"><i data-icon="Search"></i><input id="model-search" type="search" placeholder="Find a model" aria-label="Find a model"></label>
             <select id="harness-filter" aria-label="Filter by harness"><option value="all">All harnesses</option><option>Codex CLI</option><option>OpenCode</option><option>Claude Code</option></select>
@@ -86,14 +86,14 @@
 
     <section id="harness-view" class="view-panel" role="tabpanel" aria-labelledby="harness-tab" hidden>
       <div class="section-heading overview-heading">
-        <div><h2>Same model. Different harness.</h2><p class="section-note">Four model configurations · five runs per condition · 45 runs total</p></div>
+        <div><h2>How the harness affects results</h2><p class="section-note">Four model configurations · five runs per condition · 45 runs total</p></div>
       </div>
-      <p class="harness-intro">The benchmark, reasoning effort, handoff protocol and tests stay fixed. Luna also has a Codex condition prompted to delegate independent audits.</p>
+      <p class="harness-intro">These runs compare Codex CLI with OpenCode using the same models, reasoning efforts, benchmark and handoff protocol. A third Luna configuration uses Codex with an added instruction to delegate independent code reviews.</p>
       <div id="harness-comparisons"></div>
-      <div class="table-foot"><span>All costs are API-equivalent estimates, including parent and descendant sessions.</span><a href="#method">Method &amp; limitations <i data-icon="ArrowUpRight"></i></a></div>
+      <div class="table-foot"><span>All costs are API-equivalent estimates and include subagent usage.</span><a href="#method">About the comparison <i data-icon="ArrowUpRight"></i></a></div>
       <details class="audit-disclosure">
-        <summary>Token use &amp; session accounting <i data-icon="ChevronDown"></i></summary>
-        <p class="section-note">Cache hit is the share of prompt input served from cache. Child sessions include fixed harness workers; candidate-launched subagents are listed separately in each run.</p>
+        <summary>Token and session counts <i data-icon="ChevronDown"></i></summary>
+        <p class="section-note">Cache hit is the percentage of input tokens read from cache. Child sessions include the coding tool's built-in workers. Subagents started by the agent itself are counted separately in the run details.</p>
         <div class="table-wrap"><table class="audit-table">
           <thead><tr><th>Configuration</th><th>Condition</th><th>Cache hit</th><th>Avg child sessions</th><th>Median cost</th><th>Cost vs Codex</th></tr></thead>
           <tbody id="audit-body"></tbody>
@@ -102,42 +102,50 @@
     </section>
 
     <section id="method-view" class="view-panel" role="tabpanel" aria-labelledby="method-tab" hidden>
-      <div class="section-heading overview-heading"><div><h2 id="method-title" tabindex="-1">What is being measured</h2><p class="section-note">Frozen v6 · commit <a href="https://github.com/kkondaurov/sweatbench/tree/5fda9a09255529b027cadf836c0c16c867a039e5"><code>5fda9a0</code></a> · seven sequential milestones</p></div></div>
+      <div class="section-heading overview-heading"><div><h2 id="method-title" tabindex="-1">About the benchmark</h2><p class="section-note">All results use the fixed v6 benchmark at commit <a href="https://github.com/kkondaurov/sweatbench/tree/5fda9a09255529b027cadf836c0c16c867a039e5"><code>5fda9a0</code></a>.</p></div></div>
       <div class="method-layout">
-        <nav class="method-nav" aria-label="Method sections"><a href="#scores">Scores</a><a href="#sample">Sample</a><a href="#costs">Costs</a><a href="#code-time">Code &amp; runtime</a><a href="#sources">Sources</a></nav>
+        <nav class="method-nav" aria-label="Method sections"><a href="#overview">Overview</a><a href="#scores">Scores</a><a href="#sample">Runs</a><a href="#costs">Costs</a><a href="#code-time">Code &amp; runtime</a><a href="#sources">Sources</a></nav>
         <div class="method-copy">
-          <section id="scores"><h3>Two scores, kept separate</h3>
+          <section id="overview"><h3>The task</h3>
+            <p>Sweat Bench asks a coding agent to build and maintain a small business application through seven milestones. Each milestone brings a new request. The agent has to make the change while keeping earlier features working and preserving data created by previous versions.</p>
+            <p>The application is GroupStay, a fictional service that manages hotel deposits for group reservations. It starts with bookings, payments and cancellations, then adds hotel credit, durable retries, room-level accounting, transfers, daily finance reports and period close. The agent writes a Phoenix/Elixir application backed by SQLite, starting from a service skeleton.</p>
+            <p>The sequence matters. A way of storing payments that works at launch may be inadequate once individual rooms can be cancelled or money moved between reservations. A report may show the right balance today but change incorrectly when a late adjustment arrives. The benchmark checks whether the agent carries those earlier decisions through the later changes.</p>
+            <p>Each milestone starts a fresh model session with the repository, current request, accumulated documentation and any tests the agent has written. It cannot see future requests or the evaluator's tests and results. After the agent finishes, the evaluator checks the HTTP API, restarts the application, and tests upgrades using databases from earlier milestones. The code and documents left in the repository are what the next session inherits.</p>
+            <p>The <a href="https://github.com/kkondaurov/sweatbench#benchmark-design">repository README</a> describes all seven milestones and links to the requests.</p>
+          </section>
+          <section id="scores"><h3>Scoring</h3>
             <dl class="definitions">
-              <div><dt>Core <span>/39</span></dt><dd>Required product behavior, including business rules, persistence, retries and upgrades. Each family earns one point when all of its checks pass.</dd></div>
-              <div><dt>Maintenance <span>/10</span></dt><dd>Five checks of old production data surviving later changes, and five checks of interactions among payments, credits, transfers and reporting. Automated pass counts, not reviewer ratings.</dd></div>
+              <div><dt>Core <span>/39</span></dt><dd>The requested features and business rules, including persistence, retries and upgrades. Related checks are grouped into 39 families. A family earns one point when all its checks pass.</dd></div>
+              <div><dt>Maintenance <span>/10</span></dt><dd>Ten automated checks: five test upgrades of existing production data, and five test interactions among payments, credits, transfers and reporting.</dd></div>
               <div><dt>Sweep</dt><dd>A run with 39/39 Core and 10/10 Maintenance.</dd></div>
-              <div><dt>Ship / final <span>/94</span></dt><dd>Scenario totals before and after subsequent milestone work. Final combines the last private tests with historical system checks at their designated milestones; it is not 94 fresh checks of the terminal code.</dd></div>
-              <div><dt>Recovery</dt><dd>Final minus ship-time scenarios. A later repair does not erase a migration failure recorded when its milestone shipped.</dd></div>
+              <div><dt>Ship / final <span>/94</span></dt><dd>Ship counts scenarios passed when their milestone was delivered. Final counts them after later milestones, combining tests of the finished application with historical system checks recorded at the relevant milestone. Those historical checks are not rerun against the final code.</dd></div>
+              <div><dt>Recovery</dt><dd>The change from ship-time to final scenario totals. A positive value means later work repaired earlier failures; a negative value means regressions outnumbered repairs. Migration failures recorded at delivery still count even if the code is repaired later.</dd></div>
             </dl>
           </section>
-          <section id="sample"><h3>Completed runs, small samples</h3>
-            <p>The Models view contains <span id="method-model-count">67</span> completed, valid runs. Each configuration's sample size appears beside its name. Incomplete, abandoned, interrupted and evaluator-invalid attempts are excluded. Small samples are descriptive, not a reliable ranking or variance estimate; plotted ranges are observed minima and maxima, not confidence intervals.</p>
-            <p>These are comparisons of tested model-and-harness systems. Astra uses Codex CLI 0.153.4; earlier GPT runs used an older Codex version. The six completed Astra runs used ordinary v6 handoff prompts and launched no subagents. Opus 5 uses Claude Code 2.1.243 with customizations disabled. Muse Spark uses OpenCode 1.18.27; the controlled harness comparison uses OpenCode 1.18.0.</p>
-            <p>The Harnesses view reuses 20 standard Codex runs and adds 20 OpenCode runs plus five delegated-Luna runs. Its 45 runs overlap the Models view, so the two tab counts must not be added.</p>
+          <section id="sample"><h3>The runs</h3>
+            <p>The Models view includes <span id="method-model-count">67</span> runs that completed all seven milestones and passed the benchmark's integrity checks. Runs with low scores are included. Unfinished attempts and runs with invalid evaluations are excluded. Each configuration has between one and five runs, so small differences in averages may not hold up with more samples. Chart ranges show the lowest and highest observed values, not confidence intervals.</p>
+            <p>A model runs through a coding tool, or harness, which also affects the result. Astra uses Codex CLI 0.153.4; earlier GPT runs used an older Codex version. The six Astra runs shown here used the standard v6 handoff prompts and launched no subagents. Opus 5 uses Claude Code 2.1.243 with customizations disabled. Muse Spark uses OpenCode 1.18.27; the harness comparison uses OpenCode 1.18.0.</p>
+            <p>The Harnesses view includes 20 of the Codex runs from the Models view, 20 additional OpenCode runs and five Luna runs with the delegation instruction. There are 45 runs in that view, but 20 also appear in Models.</p>
           </section>
-          <section id="costs"><h3>Inference cost, not subscription invoices</h3>
-            <p><strong>≈</strong> marks API-equivalent estimates from recorded tokens. Unmarked OpenCode model costs are recorded OpenRouter spend. Every estimate includes parent and descendant inference, with Codex auto-review priced as Luna. Reasoning tokens are already included in output; private evaluation is excluded.</p>
+          <section id="costs"><h3>Cost estimates</h3>
+            <p>Costs marked <strong>≈</strong> are calculated from recorded token usage at API prices. For subscription runs, this estimates what the inference would have cost through the API; it is not an extra subscription charge. Unmarked OpenCode costs are actual OpenRouter charges.</p>
+            <p>Costs include the main agent and all its subagents, as well as Codex's automatic review, priced at Luna rates. Reasoning tokens are included in output tokens and are charged only once. The private evaluator makes no model calls and adds no inference cost.</p>
             <div class="table-wrap"><table class="pricing-table"><caption>USD per million tokens · standard short-context rates</caption><thead><tr><th>Model</th><th>Input</th><th>Cached input</th><th>Output</th></tr></thead><tbody>
               <tr><td>Astra</td><td>$10</td><td>$1</td><td>$50</td></tr><tr><td>GPT-5.5</td><td>$5</td><td>$0.50</td><td>$30</td></tr><tr><td>Sol</td><td>$4</td><td>$0.40</td><td>$20</td></tr><tr><td>Terra</td><td>$2</td><td>$0.20</td><td>$12</td></tr><tr><td>Luna</td><td>$0.20</td><td>$0.02</td><td>$1.20</td></tr><tr><td>GLM-5.3 Flash</td><td>$0.15</td><td>$0.03</td><td>$0.50</td></tr>
             </tbody></table></div>
-            <p>Astra's largest recorded request was 113,468 input tokens, below its 272K long-context threshold; cache-write counts were zero. GPT-5.5's recorded context window was 258,400 tokens. Other historical per-request surcharges and cache-write charges cannot be reconstructed consistently; those estimates use standard rates.</p>
-            <p>Codex reports cached input within total input; OpenCode reports uncached input and cache reads separately. The estimates normalize these schemas. Replaying accumulated context can dominate cost: cache reads account for roughly $12–14 per Kimi run and $13–22 per GLM 5.3 run.</p>
+            <p>In the Astra runs shown here, the largest request contained 113,468 input tokens, below the 272K threshold for long-context pricing, and no cache-write tokens were recorded. GPT-5.5's recorded context window was 258,400 tokens. Some older logs lack enough detail to reconstruct per-request surcharges or cache-write charges, so those estimates use standard rates.</p>
+            <p>Codex includes cache reads in its total input count; OpenCode reports them separately. The calculations account for that difference. As an agent's conversation grows, repeatedly sending its history can become expensive even at cached rates: cache reads account for roughly $12–14 per Kimi run and $13–22 per GLM 5.3 run.</p>
             <details><summary>Model-specific accounting</summary>
-              <p>GLM-5.3 Flash ran as the free OX Alpha preview; displayed costs use its announced production rates. Opus's two subscription runs recorded $43.96 and $51.35 in API-equivalent usage. The OpenCode harness comparison used subscription OAuth with $0 incremental inference billing.</p>
-              <p>Muse Spark's $53.61 recorded charge includes two automatic continuations after turn-length limits. DeepSeek run 2 includes $0.32 for a redundant review that made no file edits.</p>
+              <p>GLM-5.3 Flash was tested as OX Alpha, a free preview. Its displayed costs are estimates using the announced production rates. The two Opus subscription runs recorded $43.96 and $51.35 in API-equivalent usage. The OpenCode harness comparison used a subscription login and incurred no additional inference charges.</p>
+              <p>Muse Spark's $53.61 charge includes two automatic continuations after it reached the turn-length limit. DeepSeek run 2 includes $0.32 for a repeated review that made no code changes.</p>
             </details>
           </section>
-          <section id="code-time"><h3>Code, runtime &amp; delegation</h3>
-            <p><strong>Code size</strong> is physical lines, including blanks and comments, in the final snapshot: production is <code>lib/</code> plus migrations; tests are <code>test/</code>. The comparison shows medians. Fewer lines alone do not imply better code.</p>
-            <p><strong>Runtime</strong> is the sum of seven agent-session wall-clock intervals, including reasoning, tools, tests and continuations. Private evaluation, snapshots and milestone advancement are excluded. DeepSeek run 4 excludes a documented 10h 52m machine interruption, retaining activity on either side.</p>
-            <p><strong>Subagents</strong> counts unique children explicitly launched by the candidate, excluding fixed harness workers such as Codex auto-review. Those workers still count toward inference cost.</p>
+          <section id="code-time"><h3>Code size and runtime</h3>
+            <p><strong>Code size</strong> counts lines in the finished application, including comments and blank lines. Production code covers <code>lib/</code> and database migrations; test code covers <code>test/</code>. The table shows the median across runs. Line counts describe the size of the implementation, not its quality.</p>
+            <p><strong>Runtime</strong> adds up the time spent in the seven agent sessions, including reasoning, tool use, tests and continuations. Time spent running the private evaluator, saving snapshots or advancing to the next milestone is excluded. DeepSeek run 4 also excludes a documented 10h 52m machine interruption; time spent working before and after it is retained.</p>
+            <p><strong>Subagents</strong> counts distinct agents started by the candidate. Built-in workers such as Codex's automatic reviewer are excluded from that count, but their token usage is included in the cost.</p>
           </section>
-          <section id="sources"><h3>Data &amp; sources</h3>
+          <section id="sources"><h3>Data and sources</h3>
             <div class="source-links"><a href="accepted-runs.json">Run dataset <i data-icon="Download"></i></a><a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/analyze.py">Data verifier <i data-icon="ArrowUpRight"></i></a><a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/RETROSPECTIVE.md">Retrospective <i data-icon="ArrowUpRight"></i></a></div>
             <p>Official pricing: <a href="https://developers.openai.com/api/docs/models/gpt-6-astra">Astra</a> (checked 5 Sep 2026), <a href="https://developers.openai.com/api/docs/models/gpt-5.5">GPT-5.5</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-sol">Sol</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-terra">Terra</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-luna">Luna</a>, <a href="https://openrouter.ai/meta/muse-spark-1.3">Muse Spark</a>, <a href="https://docs.x.ai/developers/models/grok-4.6">Grok</a>, <a href="https://openrouter.ai/qwen/qwen3.8-max">Qwen</a>, <a href="https://openrouter.ai/deepseek/deepseek-v4-pro-0813">DeepSeek</a>, <a href="https://z.ai/blog/glm-5.3-flash">GLM-5.3 Flash</a>.</p>
           </section>

@@ -278,7 +278,7 @@ function refreshComparison() {
   renderTable(); renderSelection(); drawChart();
 }
 
-const methodAnchors = new Set(["scores", "sample", "costs", "code-time", "sources"]);
+const methodAnchors = new Set(["overview", "scores", "sample", "costs", "code-time", "sources"]);
 function activateView() {
   const hash = location.hash.slice(1);
   const view = methodAnchors.has(hash) || hash === "method" ? "method" : hash === "harness" ? "harness" : "models";
