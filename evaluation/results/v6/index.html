@@ -3,845 +3,150 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compare coding agents across seven milestones of an evolving product. Completed Sweat Bench v6 runs, costs, code size, and harness comparisons.">
   <title>Sweat Bench v6 - Completed Results</title>
-  <style>
-    :root {
-      color-scheme: light dark;
-      --page: light-dark(#f4f6f8, #111416);
-      --surface: light-dark(#ffffff, #181c1f);
-      --surface-alt: light-dark(#eef1f4, #202529);
-      --text: light-dark(#171a1d, #f2f4f5);
-      --muted: light-dark(#626b73, #aab2b8);
-      --line: light-dark(#d8dde2, #343b40);
-      --line-strong: light-dark(#aeb6bd, #59636b);
-      --core: light-dark(#16734b, #55d79a);
-      --judgment: light-dark(#a65014, #f3a45c);
-      --cost: light-dark(#1f5faa, #75b8ff);
-      --repair: light-dark(#963e67, #ef88b7);
-      --codex: light-dark(#2367b2, #71b6ff);
-      --astra: light-dark(#137c59, #62dfa9);
-      --opencode: light-dark(#b15116, #f2a261);
-      --claude: light-dark(#68737c, #c1c9cf);
-      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 15px;
-      letter-spacing: 0;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: var(--page);
-      color: var(--text);
-    }
-
-    main {
-      width: min(1540px, 100%);
-      margin: 0 auto;
-      padding: 34px 28px 56px;
-    }
-
-    header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 24px;
-    }
-
-    h1 {
-      margin: 0 0 6px;
-      font-size: 30px;
-      line-height: 1.15;
-      letter-spacing: 0;
-    }
-
-    .subtitle,
-    .stamp,
-    .note,
-    .muted {
-      color: var(--muted);
-    }
-
-    .subtitle { margin: 0; }
-
-    .stamp {
-      text-align: right;
-      font-size: 13px;
-      line-height: 1.5;
-      white-space: nowrap;
-    }
-
-    .view-tabs {
-      display: inline-flex;
-      gap: 3px;
-      margin: 0 0 24px;
-      padding: 3px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: var(--surface-alt);
-    }
-
-    .view-tab {
-      min-height: 34px;
-      padding: 7px 12px;
-      border: 0;
-      border-radius: 4px;
-      background: transparent;
-      color: var(--muted);
-      font: inherit;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .view-tab[aria-selected="true"] {
-      background: var(--surface);
-      color: var(--text);
-      box-shadow: 0 1px 2px color-mix(in srgb, #000 12%, transparent);
-    }
-
-    .view-tab:focus-visible {
-      outline: 2px solid var(--cost);
-      outline-offset: 2px;
-    }
-
-    .view-panel[hidden] { display: none; }
-
-    .tab-count {
-      margin-left: 5px;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 600;
-    }
-
-    .method-band {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 28px;
-    }
-
-    .method-item {
-      padding: 15px 18px 16px 0;
-      min-width: 0;
-    }
-
-    .method-item + .method-item {
-      border-left: 1px solid var(--line);
-      padding-left: 18px;
-    }
-
-    .method-label {
-      display: block;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 5px;
-    }
-
-    .method-value {
-      font-size: 14px;
-      line-height: 1.45;
-    }
-
-    .section-heading {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      margin: 0 0 12px;
-    }
-
-    .score-guide {
-      margin: 0 0 30px;
-      padding: 0 0 22px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .score-guide h2 { margin-bottom: 13px; }
-
-    .score-guide-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 26px;
-    }
-
-    .score-guide-item {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      align-items: start;
-      gap: 11px;
-      min-width: 0;
-    }
-
-    .score-badge {
-      min-width: 42px;
-      padding: 4px 7px;
-      border: 1px solid currentColor;
-      border-radius: 4px;
-      font-size: 12px;
-      font-weight: 780;
-      line-height: 1.2;
-      text-align: center;
-    }
-
-    .score-badge.core,
-    .score-badge.judgment { color: var(--muted); }
-
-    .score-guide-copy {
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .score-guide-copy strong {
-      display: block;
-      margin-bottom: 3px;
-      font-size: 14px;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 18px;
-      letter-spacing: 0;
-    }
-
-    label {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    select {
-      min-width: 170px;
-      margin-left: 8px;
-      border: 1px solid var(--line-strong);
-      border-radius: 5px;
-      background: var(--surface);
-      color: var(--text);
-      padding: 7px 30px 7px 9px;
-      font: inherit;
-      font-size: 13px;
-    }
-
-    .table-wrap {
-      overflow-x: auto;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: var(--surface);
-    }
-
-    .results-table {
-      width: 100%;
-      min-width: 1120px;
-      border-collapse: separate;
-      border-spacing: 0;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .harness-intro {
-      max-width: 880px;
-      margin: 0 0 20px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
-    }
-
-    .harness-table {
-      min-width: 1200px;
-    }
-
-    .harness-table .group-start > * {
-      border-top: 2px solid var(--line-strong);
-    }
-
-    .harness-table tbody tr:first-child > * { border-top: 0; }
-
-    .harness-model {
-      width: 190px;
-      background: color-mix(in srgb, var(--surface-alt) 48%, transparent);
-      vertical-align: top;
-    }
-
-    .harness-name {
-      display: block;
-      font-size: 15px;
-      font-weight: 760;
-      margin-bottom: 5px;
-    }
-
-    .harness-effort {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .harness-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      color: inherit;
-      font: inherit;
-      font-weight: 740;
-      white-space: nowrap;
-      cursor: pointer;
-    }
-
-    .harness-label::before {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--codex);
-      content: "";
-    }
-
-    .harness-label.open::before { background: var(--opencode); }
-    .harness-label.delegated::before {
-      border: 2px solid var(--codex);
-      background: transparent;
-    }
-
-    .harness-label:focus-visible {
-      outline: 2px solid var(--cost);
-      outline-offset: 4px;
-      border-radius: 2px;
-    }
-
-    .harness-toggle-icon {
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 14px;
-      transition: transform 140ms ease;
-      transform-origin: center;
-    }
-
-    .harness-label[aria-expanded="true"] .harness-toggle-icon { transform: rotate(90deg); }
-
-    .harness-summary-row { cursor: pointer; }
-    .harness-summary-row:hover td,
-    .harness-summary-row[aria-expanded="true"] td {
-      background: color-mix(in srgb, var(--surface-alt) 70%, transparent);
-    }
-
-    .harness-summary-row[aria-expanded="true"] td { border-bottom-color: transparent; }
-    .harness-detail-row .run-detail-panel { padding-left: 14px; }
-
-    .comparison-value {
-      display: block;
-      font-size: 15px;
-      font-weight: 760;
-      white-space: nowrap;
-    }
-
-    .cost-audit {
-      margin-top: 28px;
-      padding-top: 24px;
-      border-top: 1px solid var(--line);
-    }
-
-    .cost-audit h3 {
-      margin: 0 0 6px;
-      font-size: 17px;
-      letter-spacing: 0;
-    }
-
-    .cost-audit > p {
-      max-width: 900px;
-      margin: 0 0 14px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
-    .audit-table { min-width: 860px; }
-    .audit-table td { font-variant-numeric: tabular-nums; }
-    .audit-table .audit-model { font-weight: 730; }
-    .audit-table .audit-delta { font-weight: 760; }
-
-    th,
-    td {
-      padding: 12px 13px;
-      border-bottom: 1px solid var(--line);
-      border-right: 1px solid var(--line);
-      text-align: left;
-      vertical-align: middle;
-    }
-
-    th:last-child,
-    td:last-child { border-right: 0; }
-    tbody tr:last-child td { border-bottom: 0; }
-
-    thead th {
-      position: sticky;
-      top: 0;
-      z-index: 2;
-      background: var(--surface-alt);
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 750;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .summary-row { cursor: pointer; }
-    .summary-row:hover td,
-    .summary-row[aria-expanded="true"] td {
-      background: color-mix(in srgb, var(--surface-alt) 70%, transparent);
-    }
-
-    .summary-row[aria-expanded="true"] td { border-bottom-color: transparent; }
-
-    .model-col { width: 220px; }
-    .metric-col { width: 92px; }
-    .loc-col { width: 86px; }
-    .sweeps-col { width: 68px; }
-    .recovery-col { width: 86px; }
-    .runtime-col { width: 98px; }
-    .cost-col { width: 96px; }
-
-    .model-toggle {
-      display: grid;
-      grid-template-columns: 17px 1fr;
-      align-items: start;
-      gap: 9px;
-      width: 100%;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      color: inherit;
-      font: inherit;
-      text-align: left;
-      cursor: pointer;
-    }
-
-    .model-toggle:focus-visible {
-      outline: 2px solid var(--cost);
-      outline-offset: 4px;
-      border-radius: 2px;
-    }
-
-    .model-toggle-icon {
-      color: var(--muted);
-      font-size: 20px;
-      line-height: 17px;
-      transition: transform 140ms ease;
-      transform-origin: center;
-    }
-
-    .model-toggle[aria-expanded="true"] .model-toggle-icon { transform: rotate(90deg); }
-
-    .model-copy { min-width: 0; }
-
-    .model-name {
-      display: block;
-      font-size: 15px;
-      font-weight: 750;
-      margin-bottom: 5px;
-    }
-
-    .model-meta {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.45;
-    }
-
-    .effort { color: var(--text); }
-
-    .run-detail-row > td {
-      padding: 0;
-      border-right: 0;
-      background: var(--surface-alt);
-    }
-
-    .run-detail-row[hidden] { display: none; }
-
-    .run-detail-panel {
-      padding: 2px 14px 15px 39px;
-      overflow-x: auto;
-    }
-
-    .run-detail-table {
-      width: 100%;
-      min-width: 860px;
-      border: 1px solid var(--line);
-      border-radius: 5px;
-      border-collapse: separate;
-      border-spacing: 0;
-      overflow: hidden;
-      background: var(--surface);
-      font-variant-numeric: tabular-nums;
-    }
-
-    .run-detail-table th,
-    .run-detail-table td {
-      padding: 8px 10px;
-      font-size: 12px;
-      white-space: nowrap;
-    }
-
-    .run-detail-table thead th {
-      position: static;
-      font-size: 10px;
-    }
-
-    .run-detail-table tbody tr:hover td {
-      background: color-mix(in srgb, var(--surface-alt) 60%, transparent);
-    }
-
-    .run-detail-table tbody tr:last-child td { border-bottom: 0; }
-    .run-number { font-weight: 760; }
-    .run-cost { color: var(--cost); font-weight: 700; }
-    .unavailable { color: var(--line-strong); }
-
-    .summary-number {
-      display: block;
-      font-size: 15px;
-      font-weight: 760;
-      white-space: nowrap;
-    }
-
-    .summary-sub {
-      display: block;
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 11px;
-      white-space: nowrap;
-    }
-
-    .summary-divider { color: var(--line-strong); font-weight: 500; }
-
-    .summary-cost {
-      color: var(--cost);
-    }
-
-    .cost-estimate::before { content: "≈"; }
-
-    .plot-section {
-      margin-top: 34px;
-      padding-top: 28px;
-      border-top: 1px solid var(--line);
-    }
-
-    .plot-legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .legend-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .legend-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--codex);
-    }
-
-    .legend-dot.open { background: var(--opencode); }
-    .legend-dot.claude { background: var(--claude); }
-
-    .chart-shell {
-      position: relative;
-      width: 100%;
-      margin-top: 12px;
-      overflow-x: auto;
-    }
-
-    #cost-chart {
-      display: block;
-      width: 100%;
-      min-width: 760px;
-      height: auto;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 6px;
-    }
-
-    .tooltip {
-      position: absolute;
-      display: none;
-      pointer-events: none;
-      max-width: 250px;
-      padding: 9px 10px;
-      border: 1px solid var(--line-strong);
-      border-radius: 5px;
-      background: var(--surface);
-      color: var(--text);
-      box-shadow: 0 6px 20px color-mix(in srgb, #000 18%, transparent);
-      font-size: 12px;
-      line-height: 1.45;
-      z-index: 4;
-    }
-
-    .notes {
-      margin-top: 26px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px 34px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.5;
-    }
-
-    .notes p { margin: 0; }
-
-    a { color: var(--cost); }
-
-    @media (max-width: 820px) {
-      main { padding: 24px 16px 40px; }
-      header { align-items: flex-start; flex-direction: column; }
-      .stamp { text-align: left; }
-      .method-band { grid-template-columns: 1fr; }
-      .method-item + .method-item {
-        border-left: 0;
-        border-top: 1px solid var(--line);
-        padding-left: 0;
-      }
-      .section-heading { align-items: flex-start; flex-direction: column; }
-      .score-guide-grid { grid-template-columns: 1fr; gap: 18px; }
-      label { display: flex; align-items: center; }
-      .notes { grid-template-columns: 1fr; }
-      .table-wrap { overflow-x: auto; }
-      .run-detail-panel { padding-left: 14px; }
-      .view-tabs { display: flex; width: 100%; }
-      .view-tab { flex: 1; }
-    }
-  </style>
+  <link rel="stylesheet" href="results.css">
 </head>
 <body>
-  <main>
-    <header>
+  <a class="skip-link" href="#main">Skip to results</a>
+  <main id="main">
+    <header class="masthead">
       <div>
-        <h1>Sweat Bench v6</h1>
-        <p class="subtitle">Completed results · frozen benchmark comparison</p>
+        <div class="title-line"><h1>Sweat Bench</h1><span class="version">v6</span></div>
+        <p class="subtitle">Coding agents. One evolving product. Seven milestones.</p>
       </div>
-      <div class="stamp">
-        17 configurations · 67 completed runs<br>
-        Results updated: 5 September 2026
+      <div class="header-right">
+        <span class="updated">Updated <time datetime="2026-09-05">5 Sep 2026</time></span>
+        <a class="icon-button" href="accepted-runs.json" download title="Download run data" aria-label="Download run data"><i data-icon="Download"></i></a>
+        <a class="icon-button" href="https://github.com/kkondaurov/sweatbench" title="Repository" aria-label="Repository"><i data-icon="CodeXml"></i></a>
       </div>
     </header>
 
     <nav class="view-tabs" role="tablist" aria-label="Results view">
-      <button id="models-tab" class="view-tab" type="button" role="tab" aria-selected="true" aria-controls="models-view" data-view="models">Models</button>
-      <button id="harness-tab" class="view-tab" type="button" role="tab" aria-selected="false" aria-controls="harness-view" data-view="harness">Harness comparison <span class="tab-count">45 runs</span></button>
+      <button id="models-tab" class="view-tab" role="tab" aria-selected="true" aria-controls="models-view" data-view="models">Models <span id="models-count" class="tab-count">67</span></button>
+      <button id="harness-tab" class="view-tab" role="tab" aria-selected="false" aria-controls="harness-view" data-view="harness" tabindex="-1">Harnesses <span class="tab-count">45</span></button>
+      <button id="method-tab" class="view-tab" role="tab" aria-selected="false" aria-controls="method-view" data-view="method" tabindex="-1">Method</button>
     </nav>
 
-    <div id="models-view" class="view-panel" role="tabpanel" aria-labelledby="models-tab">
-    <section class="method-band" aria-label="Comparison basis">
-      <div class="method-item">
-        <span class="method-label">Benchmark</span>
-        <div class="method-value">Frozen commit <code>5fda9a0</code> · seven milestones · Core /39 · Maintenance /10</div>
+    <section id="models-view" class="view-panel" role="tabpanel" aria-labelledby="models-tab">
+      <div class="section-heading overview-heading">
+        <div><h2>Capability &amp; cost</h2><p class="section-note"><span id="sample-summary">17 configurations · 67 completed runs</span><span class="note-separator"> / </span>1–5 runs each; small samples.</p></div>
+        <div class="chart-controls">
+          <div class="segmented" role="group" aria-label="Chart score">
+            <button data-score="core" aria-pressed="true">Core <span>/39</span></button>
+            <button data-score="judgment" aria-pressed="false">Maintenance <span>/10</span></button>
+          </div>
+          <label class="select-label"><span>Against</span><select id="chart-x" aria-label="Chart horizontal metric"><option value="cost">Cost</option><option value="runtime">Runtime</option><option value="code">Production LOC</option></select></label>
+        </div>
       </div>
-      <div class="method-item">
-        <span class="method-label">Completed sample</span>
-        <div class="method-value">Five completed, valid runs per configuration, except four each for GLM-5.3 Flash high and max, two Opus 5 runs, two runs at each Astra effort, and one Muse Spark 1.3 run. These small samples do not establish reliable model rankings or variance estimates. Infrastructure-debug, incomplete, abandoned, and interrupted attempts are excluded.</div>
-      </div>
-      <div class="method-item">
-        <span class="method-label">Cost basis</span>
-        <div class="method-value"><strong>≈</strong> marks API-equivalent estimates. Paid OpenCode rows use recorded OpenRouter inference spend. Opus ran through a subscription; its estimate comes from Claude Code's local per-milestone usage records. Costs describe the tested model + harness configuration.</div>
-      </div>
-      <div class="method-item">
-        <span class="method-label">Runtime basis</span>
-        <div class="method-value">Sum of the seven agent-session intervals, from each milestone's model launch until handoff to private evaluation. It includes reasoning, tool use, tests, and continuations; evaluator, snapshot, and inter-milestone harness time are excluded.</div>
-      </div>
-    </section>
-
-    <section class="score-guide" aria-labelledby="score-guide-title">
-      <h2 id="score-guide-title">What the scores mean</h2>
-      <div class="score-guide-grid">
-        <div class="score-guide-item">
-          <span class="score-badge core">C /39</span>
-          <div class="score-guide-copy">
-            <strong>Core: does the product work?</strong>
-            This covers the features and business rules requested across seven development milestones, including persistence, retries, upgrades, and previously completed behavior. A score of 37/39 means that 37 of 39 required areas passed. Upgrade steps are graded when their milestone ships, so an earlier migration failure can remain recorded even if later behavior recovers.
+      <div class="plot-layout">
+        <div class="plot-main">
+          <div class="chart-shell"><svg id="cost-chart" role="group" aria-label="Model comparison plot"></svg></div>
+          <div class="chart-footer">
+            <div class="plot-legend" aria-label="Model family and harness legend">
+              <span><b class="legend-symbol astra"></b>Astra · Codex</span>
+              <span><b class="legend-symbol codex"></b>Earlier GPT · Codex</span>
+              <span><b class="legend-symbol opencode"></b>OpenCode</span>
+              <span><b class="legend-symbol claude"></b>Claude Code</span>
+            </div>
+            <label class="range-toggle"><input id="show-ranges" type="checkbox">Run ranges</label>
           </div>
         </div>
-        <div class="score-guide-item">
-          <span class="score-badge judgment">M /10</span>
-          <div class="score-guide-copy">
-            <strong>Maintenance: do upgrades and feature interactions stay correct?</strong>
-            This is an automated pass count, not a reviewer rating. Five predefined checks cover old production data surviving later changes; five cover interactions among payments, credits, transfers, and reporting. A score of 7/10 means seven of those ten checks passed.
+        <aside id="selection-panel" class="selection-panel" aria-label="Selected configuration"></aside>
+      </div>
+      <p class="chart-caption" id="plot-description">Average Core /39 against median cost per seven-milestone run. ≈ API-equivalent estimate.</p>
+
+      <section class="comparison-section" aria-labelledby="results-title">
+        <div class="section-heading table-heading">
+          <div><h2 id="results-title">Model results <span id="visible-count" class="heading-count">17</span></h2><p class="section-note">Scores &amp; runtime: mean. Cost &amp; code size: median.</p></div>
+          <div class="table-controls">
+            <label class="search-field"><i data-icon="Search"></i><input id="model-search" type="search" placeholder="Find a model" aria-label="Find a model"></label>
+            <select id="harness-filter" aria-label="Filter by harness"><option value="all">All harnesses</option><option>Codex CLI</option><option>OpenCode</option><option>Claude Code</option></select>
+            <select id="sort-order" aria-label="Sort models"><option value="default">Model family</option><option value="core">Core, highest first</option><option value="judgment">Maintenance, highest first</option><option value="cost">Cost, lowest first</option><option value="runtime">Runtime, fastest first</option><option value="code">Production LOC, fewest first</option></select>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section aria-labelledby="results-title">
-      <div class="section-heading">
-        <h2 id="results-title">Model comparison</h2>
-        <label for="sort-order">Sort
-          <select id="sort-order">
-            <option value="default">Model family</option>
-            <option value="core">Average Core</option>
-            <option value="judgment">Average Maintenance</option>
-            <option value="prod-loc">Production LOC</option>
-            <option value="test-loc">Test LOC</option>
-            <option value="cost-asc">Average cost, low to high</option>
-            <option value="cost-desc">Average cost, high to low</option>
-            <option value="runtime">Average runtime</option>
-            <option value="recovery">Average recovery</option>
-          </select>
-        </label>
-      </div>
-
-      <div class="table-wrap">
-        <table class="results-table">
-          <thead>
-            <tr>
-              <th class="model-col" scope="col">Model</th>
-              <th class="metric-col" scope="col">Avg Core</th>
-              <th class="metric-col" scope="col">Avg Maintenance</th>
-              <th class="sweeps-col" scope="col">Sweeps</th>
-              <th class="recovery-col" scope="col">Avg recovery</th>
-              <th class="loc-col" scope="col">Prod LOC</th>
-              <th class="loc-col" scope="col">Test LOC</th>
-              <th class="runtime-col" scope="col">Avg runtime</th>
-              <th class="cost-col" scope="col">Median cost</th>
-              <th class="cost-col" scope="col">Total cost</th>
-            </tr>
-          </thead>
-          <tbody id="results-body"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="plot-section" aria-labelledby="plot-title">
-      <div class="section-heading">
-        <div>
-          <h2 id="plot-title">Cost and final Core</h2>
-          <div class="note">Whiskers show the accepted-run range. Marker size reflects average Maintenance.</div>
-        </div>
-        <div class="plot-legend" aria-label="Model family and harness legend">
-          <span class="legend-item"><span class="legend-dot" style="background: var(--astra)"></span>GPT-6 Astra · Codex</span>
-          <span class="legend-item"><span class="legend-dot"></span>Earlier GPT · Codex</span>
-          <span class="legend-item"><span class="legend-dot open"></span>OpenCode</span>
-          <span class="legend-item"><span class="legend-dot claude"></span>Claude Code</span>
-          <span class="legend-item">≈ API-equivalent estimate</span>
-        </div>
-      </div>
-      <div class="chart-shell">
-        <svg id="cost-chart" viewBox="0 0 1120 470" role="img" aria-labelledby="plot-title plot-description"></svg>
-        <div id="chart-tooltip" class="tooltip" role="tooltip"></div>
-      </div>
-      <p id="plot-description" class="muted">Average inference cost of the tested model + harness configuration against average final Core family score.</p>
-    </section>
-
-    <footer class="notes">
-      <p>GPT estimates include every recorded parent and descendant session. They apply standard short-context rates: Astra $10 / $1 cached / $50 output; GPT-5.5 $5 / $0.50 / $30; Sol $4 / $0.40 / $20; Terra $2 / $0.20 / $12; and Luna $0.20 / $0.02 / $1.20 per million tokens, with Codex auto-review priced as Luna. Reasoning tokens are already included in output. Astra's largest recorded request was 113,468 input tokens, below its 272K long-context threshold, and all cache-write counts were zero. GPT-5.5's recorded Codex context window was 258,400 tokens. Other individual-request surcharges and historical cache-write charges cannot be reconstructed consistently, so these remain standard-rate estimates, not subscription invoices.</p>
-      <p>Astra low, medium, and high each have two completed runs through Codex CLI 0.153.4 with unchanged v6 tasks and ordinary handoff prompts. None launched subagents. Earlier GPT runs used an older Codex version: this compares the tested model-and-harness systems, not an isolated change of model weights. <a href="https://developers.openai.com/api/docs/models/gpt-6-astra">Astra pricing</a> was checked on 5 September 2026.</p>
-      <p>GLM-5.3-Flash was first tested under its anonymous preview name, OX Alpha. The preview charged $0; all four displayed samples use API-equivalent estimates at the announced production rates of $0.15 input, $0.50 output, and $0.03 cached input per million tokens, with reasoning tokens billed as generated output.</p>
-      <p>Kimi K3 and GLM 5.3 (not Flash) repeatedly process long accumulated contexts. Cache-read charges account for roughly $12–14 of each Kimi run and $13–22 of each GLM 5.3 run, which is the main reason their totals are higher than the headline token prices might suggest.</p>
-      <p>Those cache reads are the discounted cost of replaying the growing agent conversation on later tool turns, not duplicated evaluator traffic. Private evaluation is excluded. A different harness could manage context more efficiently, so this is a practical configuration cost rather than a claim about the model's intrinsic cost.</p>
-      <p>LOC is measured on each final milestone snapshot and displayed as the median across accepted runs. Production includes <code>lib/</code> and database migrations; Test includes <code>test/</code>. These are physical lines, including comments and blanks.</p>
-      <p>Opus 5 used Claude Code 2.1.243 with customizations disabled, the same frozen benchmark and handoff protocol, endogenous tests, public network access, and an isolated candidate workspace. Claude Code recorded $43.96 and $51.35 of API-equivalent usage across the two seven-milestone runs; the subscription itself was not billed per token.</p>
-      <p>Core and Maintenance remain separate by design. A sweep means 39/39 Core and 10/10 Maintenance in the final score. The final /94 combines the last private tests with historical system-check outcomes recorded at their designated milestones; it is not 94 fresh checks of the terminal code. Recovery is the increase from ship-time to final scenarios.</p>
-      <p>Runtime is the sum of candidate agent-session wall-clock intervals across seven milestones. Private evaluation, snapshotting, and request-advance time are excluded. It measures the observed speed of the tested model + harness/provider configuration, rather than raw token throughput.</p>
-      <p>Subagents counts unique child agent sessions explicitly launched by the candidate during an accepted run. Fixed harness-owned workers such as Codex auto-review are excluded.</p>
-      <p>OpenCode totals include continuation calls and descendant task sessions required to finish each accepted run. Abandoned, incomplete, evaluator-invalid, and infrastructure-debug runs are excluded entirely. The audited totals are preserved in <code>accepted-runs.json</code> and checked by <code>analyze.py</code>.</p>
-      <p>DeepSeek Run 2 includes $0.32 from a redundant same-session review caused by a retry-classifier false positive. The extra review made no file edits, so the scored artifact was unchanged; the displayed cost remains the spend actually incurred.</p>
-      <p>DeepSeek Run 4 runtime excludes a documented 10h 52m machine interruption inside its resumed first-milestone log. Model activity before and after the interruption is retained; the inactive wall-clock gap is not counted as agent runtime.</p>
-      <p>Official sources: <a href="https://developers.openai.com/api/docs/models/gpt-5.5">GPT-5.5</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-sol">Sol</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-terra">Terra</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-luna">Luna</a>, <a href="https://openrouter.ai/meta/muse-spark-1.3">Muse Spark 1.3</a>, <a href="https://docs.x.ai/developers/models/grok-4.6">Grok 4.6</a>, <a href="https://openrouter.ai/qwen/qwen3.8-max">Qwen3.8 Max</a>, <a href="https://openrouter.ai/deepseek/deepseek-v4-pro-0813">DeepSeek V4 Pro 0813</a>, and <a href="https://z.ai/blog/glm-5.3-flash">GLM-5.3-Flash</a>.</p>
-    </footer>
-    </div>
-
-    <section id="harness-view" class="view-panel" role="tabpanel" aria-labelledby="harness-tab" hidden>
-      <section class="method-band" aria-label="Harness comparison basis">
-        <div class="method-item">
-          <span class="method-label">Controlled comparison</span>
-          <div class="method-value">The same frozen benchmark, model, reasoning effort, handoff protocol, endogenous tests, and private evaluator. The candidate harness changes from Codex CLI to OpenCode.</div>
-        </div>
-        <div class="method-item">
-          <span class="method-label">Sample state</span>
-          <div class="method-value">Standard Codex, OpenCode, and delegated Luna each have five accepted runs per configuration. Incomplete trajectories and infrastructure-debug attempts are excluded.</div>
-        </div>
-        <div class="method-item">
-          <span class="method-label">What to compare</span>
-          <div class="method-value">Core and Maintenance show final product quality. Sweeps show complete runs. Median cost is the main harness-efficiency measure. All paired rows now contain five accepted runs per harness variant.</div>
-        </div>
-        <div class="method-item">
-          <span class="method-label">Cost basis</span>
-          <div class="method-value">All rows use API-equivalent estimates from recorded uncached input, cached input, and output tokens at the same OpenAI list prices. Parent and subagent sessions are included; Codex auto-review is priced at Luna rates. OpenCode's actual incremental subscription charge was $0.</div>
-        </div>
-      </section>
-
-      <div class="section-heading">
-        <div>
-          <h2>Codex CLI versus OpenCode</h2>
-          <p class="harness-intro">This is a model-plus-harness comparison, not a second model leaderboard. Paired rows show standard Codex and OpenCode directly; Luna adds a delegated Codex variant that explicitly encourages independent subagent audits.</p>
-        </div>
-        <div class="stamp">20 OpenCode + 5 delegated runs<br>Snapshot: 30 August 2026</div>
-      </div>
-
-      <div class="table-wrap">
-        <table class="results-table harness-table">
-          <thead>
-            <tr>
-              <th scope="col">Model</th>
-              <th scope="col">Harness</th>
-              <th scope="col">Runs</th>
-              <th scope="col">Avg Core</th>
-              <th scope="col">Avg Maintenance</th>
-              <th scope="col">Sweeps</th>
-              <th scope="col">Median cost</th>
-              <th scope="col">Sample total</th>
-              <th scope="col">Avg final /94</th>
-              <th scope="col">Prod LOC</th>
-              <th scope="col">Test LOC</th>
-            </tr>
-          </thead>
-          <tbody id="harness-body"></tbody>
-        </table>
-      </div>
-
-      <section class="cost-audit" aria-labelledby="cost-audit-title">
-        <h3 id="cost-audit-title">Full-session cost audit</h3>
-        <p>Both exported parent summaries omit descendant model sessions. The corrected estimate combines each accepted parent with every descendant session, including fixed Codex auto-review. The per-run Subagents column is narrower: it counts only child agents launched by the candidate. Cache hit is cached input divided by all prompt input across the accepted sample.</p>
         <div class="table-wrap">
-          <table class="results-table audit-table">
-            <thead>
-              <tr>
-                <th scope="col">Model</th>
-                <th scope="col">Samples<br>standard / OpenCode / delegated</th>
-                <th scope="col">Cache hit<br>standard / OpenCode / delegated</th>
-                <th scope="col">Child sessions<br>standard / OpenCode / delegated</th>
-                <th scope="col">Full median<br>standard / OpenCode / delegated</th>
-                <th scope="col">Cost delta<br>vs standard Codex</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td class="audit-model">Sol high</td><td>5 / 5 / —</td><td>95.0% / 92.7% / —</td><td>6.8 / 13.0 / —</td><td>≈$22.37 / ≈$23.47 / —</td><td class="audit-delta">+5% / —</td></tr>
-              <tr><td class="audit-model">Sol medium</td><td>5 / 5 / —</td><td>94.6% / 91.0% / —</td><td>5.8 / 9.8 / —</td><td>≈$13.90 / ≈$14.60 / —</td><td class="audit-delta">+5% / —</td></tr>
-              <tr><td class="audit-model">Terra xhigh</td><td>5 / 5 / —</td><td>95.9% / 94.2% / —</td><td>2.6 / 6.2 / —</td><td>≈$9.96 / ≈$11.50 / —</td><td class="audit-delta">+15% / —</td></tr>
-              <tr><td class="audit-model">Luna xhigh</td><td>5 / 5 / 5</td><td>96.0% / 96.4% / 96.7%</td><td>1.4 / 7.6 / 23.4</td><td>≈$1.50 / ≈$2.55 / ≈$4.23</td><td class="audit-delta">+70% / +183%</td></tr>
-            </tbody>
+          <table class="results-table">
+            <thead><tr>
+              <th scope="col" class="model-col">Model / reasoning</th>
+              <th scope="col">Core <span>/39</span></th>
+              <th scope="col">Maintenance <span>/10</span></th>
+              <th scope="col" title="Runs with 39/39 Core and 10/10 Maintenance">Sweeps</th>
+              <th scope="col">Runtime</th>
+              <th scope="col">Cost <span>/run</span></th>
+              <th scope="col">Code <span>prod / test</span></th>
+            </tr></thead>
+            <tbody id="results-body"></tbody>
           </table>
         </div>
+        <p class="empty-state" id="empty-state" hidden>No matching configurations.</p>
+        <div class="table-foot"><span>≈ API-equivalent estimate; unmarked costs are recorded spend.</span><a href="#method">Scoring &amp; cost definitions <i data-icon="ArrowUpRight"></i></a></div>
       </section>
-
-      <footer class="notes">
-        <p>Production and test LOC are medians of the final milestone snapshots, measured on the same directories as the Models view. They describe what the harness/model combination chose to build, not code quality by themselves.</p>
-        <p>OpenCode 1.18.0 used the OpenAI OAuth credential from the user's ChatGPT subscription inside a fresh Docker container for every model turn. Its actual marginal billing was $0, but the displayed estimates answer the counterfactual question: what would the recorded inference have cost at API list prices?</p>
-        <p>Codex reports cached input as a subset of total input; OpenCode reports uncached input and cached reads separately. The calculation normalizes those schemas before applying Sol $4 / $0.40 cached / $20 output, Terra $2 / $0.20 / $12, and Luna $0.20 / $0.02 / $1.20 per million tokens.</p>
-        <p>Subagents counts unique child agent sessions explicitly launched by the candidate during an accepted run. Fixed harness-owned workers such as Codex auto-review are excluded.</p>
-        <p>OpenCode descendants come from its persisted run databases. Codex descendants come from the session rollouts referenced by each accepted root thread; <code>codex-auto-review</code> sessions use Luna pricing. This keeps the estimate symmetric without adding a separate review metric.</p>
-        <p>The Muse Spark 1.3 row is one completed high-effort trajectory through OpenCode 1.18.27. Its $53.61 total is the recorded OpenRouter charge, including two automatic continuations after turn-length limits. No candidate subagents were launched.</p>
-        <p>Only runs with all seven milestones and a completed private evaluation appear here. The interrupted remainder of the Muse campaign is not included.</p>
-        <p>Audit values are ordered standard Codex / OpenCode / delegated Codex where a third value appears. Each Luna variant now contains five accepted runs.</p>
-      </footer>
     </section>
-  </main>
 
+    <section id="harness-view" class="view-panel" role="tabpanel" aria-labelledby="harness-tab" hidden>
+      <div class="section-heading overview-heading">
+        <div><h2>Same model. Different harness.</h2><p class="section-note">Four model configurations · five runs per condition · 45 runs total</p></div>
+      </div>
+      <p class="harness-intro">The benchmark, reasoning effort, handoff protocol and tests stay fixed. Luna also has a Codex condition prompted to delegate independent audits.</p>
+      <div id="harness-comparisons"></div>
+      <div class="table-foot"><span>All costs are API-equivalent estimates, including parent and descendant sessions.</span><a href="#method">Method &amp; limitations <i data-icon="ArrowUpRight"></i></a></div>
+      <details class="audit-disclosure">
+        <summary>Token use &amp; session accounting <i data-icon="ChevronDown"></i></summary>
+        <p class="section-note">Cache hit is the share of prompt input served from cache. Child sessions include fixed harness workers; candidate-launched subagents are listed separately in each run.</p>
+        <div class="table-wrap"><table class="audit-table">
+          <thead><tr><th>Configuration</th><th>Condition</th><th>Cache hit</th><th>Avg child sessions</th><th>Median cost</th><th>Cost vs Codex</th></tr></thead>
+          <tbody id="audit-body"></tbody>
+        </table></div>
+      </details>
+    </section>
+
+    <section id="method-view" class="view-panel" role="tabpanel" aria-labelledby="method-tab" hidden>
+      <div class="section-heading overview-heading"><div><h2 id="method-title" tabindex="-1">What is being measured</h2><p class="section-note">Frozen v6 · commit <a href="https://github.com/kkondaurov/sweatbench/tree/5fda9a09255529b027cadf836c0c16c867a039e5"><code>5fda9a0</code></a> · seven sequential milestones</p></div></div>
+      <div class="method-layout">
+        <nav class="method-nav" aria-label="Method sections"><a href="#scores">Scores</a><a href="#sample">Sample</a><a href="#costs">Costs</a><a href="#code-time">Code &amp; runtime</a><a href="#sources">Sources</a></nav>
+        <div class="method-copy">
+          <section id="scores"><h3>Two scores, kept separate</h3>
+            <dl class="definitions">
+              <div><dt>Core <span>/39</span></dt><dd>Required product behavior, including business rules, persistence, retries and upgrades. Each family earns one point when all of its checks pass.</dd></div>
+              <div><dt>Maintenance <span>/10</span></dt><dd>Five checks of old production data surviving later changes, and five checks of interactions among payments, credits, transfers and reporting. Automated pass counts, not reviewer ratings.</dd></div>
+              <div><dt>Sweep</dt><dd>A run with 39/39 Core and 10/10 Maintenance.</dd></div>
+              <div><dt>Ship / final <span>/94</span></dt><dd>Scenario totals before and after subsequent milestone work. Final combines the last private tests with historical system checks at their designated milestones; it is not 94 fresh checks of the terminal code.</dd></div>
+              <div><dt>Recovery</dt><dd>Final minus ship-time scenarios. A later repair does not erase a migration failure recorded when its milestone shipped.</dd></div>
+            </dl>
+          </section>
+          <section id="sample"><h3>Completed runs, small samples</h3>
+            <p>The Models view contains <span id="method-model-count">67</span> completed, valid runs. Each configuration's sample size appears beside its name. Incomplete, abandoned, interrupted and evaluator-invalid attempts are excluded. Small samples are descriptive, not a reliable ranking or variance estimate; plotted ranges are observed minima and maxima, not confidence intervals.</p>
+            <p>These are comparisons of tested model-and-harness systems. Astra uses Codex CLI 0.153.4; earlier GPT runs used an older Codex version. The six completed Astra runs used ordinary v6 handoff prompts and launched no subagents. Opus 5 uses Claude Code 2.1.243 with customizations disabled. Muse Spark uses OpenCode 1.18.27; the controlled harness comparison uses OpenCode 1.18.0.</p>
+            <p>The Harnesses view reuses 20 standard Codex runs and adds 20 OpenCode runs plus five delegated-Luna runs. Its 45 runs overlap the Models view, so the two tab counts must not be added.</p>
+          </section>
+          <section id="costs"><h3>Inference cost, not subscription invoices</h3>
+            <p><strong>≈</strong> marks API-equivalent estimates from recorded tokens. Unmarked OpenCode model costs are recorded OpenRouter spend. Every estimate includes parent and descendant inference, with Codex auto-review priced as Luna. Reasoning tokens are already included in output; private evaluation is excluded.</p>
+            <div class="table-wrap"><table class="pricing-table"><caption>USD per million tokens · standard short-context rates</caption><thead><tr><th>Model</th><th>Input</th><th>Cached input</th><th>Output</th></tr></thead><tbody>
+              <tr><td>Astra</td><td>$10</td><td>$1</td><td>$50</td></tr><tr><td>GPT-5.5</td><td>$5</td><td>$0.50</td><td>$30</td></tr><tr><td>Sol</td><td>$4</td><td>$0.40</td><td>$20</td></tr><tr><td>Terra</td><td>$2</td><td>$0.20</td><td>$12</td></tr><tr><td>Luna</td><td>$0.20</td><td>$0.02</td><td>$1.20</td></tr><tr><td>GLM-5.3 Flash</td><td>$0.15</td><td>$0.03</td><td>$0.50</td></tr>
+            </tbody></table></div>
+            <p>Astra's largest recorded request was 113,468 input tokens, below its 272K long-context threshold; cache-write counts were zero. GPT-5.5's recorded context window was 258,400 tokens. Other historical per-request surcharges and cache-write charges cannot be reconstructed consistently; those estimates use standard rates.</p>
+            <p>Codex reports cached input within total input; OpenCode reports uncached input and cache reads separately. The estimates normalize these schemas. Replaying accumulated context can dominate cost: cache reads account for roughly $12–14 per Kimi run and $13–22 per GLM 5.3 run.</p>
+            <details><summary>Model-specific accounting</summary>
+              <p>GLM-5.3 Flash ran as the free OX Alpha preview; displayed costs use its announced production rates. Opus's two subscription runs recorded $43.96 and $51.35 in API-equivalent usage. The OpenCode harness comparison used subscription OAuth with $0 incremental inference billing.</p>
+              <p>Muse Spark's $53.61 recorded charge includes two automatic continuations after turn-length limits. DeepSeek run 2 includes $0.32 for a redundant review that made no file edits.</p>
+            </details>
+          </section>
+          <section id="code-time"><h3>Code, runtime &amp; delegation</h3>
+            <p><strong>Code size</strong> is physical lines, including blanks and comments, in the final snapshot: production is <code>lib/</code> plus migrations; tests are <code>test/</code>. The comparison shows medians. Fewer lines alone do not imply better code.</p>
+            <p><strong>Runtime</strong> is the sum of seven agent-session wall-clock intervals, including reasoning, tools, tests and continuations. Private evaluation, snapshots and milestone advancement are excluded. DeepSeek run 4 excludes a documented 10h 52m machine interruption, retaining activity on either side.</p>
+            <p><strong>Subagents</strong> counts unique children explicitly launched by the candidate, excluding fixed harness workers such as Codex auto-review. Those workers still count toward inference cost.</p>
+          </section>
+          <section id="sources"><h3>Data &amp; sources</h3>
+            <div class="source-links"><a href="accepted-runs.json">Run dataset <i data-icon="Download"></i></a><a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/analyze.py">Data verifier <i data-icon="ArrowUpRight"></i></a><a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/RETROSPECTIVE.md">Retrospective <i data-icon="ArrowUpRight"></i></a></div>
+            <p>Official pricing: <a href="https://developers.openai.com/api/docs/models/gpt-6-astra">Astra</a> (checked 5 Sep 2026), <a href="https://developers.openai.com/api/docs/models/gpt-5.5">GPT-5.5</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-sol">Sol</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-terra">Terra</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-luna">Luna</a>, <a href="https://openrouter.ai/meta/muse-spark-1.3">Muse Spark</a>, <a href="https://docs.x.ai/developers/models/grok-4.6">Grok</a>, <a href="https://openrouter.ai/qwen/qwen3.8-max">Qwen</a>, <a href="https://openrouter.ai/deepseek/deepseek-v4-pro-0813">DeepSeek</a>, <a href="https://z.ai/blog/glm-5.3-flash">GLM-5.3 Flash</a>.</p>
+          </section>
+        </div>
+      </div>
+    </section>
+    <footer class="site-footer"><span>Sweat Bench v6 <span class="footer-divider">/</span> Completed results</span><a href="https://github.com/kkondaurov/sweatbench">Benchmark repository <i data-icon="ArrowUpRight"></i></a></footer>
+    <noscript><p>JavaScript is required for the interactive results. The <a href="accepted-runs.json">complete run dataset</a> and <a href="https://github.com/kkondaurov/sweatbench">repository summary</a> remain available.</p></noscript>
+  </main>
   <script>
     const rows = [
       { id: "astra-low", model: "GPT-6 Astra", effort: "low", harness: "Codex CLI", note: "two completed runs", costBasis: "estimated", runs: [
@@ -1028,469 +333,8 @@
     });
     attachSubagentCounts(delegatedLunaComparisonRuns, delegatedLunaSubagentCounts, "luna-xhigh-delegated");
 
-    const mean = values => values.reduce((sum, value) => sum + value, 0) / values.length;
-    const median = values => {
-      const ordered = [...values].sort((a, b) => a - b);
-      const middle = Math.floor(ordered.length / 2);
-      return ordered.length % 2 ? ordered[middle] : (ordered[middle - 1] + ordered[middle]) / 2;
-    };
-    const money = value => `$${value.toFixed(2)}`;
-    const integer = value => value.toLocaleString("en-US");
-    const signed = value => value >= 0 ? `+${value}` : String(value);
-    const duration = seconds => {
-      const minutes = Math.round(seconds / 60);
-      const hours = Math.floor(minutes / 60);
-      const remainder = minutes % 60;
-      return hours ? `${hours}h ${remainder}m` : `${minutes}m`;
-    };
-
-    const summaries = rows.map((row, index) => {
-      const costs = row.runs.map(run => run.cost).filter(Number.isFinite);
-      return {
-        ...row,
-        index,
-        avgCore: mean(row.runs.map(run => run.core)),
-        avgJudgment: mean(row.runs.map(run => run.judgment)),
-        avgRecovery: mean(row.runs.map(run => run.final - run.ship)),
-        avgRuntime: mean(row.runs.map(run => run.runtimeSeconds)),
-        avgCost: costs.length ? mean(costs) : null,
-        medianProdLoc: median(row.runs.map(run => run.prodLoc)),
-        medianTestLoc: median(row.runs.map(run => run.testLoc)),
-        medianCost: costs.length ? median(costs) : null,
-        totalCost: costs.length ? costs.reduce((sum, cost) => sum + cost, 0) : null,
-        sweeps: row.runs.filter(run => run.core === 39 && run.judgment === 10).length,
-        minCore: Math.min(...row.runs.map(run => run.core)),
-        maxCore: Math.max(...row.runs.map(run => run.core)),
-        minCost: costs.length ? Math.min(...costs) : null,
-        maxCost: costs.length ? Math.max(...costs) : null,
-        minProdLoc: Math.min(...row.runs.map(run => run.prodLoc)),
-        maxProdLoc: Math.max(...row.runs.map(run => run.prodLoc)),
-        minTestLoc: Math.min(...row.runs.map(run => run.testLoc)),
-        maxTestLoc: Math.max(...row.runs.map(run => run.testLoc))
-      };
-    });
-
-    const comparisonOrder = ["sol-high", "sol-medium", "terra-xhigh", "luna-xhigh"];
-
-    function comparisonSummary(runs) {
-      return {
-        runs,
-        avgCore: mean(runs.map(run => run.core)),
-        avgJudgment: mean(runs.map(run => run.judgment)),
-        avgFinal: mean(runs.map(run => run.final)),
-        medianProdLoc: median(runs.map(run => run.prodLoc)),
-        medianTestLoc: median(runs.map(run => run.testLoc)),
-        medianCost: median(runs.map(run => run.cost)),
-        totalCost: runs.reduce((sum, run) => sum + run.cost, 0),
-        sweeps: runs.filter(run => run.core === 39 && run.judgment === 10).length
-      };
-    }
-
-    const expandedHarnessRows = new Set();
-
-    function harnessRunDetails(model, effort, harness, runs) {
-      return `
-        <div class="run-detail-panel">
-          <table class="run-detail-table" aria-label="Accepted ${harness} runs for ${model} ${effort}">
-            <thead>
-              <tr>
-                <th scope="col">Run</th>
-                <th scope="col">Core /39</th>
-                <th scope="col">Maintenance /10</th>
-                <th scope="col">Ship /94</th>
-                <th scope="col">Final /94</th>
-                <th scope="col">Recovery</th>
-                <th scope="col" title="Unique child agents launched by the candidate; fixed harness workers excluded">Subagents</th>
-                <th scope="col">Prod LOC</th>
-                <th scope="col">Test LOC</th>
-                <th scope="col">Cost</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${runs.map((run, index) => `
-                <tr>
-                  <td><span class="run-number">Run ${index + 1}</span></td>
-                  <td>${run.core}</td>
-                  <td>${run.judgment}</td>
-                  <td>${run.ship}</td>
-                  <td>${run.final}</td>
-                  <td>${signed(run.final - run.ship)}</td>
-                  <td>${run.subagents}</td>
-                  <td>${integer(run.prodLoc)}</td>
-                  <td>${integer(run.testLoc)}</td>
-                  <td><span class="run-cost cost-estimate">${money(run.cost)}</span></td>
-                </tr>`).join("")}
-            </tbody>
-          </table>
-        </div>`;
-    }
-
-    function renderHarnessComparison() {
-      document.getElementById("harness-body").innerHTML = comparisonOrder.map(id => {
-        const codexRow = rows.find(row => row.id === id);
-        const codex = comparisonSummary(codexRow.runs);
-        const openCode = comparisonSummary(openCodeComparisonRuns[id]);
-        const delegated = id === "luna-xhigh" ? comparisonSummary(delegatedLunaComparisonRuns) : null;
-        const codexId = `${id}-codex`;
-        const openCodeId = `${id}-opencode`;
-        const delegatedId = `${id}-delegated`;
-        const codexExpanded = expandedHarnessRows.has(codexId);
-        const openCodeExpanded = expandedHarnessRows.has(openCodeId);
-        const delegatedExpanded = delegated && expandedHarnessRows.has(delegatedId);
-        const visibleRows = 2 + Number(codexExpanded) + Number(openCodeExpanded) + (delegated ? 1 + Number(delegatedExpanded) : 0);
-        return `
-          <tr class="harness-summary-row group-start" data-harness-row-id="${codexId}" aria-expanded="${codexExpanded}">
-            <th id="harness-model-${id}" class="harness-model" scope="rowgroup" rowspan="${visibleRows}">
-              <span class="harness-name">${codexRow.model}</span>
-              <span class="harness-effort">${codexRow.effort} reasoning</span>
-            </th>
-            <td><button id="harness-toggle-${codexId}" class="harness-label" type="button" aria-expanded="${codexExpanded}" aria-controls="harness-details-${codexId}" title="${codexExpanded ? "Hide" : "Show"} accepted runs"><span class="harness-toggle-icon" aria-hidden="true">›</span><span>Codex CLI</span></button></td>
-            <td><span class="comparison-value">${codex.runs.length}</span></td>
-            <td><span class="comparison-value">${codex.avgCore.toFixed(1)}</span></td>
-            <td><span class="comparison-value">${codex.avgJudgment.toFixed(1)}</span></td>
-            <td><span class="comparison-value">${codex.sweeps}/${codex.runs.length}</span></td>
-            <td><span class="comparison-value cost-estimate">${money(codex.medianCost)}</span></td>
-            <td><span class="comparison-value cost-estimate">${money(codex.totalCost)}</span></td>
-            <td><span class="comparison-value">${codex.avgFinal.toFixed(1)}</span></td>
-            <td><span class="comparison-value">${integer(codex.medianProdLoc)}</span></td>
-            <td><span class="comparison-value">${integer(codex.medianTestLoc)}</span></td>
-          </tr>
-          <tr id="harness-details-${codexId}" class="run-detail-row harness-detail-row"${codexExpanded ? "" : " hidden"}>
-            <td colspan="10">${harnessRunDetails(codexRow.model, codexRow.effort, "Codex CLI", codex.runs)}</td>
-          </tr>
-          <tr class="harness-summary-row" data-harness-row-id="${openCodeId}" aria-expanded="${openCodeExpanded}">
-            <td><button id="harness-toggle-${openCodeId}" class="harness-label open" type="button" aria-expanded="${openCodeExpanded}" aria-controls="harness-details-${openCodeId}" title="${openCodeExpanded ? "Hide" : "Show"} accepted runs"><span class="harness-toggle-icon" aria-hidden="true">›</span><span>OpenCode</span></button></td>
-            <td><span class="comparison-value">${openCode.runs.length}</span></td>
-            <td><span class="comparison-value">${openCode.avgCore.toFixed(1)}</span></td>
-            <td><span class="comparison-value">${openCode.avgJudgment.toFixed(1)}</span></td>
-            <td><span class="comparison-value">${openCode.sweeps}/${openCode.runs.length}</span></td>
-            <td><span class="comparison-value cost-estimate">${money(openCode.medianCost)}</span></td>
-            <td><span class="comparison-value cost-estimate">${money(openCode.totalCost)}</span></td>
-            <td><span class="comparison-value">${openCode.avgFinal.toFixed(1)}</span></td>
-            <td><span class="comparison-value">${integer(openCode.medianProdLoc)}</span></td>
-            <td><span class="comparison-value">${integer(openCode.medianTestLoc)}</span></td>
-          </tr>
-          <tr id="harness-details-${openCodeId}" class="run-detail-row harness-detail-row"${openCodeExpanded ? "" : " hidden"}>
-            <td colspan="10">${harnessRunDetails(codexRow.model, codexRow.effort, "OpenCode", openCode.runs)}</td>
-          </tr>
-          ${delegated ? `
-          <tr class="harness-summary-row" data-harness-row-id="${delegatedId}" aria-expanded="${delegatedExpanded}">
-            <td><button id="harness-toggle-${delegatedId}" class="harness-label delegated" type="button" aria-expanded="${delegatedExpanded}" aria-controls="harness-details-${delegatedId}" title="${delegatedExpanded ? "Hide" : "Show"} accepted runs"><span class="harness-toggle-icon" aria-hidden="true">›</span><span>Codex CLI delegated</span></button></td>
-            <td><span class="comparison-value">${delegated.runs.length}</span></td>
-            <td><span class="comparison-value">${delegated.avgCore.toFixed(1)}</span></td>
-            <td><span class="comparison-value">${delegated.avgJudgment.toFixed(1)}</span></td>
-            <td><span class="comparison-value">${delegated.sweeps}/${delegated.runs.length}</span></td>
-            <td><span class="comparison-value cost-estimate">${money(delegated.medianCost)}</span></td>
-            <td><span class="comparison-value cost-estimate">${money(delegated.totalCost)}</span></td>
-            <td><span class="comparison-value">${delegated.avgFinal.toFixed(1)}</span></td>
-            <td><span class="comparison-value">${integer(delegated.medianProdLoc)}</span></td>
-            <td><span class="comparison-value">${integer(delegated.medianTestLoc)}</span></td>
-          </tr>
-          <tr id="harness-details-${delegatedId}" class="run-detail-row harness-detail-row"${delegatedExpanded ? "" : " hidden"}>
-            <td colspan="10">${harnessRunDetails(codexRow.model, codexRow.effort, "Codex CLI delegated", delegated.runs)}</td>
-          </tr>` : ""}`;
-      }).join("");
-
-      document.querySelectorAll(".harness-label").forEach(button => {
-        button.addEventListener("click", () => {
-          const id = button.id.replace("harness-toggle-", "");
-          const summaryRow = document.querySelector(`[data-harness-row-id="${id}"]`);
-          const detailRow = document.getElementById(`harness-details-${id}`);
-          const modelId = id.replace(/-(codex|opencode|delegated)$/, "");
-          const modelHeader = document.getElementById(`harness-model-${modelId}`);
-          const expanded = button.getAttribute("aria-expanded") === "true";
-
-          button.setAttribute("aria-expanded", String(!expanded));
-          button.title = `${expanded ? "Show" : "Hide"} accepted runs`;
-          summaryRow.setAttribute("aria-expanded", String(!expanded));
-          detailRow.hidden = expanded;
-          modelHeader.rowSpan += expanded ? -1 : 1;
-          expanded ? expandedHarnessRows.delete(id) : expandedHarnessRows.add(id);
-        });
-      });
-
-      document.querySelectorAll(".harness-summary-row").forEach(summaryRow => {
-        summaryRow.addEventListener("click", event => {
-          if (!event.target.closest(".harness-label")) {
-            document.getElementById(`harness-toggle-${summaryRow.dataset.harnessRowId}`).click();
-          }
-        });
-      });
-    }
-
-    const expandedRows = new Set();
-
-    function runDetails(row) {
-      const costClass = row.costBasis === "estimated" ? "run-cost cost-estimate" : "run-cost";
-      return `
-        <div class="run-detail-panel">
-          <table class="run-detail-table" aria-label="Accepted runs for ${row.model} ${row.effort}">
-            <thead>
-              <tr>
-                <th scope="col">Run</th>
-                <th scope="col">Core /39</th>
-                <th scope="col">Maintenance /10</th>
-                <th scope="col">Ship /94</th>
-                <th scope="col">Final /94</th>
-                <th scope="col">Recovery</th>
-                <th scope="col" title="Unique child agents launched by the candidate; fixed harness workers excluded">Subagents</th>
-                <th scope="col">Prod LOC</th>
-                <th scope="col">Test LOC</th>
-                <th scope="col">Runtime</th>
-                <th scope="col">Cost</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${row.runs.map((run, index) => `
-                <tr>
-                  <td><span class="run-number">Run ${index + 1}</span></td>
-                  <td>${run.core}</td>
-                  <td>${run.judgment}</td>
-                  <td>${run.ship}</td>
-                  <td>${run.final}</td>
-                  <td>${signed(run.final - run.ship)}</td>
-                  <td>${run.subagents}</td>
-                  <td>${integer(run.prodLoc)}</td>
-                  <td>${integer(run.testLoc)}</td>
-                  <td>${duration(run.runtimeSeconds)}</td>
-                  <td><span class="${costClass}">${money(run.cost)}</span></td>
-                </tr>`).join("")}
-            </tbody>
-          </table>
-        </div>`;
-    }
-
-    function renderTable(order = "default") {
-      const sorted = [...summaries];
-      const sorters = {
-        default: (a, b) => a.index - b.index,
-        core: (a, b) => b.avgCore - a.avgCore || b.avgJudgment - a.avgJudgment,
-        judgment: (a, b) => b.avgJudgment - a.avgJudgment || b.avgCore - a.avgCore,
-        "prod-loc": (a, b) => a.medianProdLoc - b.medianProdLoc || b.avgCore - a.avgCore,
-        "test-loc": (a, b) => a.medianTestLoc - b.medianTestLoc || b.avgCore - a.avgCore,
-        "cost-asc": (a, b) => (a.avgCost ?? Infinity) - (b.avgCost ?? Infinity) || b.avgCore - a.avgCore,
-        "cost-desc": (a, b) => {
-          if (a.avgCost === null) return 1;
-          if (b.avgCost === null) return -1;
-          return b.avgCost - a.avgCost || b.avgCore - a.avgCore;
-        },
-        runtime: (a, b) => a.avgRuntime - b.avgRuntime || b.avgCore - a.avgCore,
-        recovery: (a, b) => b.avgRecovery - a.avgRecovery || b.avgCore - a.avgCore
-      };
-      sorted.sort(sorters[order]);
-
-      document.getElementById("results-body").innerHTML = sorted.map(row => {
-        const estimateClass = row.costBasis === "estimated" ? "cost-estimate" : "";
-        const expanded = expandedRows.has(row.id);
-        const totalCost = row.totalCost === null
-          ? '<span class="summary-number unavailable">—</span>'
-          : `<span class="summary-number summary-cost ${estimateClass}">${money(row.totalCost)}</span>`;
-        return `
-          <tr class="summary-row" data-row-id="${row.id}" aria-expanded="${expanded}">
-            <td>
-              <button id="toggle-${row.id}" class="model-toggle" type="button" aria-expanded="${expanded}" aria-controls="details-${row.id}" title="${expanded ? "Hide" : "Show"} accepted runs">
-                <span class="model-toggle-icon" aria-hidden="true">›</span>
-                <span class="model-copy">
-                  <span class="model-name">${row.model}</span>
-                  <span class="model-meta"><span class="effort">${row.effort}</span> · ${row.harness} · ${row.runs.length} ${row.runs.length === 1 ? "run" : "runs"}${row.note ? `<br>${row.note}` : ""}</span>
-                </span>
-              </button>
-            </td>
-            <td title="Core range ${row.minCore}–${row.maxCore}"><span class="summary-number">${row.avgCore.toFixed(1)}</span></td>
-            <td><span class="summary-number">${row.avgJudgment.toFixed(1)}</span></td>
-            <td><span class="summary-number">${row.sweeps}/${row.runs.length}</span></td>
-            <td><span class="summary-number">+${row.avgRecovery.toFixed(1)}</span></td>
-            <td title="Final production LOC range ${integer(row.minProdLoc)}–${integer(row.maxProdLoc)}"><span class="summary-number">${integer(row.medianProdLoc)}</span></td>
-            <td title="Final test LOC range ${integer(row.minTestLoc)}–${integer(row.maxTestLoc)}"><span class="summary-number">${integer(row.medianTestLoc)}</span></td>
-            <td title="Average model work time; evaluator time excluded"><span class="summary-number">${duration(row.avgRuntime)}</span></td>
-            <td><span class="summary-number summary-cost ${estimateClass}">${money(row.medianCost)}</span></td>
-            <td>${totalCost}</td>
-          </tr>
-          <tr id="details-${row.id}" class="run-detail-row"${expanded ? "" : " hidden"}>
-            <td colspan="10">${runDetails(row)}</td>
-          </tr>`;
-      }).join("");
-
-      document.querySelectorAll(".model-toggle").forEach(button => {
-        button.addEventListener("click", () => {
-          const id = button.id.replace("toggle-", "");
-          const summaryRow = document.querySelector(`[data-row-id="${id}"]`);
-          const detailRow = document.getElementById(`details-${id}`);
-          const expanded = button.getAttribute("aria-expanded") === "true";
-
-          button.setAttribute("aria-expanded", String(!expanded));
-          button.title = `${expanded ? "Show" : "Hide"} accepted runs`;
-          summaryRow.setAttribute("aria-expanded", String(!expanded));
-          detailRow.hidden = expanded;
-          expanded ? expandedRows.delete(id) : expandedRows.add(id);
-        });
-      });
-
-      document.querySelectorAll(".summary-row").forEach(summaryRow => {
-        summaryRow.addEventListener("click", event => {
-          if (!event.target.closest(".model-toggle")) {
-            document.getElementById(`toggle-${summaryRow.dataset.rowId}`).click();
-          }
-        });
-      });
-    }
-
-    function drawChart() {
-      const svg = document.getElementById("cost-chart");
-      const tooltip = document.getElementById("chart-tooltip");
-      const ns = "http://www.w3.org/2000/svg";
-      const width = 1120;
-      const height = 470;
-      const margin = { top: 32, right: 175, bottom: 66, left: 72 };
-      const innerWidth = width - margin.left - margin.right;
-      const innerHeight = height - margin.top - margin.bottom;
-      const xMax = 60;
-      const yMin = 25;
-      const yMax = 40;
-      const x = value => margin.left + (value / xMax) * innerWidth;
-      const y = value => margin.top + ((yMax - value) / (yMax - yMin)) * innerHeight;
-      const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-
-      svg.replaceChildren();
-
-      const add = (tag, attrs = {}, parent = svg) => {
-        const node = document.createElementNS(ns, tag);
-        Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, value));
-        parent.appendChild(node);
-        return node;
-      };
-
-      const gridColor = css("--line");
-      const textColor = css("--muted");
-      const labelPlacements = {
-        "astra-low": { dx: -18, dy: -20, anchor: "end" },
-        "astra-medium": { dx: -110, dy: 44, anchor: "end" },
-        "astra-high": { dx: 100, dy: -35, anchor: "start" },
-        "sol-high": { dx: 18, dy: -10, anchor: "start" },
-        "sol-medium": { dx: -18, dy: -18, anchor: "end" },
-        "terra-xhigh": { dx: -18, dy: -18, anchor: "end" },
-        "luna-xhigh": { dx: 18, dy: 15, anchor: "start" },
-        "gpt-5-5-xhigh": { dx: 18, dy: -15, anchor: "start" },
-        "claude-opus5-high": { dx: 18, dy: -9, anchor: "start" },
-        "meta-muse-spark-1-3-high": { dx: -18, dy: -14, anchor: "end" },
-        "grok-4-6-xhigh": { dx: -110, dy: -8, anchor: "end" },
-        "qwen3-8-max-xhigh": { dx: -22, dy: -38, anchor: "end" },
-        "deepseek-v4-pro-0813-max": { dx: 18, dy: 18, anchor: "start" },
-        "kimi-k3-max": { dx: 18, dy: -13, anchor: "start" },
-        "glm-5-3-high": { dx: 18, dy: 19, anchor: "start" },
-        "ox-alpha-high": { dx: 18, dy: -13, anchor: "start" },
-        "ox-alpha-max": { dx: 18, dy: 17, anchor: "start" }
-      };
-
-      [0, 10, 20, 30, 40, 50, 60].forEach(tick => {
-        add("line", { x1: x(tick), x2: x(tick), y1: margin.top, y2: height - margin.bottom, stroke: gridColor, "stroke-width": 1 });
-        const label = add("text", { x: x(tick), y: height - margin.bottom + 24, fill: textColor, "font-size": 12, "text-anchor": "middle" });
-        label.textContent = `$${tick}`;
-      });
-
-      [25, 28, 31, 34, 37, 40].forEach(tick => {
-        add("line", { x1: margin.left, x2: width - margin.right, y1: y(tick), y2: y(tick), stroke: gridColor, "stroke-width": 1 });
-        const label = add("text", { x: margin.left - 12, y: y(tick) + 4, fill: textColor, "font-size": 12, "text-anchor": "end" });
-        label.textContent = tick;
-      });
-
-      add("rect", { x: margin.left, y: margin.top, width: innerWidth, height: innerHeight, fill: "none", stroke: css("--line-strong"), "stroke-width": 1 });
-
-      const xTitle = add("text", { x: margin.left + innerWidth / 2, y: height - 18, fill: css("--text"), "font-size": 12, "text-anchor": "middle" });
-      xTitle.textContent = "Average cost per seven-milestone run (USD)";
-      const yTitle = add("text", { x: 18, y: margin.top + innerHeight / 2, fill: css("--text"), "font-size": 12, "text-anchor": "middle", transform: `rotate(-90 18 ${margin.top + innerHeight / 2})` });
-      yTitle.textContent = "Average final Core families passed (of 39)";
-
-      summaries.forEach(row => {
-        const color = row.model === "GPT-6 Astra" ? css("--astra") : row.harness === "Codex CLI" ? css("--codex") : row.harness === "Claude Code" ? css("--claude") : css("--opencode");
-        const cx = x(row.avgCost);
-        const cy = y(row.avgCore);
-        const radius = 7 + row.avgJudgment * 0.55;
-        const placement = labelPlacements[row.id];
-        const labelX = cx + placement.dx;
-        const labelY = cy + placement.dy;
-        const lineEndX = labelX + (placement.anchor === "start" ? -5 : 5);
-        const lineEndY = labelY - 4;
-        const directionX = lineEndX - cx;
-        const directionY = lineEndY - cy;
-        const directionLength = Math.hypot(directionX, directionY);
-
-        add("line", { x1: x(row.minCost), x2: x(row.maxCost), y1: cy, y2: cy, stroke: color, "stroke-width": 2, opacity: 0.7 });
-        add("line", { x1: cx, x2: cx, y1: y(row.minCore), y2: y(row.maxCore), stroke: color, "stroke-width": 2, opacity: 0.7 });
-        add("line", {
-          x1: cx + (directionX / directionLength) * (radius + 3),
-          y1: cy + (directionY / directionLength) * (radius + 3),
-          x2: lineEndX,
-          y2: lineEndY,
-          stroke: color,
-          "stroke-width": 1.2,
-          opacity: 0.7
-        });
-
-        const point = add("circle", { cx, cy, r: radius, fill: color, stroke: css("--surface"), "stroke-width": 3, tabindex: 0, role: "button", "aria-label": `${row.model}, ${row.effort}: average Core ${row.avgCore.toFixed(1)}, average cost ${money(row.avgCost)}` });
-        const label = add("text", {
-          x: labelX,
-          y: labelY,
-          fill: css("--text"),
-          stroke: css("--surface"),
-          "stroke-width": 4,
-          "paint-order": "stroke fill",
-          "stroke-linejoin": "round",
-          "font-size": 12,
-          "text-anchor": placement.anchor
-        });
-        label.textContent = `${row.model.replace(/^GPT-(?:5\.6|6) /, "")} · ${row.effort}`;
-
-        const showTooltip = event => {
-          tooltip.style.display = "block";
-          const totalLine = row.runs.length > 1 ? `<br>${row.runs.length}-run total ${money(row.totalCost)}` : "";
-          tooltip.innerHTML = `<strong>${row.model} · ${row.effort}</strong><br>Core ${row.avgCore.toFixed(1)}/39 · Maintenance ${row.avgJudgment.toFixed(1)}/10<br>Average model time ${duration(row.avgRuntime)}<br>${row.costBasis === "estimated" ? "Estimated" : "Recorded"} average cost ${money(row.avgCost)}${totalLine}`;
-          const chartRect = svg.getBoundingClientRect();
-          const hostRect = svg.parentElement.getBoundingClientRect();
-          tooltip.style.left = `${Math.min(event.clientX - hostRect.left + 12, hostRect.width - 265)}px`;
-          tooltip.style.top = `${Math.max(event.clientY - hostRect.top - 70, 8)}px`;
-        };
-        const hideTooltip = () => { tooltip.style.display = "none"; };
-        point.addEventListener("pointerenter", showTooltip);
-        point.addEventListener("pointermove", showTooltip);
-        point.addEventListener("pointerleave", hideTooltip);
-        point.addEventListener("focus", () => {
-          const rect = point.getBoundingClientRect();
-          showTooltip({ clientX: rect.left + rect.width / 2, clientY: rect.top + rect.height / 2 });
-        });
-        point.addEventListener("blur", hideTooltip);
-      });
-    }
-
-    const viewTabs = [...document.querySelectorAll(".view-tab")];
-
-    function activateView(view) {
-      viewTabs.forEach(tab => {
-        const selected = tab.dataset.view === view;
-        tab.setAttribute("aria-selected", String(selected));
-        tab.tabIndex = selected ? 0 : -1;
-        document.getElementById(`${tab.dataset.view}-view`).hidden = !selected;
-      });
-    }
-
-    viewTabs.forEach((tab, index) => {
-      tab.addEventListener("click", () => {
-        location.hash = tab.dataset.view === "harness" ? "harness" : "models";
-      });
-      tab.addEventListener("keydown", event => {
-        if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
-        event.preventDefault();
-        const direction = event.key === 'ArrowRight' ? 1 : -1;
-        viewTabs[(index + direction + viewTabs.length) % viewTabs.length].focus();
-      });
-    });
-
-    window.addEventListener("hashchange", () => activateView(location.hash === "#harness" ? "harness" : "models"));
-    document.getElementById("sort-order").addEventListener("change", event => renderTable(event.target.value));
-    renderTable();
-    renderHarnessComparison();
-    drawChart();
-    activateView(location.hash === "#harness" ? "harness" : "models");
   </script>
+  <script src="icons.js"></script>
+  <script src="results.js"></script>
 </body>
 </html>
