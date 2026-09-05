@@ -41,7 +41,7 @@ h3 { font-size: 17px; font-weight: 650; }
 .masthead { justify-content: space-between; gap: 20px; padding-bottom: 27px; }
 .title-line { gap: 10px; }
 .version { color: var(--accent); font-size: 14px; font-weight: 650; background: var(--soft); padding: 3px 7px; border-radius: 4px; }
-.subtitle { margin-top: 9px; color: var(--muted); font-size: 13px; }
+.subtitle { margin-top: 9px; color: var(--muted); font-size: 14px; }
 .header-right { gap: 8px; }
 .updated { font-size: 12px; color: var(--muted); margin-right: 10px; }
 .updated time { display: block; color: var(--ink); }
@@ -151,7 +151,7 @@ td:first-child { text-align: left; }
 .table-foot a, .site-footer a { display: inline-flex; align-items: center; gap: 4px; }
 .table-foot svg.icon { width: 13px; height: 13px; }
 .empty-state { text-align: center; color: var(--muted); padding: 50px 20px; }
-.harness-intro { color: var(--muted); max-width: 700px; font-size: 13px; margin: -7px 0 28px; }
+.harness-intro { color: var(--muted); max-width: 700px; font-size: 15px; line-height: 1.65; margin: -7px 0 28px; }
 .harness-group { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 30px; padding: 25px 0; border-top: 1px solid var(--line); }
 .harness-group > div { min-width: 0; }
 .harness-group-title h3 { font-size: 16px; }
@@ -180,22 +180,24 @@ td:first-child { text-align: left; }
 .method-layout { display: grid; grid-template-columns: 180px minmax(0, 780px); gap: 55px; margin-top: 32px; }
 .method-copy { min-width: 0; }
 #method-title { scroll-margin-top: 24px; }
-.method-nav { display: flex; align-self: start; position: sticky; top: 24px; flex-direction: column; gap: 14px; font-size: 12px; }
+#method-view .section-note { font-size: 14px; }
+.method-nav { display: flex; align-self: start; position: sticky; top: 24px; flex-direction: column; gap: 14px; font-size: 14px; }
 .method-nav a { color: var(--muted); }
 .method-copy section { margin-bottom: 40px; scroll-margin-top: 28px; }
-.method-copy p { margin-top: 14px; color: var(--muted); font-size: 13px; line-height: 1.7; }
-.method-copy h3 { border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+.method-copy p { margin-top: 18px; color: var(--muted); font-size: 16px; line-height: 1.7; }
+.method-copy h3 { font-size: 19px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
 .definitions { margin-top: 7px; }
 .definitions > div { display: grid; grid-template-columns: 130px 1fr; gap: 15px; padding: 14px 0; border-bottom: 1px solid var(--line); }
-.definitions dt { font-size: 13px; font-weight: 550; }
-.definitions dt span { color: var(--muted); font-size: 11px; font-weight: 400; }
-.definitions dd { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+.definitions dt { font-size: 15px; font-weight: 550; }
+.definitions dt span { color: var(--muted); font-size: 13px; font-weight: 400; }
+.definitions dd { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.65; }
 .pricing-table { margin: 17px 0; min-width: 360px; }
-.pricing-table caption { text-align: left; color: var(--muted); font-size: 11px; padding-bottom: 8px; }
-.pricing-table td { font-size: 12px; padding: 9px 14px; }
+.pricing-table caption { text-align: left; color: var(--muted); font-size: 13px; padding-bottom: 8px; }
+.pricing-table th { font-size: 13px; }
+.pricing-table td { font-size: 14px; padding: 9px 14px; }
 .method-copy details { margin-top: 15px; }
-.method-copy summary { font-size: 12px; color: var(--accent); }
-.source-links { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 16px; font-size: 12px; }
+.method-copy summary { font-size: 14px; color: var(--accent); }
+.source-links { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 16px; font-size: 14px; }
 .source-links a { display: inline-flex; align-items: center; gap: 5px; }
 .site-footer { justify-content: space-between; gap: 12px; flex-wrap: wrap; border-top: 1px solid var(--line); margin-top: 40px; padding-top: 17px; color: var(--muted); font-size: 11px; }
 .site-footer a { color: var(--muted); }
@@ -219,7 +221,7 @@ td:first-child { text-align: left; }
   main { padding: 23px 18px 20px; }
   h1 { font-size: 26px; }
   .masthead { align-items: flex-start; gap: 10px; padding-bottom: 22px; }
-  .subtitle { font-size: 11px; max-width: 235px; line-height: 1.55; }
+  .subtitle { font-size: 13px; max-width: 235px; line-height: 1.55; }
   .header-right { gap: 5px; }
   .updated { display: none; }
   .icon-button { width: 32px; height: 32px; }
