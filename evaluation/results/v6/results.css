@@ -58,7 +58,6 @@ h3 { font-size: 17px; font-weight: 650; }
 .chart-controls { gap: 14px; flex-wrap: wrap; }
 .segmented { display: flex; padding: 3px; border: 1px solid var(--line); border-radius: 6px; background: var(--soft); }
 .segmented button { padding: 5px 9px; border-radius: 3px; font-size: 12px; white-space: nowrap; }
-.segmented button span { opacity: .6; font-size: 10px; margin-left: 3px; }
 .segmented button[aria-pressed="true"] { background: var(--surface); color: var(--accent); box-shadow: 0 1px 2px #00000012; }
 .select-label { display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--muted); }
 .plot-layout { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 24px; }
@@ -96,7 +95,7 @@ h3 { font-size: 17px; font-weight: 650; }
 .selection-scores { display: grid; grid-template-columns: 1fr 1fr; margin: 19px 0 15px; gap: 12px; }
 .selection-scores dt, .selection-facts dt { color: var(--muted); font-size: 11px; }
 .selection-scores dd { font-size: 28px; font-weight: 600; margin: 3px 0 0; font-variant-numeric: tabular-nums; }
-.selection-scores dd span { font-size: 13px; font-weight: 400; color: var(--muted); }
+.selection-scores dd span { display: block; font-size: 12px; font-weight: 400; color: var(--muted); }
 .selection-facts { display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; margin: 0; padding-top: 12px; border-top: 1px solid var(--line); }
 .selection-facts dd { text-align: right; margin: 0; font-size: 12px; font-variant-numeric: tabular-nums; }
 .selection-range { font-size: 11px; color: var(--muted); margin: 13px 0 18px; }
@@ -164,9 +163,10 @@ td:first-child { text-align: left; }
 .condition-name > svg { width: 13px; height: 13px; }
 .harness-condition[open] .condition-name > svg { transform: rotate(90deg); }
 .condition-name small { display: block; color: var(--muted); font-weight: 400; font-size: 10px; margin-top: 2px; }
-.condition-metric { text-align: right; min-width: 0; }
+.condition-metric { text-align: right; min-width: 0; align-self: start; }
 .condition-metric small { display: block; font-size: 10px; color: var(--muted); margin-bottom: 4px; }
 .condition-metric strong { font-size: 16px; font-weight: 550; font-variant-numeric: tabular-nums; }
+.metric-limit { display: block; font-size: 10px; color: var(--muted); }
 .condition-track { display: block; width: 100%; height: 3px; background: var(--line); margin-top: 5px; }
 .condition-track b { display: block; height: 100%; background: var(--condition-color); }
 .harness-condition .run-detail-panel { padding: 17px 0 5px; }
@@ -189,12 +189,8 @@ td:first-child { text-align: left; }
 .definitions { margin-top: 7px; }
 .definitions > div { display: grid; grid-template-columns: 130px 1fr; gap: 15px; padding: 14px 0; border-bottom: 1px solid var(--line); }
 .definitions dt { font-size: 15px; font-weight: 550; }
-.definitions dt span { color: var(--muted); font-size: 13px; font-weight: 400; }
+.definitions dt span { display: block; color: var(--muted); font-size: 13px; font-weight: 400; }
 .definitions dd { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.65; }
-.pricing-table { margin: 17px 0; min-width: 360px; }
-.pricing-table caption { text-align: left; color: var(--muted); font-size: 13px; padding-bottom: 8px; }
-.pricing-table th { font-size: 13px; }
-.pricing-table td { font-size: 14px; padding: 9px 14px; }
 .method-copy details { margin-top: 15px; }
 .method-copy summary { font-size: 14px; color: var(--accent); }
 .source-links { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 16px; font-size: 14px; }
@@ -230,7 +226,6 @@ td:first-child { text-align: left; }
   h2 { font-size: 18px; }
   .chart-controls { width: 100%; justify-content: space-between; gap: 7px; }
   .segmented button { padding: 5px 7px; font-size: 11px; }
-  .segmented button span { margin-left: 1px; }
   .select-label > span { display: none; }
   .select-label select { min-height: 33px; max-width: 125px; font-size: 11px; }
   .plot-layout { grid-template-columns: 1fr; gap: 16px; }

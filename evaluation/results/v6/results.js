@@ -57,7 +57,7 @@ function runDetails(row, showRuntime = true) {
   return `<div class="run-detail-panel">
     <div class="run-detail-header"><strong>${row.runs.length} completed ${row.runs.length === 1 ? "run" : "runs"}</strong><span>Sample total <span class="${estimateClass(row)}">${money(row.totalCost)}</span> · Average recovery ${signed(Number(row.avgRecovery.toFixed(1)))}</span></div>
     <div class="table-wrap"><table class="run-detail-table" aria-label="Runs for ${row.model} ${row.effort}, ${row.harness}">
-      <thead><tr><th scope="col">Run</th><th scope="col">Core /39</th><th scope="col">Maintenance /10</th><th scope="col">Ship /94</th><th scope="col">Final /94</th><th scope="col">Recovery</th><th scope="col" title="Candidate-launched children; fixed harness workers excluded">Subagents</th><th scope="col">Prod LOC</th><th scope="col">Test LOC</th>${showRuntime ? '<th scope="col">Runtime</th>' : ""}<th scope="col">Cost</th></tr></thead>
+      <thead><tr><th scope="col">Run</th><th scope="col">Core <span>out of 39</span></th><th scope="col">Maintenance <span>out of 10</span></th><th scope="col">Ship <span>out of 94</span></th><th scope="col">Final <span>out of 94</span></th><th scope="col">Recovery</th><th scope="col" title="Candidate-launched children; fixed harness workers excluded">Subagents</th><th scope="col">Prod LOC</th><th scope="col">Test LOC</th>${showRuntime ? '<th scope="col">Runtime</th>' : ""}<th scope="col">Cost</th></tr></thead>
       <tbody>${row.runs.map((run, index) => `<tr><td class="run-number">Run ${String(index + 1).padStart(2, "0")}</td><td>${run.core}</td><td>${run.judgment}</td><td>${run.ship}</td><td>${run.final}</td><td>${signed(run.final - run.ship)}</td><td>${run.subagents}</td><td>${integer(run.prodLoc)}</td><td>${integer(run.testLoc)}</td>${showRuntime ? `<td>${duration(run.runtimeSeconds)}</td>` : ""}<td class="run-cost ${estimateClass(row)}">${money(run.cost)}</td></tr>`).join("")}</tbody>
     </table></div>
   </div>`;
@@ -76,9 +76,9 @@ function renderTable() {
     const extraNote = row.id.startsWith("ox-alpha") ? " · OX Alpha preview" : "";
     return `<tr class="summary-row${row.id === state.selected ? " selected" : ""}" data-row-id="${row.id}" style="--row-color:var(--${family(row)})" aria-expanded="${expanded}">
       <td><button id="toggle-${row.id}" class="model-toggle" aria-expanded="${expanded}" aria-controls="details-${row.id}" title="${expanded ? "Hide" : "Show"} runs for ${row.model} ${row.effort}"><i data-icon="ChevronRight"></i><span><span class="model-name">${row.model}<span class="effort">${row.effort}</span></span><span class="model-meta">${row.harness} · ${row.runs.length} ${row.runs.length === 1 ? "run" : "runs"}${extraNote}</span></span></button></td>
-      <td data-label="Core /39" title="Observed range ${row.minCore}–${row.maxCore}">${scoreCell(row.avgCore, 39)}</td>
-      <td data-label="Maintenance /10">${scoreCell(row.avgJudgment, 10)}</td>
-      <td data-label="Sweeps"><span class="summary-number">${row.sweeps}<span class="muted">/${row.runs.length}</span></span></td>
+      <td data-label="Core" title="${row.avgCore.toFixed(1)} out of 39; observed range ${row.minCore}–${row.maxCore}">${scoreCell(row.avgCore, 39)}</td>
+      <td data-label="Maintenance" title="${row.avgJudgment.toFixed(1)} out of 10">${scoreCell(row.avgJudgment, 10)}</td>
+      <td data-label="Sweeps"><span class="summary-number">${row.sweeps} of ${row.runs.length}</span></td>
       <td data-label="Avg runtime"><span class="summary-number">${duration(row.avgRuntime)}</span></td>
       <td data-label="Median cost"><span class="summary-number ${estimateClass(row)}">${money(row.medianCost)}</span></td>
       <td data-label="Prod / test LOC" class="code-cell">${integer(row.medianProdLoc)} <span>/ ${integer(row.medianTestLoc)}</span></td>
@@ -106,7 +106,7 @@ function renderSelection() {
   const panel = document.getElementById("selection-panel");
   if (!row) { panel.innerHTML = '<p class="section-note">No matching configurations.</p>'; return; }
   panel.innerHTML = `<div class="selection-heading"><div class="selection-kicker"><b class="legend-symbol ${family(row)}"></b>${row.harness}</div><h3 class="selection-title">${row.model}</h3><p class="selection-meta">${row.effort} reasoning · ${row.runs.length} completed ${row.runs.length === 1 ? "run" : "runs"}</p></div>
-    <dl class="selection-scores"><div><dt>Core · mean</dt><dd>${row.avgCore.toFixed(1)}<span> /39</span></dd></div><div><dt>Maintenance · mean</dt><dd>${row.avgJudgment.toFixed(1)}<span> /10</span></dd></div></dl>
+    <dl class="selection-scores"><div><dt>Core · mean</dt><dd>${row.avgCore.toFixed(1)}<span>out of 39</span></dd></div><div><dt>Maintenance · mean</dt><dd>${row.avgJudgment.toFixed(1)}<span>out of 10</span></dd></div></dl>
     <dl class="selection-facts"><dt>Median cost</dt><dd class="${estimateClass(row)}">${money(row.medianCost)}</dd><dt>Average runtime</dt><dd>${duration(row.avgRuntime)}</dd><dt>Perfect sweeps</dt><dd>${row.sweeps} of ${row.runs.length}</dd></dl>
     <p class="selection-range">Cost range <span class="${estimateClass(row)}">${money(row.minCost)}–${money(row.maxCost)}</span></p>
     <button class="text-button" id="selection-runs">View ${row.runs.length} ${row.runs.length === 1 ? "run" : "runs"}<i data-icon="ArrowDown"></i></button>`;
@@ -165,8 +165,8 @@ function drawChart() {
     add("text", { x: x(tick), y: height - margin.bottom + 20, "text-anchor": "middle", class: "plot-text" }, svg, xFormat(tick));
   }
   add("line", { x1: margin.left, x2: width - margin.right, y1: height - margin.bottom, y2: height - margin.bottom, class: "plot-axis" });
-  add("text", { x: margin.left, y: 12, class: "plot-axis-title" }, svg, `${scoreName} /${maxScore}`);
-  add("text", { x: width - margin.right, y: 12, "text-anchor": "end", class: "plot-axis-title" }, svg, `${maxScore} = all checks passed`);
+  add("text", { x: margin.left, y: 12, class: "plot-axis-title" }, svg, `Average ${scoreName}`);
+  add("text", { x: width - margin.right, y: 12, "text-anchor": "end", class: "plot-axis-title" }, svg, `${maxScore} ${compact ? "possible" : "points possible"}`);
   add("text", { x: margin.left + innerWidth / 2, y: height - 3, "text-anchor": "middle", class: "plot-axis-title" }, svg, xTitle);
 
   const positions = visible.map(row => ({ row, cx: x(row[summaryKey]), cy: y(row[scoreKey]) }));
@@ -181,8 +181,8 @@ function drawChart() {
   });
   positions.forEach(({ row, cx, cy }) => {
     const selected = row.id === state.selected;
-    const group = add("g", { class: "plot-point", "data-model": row.id, tabindex: 0, role: "button", "aria-pressed": selected, style: `color:var(--${family(row)})`, "aria-label": `${row.model} ${row.effort}: Core ${row.avgCore.toFixed(1)}/39, Maintenance ${row.avgJudgment.toFixed(1)}/10, median cost ${money(row.medianCost)}, ${row.runs.length} runs` });
-    add("title", {}, group, `${row.model} · ${row.effort}\nCore ${row.avgCore.toFixed(1)} · Maintenance ${row.avgJudgment.toFixed(1)}\nMedian ${money(row.medianCost)} · ${row.runs.length} runs`);
+    const group = add("g", { class: "plot-point", "data-model": row.id, tabindex: 0, role: "button", "aria-pressed": selected, style: `color:var(--${family(row)})`, "aria-label": `${row.model} ${row.effort}: Core ${row.avgCore.toFixed(1)} out of 39, Maintenance ${row.avgJudgment.toFixed(1)} out of 10, median cost ${money(row.medianCost)}, ${row.runs.length} ${row.runs.length === 1 ? "run" : "runs"}` });
+    add("title", {}, group, `${row.model} · ${row.effort}\nCore ${row.avgCore.toFixed(1)} out of 39 · Maintenance ${row.avgJudgment.toFixed(1)} out of 10\nMedian ${money(row.medianCost)} · ${row.runs.length} ${row.runs.length === 1 ? "run" : "runs"}`);
     if (selected) add("circle", { cx, cy, r: 10, class: "halo" }, group);
     const common = { fill: "currentColor", class: "mark" };
     if (family(row) === "opencode") add("rect", { x: cx - 5, y: cy - 5, width: 10, height: 10, ...common }, group);
@@ -231,7 +231,7 @@ function drawChart() {
     if (row.id === state.selected) label.setAttribute("font-weight", "650");
     occupied.push(best.box);
   }
-  document.getElementById("plot-description").textContent = `Average ${scoreName} /${maxScore} against ${xTitle.charAt(0).toLowerCase() + xTitle.slice(1)}. ${state.ranges ? "Whiskers show observed run ranges, not confidence intervals." : "Range shown for the selected configuration."}${state.x === "cost" ? " ≈ API-equivalent estimate." : ""}`;
+  document.getElementById("plot-description").textContent = `Average ${scoreName} score (out of ${maxScore}) against ${xTitle.charAt(0).toLowerCase() + xTitle.slice(1)}. ${state.ranges ? "Whiskers show observed run ranges, not confidence intervals." : "Range shown for the selected configuration."}${state.x === "cost" ? " ≈ API-equivalent estimate." : ""}`;
 }
 
 function renderHarnessComparison() {
@@ -247,11 +247,11 @@ function renderHarnessComparison() {
       const row = summarize({ ...model, harness: condition.name, runs: condition.runs, costBasis: "estimated" });
       return `<details class="harness-condition" id="harness-${id}-${condition.key}" style="--condition-color:var(--${condition.color})"><summary>
         <span class="condition-name"><i data-icon="ChevronRight"></i><span>${condition.name}<small>${row.runs.length} runs</small></span></span>
-        <span class="condition-metric"><small>Core /39 · mean</small><strong>${row.avgCore.toFixed(1)}</strong><span class="condition-track"><b style="width:${row.avgCore / 39 * 100}%"></b></span></span>
-        <span class="condition-metric"><small>Maint. /10 · mean</small><strong>${row.avgJudgment.toFixed(1)}</strong><span class="condition-track"><b style="width:${row.avgJudgment * 10}%"></b></span></span>
-        <span class="condition-metric"><small>Sweeps</small><strong>${row.sweeps}/${row.runs.length}</strong></span>
+        <span class="condition-metric"><small>Core · mean</small><strong>${row.avgCore.toFixed(1)}</strong><span class="metric-limit">out of 39</span><span class="condition-track"><b style="width:${row.avgCore / 39 * 100}%"></b></span></span>
+        <span class="condition-metric"><small>Maint. · mean</small><strong>${row.avgJudgment.toFixed(1)}</strong><span class="metric-limit">out of 10</span><span class="condition-track"><b style="width:${row.avgJudgment * 10}%"></b></span></span>
+        <span class="condition-metric"><small>Sweeps</small><strong>${row.sweeps} of ${row.runs.length}</strong></span>
         <span class="condition-metric"><small>Cost · median</small><strong class="cost-estimate">${money(row.medianCost)}</strong></span>
-        </summary><div class="run-detail-header" style="margin-top:20px">Median code: ${integer(row.medianProdLoc)} production / ${integer(row.medianTestLoc)} test LOC · Average final: ${mean(row.runs.map(run => run.final)).toFixed(1)}/94</div>${runDetails(row, false)}</details>`;
+        </summary><div class="run-detail-header" style="margin-top:20px">Median code: ${integer(row.medianProdLoc)} production / ${integer(row.medianTestLoc)} test LOC · Average final: ${mean(row.runs.map(run => run.final)).toFixed(1)} out of 94 scenarios</div>${runDetails(row, false)}</details>`;
     }).join("")}</div></section>`;
   }).join("");
   const audits = [

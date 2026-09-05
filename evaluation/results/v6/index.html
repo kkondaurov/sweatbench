@@ -33,8 +33,8 @@
         <div><h2>Model comparison</h2><p class="section-note"><span id="sample-summary">17 configurations · 67 completed runs</span><span class="note-separator"> / </span>1–5 runs per configuration</p></div>
         <div class="chart-controls">
           <div class="segmented" role="group" aria-label="Chart score">
-            <button data-score="core" aria-pressed="true">Core <span>/39</span></button>
-            <button data-score="judgment" aria-pressed="false">Maintenance <span>/10</span></button>
+            <button data-score="core" aria-pressed="true">Core</button>
+            <button data-score="judgment" aria-pressed="false">Maintenance</button>
           </div>
           <label class="select-label"><span>Against</span><select id="chart-x" aria-label="Chart horizontal metric"><option value="cost">Cost</option><option value="runtime">Runtime</option><option value="code">Production LOC</option></select></label>
         </div>
@@ -54,7 +54,7 @@
         </div>
         <aside id="selection-panel" class="selection-panel" aria-label="Selected configuration"></aside>
       </div>
-      <p class="chart-caption" id="plot-description">Average Core /39 against median cost per seven-milestone run. ≈ API-equivalent estimate.</p>
+      <p class="chart-caption" id="plot-description">Average Core score (out of 39) against median cost per seven-milestone run. ≈ API-equivalent estimate.</p>
 
       <section class="comparison-section" aria-labelledby="results-title">
         <div class="section-heading table-heading">
@@ -69,9 +69,9 @@
           <table class="results-table">
             <thead><tr>
               <th scope="col" class="model-col">Model / reasoning</th>
-              <th scope="col">Core <span>/39</span></th>
-              <th scope="col">Maintenance <span>/10</span></th>
-              <th scope="col" title="Runs with 39/39 Core and 10/10 Maintenance">Sweeps</th>
+              <th scope="col">Core <span>out of 39</span></th>
+              <th scope="col">Maintenance <span>out of 10</span></th>
+              <th scope="col" title="Runs earning all 39 Core points and all 10 Maintenance points">Sweeps</th>
               <th scope="col">Runtime</th>
               <th scope="col">Cost <span>/run</span></th>
               <th scope="col">Code <span>prod / test</span></th>
@@ -115,10 +115,10 @@
           </section>
           <section id="scores"><h3>Scoring</h3>
             <dl class="definitions">
-              <div><dt>Core <span>/39</span></dt><dd>The requested features and business rules, including persistence, retries and upgrades. Related checks are grouped into 39 families. A family earns one point when all its checks pass.</dd></div>
-              <div><dt>Maintenance <span>/10</span></dt><dd>Ten automated checks: five test upgrades of existing production data, and five test interactions among payments, credits, transfers and reporting.</dd></div>
-              <div><dt>Sweep</dt><dd>A run with 39/39 Core and 10/10 Maintenance.</dd></div>
-              <div><dt>Ship / final <span>/94</span></dt><dd>Ship counts scenarios passed when their milestone was delivered. Final counts them after later milestones, combining tests of the finished application with historical system checks recorded at the relevant milestone. Those historical checks are not rerun against the final code.</dd></div>
+              <div><dt>Core <span>out of 39</span></dt><dd>The requested features and business rules, including persistence, retries and upgrades. Related checks are grouped into 39 families. A family earns one point when all its checks pass.</dd></div>
+              <div><dt>Maintenance <span>out of 10</span></dt><dd>Ten automated checks: five test upgrades of existing production data, and five test interactions among payments, credits, transfers and reporting.</dd></div>
+              <div><dt>Sweep</dt><dd>A run that earns all 39 Core points and all 10 Maintenance points.</dd></div>
+              <div><dt>Ship and final <span>out of 94 scenarios</span></dt><dd>Ship counts scenarios passed when their milestone was delivered. Final counts them after later milestones, combining tests of the finished application with historical system checks recorded at the relevant milestone. Those historical checks are not rerun against the final code.</dd></div>
               <div><dt>Recovery</dt><dd>The change from ship-time to final scenario totals. A positive value means later work repaired earlier failures; a negative value means regressions outnumbered repairs. Migration failures recorded at delivery still count even if the code is repaired later.</dd></div>
             </dl>
           </section>
@@ -130,9 +130,6 @@
           <section id="costs"><h3>Cost estimates</h3>
             <p>Costs marked <strong>≈</strong> are calculated from recorded token usage at API prices. For subscription runs, this estimates what the inference would have cost through the API; it is not an extra subscription charge. Unmarked OpenCode costs are actual OpenRouter charges.</p>
             <p>Costs include the main agent and all its subagents, as well as Codex's automatic review, priced at Luna rates. Reasoning tokens are included in output tokens and are charged only once. The private evaluator makes no model calls and adds no inference cost.</p>
-            <div class="table-wrap"><table class="pricing-table"><caption>USD per million tokens · standard short-context rates</caption><thead><tr><th>Model</th><th>Input</th><th>Cached input</th><th>Output</th></tr></thead><tbody>
-              <tr><td>Astra</td><td>$10</td><td>$1</td><td>$50</td></tr><tr><td>GPT-5.5</td><td>$5</td><td>$0.50</td><td>$30</td></tr><tr><td>Sol</td><td>$4</td><td>$0.40</td><td>$20</td></tr><tr><td>Terra</td><td>$2</td><td>$0.20</td><td>$12</td></tr><tr><td>Luna</td><td>$0.20</td><td>$0.02</td><td>$1.20</td></tr><tr><td>GLM-5.3 Flash</td><td>$0.15</td><td>$0.03</td><td>$0.50</td></tr>
-            </tbody></table></div>
             <p>In the Astra runs shown here, the largest request contained 113,468 input tokens, below the 272K threshold for long-context pricing, and no cache-write tokens were recorded. GPT-5.5's recorded context window was 258,400 tokens. Some older logs lack enough detail to reconstruct per-request surcharges or cache-write charges, so those estimates use standard rates.</p>
             <p>Codex includes cache reads in its total input count; OpenCode reports them separately. The calculations account for that difference. As an agent's conversation grows, repeatedly sending its history can become expensive even at cached rates: cache reads account for roughly $12–14 per Kimi run and $13–22 per GLM 5.3 run.</p>
             <details><summary>Model-specific accounting</summary>
