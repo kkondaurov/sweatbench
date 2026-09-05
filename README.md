@@ -95,36 +95,38 @@ for diagnosis; they are not collapsed into one synthetic score.
 
 ## Reference results
 
-The model-comparison view contains 67 completed trajectories. Every listed trajectory completed all
+The model-comparison view contains 73 completed trajectories. Every listed trajectory completed all
 seven milestones and passed the benchmark's integrity checks. Low-scoring valid runs are included;
 incomplete, invalid, and infrastructure-debug attempts are not model results and are excluded.
 
 | Model and harness | n | Avg Core | Avg Maintenance | Sweeps | Median cost |
 |---|---:|---:|---:|---:|---:|
-| GPT-6 Astra low, Codex CLI | 2 | 39.0 | 9.0 | 1/2 | ~= $12.36 |
-| GPT-6 Astra medium, Codex CLI | 2 | 38.0 | 7.0 | 0/2 | ~= $14.95 |
-| GPT-6 Astra high, Codex CLI | 2 | 38.5 | 8.5 | 1/2 | ~= $18.45 |
-| GPT-5.6 Sol high, Codex CLI | 5 | 38.8 | 9.6 | 4/5 | ~= $22.37 |
-| GPT-5.6 Sol medium, Codex CLI | 5 | 38.2 | 8.8 | 2/5 | ~= $13.90 |
-| GPT-5.6 Terra xhigh, Codex CLI | 5 | 36.6 | 7.0 | 0/5 | ~= $9.96 |
-| GPT-5.6 Luna xhigh, Codex CLI | 5 | 32.6 | 6.2 | 0/5 | ~= $1.50 |
-| GPT-5.5 xhigh, Codex CLI | 5 | 37.0 | 7.6 | 0/5 | ~= $27.57 |
-| Claude Opus 5 high, Claude Code | 2 | 38.5 | 9.5 | 1/2 | ~= $47.65 |
+| GPT-6 Astra low, Codex CLI | 3 | 38.7 | 9.0 | 1/3 | $12.30 |
+| GPT-6 Astra medium, Codex CLI | 3 | 38.3 | 7.3 | 0/3 | $15.24 |
+| GPT-6 Astra high, Codex CLI | 3 | 38.7 | 8.3 | 1/3 | $19.04 |
+| GPT-6 Astra X-High, Codex CLI | 3 | 39.0 | 10.0 | 3/3 | $28.71 |
+| GPT-5.6 Sol high, Codex CLI | 5 | 38.8 | 9.6 | 4/5 | $22.37 |
+| GPT-5.6 Sol medium, Codex CLI | 5 | 38.2 | 8.8 | 2/5 | $13.90 |
+| GPT-5.6 Terra xhigh, Codex CLI | 5 | 36.6 | 7.0 | 0/5 | $9.96 |
+| GPT-5.6 Luna xhigh, Codex CLI | 5 | 32.6 | 6.2 | 0/5 | $1.50 |
+| GPT-5.5 xhigh, Codex CLI | 5 | 37.0 | 7.6 | 0/5 | $27.57 |
+| Claude Opus 5 high, Claude Code | 2 | 38.5 | 9.5 | 1/2 | $47.65 |
 | Meta Muse Spark 1.3 high, OpenCode | 1 | 29.0 | 3.0 | 0/1 | $53.61 |
 | Grok 4.6 xhigh, OpenCode | 5 | 37.6 | 7.8 | 0/5 | $14.71 |
 | Qwen3.8 Max xhigh, OpenCode | 5 | 35.8 | 7.6 | 0/5 | $25.34 |
 | DeepSeek V4 Pro 0813 max, OpenCode | 5 | 35.0 | 6.4 | 0/5 | $8.87 |
 | Kimi K3 max, OpenCode | 5 | 36.2 | 6.8 | 0/5 | $29.23 |
 | GLM 5.3 high, OpenCode | 5 | 35.4 | 7.6 | 1/5 | $20.96 |
-| GLM-5.3 Flash high, OpenCode | 4 | 34.8 | 6.5 | 0/4 | ~= $2.08 |
-| GLM-5.3 Flash max, OpenCode | 4 | 34.0 | 6.8 | 0/4 | ~= $2.96 |
+| GLM-5.3 Flash high, OpenCode | 4 | 34.8 | 6.5 | 0/4 | $2.08 |
+| GLM-5.3 Flash max, OpenCode | 4 | 34.0 | 6.8 | 0/4 | $2.96 |
 
-`~=` marks an API-equivalent estimate from recorded token usage. Unmarked OpenCode costs are
+Codex, Claude Code and GLM-5.3 Flash costs are API-equivalent, calculated from recorded token usage. Other OpenCode costs are
 recorded provider charges. The dashboard documents model-specific rates, cached input treatment,
 descendant sessions, and harness-owned review work. The Muse figure is one recorded OpenRouter run,
-not a reliability estimate. Astra low, medium, and high have two runs each; they use Codex CLI
-0.153.4, newer than the earlier GPT cohort. Their costs are standard API-equivalent estimates,
-not additional subscription charges.
+not a reliability estimate. Astra low, medium, high and X-High have three runs each; they use Codex CLI
+0.153.4, newer than the earlier GPT cohort. Their costs are standard API-equivalent costs,
+not additional subscription charges. X-High runs 2 and 3 resumed after provider-capacity errors;
+their costs and runtimes include the discarded attempts but exclude stopped time.
 
 An additional 25 accepted trajectories form a controlled harness view: the same four GPT-5.6
 model/effort configurations under OpenCode, plus a Codex Luna condition explicitly instructed to

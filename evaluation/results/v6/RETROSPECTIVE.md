@@ -2,6 +2,12 @@
 
 Snapshot: 30 August 2026; updated 5 September 2026
 
+This analysis covers the earlier 67-run Models population. Six additional Astra runs are now
+published in the [dashboard](index.html) and [dataset](accepted-runs.json), bringing Models to
+73 runs and the full dataset to 98. See the [current Astra results](ASTRA_TRAJECTORIES.md#current-results)
+for the twelve-run effort comparison and interrupted-attempt accounting. Historical statistics
+and source-level claims below retain their original population.
+
 Public release: `v6.0.0`
 
 Source benchmark-content commit: `5fda9a09255529b027cadf836c0c16c867a039e5`

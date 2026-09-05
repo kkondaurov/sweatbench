@@ -23,14 +23,14 @@
     </header>
 
     <nav class="view-tabs" role="tablist" aria-label="Results view">
-      <button id="models-tab" class="view-tab" role="tab" aria-selected="true" aria-controls="models-view" data-view="models">Models <span id="models-count" class="tab-count">67</span></button>
+      <button id="models-tab" class="view-tab" role="tab" aria-selected="true" aria-controls="models-view" data-view="models">Models <span id="models-count" class="tab-count">73</span></button>
       <button id="harness-tab" class="view-tab" role="tab" aria-selected="false" aria-controls="harness-view" data-view="harness" tabindex="-1">Harnesses <span class="tab-count">45</span></button>
       <button id="method-tab" class="view-tab" role="tab" aria-selected="false" aria-controls="method-view" data-view="method" tabindex="-1">Method</button>
     </nav>
 
     <section id="models-view" class="view-panel" role="tabpanel" aria-labelledby="models-tab">
       <div class="section-heading overview-heading">
-        <div><h2>Model comparison</h2><p class="section-note"><span id="sample-summary">17 configurations · 67 completed runs</span><span class="note-separator"> / </span>1–5 runs per configuration</p></div>
+        <div><h2>Model comparison</h2><p class="section-note"><span id="sample-summary">18 configurations · 73 completed runs</span><span class="note-separator"> / </span>1–5 runs per configuration</p></div>
         <div class="chart-controls">
           <div class="segmented" role="group" aria-label="Chart score">
             <button data-score="core" aria-pressed="true">Core</button>
@@ -50,15 +50,16 @@
               <span><b class="legend-symbol claude"></b>Claude Code</span>
             </div>
             <label class="range-toggle"><input id="show-ranges" type="checkbox">Run ranges</label>
+            <label class="range-toggle"><input id="full-score-scale" type="checkbox">Full score scale</label>
           </div>
         </div>
         <aside id="selection-panel" class="selection-panel" aria-label="Selected configuration"></aside>
       </div>
-      <p class="chart-caption" id="plot-description">Average Core score (out of 39) against median cost per seven-milestone run. ≈ API-equivalent estimate.</p>
+      <p class="chart-caption" id="plot-description">Average Core score (out of 39) against median cost per seven-milestone run.</p>
 
       <section class="comparison-section" aria-labelledby="results-title">
         <div class="section-heading table-heading">
-          <div><h2 id="results-title">Model results <span id="visible-count" class="heading-count">17</span></h2><p class="section-note">Average scores and runtime; median cost and code size.</p></div>
+          <div><h2 id="results-title">Model results <span id="visible-count" class="heading-count">18</span></h2><p class="section-note">Average scores and runtime; median cost and code size.</p></div>
           <div class="table-controls">
             <label class="search-field"><i data-icon="Search"></i><input id="model-search" type="search" placeholder="Find a model" aria-label="Find a model"></label>
             <select id="harness-filter" aria-label="Filter by harness"><option value="all">All harnesses</option><option>Codex CLI</option><option>OpenCode</option><option>Claude Code</option></select>
@@ -81,7 +82,7 @@
           </table>
         </div>
         <p class="empty-state" id="empty-state" hidden>No matching configurations.</p>
-        <div class="table-foot"><span>≈ API-equivalent estimate; unmarked costs are recorded spend.</span><a href="#method">Scoring &amp; cost definitions <i data-icon="ArrowUpRight"></i></a></div>
+        <div class="table-foot"><span>Codex, Claude Code and GLM-5.3 Flash costs are API-equivalent. Other model costs are recorded spend.</span><a href="#costs">Cost accounting <i data-icon="ArrowUpRight"></i></a></div>
       </section>
     </section>
 
@@ -91,7 +92,7 @@
       </div>
       <p class="harness-intro">These runs compare Codex CLI with OpenCode using the same models, reasoning efforts, benchmark and handoff protocol. A third Luna configuration uses Codex with an added instruction to delegate independent code reviews.</p>
       <div id="harness-comparisons"></div>
-      <div class="table-foot"><span>All costs are API-equivalent estimates and include subagent usage.</span><a href="#method">About the comparison <i data-icon="ArrowUpRight"></i></a></div>
+      <div class="table-foot"><span>All costs are API-equivalent and include subagent usage.</span><a href="#method">About the comparison <i data-icon="ArrowUpRight"></i></a></div>
       <details class="audit-disclosure">
         <summary>Token and session counts <i data-icon="ChevronDown"></i></summary>
         <p class="section-note">Cache hit is the percentage of input tokens read from cache. Child sessions include the coding tool's built-in workers. Subagents started by the agent itself are counted separately in the run details.</p>
@@ -124,23 +125,24 @@
             </dl>
           </section>
           <section id="sample"><h3>The runs</h3>
-            <p>The Models view includes <span id="method-model-count">67</span> runs that completed all seven milestones and passed the benchmark's integrity checks. Runs with low scores are included. Unfinished attempts and runs with invalid evaluations are excluded. Each configuration has between one and five runs, so small differences in averages may not hold up with more samples. Chart ranges show the lowest and highest observed values, not confidence intervals.</p>
-            <p>A model runs through a coding tool, or harness, which also affects the result. Astra uses Codex CLI 0.153.4; earlier GPT runs used an older Codex version. The six Astra runs shown here used the standard v6 handoff prompts and launched no subagents. Opus 5 uses Claude Code 2.1.243 with customizations disabled. Muse Spark uses OpenCode 1.18.27; the harness comparison uses OpenCode 1.18.0.</p>
+            <p>The Models view includes <span id="method-model-count">73</span> runs that completed all seven milestones and passed the benchmark's integrity checks. Runs with low scores are included. Unfinished runs and runs with invalid evaluations are excluded. Each configuration has between one and five runs, so small differences in averages may not hold up with more samples. Chart ranges show the lowest and highest observed values, not confidence intervals.</p>
+            <p>A model runs through a coding tool, or harness, which also affects the result. Astra uses Codex CLI 0.153.4; earlier GPT runs used an older Codex version. The twelve Astra runs shown here, three each at low, medium, high and X-High, used the standard v6 handoff prompts and launched no subagents. Opus 5 uses Claude Code 2.1.243 with customizations disabled. Muse Spark uses OpenCode 1.18.27; the harness comparison uses OpenCode 1.18.0.</p>
+            <p>Astra X-High runs 2 and 3 stopped on provider-capacity errors, then completed after restarting the interrupted milestone from the last accepted snapshot. No evaluation feedback was supplied. Their costs and runtimes include the discarded attempts; the time between stopping and restarting is excluded. The <a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/ASTRA_TRAJECTORIES.md">Astra results</a> document both resumptions.</p>
             <p>The Harnesses view includes 20 of the Codex runs from the Models view, 20 additional OpenCode runs and five Luna runs with the delegation instruction. There are 45 runs in that view, but 20 also appear in Models.</p>
           </section>
-          <section id="costs"><h3>Cost estimates</h3>
-            <p>Costs marked <strong>≈</strong> are calculated from recorded token usage at API prices. For subscription runs, this estimates what the inference would have cost through the API; it is not an extra subscription charge. Unmarked OpenCode costs are actual OpenRouter charges.</p>
+          <section id="costs"><h3>Cost accounting</h3>
+            <p>Codex and Claude Code costs are API-equivalent: recorded token usage multiplied by the documented API rates. These runs used subscriptions, so the amounts are comparison costs, not additional subscription charges. OpenCode model costs are recorded OpenRouter charges, except GLM-5.3 Flash, whose free-preview usage is priced at its production rates. The Harnesses view uses API-equivalent costs throughout.</p>
             <p>Costs include the main agent and all its subagents, as well as Codex's automatic review, priced at Luna rates. Reasoning tokens are included in output tokens and are charged only once. The private evaluator makes no model calls and adds no inference cost.</p>
-            <p>In the Astra runs shown here, the largest request contained 113,468 input tokens, below the 272K threshold for long-context pricing, and no cache-write tokens were recorded. GPT-5.5's recorded context window was 258,400 tokens. Some older logs lack enough detail to reconstruct per-request surcharges or cache-write charges, so those estimates use standard rates.</p>
+            <p>In the Astra runs shown here, the largest request contained 123,779 input tokens, below the 272K threshold for long-context pricing, and no cache-write tokens were recorded. GPT-5.5's recorded context window was 258,400 tokens. Some older logs lack enough detail to reconstruct per-request surcharges or cache-write charges, so those estimates use standard rates.</p>
             <p>Codex includes cache reads in its total input count; OpenCode reports them separately. The calculations account for that difference. As an agent's conversation grows, repeatedly sending its history can become expensive even at cached rates: cache reads account for roughly $12–14 per Kimi run and $13–22 per GLM 5.3 run.</p>
             <details><summary>Model-specific accounting</summary>
-              <p>GLM-5.3 Flash was tested as OX Alpha, a free preview. Its displayed costs are estimates using the announced production rates. The two Opus subscription runs recorded $43.96 and $51.35 in API-equivalent usage. The OpenCode harness comparison used a subscription login and incurred no additional inference charges.</p>
+              <p>GLM-5.3 Flash was tested as OX Alpha, a free preview. Its displayed costs apply the announced production rates to that preview usage. The two Opus subscription runs recorded $43.96 and $51.35 in API-equivalent usage. The OpenCode harness comparison used a subscription login and incurred no additional inference charges.</p>
               <p>Muse Spark's $53.61 charge includes two automatic continuations after it reached the turn-length limit. DeepSeek run 2 includes $0.32 for a repeated review that made no code changes.</p>
             </details>
           </section>
           <section id="code-time"><h3>Code size and runtime</h3>
-            <p><strong>Code size</strong> counts lines in the finished application, including comments and blank lines. Production code covers <code>lib/</code> and database migrations; test code covers <code>test/</code>. The table shows the median across runs. Line counts describe the size of the implementation, not its quality.</p>
-            <p><strong>Runtime</strong> adds up the time spent in the seven agent sessions, including reasoning, tool use, tests and continuations. Time spent running the private evaluator, saving snapshots or advancing to the next milestone is excluded. DeepSeek run 4 also excludes a documented 10h 52m machine interruption; time spent working before and after it is retained.</p>
+            <p><strong>Code size</strong> counts lines in the finished application, including comments and blank lines. Production code covers <code>lib/</code> and database migrations; test code covers <code>test/</code>. The table shows the median across runs, rounded to a whole line. Line counts describe the size of the implementation, not its quality.</p>
+            <p><strong>Runtime</strong> adds up the time spent in agent sessions across the seven milestones, including reasoning, tool use, tests, continuations and interrupted attempts in completed runs. Time spent running the private evaluator, saving snapshots or advancing to the next milestone is excluded. The two resumed Astra X-High runs exclude stopped time. DeepSeek run 4 also excludes a documented 10h 52m machine interruption; time spent working before and after it is retained.</p>
             <p><strong>Subagents</strong> counts distinct agents started by the candidate. Built-in workers such as Codex's automatic reviewer are excluded from that count, but their token usage is included in the cost.</p>
           </section>
           <section id="sources"><h3>Data and sources</h3>
@@ -155,17 +157,25 @@
   </main>
   <script>
     const rows = [
-      { id: "astra-low", model: "GPT-6 Astra", effort: "low", harness: "Codex CLI", note: "two completed runs", costBasis: "estimated", runs: [
+      { id: "astra-low", model: "GPT-6 Astra", effort: "low", harness: "Codex CLI", costBasis: "estimated", runs: [
         { core: 39, judgment: 8, ship: 92, final: 92, cost: 11.643672, prodLoc: 1979, testLoc: 2311, runtimeSeconds: 2499.498 },
-        { core: 39, judgment: 10, ship: 94, final: 94, cost: 13.080246, prodLoc: 2057, testLoc: 2431, runtimeSeconds: 2713.455 }
+        { core: 39, judgment: 10, ship: 94, final: 94, cost: 13.080246, prodLoc: 2057, testLoc: 2431, runtimeSeconds: 2713.455 },
+        { core: 38, judgment: 9, ship: 92, final: 92, cost: 12.29647, prodLoc: 2268, testLoc: 2582, runtimeSeconds: 2974.245 }
       ]},
-      { id: "astra-medium", model: "GPT-6 Astra", effort: "medium", harness: "Codex CLI", note: "two completed runs", costBasis: "estimated", runs: [
+      { id: "astra-medium", model: "GPT-6 Astra", effort: "medium", harness: "Codex CLI", costBasis: "estimated", runs: [
         { core: 38, judgment: 7, ship: 90, final: 90, cost: 16.425452, prodLoc: 2242, testLoc: 3447, runtimeSeconds: 3442.547 },
-        { core: 38, judgment: 7, ship: 90, final: 90, cost: 13.477396, prodLoc: 2054, testLoc: 3372, runtimeSeconds: 3245.522 }
+        { core: 38, judgment: 7, ship: 90, final: 90, cost: 13.477396, prodLoc: 2054, testLoc: 3372, runtimeSeconds: 3245.522 },
+        { core: 39, judgment: 8, ship: 92, final: 92, cost: 15.2426, prodLoc: 2183, testLoc: 3090, runtimeSeconds: 3611.902 }
       ]},
-      { id: "astra-high", model: "GPT-6 Astra", effort: "high", harness: "Codex CLI", note: "two completed runs", costBasis: "estimated", runs: [
+      { id: "astra-high", model: "GPT-6 Astra", effort: "high", harness: "Codex CLI", costBasis: "estimated", runs: [
         { core: 38, judgment: 7, ship: 90, final: 90, cost: 19.421044, prodLoc: 2230, testLoc: 4903, runtimeSeconds: 4632.994 },
-        { core: 39, judgment: 10, ship: 94, final: 94, cost: 17.472062, prodLoc: 2102, testLoc: 5189, runtimeSeconds: 4743.283 }
+        { core: 39, judgment: 10, ship: 94, final: 94, cost: 17.472062, prodLoc: 2102, testLoc: 5189, runtimeSeconds: 4743.283 },
+        { core: 39, judgment: 8, ship: 92, final: 92, cost: 19.04301, prodLoc: 2216, testLoc: 4751, runtimeSeconds: 4738.476 }
+      ]},
+      { id: "astra-xhigh", model: "GPT-6 Astra", effort: "xhigh", harness: "Codex CLI", costBasis: "estimated", runs: [
+        { core: 39, judgment: 10, ship: 94, final: 94, cost: 27.134116, prodLoc: 2613, testLoc: 5879, runtimeSeconds: 7239.645 },
+        { core: 39, judgment: 10, ship: 94, final: 94, cost: 30.436272, prodLoc: 2486, testLoc: 6142, runtimeSeconds: 9685.866 },
+        { core: 39, judgment: 10, ship: 94, final: 94, cost: 28.705118, prodLoc: 2385, testLoc: 5733, runtimeSeconds: 8452.138 }
       ]},
       { id: "sol-high", model: "GPT-5.6 Sol", effort: "high", harness: "Codex CLI", costBasis: "estimated", runs: [
         { core: 39, judgment: 10, ship: 94, final: 94, cost: 25.21380832, prodLoc: 3308, testLoc: 2989, runtimeSeconds: 6390.519 },
@@ -298,9 +308,10 @@
     ];
 
     const modelSubagentCounts = {
-      "astra-low": [0, 0],
-      "astra-medium": [0, 0],
-      "astra-high": [0, 0],
+      "astra-low": [0, 0, 0],
+      "astra-medium": [0, 0, 0],
+      "astra-high": [0, 0, 0],
+      "astra-xhigh": [0, 0, 0],
       "sol-high": [6, 5, 8, 3, 0],
       "sol-medium": [0, 4, 12, 2, 4],
       "terra-xhigh": [0, 0, 0, 3, 0],

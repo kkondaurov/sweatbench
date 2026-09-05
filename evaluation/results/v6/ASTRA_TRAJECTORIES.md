@@ -1,9 +1,73 @@
 # GPT-6 Astra on Sweat Bench v6
 
-5 September 2026. Six completed trajectories, two each at low, medium, and high reasoning
-effort, using Codex CLI 0.153.4 and the unchanged seven-milestone v6 benchmark.
+5 September 2026. Twelve completed trajectories, three each at low, medium, high and X-High,
+using Codex CLI 0.153.4 and the unchanged seven-milestone v6 benchmark.
 
-## Results
+## Current Results
+
+| Effort | Runs | Mean Core (out of 39) | Mean Maintenance (out of 10) | Sweeps | Median API-equivalent cost | Mean runtime | Median production lines | Median test lines |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Low | 3 | 38.7 | 9.0 | 1 of 3 | $12.30 | 45m | 2,057 | 2,431 |
+| Medium | 3 | 38.3 | 7.3 | 0 of 3 | $15.24 | 57m | 2,183 | 3,372 |
+| High | 3 | 38.7 | 8.3 | 1 of 3 | $19.04 | 1h 18m | 2,216 | 4,903 |
+| X-High | 3 | 39.0 | 10.0 | 3 of 3 | $28.71 | 2h 21m | 2,486 | 5,879 |
+
+The six newly published runs are:
+
+| Run | Core (out of 39) | Maintenance (out of 10) | Scenarios (out of 94) | API-equivalent cost | Runtime | Production lines | Test lines |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Low 03 | 38 | 9 | 92 | $12.30 | 50m | 2,268 | 2,582 |
+| Medium 03 | 39 | 8 | 92 | $15.24 | 1h 00m | 2,183 | 3,090 |
+| High 03 | 39 | 8 | 92 | $19.04 | 1h 19m | 2,216 | 4,751 |
+| X-High 01 | 39 | 10 | 94 | $27.13 | 2h 01m | 2,613 | 5,879 |
+| X-High 02 | 39 | 10 | 94 | $30.44 | 2h 41m | 2,486 | 6,142 |
+| X-High 03 | 39 | 10 | 94 | $28.71 | 2h 21m | 2,385 | 5,733 |
+
+All 42 new milestone integrity audits passed. Report, snapshot and accepted agent-log hashes
+were checked before publication. Recorded completion usage reconciles with the underlying
+Codex sessions. No candidate subagents or descendant sessions were found. The first four new
+runs ran concurrently; the two later X-High samples ran concurrently until interruptions.
+
+X-High passed every scored family in all three samples. Its median cost is 51% above high,
+and its mean active runtime is 80% longer. It produced more code and tests, but those counts
+alone do not explain the better scores. Three samples are too few to establish a reliability
+ranking. Low 03 lost the M4 migration and R2 room-history families; medium 03 and high 03 lost
+R4 projection history and R5 close history. These are observed failure families, not a claim
+that the new failures have the same source-level causes as the older cases analyzed below.
+
+### Interrupted Attempts
+
+X-High 02 stopped during milestone 2 and X-High 03 during milestone 5, both with
+`server_overloaded` / "Selected model is at capacity." Each restarted the interrupted milestone
+in a fresh workspace from the last accepted snapshot, without private evaluation feedback.
+Previously accepted milestones were retained. The discarded partial implementations were not used.
+
+| Run | Interrupted milestone | Recorded usage cost | Active time retained | Restored after milestone |
+|---|---:|---:|---:|---:|
+| X-High 02 | 2 | $0.912738 | 332.694 seconds | 1 |
+| X-High 03 | 5 | $1.104686 | 364.257 seconds | 4 |
+
+Both amounts and intervals are included in the run totals above. Idle time before restarting
+is excluded. Run 02's original host interval was not preserved, so its interrupted interval
+uses Codex's recorded task duration; run 03 uses the saved runner interval. Interrupted usage
+comes from each session's last cumulative token record, since the CLI emitted `turn.failed`
+without a `turn.completed` usage summary. Each resumed run includes eight distinct root sessions:
+seven accepted milestones and one discarded attempt, with no double counting.
+
+The [dataset](accepted-runs.json) preserves the interrupted session IDs, log hashes, token counts,
+costs, timing source and restart provenance alongside accepted milestone evidence. Costs use
+standard Astra API rates of $10 uncached input, $1 cached input and $50 output per million
+tokens. Reasoning is a subset of output, not an additional charge. Across all twelve runs,
+the largest recorded request was 123,779 input tokens, below the 272K long-context threshold;
+cache-write tokens were zero. These are API-equivalent costs, not subscription invoices.
+
+## Earlier Analysis: The First Six Runs
+
+The remaining sections analyze samples 01 and 02 at low, medium and high. Their six-run
+comparisons and source-level findings are retained as a dated analysis, not recomputed claims
+about the twelve-run population above.
+
+### Initial Results
 
 | Effort / sample | Core /39 | Maintenance /10 | Scenarios /94 | API-equivalent cost | Model time | Production LOC | Test LOC | Test declarations |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|

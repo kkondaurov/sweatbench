@@ -12,8 +12,8 @@ from pathlib import Path
 
 
 DATASET = Path(__file__).with_name("accepted-runs.json")
-EXPECTED_ACCEPTED = 92
-EXPECTED_MODEL_VIEW = 67
+EXPECTED_ACCEPTED = 98
+EXPECTED_MODEL_VIEW = 73
 EXPECTED_HARNESS_VIEW = 25
 NUMERIC_TOLERANCE = 1e-9
 
@@ -80,6 +80,21 @@ def validate(data: dict) -> list[dict]:
             errors.append(f"{run.get('id')}: cost is negative")
         if run.get("subagents", -1) < 0:
             errors.append(f"{run.get('id')}: subagent count is negative")
+        if run.get("group", "").startswith("astra-"):
+            usage = run["usage"]
+            expected_cost = ((usage["input_tokens"] - usage["cached_input_tokens"]) * 10
+                             + usage["cached_input_tokens"] + usage["output_tokens"] * 50) / 1e6
+            execution = run["execution"]
+            attempts = execution["milestones"] + execution.get("interrupted_attempts", [])
+            if not close(run["cost"], expected_cost) or not close(run["cost"], sum(m["cost"] for m in attempts)):
+                errors.append(f"{run['id']}: recorded usage and attempt costs do not reconcile")
+            if not close(run["runtime_seconds"], sum(m["model_duration_seconds"] for m in attempts)):
+                errors.append(f"{run['id']}: attempt runtimes do not reconcile")
+            for key in ("input_tokens", "cached_input_tokens", "output_tokens", "reasoning_output_tokens"):
+                if usage[key] != sum(m[key] for m in attempts):
+                    errors.append(f"{run['id']}: {key} does not reconcile")
+            if usage["cache_write_input_tokens"] or usage["max_request_input_tokens"] > 272000:
+                errors.append(f"{run['id']}: short-context pricing assumptions do not hold")
 
     grouped: dict[str, list[dict]] = defaultdict(list)
     for run in runs:
