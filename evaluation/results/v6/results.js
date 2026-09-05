@@ -57,7 +57,7 @@ function runDetails(row, showRuntime = true) {
   return `<div class="run-detail-panel">
     <div class="run-detail-header"><strong>${row.runs.length} completed ${row.runs.length === 1 ? "run" : "runs"}</strong><span>Sample total <span class="${estimateClass(row)}">${money(row.totalCost)}</span> · Average recovery ${signed(Number(row.avgRecovery.toFixed(1)))}</span></div>
     <div class="table-wrap"><table class="run-detail-table" aria-label="Runs for ${row.model} ${row.effort}, ${row.harness}">
-      <thead><tr><th scope="col">Run</th><th scope="col">Core <span>out of 39</span></th><th scope="col">Maintenance <span>out of 10</span></th><th scope="col">Ship <span>out of 94</span></th><th scope="col">Final <span>out of 94</span></th><th scope="col">Recovery</th><th scope="col" title="Candidate-launched children; fixed harness workers excluded">Subagents</th><th scope="col">Prod LOC</th><th scope="col">Test LOC</th>${showRuntime ? '<th scope="col">Runtime</th>' : ""}<th scope="col">Cost</th></tr></thead>
+      <thead><tr><th scope="col">Run</th><th scope="col">Core <span>out of 39</span></th><th scope="col">Maintenance <span>out of 10</span></th><th scope="col">Ship <span>out of 94</span></th><th scope="col">Final <span>out of 94</span></th><th scope="col">Recovery</th><th scope="col" title="Candidate-launched children; fixed harness workers excluded">Subagents</th><th scope="col">Production <span>lines of code</span></th><th scope="col">Tests <span>lines of code</span></th>${showRuntime ? '<th scope="col">Runtime</th>' : ""}<th scope="col">Cost <span>per run</span></th></tr></thead>
       <tbody>${row.runs.map((run, index) => `<tr><td class="run-number">Run ${String(index + 1).padStart(2, "0")}</td><td>${run.core}</td><td>${run.judgment}</td><td>${run.ship}</td><td>${run.final}</td><td>${signed(run.final - run.ship)}</td><td>${run.subagents}</td><td>${integer(run.prodLoc)}</td><td>${integer(run.testLoc)}</td>${showRuntime ? `<td>${duration(run.runtimeSeconds)}</td>` : ""}<td class="run-cost ${estimateClass(row)}">${money(run.cost)}</td></tr>`).join("")}</tbody>
     </table></div>
   </div>`;
@@ -80,9 +80,10 @@ function renderTable() {
       <td data-label="Maintenance" title="${row.avgJudgment.toFixed(1)} out of 10">${scoreCell(row.avgJudgment, 10)}</td>
       <td data-label="Sweeps"><span class="summary-number">${row.sweeps} of ${row.runs.length}</span></td>
       <td data-label="Avg runtime"><span class="summary-number">${duration(row.avgRuntime)}</span></td>
-      <td data-label="Median cost"><span class="summary-number ${estimateClass(row)}">${money(row.medianCost)}</span></td>
-      <td data-label="Prod / test LOC" class="code-cell">${integer(row.medianProdLoc)} <span>/ ${integer(row.medianTestLoc)}</span></td>
-    </tr><tr id="details-${row.id}" class="run-detail-row"${expanded ? "" : " hidden"}><td colspan="7">${runDetails(row)}</td></tr>`;
+      <td data-label="Cost per run"><span class="summary-number ${estimateClass(row)}">${money(row.medianCost)}</span></td>
+      <td data-label="Production lines" class="code-cell">${integer(row.medianProdLoc)}</td>
+      <td data-label="Test lines" class="code-cell">${integer(row.medianTestLoc)}</td>
+    </tr><tr id="details-${row.id}" class="run-detail-row"${expanded ? "" : " hidden"}><td colspan="8">${runDetails(row)}</td></tr>`;
   }).join("");
   renderIcons(document.getElementById("results-body"));
 }

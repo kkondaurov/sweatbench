@@ -114,9 +114,9 @@ th span { color: var(--muted); font-weight: 400; font-size: 10px; display: block
 th:first-child { text-align: left; }
 td { text-align: right; border-bottom: 1px solid var(--line); padding: 14px; }
 td:first-child { text-align: left; }
-.results-table { table-layout: fixed; }
-.results-table .model-col { width: 29%; }
-.results-table th:not(:first-child) { width: 11.83%; }
+.results-table { table-layout: fixed; min-width: 940px; }
+.results-table .model-col { width: 30%; }
+.results-table > thead th:not(:first-child) { width: 10%; }
 .results-table thead { background: var(--soft); }
 .results-table thead th:first-child { border-radius: 4px 0 0 4px; }
 .results-table thead th:last-child { border-radius: 0 4px 4px 0; }
@@ -134,7 +134,6 @@ td:first-child { text-align: left; }
 .score-track { width: 55px; height: 3px; background: var(--line); }
 .score-track span { display: block; height: 100%; background: var(--row-color); opacity: .7; }
 .code-cell { font-size: 12px; white-space: nowrap; }
-.code-cell span { color: var(--muted); }
 .cost-estimate::before { content: "≈"; color: var(--muted); font-weight: 400; margin-right: 2px; }
 .run-detail-row > td { padding: 0; background: var(--soft); }
 .run-detail-panel { padding: 17px 22px 21px; }
@@ -250,10 +249,11 @@ td:first-child { text-align: left; }
   .search-field { grid-column: 1 / -1; }
   .search-field input { width: 100%; }
   .table-controls select { width: 100%; max-width: none; }
-  .results-table, .results-table tbody { display: block; }
+  .results-table, .results-table tbody { display: block; min-width: 0; }
   .results-table thead { display: none; }
-  .results-table .summary-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 16px 10px; gap: 13px 8px; border-bottom: 1px solid var(--line); background: transparent; }
-  .results-table .summary-row > td { display: block; padding: 0; border: 0; text-align: left; }
+  .results-table .summary-row { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); padding: 16px 10px; gap: 13px 8px; border-bottom: 1px solid var(--line); background: transparent; }
+  .results-table .summary-row > td { display: block; padding: 0; border: 0; text-align: left; grid-column: span 2; }
+  .results-table .summary-row > td:nth-child(n+5) { grid-column: span 3; }
   .results-table .summary-row > td:first-child { grid-column: 1 / -1; box-shadow: none; }
   .results-table .summary-row.selected { border-left: 2px solid var(--row-color); padding-left: 8px; }
   .summary-row td:not(:first-child)::before { content: attr(data-label); display: block; font-size: 10px; color: var(--muted); margin-bottom: 4px; }
