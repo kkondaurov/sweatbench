@@ -19,6 +19,7 @@
       --cost: light-dark(#1f5faa, #75b8ff);
       --repair: light-dark(#963e67, #ef88b7);
       --codex: light-dark(#2367b2, #71b6ff);
+      --astra: light-dark(#137c59, #62dfa9);
       --opencode: light-dark(#b15116, #f2a261);
       --claude: light-dark(#68737c, #c1c9cf);
       font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -626,8 +627,8 @@
         <p class="subtitle">Completed results · frozen benchmark comparison</p>
       </div>
       <div class="stamp">
-        14 configurations · 61 completed runs<br>
-        Results updated: 4 September 2026
+        17 configurations · 64 completed runs<br>
+        Results updated: 5 September 2026
       </div>
     </header>
 
@@ -644,7 +645,7 @@
       </div>
       <div class="method-item">
         <span class="method-label">Completed sample</span>
-        <div class="method-value">Five completed, valid runs per configuration, except four each for GLM-5.3 Flash high and max, two Opus 5 runs, and one Muse Spark 1.3 run. Infrastructure-debug, incomplete, abandoned, and interrupted attempts are excluded; displayed run numbers are clean sample labels, not source lane IDs.</div>
+        <div class="method-value">Five completed, valid runs per configuration, except four each for GLM-5.3 Flash high and max, two Opus 5 runs, one Muse Spark 1.3 run, and one run at each Astra effort. Single-run observations do not estimate a model's variance. Infrastructure-debug, incomplete, abandoned, and interrupted attempts are excluded.</div>
       </div>
       <div class="method-item">
         <span class="method-label">Cost basis</span>
@@ -721,8 +722,9 @@
           <h2 id="plot-title">Cost and final Core</h2>
           <div class="note">Whiskers show the accepted-run range. Marker size reflects average Maintenance.</div>
         </div>
-        <div class="plot-legend" aria-label="Harness legend">
-          <span class="legend-item"><span class="legend-dot"></span>Codex CLI</span>
+        <div class="plot-legend" aria-label="Model family and harness legend">
+          <span class="legend-item"><span class="legend-dot" style="background: var(--astra)"></span>GPT-6 Astra · Codex</span>
+          <span class="legend-item"><span class="legend-dot"></span>Earlier GPT · Codex</span>
           <span class="legend-item"><span class="legend-dot open"></span>OpenCode</span>
           <span class="legend-item"><span class="legend-dot claude"></span>Claude Code</span>
           <span class="legend-item">≈ API-equivalent estimate</span>
@@ -736,7 +738,8 @@
     </section>
 
     <footer class="notes">
-      <p>GPT estimates include every recorded parent and descendant session. They apply current short-context rates: GPT-5.5 $5 / $0.50 cached / $30 output; Sol $4 / $0.40 / $20; Terra $2 / $0.20 / $12; and Luna $0.20 / $0.02 / $1.20 per million tokens, with Codex auto-review priced as Luna. GPT-5.5's recorded Codex context window was 258,400 tokens, below its 272K long-context pricing threshold. Other individual-request surcharges and cache-write charges cannot be reconstructed consistently, so these remain base-rate estimates.</p>
+      <p>GPT estimates include every recorded parent and descendant session. They apply standard short-context rates: Astra $10 / $1 cached / $50 output; GPT-5.5 $5 / $0.50 / $30; Sol $4 / $0.40 / $20; Terra $2 / $0.20 / $12; and Luna $0.20 / $0.02 / $1.20 per million tokens, with Codex auto-review priced as Luna. Reasoning tokens are already included in output. Astra's largest recorded request was 113,468 input tokens, below its 272K long-context threshold, and all cache-write counts were zero. GPT-5.5's recorded Codex context window was 258,400 tokens. Other individual-request surcharges and historical cache-write charges cannot be reconstructed consistently, so these remain standard-rate estimates, not subscription invoices.</p>
+      <p>Astra low, medium, and high each have one completed run through Codex CLI 0.153.4 with unchanged v6 tasks and ordinary handoff prompts. None launched subagents. Earlier GPT runs used an older Codex version: this compares the tested model-and-harness systems, not an isolated change of model weights. <a href="https://developers.openai.com/api/docs/models/gpt-6-astra">Astra pricing</a> was checked on 5 September 2026.</p>
       <p>GLM-5.3-Flash was first tested under its anonymous preview name, OX Alpha. The preview charged $0; all four displayed samples use API-equivalent estimates at the announced production rates of $0.15 input, $0.50 output, and $0.03 cached input per million tokens, with reasoning tokens billed as generated output.</p>
       <p>Kimi K3 and GLM 5.3 (not Flash) repeatedly process long accumulated contexts. Cache-read charges account for roughly $12–14 of each Kimi run and $13–22 of each GLM 5.3 run, which is the main reason their totals are higher than the headline token prices might suggest.</p>
       <p>Those cache reads are the discounted cost of replaying the growing agent conversation on later tool turns, not duplicated evaluator traffic. Private evaluation is excluded. A different harness could manage context more efficiently, so this is a practical configuration cost rather than a claim about the model's intrinsic cost.</p>
@@ -841,6 +844,15 @@
 
   <script>
     const rows = [
+      { id: "astra-low", model: "GPT-6 Astra", effort: "low", harness: "Codex CLI", note: "one completed run", costBasis: "estimated", runs: [
+        { core: 39, judgment: 8, ship: 92, final: 92, cost: 11.643672, prodLoc: 1979, testLoc: 2311, runtimeSeconds: 2499.498 }
+      ]},
+      { id: "astra-medium", model: "GPT-6 Astra", effort: "medium", harness: "Codex CLI", note: "one completed run", costBasis: "estimated", runs: [
+        { core: 38, judgment: 7, ship: 90, final: 90, cost: 16.425452, prodLoc: 2242, testLoc: 3447, runtimeSeconds: 3442.547 }
+      ]},
+      { id: "astra-high", model: "GPT-6 Astra", effort: "high", harness: "Codex CLI", note: "one completed run", costBasis: "estimated", runs: [
+        { core: 38, judgment: 7, ship: 90, final: 90, cost: 19.421044, prodLoc: 2230, testLoc: 4903, runtimeSeconds: 4632.994 }
+      ]},
       { id: "sol-high", model: "GPT-5.6 Sol", effort: "high", harness: "Codex CLI", costBasis: "estimated", runs: [
         { core: 39, judgment: 10, ship: 94, final: 94, cost: 25.21380832, prodLoc: 3308, testLoc: 2989, runtimeSeconds: 6390.519 },
         { core: 39, judgment: 10, ship: 94, final: 94, cost: 22.37118992, prodLoc: 3813, testLoc: 2568, runtimeSeconds: 5334.126 },
@@ -972,6 +984,9 @@
     ];
 
     const modelSubagentCounts = {
+      "astra-low": [0],
+      "astra-medium": [0],
+      "astra-high": [0],
       "sol-high": [6, 5, 8, 3, 0],
       "sol-medium": [0, 4, 12, 2, 4],
       "terra-xhigh": [0, 0, 0, 3, 0],
@@ -1345,6 +1360,9 @@
       const gridColor = css("--line");
       const textColor = css("--muted");
       const labelPlacements = {
+        "astra-low": { dx: -18, dy: -20, anchor: "end" },
+        "astra-medium": { dx: -110, dy: 44, anchor: "end" },
+        "astra-high": { dx: 100, dy: -35, anchor: "start" },
         "sol-high": { dx: 18, dy: -10, anchor: "start" },
         "sol-medium": { dx: -18, dy: -18, anchor: "end" },
         "terra-xhigh": { dx: -18, dy: -18, anchor: "end" },
@@ -1352,7 +1370,7 @@
         "gpt-5-5-xhigh": { dx: 18, dy: -15, anchor: "start" },
         "claude-opus5-high": { dx: 18, dy: -9, anchor: "start" },
         "meta-muse-spark-1-3-high": { dx: -18, dy: -14, anchor: "end" },
-        "grok-4-6-xhigh": { dx: 18, dy: 18, anchor: "start" },
+        "grok-4-6-xhigh": { dx: -110, dy: -8, anchor: "end" },
         "qwen3-8-max-xhigh": { dx: -22, dy: -38, anchor: "end" },
         "deepseek-v4-pro-0813-max": { dx: 18, dy: 18, anchor: "start" },
         "kimi-k3-max": { dx: 18, dy: -13, anchor: "start" },
@@ -1381,7 +1399,7 @@
       yTitle.textContent = "Average final Core families passed (of 39)";
 
       summaries.forEach(row => {
-        const color = row.harness === "Codex CLI" ? css("--codex") : row.harness === "Claude Code" ? css("--claude") : css("--opencode");
+        const color = row.model === "GPT-6 Astra" ? css("--astra") : row.harness === "Codex CLI" ? css("--codex") : row.harness === "Claude Code" ? css("--claude") : css("--opencode");
         const cx = x(row.avgCost);
         const cy = y(row.avgCore);
         const radius = 7 + row.avgJudgment * 0.55;
@@ -1418,7 +1436,7 @@
           "font-size": 12,
           "text-anchor": placement.anchor
         });
-        label.textContent = `${row.model.replace("GPT-5.6 ", "")} · ${row.effort}`;
+        label.textContent = `${row.model.replace(/^GPT-(?:5\.6|6) /, "")} · ${row.effort}`;
 
         const showTooltip = event => {
           tooltip.style.display = "block";
