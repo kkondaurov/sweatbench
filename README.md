@@ -95,15 +95,15 @@ for diagnosis; they are not collapsed into one synthetic score.
 
 ## Reference results
 
-The model-comparison view contains 64 completed trajectories. Every listed trajectory completed all
+The model-comparison view contains 67 completed trajectories. Every listed trajectory completed all
 seven milestones and passed the benchmark's integrity checks. Low-scoring valid runs are included;
 incomplete, invalid, and infrastructure-debug attempts are not model results and are excluded.
 
 | Model and harness | n | Avg Core | Avg Maintenance | Sweeps | Median cost |
 |---|---:|---:|---:|---:|---:|
-| GPT-6 Astra low, Codex CLI | 1 | 39.0 | 8.0 | 0/1 | ~= $11.64 |
-| GPT-6 Astra medium, Codex CLI | 1 | 38.0 | 7.0 | 0/1 | ~= $16.43 |
-| GPT-6 Astra high, Codex CLI | 1 | 38.0 | 7.0 | 0/1 | ~= $19.42 |
+| GPT-6 Astra low, Codex CLI | 2 | 39.0 | 9.0 | 1/2 | ~= $12.36 |
+| GPT-6 Astra medium, Codex CLI | 2 | 38.0 | 7.0 | 0/2 | ~= $14.95 |
+| GPT-6 Astra high, Codex CLI | 2 | 38.5 | 8.5 | 1/2 | ~= $18.45 |
 | GPT-5.6 Sol high, Codex CLI | 5 | 38.8 | 9.6 | 4/5 | ~= $22.37 |
 | GPT-5.6 Sol medium, Codex CLI | 5 | 38.2 | 8.8 | 2/5 | ~= $13.90 |
 | GPT-5.6 Terra xhigh, Codex CLI | 5 | 36.6 | 7.0 | 0/5 | ~= $9.96 |
@@ -122,7 +122,7 @@ incomplete, invalid, and infrastructure-debug attempts are not model results and
 `~=` marks an API-equivalent estimate from recorded token usage. Unmarked OpenCode costs are
 recorded provider charges. The dashboard documents model-specific rates, cached input treatment,
 descendant sessions, and harness-owned review work. The Muse figure is one recorded OpenRouter run,
-not a reliability estimate. Astra low, medium, and high also have one run each; they use Codex CLI
+not a reliability estimate. Astra low, medium, and high have two runs each; they use Codex CLI
 0.153.4, newer than the earlier GPT cohort. Their costs are standard API-equivalent estimates,
 not additional subscription charges.
 

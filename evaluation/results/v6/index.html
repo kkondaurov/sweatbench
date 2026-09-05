@@ -627,7 +627,7 @@
         <p class="subtitle">Completed results · frozen benchmark comparison</p>
       </div>
       <div class="stamp">
-        17 configurations · 64 completed runs<br>
+        17 configurations · 67 completed runs<br>
         Results updated: 5 September 2026
       </div>
     </header>
@@ -645,7 +645,7 @@
       </div>
       <div class="method-item">
         <span class="method-label">Completed sample</span>
-        <div class="method-value">Five completed, valid runs per configuration, except four each for GLM-5.3 Flash high and max, two Opus 5 runs, one Muse Spark 1.3 run, and one run at each Astra effort. Single-run observations do not estimate a model's variance. Infrastructure-debug, incomplete, abandoned, and interrupted attempts are excluded.</div>
+        <div class="method-value">Five completed, valid runs per configuration, except four each for GLM-5.3 Flash high and max, two Opus 5 runs, two runs at each Astra effort, and one Muse Spark 1.3 run. These small samples do not establish reliable model rankings or variance estimates. Infrastructure-debug, incomplete, abandoned, and interrupted attempts are excluded.</div>
       </div>
       <div class="method-item">
         <span class="method-label">Cost basis</span>
@@ -739,7 +739,7 @@
 
     <footer class="notes">
       <p>GPT estimates include every recorded parent and descendant session. They apply standard short-context rates: Astra $10 / $1 cached / $50 output; GPT-5.5 $5 / $0.50 / $30; Sol $4 / $0.40 / $20; Terra $2 / $0.20 / $12; and Luna $0.20 / $0.02 / $1.20 per million tokens, with Codex auto-review priced as Luna. Reasoning tokens are already included in output. Astra's largest recorded request was 113,468 input tokens, below its 272K long-context threshold, and all cache-write counts were zero. GPT-5.5's recorded Codex context window was 258,400 tokens. Other individual-request surcharges and historical cache-write charges cannot be reconstructed consistently, so these remain standard-rate estimates, not subscription invoices.</p>
-      <p>Astra low, medium, and high each have one completed run through Codex CLI 0.153.4 with unchanged v6 tasks and ordinary handoff prompts. None launched subagents. Earlier GPT runs used an older Codex version: this compares the tested model-and-harness systems, not an isolated change of model weights. <a href="https://developers.openai.com/api/docs/models/gpt-6-astra">Astra pricing</a> was checked on 5 September 2026.</p>
+      <p>Astra low, medium, and high each have two completed runs through Codex CLI 0.153.4 with unchanged v6 tasks and ordinary handoff prompts. None launched subagents. Earlier GPT runs used an older Codex version: this compares the tested model-and-harness systems, not an isolated change of model weights. <a href="https://developers.openai.com/api/docs/models/gpt-6-astra">Astra pricing</a> was checked on 5 September 2026.</p>
       <p>GLM-5.3-Flash was first tested under its anonymous preview name, OX Alpha. The preview charged $0; all four displayed samples use API-equivalent estimates at the announced production rates of $0.15 input, $0.50 output, and $0.03 cached input per million tokens, with reasoning tokens billed as generated output.</p>
       <p>Kimi K3 and GLM 5.3 (not Flash) repeatedly process long accumulated contexts. Cache-read charges account for roughly $12–14 of each Kimi run and $13–22 of each GLM 5.3 run, which is the main reason their totals are higher than the headline token prices might suggest.</p>
       <p>Those cache reads are the discounted cost of replaying the growing agent conversation on later tool turns, not duplicated evaluator traffic. Private evaluation is excluded. A different harness could manage context more efficiently, so this is a practical configuration cost rather than a claim about the model's intrinsic cost.</p>
@@ -844,14 +844,17 @@
 
   <script>
     const rows = [
-      { id: "astra-low", model: "GPT-6 Astra", effort: "low", harness: "Codex CLI", note: "one completed run", costBasis: "estimated", runs: [
-        { core: 39, judgment: 8, ship: 92, final: 92, cost: 11.643672, prodLoc: 1979, testLoc: 2311, runtimeSeconds: 2499.498 }
+      { id: "astra-low", model: "GPT-6 Astra", effort: "low", harness: "Codex CLI", note: "two completed runs", costBasis: "estimated", runs: [
+        { core: 39, judgment: 8, ship: 92, final: 92, cost: 11.643672, prodLoc: 1979, testLoc: 2311, runtimeSeconds: 2499.498 },
+        { core: 39, judgment: 10, ship: 94, final: 94, cost: 13.080246, prodLoc: 2057, testLoc: 2431, runtimeSeconds: 2713.455 }
       ]},
-      { id: "astra-medium", model: "GPT-6 Astra", effort: "medium", harness: "Codex CLI", note: "one completed run", costBasis: "estimated", runs: [
-        { core: 38, judgment: 7, ship: 90, final: 90, cost: 16.425452, prodLoc: 2242, testLoc: 3447, runtimeSeconds: 3442.547 }
+      { id: "astra-medium", model: "GPT-6 Astra", effort: "medium", harness: "Codex CLI", note: "two completed runs", costBasis: "estimated", runs: [
+        { core: 38, judgment: 7, ship: 90, final: 90, cost: 16.425452, prodLoc: 2242, testLoc: 3447, runtimeSeconds: 3442.547 },
+        { core: 38, judgment: 7, ship: 90, final: 90, cost: 13.477396, prodLoc: 2054, testLoc: 3372, runtimeSeconds: 3245.522 }
       ]},
-      { id: "astra-high", model: "GPT-6 Astra", effort: "high", harness: "Codex CLI", note: "one completed run", costBasis: "estimated", runs: [
-        { core: 38, judgment: 7, ship: 90, final: 90, cost: 19.421044, prodLoc: 2230, testLoc: 4903, runtimeSeconds: 4632.994 }
+      { id: "astra-high", model: "GPT-6 Astra", effort: "high", harness: "Codex CLI", note: "two completed runs", costBasis: "estimated", runs: [
+        { core: 38, judgment: 7, ship: 90, final: 90, cost: 19.421044, prodLoc: 2230, testLoc: 4903, runtimeSeconds: 4632.994 },
+        { core: 39, judgment: 10, ship: 94, final: 94, cost: 17.472062, prodLoc: 2102, testLoc: 5189, runtimeSeconds: 4743.283 }
       ]},
       { id: "sol-high", model: "GPT-5.6 Sol", effort: "high", harness: "Codex CLI", costBasis: "estimated", runs: [
         { core: 39, judgment: 10, ship: 94, final: 94, cost: 25.21380832, prodLoc: 3308, testLoc: 2989, runtimeSeconds: 6390.519 },
@@ -984,9 +987,9 @@
     ];
 
     const modelSubagentCounts = {
-      "astra-low": [0],
-      "astra-medium": [0],
-      "astra-high": [0],
+      "astra-low": [0, 0],
+      "astra-medium": [0, 0],
+      "astra-high": [0, 0],
       "sol-high": [6, 5, 8, 3, 0],
       "sol-medium": [0, 4, 12, 2, 4],
       "terra-xhigh": [0, 0, 0, 3, 0],
