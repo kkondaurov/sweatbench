@@ -221,7 +221,7 @@ function drawChart() {
     const box = position.label.getBBox();
     position.labelWidth = Math.ceil(box.width) + 10;
     position.labelHeight = Math.ceil(box.height) + 8;
-    position.baseline = 4 - box.y;
+    position.baseline = position.labelHeight / 2 - box.y - box.height / 2;
   });
   const overlaps = (a, b) => a.left < b.right + 3 && a.right + 3 > b.left && a.top < b.bottom + 3 && a.bottom + 3 > b.top;
   const crosses = (a, b) => {
@@ -248,6 +248,8 @@ function drawChart() {
     const options = positions.map(p => {
       const candidates = [];
       const candidate = (left, top) => {
+        // Side labels sit on the marker's centerline, not just anywhere beside it.
+        if (p.cy >= top && p.cy <= top + p.labelHeight) top = p.cy - p.labelHeight / 2;
         const box = { left, top, right: left + p.labelWidth, bottom: top + p.labelHeight };
         if (left < margin.left + 4 || box.right > width - margin.right || top < 32 || box.bottom > height - margin.bottom - 12) return;
         if (positions.some(other => overlaps(box, { left: other.cx - 10, right: other.cx + 10, top: other.cy - 10, bottom: other.cy + 10 }))) return;
@@ -260,7 +262,8 @@ function drawChart() {
           const distance = Math.hypot(other.cx - p.cx - t * (x2 - p.cx), other.cy - p.cy - t * (y2 - p.cy));
           return sum + (distance < other.radius + .8 ? 1 : 0);
         }, 0);
-        candidates.push({ ...box, ...line, cost: length + blocked * 100000 });
+        const alignmentCost = Math.abs(y2 - p.cy) < .01 ? 0 : 18;
+        candidates.push({ ...box, ...line, cost: length + alignmentCost + blocked * 100000 });
       };
       for (let distance = 18; distance <= 270; distance += 18) {
         for (let direction = 0; direction < 16; direction++) {
@@ -303,7 +306,7 @@ function drawChart() {
       }
       const total = placed.some(box => !box) ? Infinity : placed.reduce((sum, box, index) => sum + cost(box, placed, index), 0);
       if (total < bestCost) { bestCost = total; layout = placed; }
-      if (bestCost < 10000) break;
+      if (bestCost < 10000 && layout.every(box => Math.hypot(box.x2 - box.x1, box.y2 - box.y1) <= 72)) break;
     }
     // Relocate conflicting pairs together; single-label moves can get trapped.
     for (let pass = 0; pass < 3; pass++) {

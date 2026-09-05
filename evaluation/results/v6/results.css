@@ -71,9 +71,7 @@ h3 { font-size: 17px; font-weight: 650; }
 .plot-max { stroke: var(--strong-line); stroke-dasharray: 4 4; }
 .plot-label { fill: var(--ink); font-size: 12px; font-weight: 500; pointer-events: none; }
 .plot-label-box { fill: var(--page); stroke: transparent; stroke-width: 1; }
-.plot-point[aria-pressed="true"] .plot-label-box, .plot-point:hover .plot-label-box, .plot-point:focus .plot-label-box { stroke: currentColor; }
-.plot-point:focus-visible { outline: none; }
-.plot-point:focus-visible .plot-label-box { stroke-width: 2; }
+.plot-point, .plot-point:focus, .plot-point:focus-visible { outline: none; }
 .plot-leaders { pointer-events: none; }
 .plot-connector-back { stroke: var(--page); stroke-width: 4; }
 .plot-connector-line { stroke: currentColor; stroke-width: 1.2; opacity: .8; }
