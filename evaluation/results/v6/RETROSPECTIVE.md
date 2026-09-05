@@ -8,6 +8,11 @@ published in the [dashboard](index.html) and [dataset](accepted-runs.json), brin
 for the twelve-run effort comparison and interrupted-attempt accounting. Historical statistics
 and source-level claims below retain their original population.
 
+Review note, 6 September 2026: the [family findings](index.html#findings) provide a newer,
+assertion-level interpretation of all 73 model-view runs. In particular, failed family names
+must not be treated as causal diagnoses. Muse's timeout and expiry descriptions below have
+been corrected after checking the archived stack traces and first failing assertions.
+
 Public release: `v6.0.0`
 
 Source benchmark-content commit: `5fda9a09255529b027cadf836c0c16c867a039e5`
@@ -113,10 +118,10 @@ and report model-plus-harness systems as first-class experimental conditions.
   runtime, descendant-session cost reconstruction, cache volume, and the existence of repeated
   failure signatures. These are regenerated from 92 complete trajectories and reconcile across
   run, family, and scenario grains.
-- **High confidence:** the dominant period-close revival failure mechanism. A
-  first-failing-assertion census of the original 47 failures shows that 46 preserve the closed
-  report but fail to append the required compensating history; Muse adds a distinct transaction
-  deadlock on the same scenario.
+- **Moderate confidence:** compensating credit history is a recurring weakness, but the original
+  assertion-level categories are not a complete mechanism census. Later review identifies
+  date-comparison errors and early blockers behind some matching labels. Muse times out while
+  materializing the closed period, before the revival operation is attempted.
 - **Moderate confidence:** the interpretation of hotel-credit and migration failures. It is
   supported by failing private scenarios, co-failure patterns, and targeted inspection of passing
   and failing implementations and candidate tests, but is not a complete mechanism census of all
@@ -363,16 +368,18 @@ broken.
 
 The residual defects are not random endpoint omissions:
 
-- hotel-credit expiry is calculated as `cancellation date + 366 days`, which is one day late when
-  the interval crosses a leap day; the lot-order query itself is deterministic, but the wrong
-  expiry changes which lot should be consumed;
+- hotel-credit expiry is returned as `cancellation date + 366 days`, one day later than the
+  required field convention. Both failed assertions return the expected surviving lot and
+  amount; they do not demonstrate incorrect lot ordering or an extra usable day;
 - partial cancellation, payment reduction, chargeback, and payment-statement failures share
   reconciliation errors between stored payment provenance and the aggregate ledger read paths;
-- current-state finance reports become functional during milestone 7, but databases created by
-  earlier milestones still fail the finance-reporting and close-history upgrades; and
-- the late credit-revival path performs a reporting read from inside an active operation
-  transaction and times out waiting for another database connection. This is an implementation
-  deadlock, not evaluator instability.
+- current-state finance reports become functional during milestone 7. The retained M6 history
+  checks fail on missing report endpoints; the M7 close-history check also stops at the previous
+  version's missing report endpoint, before upgrading; and
+- both credit-revival scenarios time out during the preceding period-close operation. Its
+  transaction rebuilds daily reports and repeatedly scans earlier days, exceeding the checked-out
+  connection's 15-second limit. The traces do not establish a deadlock waiting for another
+  connection, or the correctness of revival arithmetic after that blocker is removed.
 
 The implementation concentrates 5,390 of 6,506 production lines in `batches.ex`, launches no
 subagents, and ends with 42 candidate tests. Test declarations remain at 39 through milestone 6
@@ -757,7 +764,7 @@ Failure on the Core late-adjustment family by main configuration:
 | Flash high | 4/4 |
 | Flash max | 4/4 |
 
-A first-failing-assertion census of the original 47 main-view revival failures finds:
+The earlier assertion-level classification of the original 47 main-view revival failures was:
 
 - 32 runs emit no restoration;
 - 11 restore the liability silently on the backdated effective day rather than the first open day;
@@ -765,13 +772,14 @@ A first-failing-assertion census of the original 47 main-view revival failures f
 - 1 restores it under the wrong movement classification; and
 - 1 mutates the closed report.
 
-The closed report is therefore preserved in 46 of those 47 failing runs and 59 of the original 60
-main trajectories. The dominant defect is not rewriting published history; it is failing to
-append the correct compensating entry while changing current lot state. Muse adds a 48th failure
-through a different mechanism: its late-application transaction calls the reporting read path and
-times out waiting for another database connection. The neighboring finance-close-immutability
-family still fails in 8 of 67 runs, so the corpus does not establish that historical immutability
-is generally solved.
+Those categories describe observed outputs, not independently established code causes. The newer
+family review identifies date-comparison errors and blocked assertions among apparently similar
+failures. Missing compensating history is common, but a failed revival label alone does not prove
+it. Muse adds a 48th failed outcome through an earlier blocker: its period-close transaction
+exceeds the connection checkout limit while materializing long reporting history, before the
+late application is attempted. The neighboring finance-close-immutability family still fails in
+8 of this report's 67 runs, so the corpus does not establish that historical immutability is
+generally solved.
 
 Passing implementations explicitly model the correction. In simplified form:
 

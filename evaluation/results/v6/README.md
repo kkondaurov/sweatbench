@@ -3,6 +3,9 @@
 This directory contains the public results for the frozen v6 benchmark.
 
 - `index.html` is a self-contained interactive dashboard.
+- The Findings tab groups the 73 model-view trajectories into 13 model families. Its curated
+  explanations are in `findings.js`; `findings-data.js` is a portable extract of run scores and
+  failed check memberships, generated from `accepted-runs.json` by `build_findings.py`.
 - `RETROSPECTIVE.md` is the full methodological and behavioral analysis.
 - `ASTRA_TRAJECTORIES.md` records all four Astra efforts and examines the first two rounds' migration and cold-replay
   failures, comparison with earlier GPT systems, and implications for the next benchmark.
@@ -18,6 +21,7 @@ Run the verifier from the repository root:
 
 ```bash
 python3 evaluation/results/v6/analyze.py
+python3 evaluation/results/v6/build_findings.py --check
 ```
 
 The dataset has two views. `models` contains 73 model-comparison trajectories. `harness` contains
@@ -31,6 +35,14 @@ X-High runs 2 and 3 resumed from accepted snapshots after provider-capacity erro
 and runtimes include the interrupted attempts, but exclude the time the runs were stopped.
 The earlier retrospective remains a dated analysis of the 67-run Models population; the dashboard,
 dataset and Astra results section contain the expanded 73-run population.
+
+The Findings review is dated 6 September 2026. It checks all model-view run outcomes, with a deeper
+84-milestone audit of Astra and targeted source and test inspection for the other families.
+Mechanisms, counterexamples and blocked assertions are distinguished from the score labels.
+The extra Astra counterfactual and paired HTTP probes are analyst checks, not new accepted runs
+or a rescore. Raw trajectories remain private; the published tables expose the accepted outcomes,
+not the full evidence for every code-level explanation. The controlled Harnesses cohort is excluded
+from the family findings. These small samples do not establish intrinsic model failure rates.
 
 Costs with `cost_basis: recorded` are provider charges captured for the complete accepted run.
 The legacy data field `cost_basis: estimated` identifies API-equivalent costs, which apply the documented production token rates to recorded parent

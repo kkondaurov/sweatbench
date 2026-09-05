@@ -385,9 +385,10 @@ function refreshComparison() {
 }
 
 const methodAnchors = new Set(["overview", "scores", "sample", "costs", "code-time", "sources"]);
+const findingAnchors = new Set(["findings-overview", ...familyFindings.map(item => `findings-${item.id}`)]);
 function activateView() {
   const hash = location.hash.slice(1);
-  const view = methodAnchors.has(hash) || hash === "method" ? "method" : hash === "harness" ? "harness" : "models";
+  const view = methodAnchors.has(hash) || hash === "method" ? "method" : findingAnchors.has(hash) || hash === "findings" ? "findings" : hash === "harness" ? "harness" : "models";
   document.querySelectorAll(".view-tab").forEach(tab => {
     const selected = tab.dataset.view === view;
     tab.setAttribute("aria-selected", String(selected));
@@ -395,7 +396,8 @@ function activateView() {
     document.getElementById(`${tab.dataset.view}-view`).hidden = !selected;
   });
   if (view === "models") requestAnimationFrame(drawChart);
-  if (methodAnchors.has(hash)) requestAnimationFrame(() => document.getElementById(hash).scrollIntoView({ block: "start" }));
+  if (methodAnchors.has(hash) || findingAnchors.has(hash)) requestAnimationFrame(() => document.getElementById(hash).scrollIntoView({ block: "start" }));
+  if (hash === "findings") requestAnimationFrame(() => document.getElementById("findings-title").scrollIntoView({ block: "start" }));
   if (hash === "method") requestAnimationFrame(() => {
     const heading = document.getElementById("method-title");
     heading.scrollIntoView({ block: "start" });
