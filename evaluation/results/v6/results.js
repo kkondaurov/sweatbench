@@ -385,7 +385,7 @@ function refreshComparison() {
 }
 
 const methodAnchors = new Set(["overview", "scores", "sample", "costs", "code-time", "sources"]);
-const findingAnchors = new Set(["findings-overview", ...familyFindings.map(item => `findings-${item.id}`)]);
+const findingAnchors = new Set(["findings-overview", "findings-expiry", ...familyFindings.map(item => `findings-${item.id}`)]);
 function activateView() {
   const hash = location.hash.slice(1);
   const view = methodAnchors.has(hash) || hash === "method" ? "method" : findingAnchors.has(hash) || hash === "findings" ? "findings" : hash === "harness" ? "harness" : "models";

@@ -44,6 +44,11 @@ or a rescore. Raw trajectories remain private; the published tables expose the a
 not the full evidence for every code-level explanation. The controlled Harnesses cohort is excluded
 from the family findings. These small samples do not establish intrinsic model failure rates.
 
+The Findings tab also documents an [ambiguity in the initial credit-expiry wording](index.html#findings-expiry).
+Milestone 2 specified the usable period without explicitly defining which boundary date belonged
+in `expires_on`; milestone 6 later clarified that field. Early date-field failures need that
+qualification. This interpretation update does not change the requests, evaluator or published scores.
+
 Costs with `cost_basis: recorded` are provider charges captured for the complete accepted run.
 The legacy data field `cost_basis: estimated` identifies API-equivalent costs, which apply the documented production token rates to recorded parent
 and descendant usage. The dashboard and retrospective describe rate snapshots and cache treatment.

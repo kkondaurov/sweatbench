@@ -13,6 +13,12 @@ assertion-level interpretation of all 73 model-view runs. In particular, failed 
 must not be treated as causal diagnoses. Muse's timeout and expiry descriptions below have
 been corrected after checking the archived stack traces and first failing assertions.
 
+Expiry wording note, 6 September 2026: the [current findings](index.html#findings-expiry)
+qualify the date-field failures discussed below. Milestone 2 defined the usable period but left
+open whether `expires_on` named the last usable day or the first unavailable day. The evaluator
+accepted only the former. Milestone 6 later made that meaning explicit; the later clarification
+does not justify earlier penalties. Published scores and historical statistics remain unchanged.
+
 Public release: `v6.0.0`
 
 Source benchmark-content commit: `5fda9a09255529b027cadf836c0c16c867a039e5`

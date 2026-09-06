@@ -69,9 +69,12 @@ expires the following day. Two internal representations are plausible:
 - `expires_on` is the first invalid day: store `cancellation + 366`, and consider the lot
   unavailable on that date.
 
-The evaluator and public API contract use the first representation. The six target-family misses
-use the second. Their private failures are exact one-day differences in the returned field, such as
-expected `2028-04-30` versus returned `2028-05-01`.
+The evaluator accepts only the first representation. The initial milestone-2 request did not
+explicitly choose between these field conventions; milestone 6 later specified that credit remains
+usable through `expires_on` and expires the following day. The six target-family misses use the
+second representation. Their private failures are exact one-day differences in the returned field,
+such as expected `2028-04-30` versus returned `2028-05-01`. The [wording qualification](index.html#findings-expiry)
+applies to the early failures here too; published scores remain unchanged.
 
 This matters because the two failing scenarios have names about consumption order and origin
 restoration. In these ten trajectories, however, the candidate code orders lots by expiry and
