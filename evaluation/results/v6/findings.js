@@ -19,7 +19,7 @@ const familyFindings = [
     setup: "Codex CLI · Five high and five medium runs",
     paragraphs: [
       "<strong>Six of ten runs earned full marks: four high and two medium.</strong> Two of the remaining runs missed the same reporting correction. The test involves hotel credit used before it expires, but recorded in the application after a finance report has already marked the credit as expired. The reporting period is closed, so that report must stay unchanged and the correction belongs in the next open report. High run 4 and medium run 1 left out this correction, which made the next report show the wrong amount of credit owed.",
-      "Medium run 2 tried to make that correction, but its date comparisons went wrong. It used Elixir's ordinary comparison operators on Date values instead of comparing calendar dates. The application rejected valid report dates and left earlier credit issuance out of an opening balance. It also crashed when asked to open a group that already existed. Medium run 4 had a narrower date-field mismatch: it returned an expiry date 366 days after issuance, while the tests expected 365. The <a href=\"#findings-expiry\">initial wording left that field's meaning open to interpretation</a>; milestone 6 later clarified it.",
+      "Medium run 2 tried to make that correction, but its date comparisons went wrong. It used Elixir's ordinary comparison operators on Date values instead of comparing calendar dates. The application rejected valid report dates and left earlier credit issuance out of an opening balance. It also crashed when asked to open a group that already existed. Medium run 4 returned an <a href=\"#findings-expiry\">expiry date</a> 366 days after issuance, while the tests expected 365.",
       "The late-credit mistake has a larger effect on the score than its single cause might suggest. The basic test counts toward both Core and Maintenance, and another Maintenance test uses the restored credit afterwards. Missing the correction can therefore cost three points across two tests."
     ]
   },
@@ -39,7 +39,7 @@ const familyFindings = [
     groups: ["terra-xhigh"],
     setup: "Codex CLI · Five xhigh runs",
     paragraphs: [
-      "<strong>Credit dates and corrections to later reports were the repeated problems.</strong> Four of the five runs returned an expiry date one day later than the tests expected. At that point in the tests, they had the right remaining credit and amount; only the date field differed. The <a href=\"#findings-expiry\">initial requirement was ambiguous about that field</a>, though milestone 6 later clarified it. Run 5 used the expected convention.",
+      "<strong>Credit dates and corrections to later reports were the repeated problems.</strong> Four of the five runs returned an <a href=\"#findings-expiry\">expiry date</a> one day later than the tests expected. At that point in the tests, they had the right remaining credit and amount; only the date field differed. Run 5 used the expected convention.",
       "All five mishandled credit use recorded after a report had already marked the credit as expired. Four omitted the correction from the next open report. Run 4 changed that report's starting balance instead of recording a separate correction. The same mistake affected three scoring groups, through the basic late-credit test and a second test that used the restored credit.",
       "Runs 2 and 3 fixed some earlier payment and reporting bugs while implementing later features. Other upgrade tests still found wrong balances or reports that no longer matched the previous version. Final Core scores ranged from 36 to 37, with no full-score runs and a median API-equivalent cost of $9.96."
     ]
@@ -59,7 +59,7 @@ const familyFindings = [
     groups: ["claude-opus5-high"],
     setup: "Claude Code · Two high runs",
     paragraphs: [
-      "<strong>Both runs passed every upgrade and restart test, and run 2 earned full marks.</strong> Both also handled credit used before expiry but recorded only after a closed report had marked it expired. Run 1 lost a Core point because it returned the first unavailable day as its expiry date, while run 2 returned the last usable day. The remaining credit and amount were correct. Run 1's initial choice was reasonable under the <a href=\"#findings-expiry\">ambiguous milestone-2 wording</a>, but it kept that convention after milestone 6 clarified the field.",
+      "<strong>Both runs passed every upgrade and restart test, and run 2 earned full marks.</strong> Both also handled credit used before expiry but recorded only after a closed report had marked it expired. Run 1 lost a Core point over the <a href=\"#findings-expiry\">expiry-date convention</a>: it returned the first unavailable day, while run 2 returned the last usable day. The remaining credit and amount were correct.",
       "Run 1 also deliberately kept a cancelled group's totals as a historical record. After a transfer and cancellation, the cancelled destination still showed 500 cents of applied credit instead of zero. Here the request was explicit: group totals describe active rooms only. Run 2 recomputed those totals after cancellation. Run 1's test stopped at the nonzero total, before checking credit availability, ledger balances and the finance report.",
       "Run 2's own tests included the difficult late-credit case: correcting the current report while leaving the closed one unchanged. It finished with fewer test declarations than run 1, 298 versus 356, while passing every scored check. The two runs cost $43.96 and $51.35 at API-equivalent prices and took roughly two hours each."
     ]
@@ -90,7 +90,7 @@ const familyFindings = [
     groups: ["qwen3-8-max-xhigh"],
     setup: "OpenCode · Five xhigh runs",
     paragraphs: [
-      "<strong>Qwen ranged from nearly complete to several connected accounting failures.</strong> Run 4 passed every Maintenance check and missed only a credit-expiry date, which it returned one day later than the tests expected. This is the <a href=\"#findings-expiry\">field convention left ambiguous at milestone 2 and clarified at milestone 6</a>. It made the required report correction for late-recorded credit use, and its own tests covered that case.",
+      "<strong>Qwen ranged from nearly complete to several connected accounting failures.</strong> Run 4 passed every Maintenance check and missed only a <a href=\"#findings-expiry\">credit-expiry date</a>, which it returned one day later than the tests expected. It made the required report correction for late-recorded credit use, and its own tests covered that case.",
       "Run 5 had a more fundamental mistake. When withdrawing credit created from a cash cancellation, it removed only the ten-percent bonus and left the original converted amount available. That error affected chargebacks, payment statements and checks of how unpaid amounts were covered. Separately, its daily reports treated all transactions since reporting began as today's transactions and reused a fixed opening balance.",
       "Three runs completed the old-room upgrade but returned wrong accounting values afterwards. The final scores ranged from 31 to 38 Core and 6 to 10 Maintenance. Median recorded cost was $25.34 and average runtime was 4h 13m."
     ]
@@ -130,7 +130,7 @@ const familyFindings = [
     groups: ["ox-alpha-high", "ox-alpha-max"],
     setup: "OpenCode · Four high and four max runs · Includes OX Alpha preview samples",
     paragraphs: [
-      "<strong>Seven of eight runs returned an expiry date one day later than the tests expected.</strong> The <a href=\"#findings-expiry\">initial wording was ambiguous about the field</a>. One inspected implementation also recorded expiry in the report a day after the credit had already become unavailable, creating a separate reporting error. Four runs stopped the longer late-credit test at its first expiry check. All eight failed the group of tests covering report corrections for late-recorded credit use.",
+      "<strong>Seven of eight runs returned an <a href=\"#findings-expiry\">expiry date</a> one day later than the tests expected.</strong> One inspected implementation also recorded expiry in the report a day after the credit had already become unavailable, creating a separate reporting error. Four runs stopped the longer late-credit test at its first expiry check. All eight failed the group of tests covering report corrections for late-recorded credit use.",
       "Max run 3 also left the ledger out of sync with a corrected payment. A chargeback updated the payment record, but the ledger continued adding up the original refund and conversion entries. It still reported 1,000 cents of refunded cash where the corrected amount should have been zero. Room upgrades produced a mixture of failures: some applications returned wrong allocations or statements, while one migration crashed.",
       "All eight runs passed the transfer-mechanics tests and correctly returned saved responses after a server restart. One high run also passed the credit-lifecycle tests. Median API-equivalent cost was $2.08 at high and $2.96 at max. High had slightly better average Core scores; max had slightly better Maintenance scores."
     ]
@@ -193,6 +193,7 @@ function renderFindings() {
       <div class="table-wrap"><table class="finding-run-table"><thead><tr><th>Run</th><th>Core</th><th>Maintenance</th><th>Failed check groups</th></tr></thead><tbody>${runRows}</tbody></table></div></details>
     </section>`);
   }
+  nav.insertAdjacentHTML("beforeend", '<a href="#findings-expiry">Note on expiry dates</a>');
 }
 
 renderFindings();

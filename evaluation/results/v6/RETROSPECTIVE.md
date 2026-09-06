@@ -13,12 +13,6 @@ assertion-level interpretation of all 73 model-view runs. In particular, failed 
 must not be treated as causal diagnoses. Muse's timeout and expiry descriptions below have
 been corrected after checking the archived stack traces and first failing assertions.
 
-Expiry wording note, 6 September 2026: the [current findings](index.html#findings-expiry)
-qualify the date-field failures discussed below. Milestone 2 defined the usable period but left
-open whether `expires_on` named the last usable day or the first unavailable day. The evaluator
-accepted only the former. Milestone 6 later made that meaning explicit; the later clarification
-does not justify earlier penalties. Published scores and historical statistics remain unchanged.
-
 Public release: `v6.0.0`
 
 Source benchmark-content commit: `5fda9a09255529b027cadf836c0c16c867a039e5`
@@ -817,9 +811,10 @@ The second-largest cluster is older and more varied. Correct behavior requires:
 - restoration to the original lot and origin after reversal.
 
 Thirty-one runs fail the family. The two ordering scenarios fail 31 and 29 runs respectively, but
-individual trajectories also miss date arithmetic or provenance restoration. Opus run 1 is an
-instructive near miss: its architecture and test volume are strong, but the private check exposes
-an off-by-one expiry date.
+individual trajectories also miss date arithmetic or provenance restoration. Opus run 1 returns
+the first unavailable day in `expires_on`, while the tests expect the last usable day. Milestone 2
+left that field convention open to interpretation; milestone 6 made its meaning explicit.
+See the [note on expiry dates](index.html#findings-expiry).
 
 Muse adds a different concrete instance of the same boundary error. Its implementation stores
 credit expiry as cancellation plus 366 elapsed days. That happens to satisfy its non-leap

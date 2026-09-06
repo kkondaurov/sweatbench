@@ -73,8 +73,8 @@ The evaluator accepts only the first representation. The initial milestone-2 req
 explicitly choose between these field conventions; milestone 6 later specified that credit remains
 usable through `expires_on` and expires the following day. The six target-family misses use the
 second representation. Their private failures are exact one-day differences in the returned field,
-such as expected `2028-04-30` versus returned `2028-05-01`. The [wording qualification](index.html#findings-expiry)
-applies to the early failures here too; published scores remain unchanged.
+such as expected `2028-04-30` versus returned `2028-05-01`.
+See the [note on expiry dates](index.html#findings-expiry).
 
 This matters because the two failing scenarios have names about consumption order and origin
 restoration. In these ten trajectories, however, the candidate code orders lots by expiry and
