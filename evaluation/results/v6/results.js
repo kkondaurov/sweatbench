@@ -1,5 +1,8 @@
 "use strict";
 
+const sourceArchiveBaseUrl = "https://github.com/kkondaurov/sweatbench-runs/tree/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6";
+const runSourceLink = id => `<a class="run-source" href="${sourceArchiveBaseUrl}/${encodeURIComponent(id)}" title="All seven milestone snapshots">Source <i data-icon="ArrowUpRight"></i></a>`;
+
 const mean = values => values.reduce((sum, value) => sum + value, 0) / values.length;
 const median = values => {
   const ordered = [...values].sort((a, b) => a - b);
@@ -59,7 +62,7 @@ function runDetails(row, showRuntime = true) {
     <div class="run-detail-header"><strong>${row.runs.length} completed ${row.runs.length === 1 ? "run" : "runs"}</strong><span>Sample total <span class="${estimateClass(row)}">${money(row.totalCost)}</span> (${costBasisLabel(row)}) · Average recovery ${signed(Number(row.avgRecovery.toFixed(1)))}</span></div>
     <div class="table-wrap"><table class="run-detail-table" aria-label="Runs for ${row.model} ${row.effort}, ${row.harness}">
       <thead><tr><th scope="col">Run</th><th scope="col">Core <span>out of 39</span></th><th scope="col">Maintenance <span>out of 10</span></th><th scope="col">Ship <span>out of 94</span></th><th scope="col">Final <span>out of 94</span></th><th scope="col">Recovery</th><th scope="col" title="Candidate-launched children; fixed harness workers excluded">Subagents</th><th scope="col">Production <span>lines of code</span></th><th scope="col">Tests <span>lines of code</span></th>${showRuntime ? '<th scope="col">Runtime</th>' : ""}<th scope="col">Cost <span>per run</span></th></tr></thead>
-      <tbody>${row.runs.map((run, index) => `<tr><td class="run-number">Run ${String(index + 1).padStart(2, "0")}</td><td>${run.core}</td><td>${run.judgment}</td><td>${run.ship}</td><td>${run.final}</td><td>${signed(run.final - run.ship)}</td><td>${run.subagents}</td><td>${integer(run.prodLoc)}</td><td>${integer(run.testLoc)}</td>${showRuntime ? `<td>${duration(run.runtimeSeconds)}</td>` : ""}<td class="run-cost ${estimateClass(row)}">${money(run.cost)}</td></tr>`).join("")}</tbody>
+      <tbody>${row.runs.map((run, index) => `<tr><td class="run-number">Run ${String(index + 1).padStart(2, "0")}${runSourceLink(run.id)}</td><td>${run.core}</td><td>${run.judgment}</td><td>${run.ship}</td><td>${run.final}</td><td>${signed(run.final - run.ship)}</td><td>${run.subagents}</td><td>${integer(run.prodLoc)}</td><td>${integer(run.testLoc)}</td>${showRuntime ? `<td>${duration(run.runtimeSeconds)}</td>` : ""}<td class="run-cost ${estimateClass(row)}">${money(run.cost)}</td></tr>`).join("")}</tbody>
     </table></div>
   </div>`;
 }
@@ -435,4 +438,5 @@ let resizeFrame;
 new ResizeObserver(() => { cancelAnimationFrame(resizeFrame); resizeFrame = requestAnimationFrame(drawChart); }).observe(document.querySelector(".chart-shell"));
 document.getElementById("models-count").textContent = rows.reduce((count,row) => count + row.runs.length, 0);
 document.getElementById("sample-summary").textContent = `${rows.length} configurations · ${rows.reduce((count,row) => count + row.runs.length, 0)} completed runs`;
-renderIcons(); renderTable(); renderSelection(); renderHarnessComparison(); activateView();
+document.querySelectorAll("[data-source-archive]").forEach(link => { link.href = sourceArchiveBaseUrl; });
+renderFindings(); renderIcons(); renderTable(); renderSelection(); renderHarnessComparison(); activateView();

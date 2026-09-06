@@ -40,8 +40,8 @@ The Findings review is dated 6 September 2026. It checks all model-view run outc
 84-milestone audit of Astra and targeted source and test inspection for the other families.
 Mechanisms, counterexamples and blocked assertions are distinguished from the score labels.
 The extra Astra counterfactual and paired HTTP probes are analyst checks, not new accepted runs
-or a rescore. Raw trajectories remain private; the published tables expose the accepted outcomes,
-not the full evidence for every code-level explanation. The controlled Harnesses cohort is excluded
+or a rescore. The generated code and tests are in the public source archive; raw session logs remain
+private, so the archive is not the full evidence for every explanation. The controlled Harnesses cohort is excluded
 from the family findings. These small samples do not establish intrinsic model failure rates.
 
 The [note on expiry dates](index.html#findings-expiry) distinguishes the field convention left open
@@ -51,5 +51,13 @@ Costs with `cost_basis: recorded` are provider charges captured for the complete
 The legacy data field `cost_basis: estimated` identifies API-equivalent costs, which apply the documented production token rates to recorded parent
 and descendant usage. The dashboard and retrospective describe rate snapshots and cache treatment.
 
-Raw model sessions and generated applications are not part of this release. Each public run has a
-stable `<group>-<sample>` identifier; machine-local source paths were deliberately removed.
+The [source archive](https://github.com/kkondaurov/sweatbench-runs/tree/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6) contains all 98 accepted runs,
+with a `v6/<run.id>/README.md` and `milestone-1/` through `milestone-7/` for each run. Source links
+in Models, Harnesses and Findings open that run's directory. Raw model session logs remain private;
+machine-local source paths are not published.
+
+Dashboard run IDs are copied from `accepted-runs.json`, matched by `group` and public `sample`,
+not reconstructed from legacy `label` values. The 20 Codex runs shared by Models and Harnesses
+reuse the same run objects and source links. Findings uses the accepted IDs in `findings-data.js`.
+`sourceArchiveBaseUrl` in `results.js` controls all dashboard archive links. It is pinned to
+archive commit `be3005fa4092a75107d627e51bf9e9ee1f8474de`, as are the source links in the reports.

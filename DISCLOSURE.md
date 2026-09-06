@@ -30,5 +30,11 @@ new reference cohort is frozen.
 ## Data boundary
 
 The release includes scored trajectory records, aggregate analyses, cost provenance, code-size
-metrics, failure families, and the full frozen evaluator. It excludes raw provider sessions,
-credentials, transient infrastructure logs, and generated candidate applications.
+metrics, failure families, and the full frozen evaluator. The separate
+[v6 source archive](https://github.com/kkondaurov/sweatbench-runs/tree/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6) contains the submitted
+applications and candidate-written tests at all seven milestones of each of the 98 accepted runs
+in the current dashboard. It includes both the original reference cohort and the later published
+Astra and Muse Spark runs; their original evaluation status is unchanged.
+
+Raw provider sessions, credentials, transient infrastructure logs, downloaded dependencies,
+build output and runtime databases are not included.

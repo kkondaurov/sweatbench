@@ -345,19 +345,21 @@ not more atom-loading traps, duplicate points, or milestones added merely to inc
 
 ## Evidence Map
 
-The public dataset preserves scores, usage, execution metadata, and hashes. Source and logs
-remain with sealed runs. Source paths below refer to the indicated milestone snapshot.
+The public dataset preserves scores, usage, execution metadata, and hashes. All twelve Astra
+implementations are available in the [v6 source archive](https://github.com/kkondaurov/sweatbench-runs/tree/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6),
+with directories such as `v6-astra-low-01/milestone-4`. Source paths below refer to the indicated
+milestone snapshot. Raw session logs remain private.
 
 | Evidence | Run artifact |
 |---|---|
-| Failing room decoders | Both mediums and high 01, M4 `priv/repo/migrations/20260905000003_add_room_accounting.exs` |
-| Wrong fixtures | Medium 01 M4 `test/group_stay/room_accounting_upgrade_test.exs`; medium 02 M4 `test/group_stay/persistence_test.exs` |
+| Failing room decoders | M4 room-accounting migration: [medium 01](https://github.com/kkondaurov/sweatbench-runs/blob/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6/v6-astra-medium-01/milestone-4/priv/repo/migrations/20260905000003_add_room_accounting.exs), [medium 02](https://github.com/kkondaurov/sweatbench-runs/blob/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6/v6-astra-medium-02/milestone-4/priv/repo/migrations/20260905000003_add_room_accounting.exs), [high 01](https://github.com/kkondaurov/sweatbench-runs/blob/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6/v6-astra-high-01/milestone-4/priv/repo/migrations/20260905000003_add_room_accounting.exs) |
+| Wrong fixtures | M4 [medium 01 room upgrade test](https://github.com/kkondaurov/sweatbench-runs/blob/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6/v6-astra-medium-01/milestone-4/test/group_stay/room_accounting_upgrade_test.exs); [medium 02 persistence test](https://github.com/kkondaurov/sweatbench-runs/blob/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6/v6-astra-medium-02/milestone-4/test/group_stay/persistence_test.exs) |
 | High 01 fixture rewrite | `logs/agent-4.jsonl`, completed `item_13` |
 | High 02 crash and repair | `logs/agent-4.jsonl`, completed `item_13`, `item_16`; M3/M4 `test/group_stay/durable_operations_persistence_test.exs` |
-| Typed decoding | Low 01 M4 `lib/group_stay/accounting.ex`; low 02 M4 migration-local `GroupRow` |
+| Typed decoding | [Low 01 M4 accounting](https://github.com/kkondaurov/sweatbench-runs/blob/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6/v6-astra-low-01/milestone-4/lib/group_stay/accounting.ex); low 02 M4 migration-local `GroupRow` |
 | Failing replay conversion | First-round low/medium and medium 02 M7 `lib/group_stay/reservations.ex`; high 01 M7 `lib/group_stay/operations.ex` |
-| JSON-shaped replay | Low 02 M3/M7 `lib/group_stay/reservations.ex`, `apply_operation/1` |
-| Co-located result literals | High 02 M6/M7 `lib/group_stay/reservations.ex`, `restore_result/1`, `apply_operation/1` |
+| JSON-shaped replay | Low 02 M3/M7 `apply_operation/1`: [M7 source](https://github.com/kkondaurov/sweatbench-runs/blob/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6/v6-astra-low-02/milestone-7/lib/group_stay/reservations.ex) |
+| Co-located result literals | High 02 M6/M7 `restore_result/1`, `apply_operation/1`: [M7 source](https://github.com/kkondaurov/sweatbench-runs/blob/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6/v6-astra-high-02/milestone-7/lib/group_stay/reservations.ex) |
 | Cold request order | Frozen `evaluation/system_checks.py`, R4 `projection-start`, R5 `close-history-close` |
-| Signed revival calculation | Low 01 M7 `lib/group_stay/finance.ex`, `capture/4`, `schedule/3` |
+| Signed revival calculation | Low 01 M7 `capture/4`, `schedule/3`: [finance source](https://github.com/kkondaurov/sweatbench-runs/blob/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6/v6-astra-low-01/milestone-7/lib/group_stay/finance.ex) |
 | Verification work | Both rounds' medium/high `logs/agent-7.jsonl` and M7 durability tests |

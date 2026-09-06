@@ -153,6 +153,8 @@ td:first-child { text-align: left; }
 .run-detail-table th { background: transparent; }
 .run-detail-table tbody tr:last-child td { border: 0; }
 .run-number { white-space: nowrap; font-weight: 550; }
+.run-source { display: flex; align-items: center; gap: 3px; width: fit-content; margin-top: 3px; font-weight: 400; white-space: nowrap; }
+.run-source svg { width: 12px; height: 12px; }
 .run-cost { color: var(--ink); }
 .table-foot { justify-content: space-between; flex-wrap: wrap; margin-top: 13px; gap: 9px; font-size: 11px; color: var(--muted); }
 .table-foot a, .site-footer a { display: inline-flex; align-items: center; gap: 4px; }

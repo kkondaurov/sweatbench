@@ -184,7 +184,7 @@ function renderFindings() {
     nav.insertAdjacentHTML("beforeend", `<a href="#findings-${item.id}">${item.nav}</a>`);
     const runRows = runs.map(run => {
       const failures = run.final_failed_families;
-      return `<tr><th scope="row" title="${escapeFinding(run.id)}">${escapeFinding(run.effort)} ${String(run.sample).padStart(2, "0")}</th><td>${run.core_final}</td><td>${run.maintenance_final}</td><td>${failures.length ? `<ul>${failures.map(id => `<li title="${escapeFinding(id)}">${escapeFinding(checkName(id))}</li>`).join("")}</ul>` : "None"}</td></tr>`;
+      return `<tr><th scope="row" title="${escapeFinding(run.id)}">${escapeFinding(run.effort)} ${String(run.sample).padStart(2, "0")}${runSourceLink(run.id)}</th><td>${run.core_final}</td><td>${run.maintenance_final}</td><td>${failures.length ? `<ul>${failures.map(id => `<li title="${escapeFinding(id)}">${escapeFinding(checkName(id))}</li>`).join("")}</ul>` : "None"}</td></tr>`;
     }).join("");
     content.insertAdjacentHTML("beforeend", `<section id="findings-${item.id}" class="family-finding">
       <h3>${item.name}</h3><p class="finding-meta">${runs.length} completed ${runs.length === 1 ? "run" : "runs"} · ${sweeps} ${sweeps === 1 ? "sweep" : "sweeps"}<br>${item.setup}</p>
@@ -195,5 +195,3 @@ function renderFindings() {
   }
   nav.insertAdjacentHTML("beforeend", '<a href="#findings-expiry">Note on expiry dates</a>');
 }
-
-renderFindings();

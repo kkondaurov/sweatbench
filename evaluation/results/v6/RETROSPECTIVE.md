@@ -1510,6 +1510,7 @@ configured agent system survive, at what reliability and cost?"
 
 Primary public evidence:
 
+- [Run source archive](https://github.com/kkondaurov/sweatbench-runs/tree/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6): all seven application snapshots for each of the 98 currently published runs;
 - `benchmark.json`: stage and family definitions;
 - `candidate/requests/`: cumulative product requests;
 - `run_candidate.py`: canonical prompts and fresh-session protocol;

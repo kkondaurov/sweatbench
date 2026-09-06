@@ -13,6 +13,11 @@ Those family labels are useful for scoring, but they are too coarse to explain t
 review traced the exact assertions, candidate code, candidate tests, parent-agent updates, child
 assignments, returned findings, and whether the parent incorporated them.
 
+All seven source snapshots of each run are in the
+[v6 source archive](https://github.com/kkondaurov/sweatbench-runs/tree/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6):
+`luna-xhigh-opencode-01` through `05`, and `luna-xhigh-delegated-01` through `05`.
+The numbering matches this report and the dashboard. Raw agent sessions remain private.
+
 ## Bottom line
 
 The evidence does not support the simple interpretation that OpenCode's subagents reasoned better

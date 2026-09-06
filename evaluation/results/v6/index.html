@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Sweat Bench tests how coding agents maintain a hotel-deposit application through seven changes in requirements. Compare their results, cost, runtime and code size.">
   <title>Sweat Bench v6 - Completed Results</title>
-  <link rel="stylesheet" href="results.css?v=expiry-evidence-20260906">
+  <link rel="stylesheet" href="results.css?v=source-archive-be3005f">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to results</a>
@@ -113,7 +113,7 @@
             <p>Sweat Bench tests how coding agents handle software that changes over time. Each agent builds GroupStay, a fictional application for managing hotel deposits for group reservations. Over seven milestones, it adds bookings, payments, cancellations, hotel credit, transfers and financial reports. Every new version has to keep the earlier features working and preserve the records they created.</p>
             <p>Each run is a separate attempt at that sequence. The agent writes the code and its own tests. After each milestone, the benchmark tests the application, including what happens when the server restarts or a new version opens a database created by an earlier one.</p>
             <p>To understand the results, we went back through the code, tests and session logs from all 73 completed runs in the Models tab. We looked for mistakes that recurred across runs, tests that caught them before delivery, and cases where one bug caused several checks to fail. The sections below follow each model family through those successes and failures.</p>
-            <p class="findings-source-note">The review covers small samples across 13 model families and several coding tools; the separate Harnesses experiments are excluded. Scores come from the <a href="accepted-runs.json">accepted dataset</a>. The archived code and logs used for this analysis are not published. <a href="#scores">Scoring details</a> · <a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/RETROSPECTIVE.md">Earlier retrospective</a></p>
+            <p class="findings-source-note">The review covers small samples across 13 model families and several coding tools; the separate Harnesses experiments are excluded. Scores come from the <a href="accepted-runs.json">accepted dataset</a>. All seven code snapshots for each run are in the <a data-source-archive href="https://github.com/kkondaurov/sweatbench-runs/tree/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6">source archive</a>; raw session logs remain private. <a href="#scores">Scoring details</a> · <a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/RETROSPECTIVE.md">Earlier retrospective</a></p>
           </section>
           <div id="family-findings"></div>
           <section id="findings-expiry">
@@ -137,7 +137,7 @@
             <p>The application is GroupStay, a fictional service that manages hotel deposits for group reservations. It starts with bookings, payments and cancellations, then adds hotel credit, durable retries, room-level accounting, transfers, daily finance reports and period close. The agent writes a Phoenix/Elixir application backed by SQLite, starting from a service skeleton.</p>
             <p>The sequence matters. A way of storing payments that works at launch may be inadequate once individual rooms can be cancelled or money moved between reservations. A report may show the right balance today but change incorrectly when a late adjustment arrives. The benchmark checks whether the agent carries those earlier decisions through the later changes.</p>
             <p>Each milestone starts a fresh model session with the repository, current request, accumulated documentation and any tests the agent has written. It cannot see future requests or the evaluator's tests and results. After the agent finishes, the evaluator checks the HTTP API, restarts the application, and tests upgrades using databases from earlier milestones. The code and documents left in the repository are what the next session inherits.</p>
-            <p>The <a href="https://github.com/kkondaurov/sweatbench#benchmark-design">repository README</a> describes all seven milestones and links to the requests.</p>
+            <p>The <a href="https://github.com/kkondaurov/sweatbench#benchmark-design">repository README</a> describes all seven milestones and links to the requests. The <a data-source-archive href="https://github.com/kkondaurov/sweatbench-runs/tree/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6">source archive</a> contains the generated applications at every milestone for all 98 accepted runs.</p>
           </section>
           <section id="scores"><h3>Scoring</h3>
             <dl class="definitions">
@@ -170,7 +170,8 @@
             <p><strong>Subagents</strong> counts distinct agents started by the candidate. Built-in workers such as Codex's automatic reviewer are excluded from that count, but their token usage is included in the cost.</p>
           </section>
           <section id="sources"><h3>Data and sources</h3>
-            <div class="source-links"><a href="accepted-runs.json">Run dataset <i data-icon="Download"></i></a><a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/analyze.py">Data verifier <i data-icon="ArrowUpRight"></i></a><a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/RETROSPECTIVE.md">Retrospective <i data-icon="ArrowUpRight"></i></a></div>
+            <div class="source-links"><a href="accepted-runs.json">Run dataset <i data-icon="Download"></i></a><a data-source-archive href="https://github.com/kkondaurov/sweatbench-runs/tree/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6">Source archive <i data-icon="ArrowUpRight"></i></a><a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/analyze.py">Data verifier <i data-icon="ArrowUpRight"></i></a><a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/RETROSPECTIVE.md">Retrospective <i data-icon="ArrowUpRight"></i></a></div>
+            <p>The archive includes a README and seven milestone snapshots for each accepted run. The 20 Codex runs shared by Models and Harnesses link to the same sources. Raw session logs remain private.</p>
             <p>Official pricing: <a href="https://developers.openai.com/api/docs/models/gpt-6-astra">Astra</a> (checked 5 Sep 2026), <a href="https://developers.openai.com/api/docs/models/gpt-5.5">GPT-5.5</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-sol">Sol</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-terra">Terra</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-luna">Luna</a>, <a href="https://openrouter.ai/meta/muse-spark-1.3">Muse Spark</a>, <a href="https://docs.x.ai/developers/models/grok-4.6">Grok</a>, <a href="https://openrouter.ai/qwen/qwen3.8-max">Qwen</a>, <a href="https://openrouter.ai/deepseek/deepseek-v4-pro-0813">DeepSeek</a>, <a href="https://z.ai/blog/glm-5.3-flash">GLM-5.3 Flash</a>.</p>
           </section>
         </div>
@@ -180,155 +181,156 @@
     <noscript><p>JavaScript is required for the interactive results. The <a href="accepted-runs.json">complete run dataset</a> and <a href="https://github.com/kkondaurov/sweatbench">repository summary</a> remain available.</p></noscript>
   </main>
   <script>
+    // Run IDs are copied from accepted-runs.json by group and public sample, not legacy labels.
     const rows = [
       { id: "astra-low", model: "GPT-6 Astra", effort: "low", harness: "Codex CLI", costBasis: "estimated", runs: [
-        { core: 39, judgment: 8, ship: 92, final: 92, cost: 11.643672, prodLoc: 1979, testLoc: 2311, runtimeSeconds: 2499.498 },
-        { core: 39, judgment: 10, ship: 94, final: 94, cost: 13.080246, prodLoc: 2057, testLoc: 2431, runtimeSeconds: 2713.455 },
-        { core: 38, judgment: 9, ship: 92, final: 92, cost: 12.29647, prodLoc: 2268, testLoc: 2582, runtimeSeconds: 2974.245 }
+        { id: "v6-astra-low-01", core: 39, judgment: 8, ship: 92, final: 92, cost: 11.643672, prodLoc: 1979, testLoc: 2311, runtimeSeconds: 2499.498 },
+        { id: "v6-astra-low-02", core: 39, judgment: 10, ship: 94, final: 94, cost: 13.080246, prodLoc: 2057, testLoc: 2431, runtimeSeconds: 2713.455 },
+        { id: "v6-astra-low-03", core: 38, judgment: 9, ship: 92, final: 92, cost: 12.29647, prodLoc: 2268, testLoc: 2582, runtimeSeconds: 2974.245 }
       ]},
       { id: "astra-medium", model: "GPT-6 Astra", effort: "medium", harness: "Codex CLI", costBasis: "estimated", runs: [
-        { core: 38, judgment: 7, ship: 90, final: 90, cost: 16.425452, prodLoc: 2242, testLoc: 3447, runtimeSeconds: 3442.547 },
-        { core: 38, judgment: 7, ship: 90, final: 90, cost: 13.477396, prodLoc: 2054, testLoc: 3372, runtimeSeconds: 3245.522 },
-        { core: 39, judgment: 8, ship: 92, final: 92, cost: 15.2426, prodLoc: 2183, testLoc: 3090, runtimeSeconds: 3611.902 }
+        { id: "v6-astra-medium-01", core: 38, judgment: 7, ship: 90, final: 90, cost: 16.425452, prodLoc: 2242, testLoc: 3447, runtimeSeconds: 3442.547 },
+        { id: "v6-astra-medium-02", core: 38, judgment: 7, ship: 90, final: 90, cost: 13.477396, prodLoc: 2054, testLoc: 3372, runtimeSeconds: 3245.522 },
+        { id: "v6-astra-medium-03", core: 39, judgment: 8, ship: 92, final: 92, cost: 15.2426, prodLoc: 2183, testLoc: 3090, runtimeSeconds: 3611.902 }
       ]},
       { id: "astra-high", model: "GPT-6 Astra", effort: "high", harness: "Codex CLI", costBasis: "estimated", runs: [
-        { core: 38, judgment: 7, ship: 90, final: 90, cost: 19.421044, prodLoc: 2230, testLoc: 4903, runtimeSeconds: 4632.994 },
-        { core: 39, judgment: 10, ship: 94, final: 94, cost: 17.472062, prodLoc: 2102, testLoc: 5189, runtimeSeconds: 4743.283 },
-        { core: 39, judgment: 8, ship: 92, final: 92, cost: 19.04301, prodLoc: 2216, testLoc: 4751, runtimeSeconds: 4738.476 }
+        { id: "v6-astra-high-01", core: 38, judgment: 7, ship: 90, final: 90, cost: 19.421044, prodLoc: 2230, testLoc: 4903, runtimeSeconds: 4632.994 },
+        { id: "v6-astra-high-02", core: 39, judgment: 10, ship: 94, final: 94, cost: 17.472062, prodLoc: 2102, testLoc: 5189, runtimeSeconds: 4743.283 },
+        { id: "v6-astra-high-03", core: 39, judgment: 8, ship: 92, final: 92, cost: 19.04301, prodLoc: 2216, testLoc: 4751, runtimeSeconds: 4738.476 }
       ]},
       { id: "astra-xhigh", model: "GPT-6 Astra", effort: "xhigh", harness: "Codex CLI", costBasis: "estimated", runs: [
-        { core: 39, judgment: 10, ship: 94, final: 94, cost: 27.134116, prodLoc: 2613, testLoc: 5879, runtimeSeconds: 7239.645 },
-        { core: 39, judgment: 10, ship: 94, final: 94, cost: 30.436272, prodLoc: 2486, testLoc: 6142, runtimeSeconds: 9685.866 },
-        { core: 39, judgment: 10, ship: 94, final: 94, cost: 28.705118, prodLoc: 2385, testLoc: 5733, runtimeSeconds: 8452.138 }
+        { id: "v6-astra-xhigh-01", core: 39, judgment: 10, ship: 94, final: 94, cost: 27.134116, prodLoc: 2613, testLoc: 5879, runtimeSeconds: 7239.645 },
+        { id: "v6-astra-xhigh-02", core: 39, judgment: 10, ship: 94, final: 94, cost: 30.436272, prodLoc: 2486, testLoc: 6142, runtimeSeconds: 9685.866 },
+        { id: "v6-astra-xhigh-03", core: 39, judgment: 10, ship: 94, final: 94, cost: 28.705118, prodLoc: 2385, testLoc: 5733, runtimeSeconds: 8452.138 }
       ]},
       { id: "sol-high", model: "GPT-5.6 Sol", effort: "high", harness: "Codex CLI", costBasis: "estimated", runs: [
-        { core: 39, judgment: 10, ship: 94, final: 94, cost: 25.21380832, prodLoc: 3308, testLoc: 2989, runtimeSeconds: 6390.519 },
-        { core: 39, judgment: 10, ship: 94, final: 94, cost: 22.37118992, prodLoc: 3813, testLoc: 2568, runtimeSeconds: 5334.126 },
-        { core: 39, judgment: 10, ship: 94, final: 94, cost: 25.57794868, prodLoc: 3977, testLoc: 3789, runtimeSeconds: 6027.486 },
-        { core: 38, judgment: 8, ship: 92, final: 92, cost: 14.63840932, prodLoc: 3475, testLoc: 2238, runtimeSeconds: 4604.985 },
-        { core: 39, judgment: 10, ship: 94, final: 94, cost: 13.23043088, prodLoc: 3660, testLoc: 2767, runtimeSeconds: 4579.790 }
+        { id: "sol-high-01", core: 39, judgment: 10, ship: 94, final: 94, cost: 25.21380832, prodLoc: 3308, testLoc: 2989, runtimeSeconds: 6390.519 },
+        { id: "sol-high-02", core: 39, judgment: 10, ship: 94, final: 94, cost: 22.37118992, prodLoc: 3813, testLoc: 2568, runtimeSeconds: 5334.126 },
+        { id: "sol-high-03", core: 39, judgment: 10, ship: 94, final: 94, cost: 25.57794868, prodLoc: 3977, testLoc: 3789, runtimeSeconds: 6027.486 },
+        { id: "sol-high-04", core: 38, judgment: 8, ship: 92, final: 92, cost: 14.63840932, prodLoc: 3475, testLoc: 2238, runtimeSeconds: 4604.985 },
+        { id: "sol-high-05", core: 39, judgment: 10, ship: 94, final: 94, cost: 13.23043088, prodLoc: 3660, testLoc: 2767, runtimeSeconds: 4579.790 }
       ]},
       { id: "sol-medium", model: "GPT-5.6 Sol", effort: "medium", harness: "Codex CLI", costBasis: "estimated", runs: [
-        { core: 38, judgment: 8, ship: 92, final: 92, cost: 11.01992328, prodLoc: 3389, testLoc: 2333, runtimeSeconds: 4474.103 },
-        { core: 37, judgment: 6, ship: 89, final: 89, cost: 15.8389762, prodLoc: 4078, testLoc: 2237, runtimeSeconds: 4998.726 },
-        { core: 39, judgment: 10, ship: 94, final: 94, cost: 19.77135792, prodLoc: 3302, testLoc: 2481, runtimeSeconds: 4912.219 },
-        { core: 38, judgment: 10, ship: 92, final: 92, cost: 12.9168822, prodLoc: 3244, testLoc: 2476, runtimeSeconds: 4584.403 },
-        { core: 39, judgment: 10, ship: 94, final: 94, cost: 13.89960416, prodLoc: 3403, testLoc: 2510, runtimeSeconds: 4066.312 }
+        { id: "sol-medium-01", core: 38, judgment: 8, ship: 92, final: 92, cost: 11.01992328, prodLoc: 3389, testLoc: 2333, runtimeSeconds: 4474.103 },
+        { id: "sol-medium-02", core: 37, judgment: 6, ship: 89, final: 89, cost: 15.8389762, prodLoc: 4078, testLoc: 2237, runtimeSeconds: 4998.726 },
+        { id: "sol-medium-03", core: 39, judgment: 10, ship: 94, final: 94, cost: 19.77135792, prodLoc: 3302, testLoc: 2481, runtimeSeconds: 4912.219 },
+        { id: "sol-medium-04", core: 38, judgment: 10, ship: 92, final: 92, cost: 12.9168822, prodLoc: 3244, testLoc: 2476, runtimeSeconds: 4584.403 },
+        { id: "sol-medium-05", core: 39, judgment: 10, ship: 94, final: 94, cost: 13.89960416, prodLoc: 3403, testLoc: 2510, runtimeSeconds: 4066.312 }
       ]},
       { id: "terra-xhigh", model: "GPT-5.6 Terra", effort: "xhigh", harness: "Codex CLI", costBasis: "estimated", runs: [
-        { core: 36, judgment: 7, ship: 88, final: 88, cost: 9.44222408, prodLoc: 4171, testLoc: 2591, runtimeSeconds: 5429.659 },
-        { core: 37, judgment: 7, ship: 87, final: 89, cost: 9.79690496, prodLoc: 4530, testLoc: 2561, runtimeSeconds: 5689.985 },
-        { core: 37, judgment: 7, ship: 86, final: 89, cost: 10.12822016, prodLoc: 4392, testLoc: 2522, runtimeSeconds: 5706.392 },
-        { core: 36, judgment: 8, ship: 89, final: 89, cost: 10.2286132, prodLoc: 4002, testLoc: 2576, runtimeSeconds: 5300.813 },
-        { core: 37, judgment: 6, ship: 89, final: 89, cost: 9.96160048, prodLoc: 4797, testLoc: 2587, runtimeSeconds: 5259.527 }
+        { id: "terra-xhigh-01", core: 36, judgment: 7, ship: 88, final: 88, cost: 9.44222408, prodLoc: 4171, testLoc: 2591, runtimeSeconds: 5429.659 },
+        { id: "terra-xhigh-02", core: 37, judgment: 7, ship: 87, final: 89, cost: 9.79690496, prodLoc: 4530, testLoc: 2561, runtimeSeconds: 5689.985 },
+        { id: "terra-xhigh-03", core: 37, judgment: 7, ship: 86, final: 89, cost: 10.12822016, prodLoc: 4392, testLoc: 2522, runtimeSeconds: 5706.392 },
+        { id: "terra-xhigh-04", core: 36, judgment: 8, ship: 89, final: 89, cost: 10.2286132, prodLoc: 4002, testLoc: 2576, runtimeSeconds: 5300.813 },
+        { id: "terra-xhigh-05", core: 37, judgment: 6, ship: 89, final: 89, cost: 9.96160048, prodLoc: 4797, testLoc: 2587, runtimeSeconds: 5259.527 }
       ]},
       { id: "luna-xhigh", model: "GPT-5.6 Luna", effort: "xhigh", harness: "Codex CLI", costBasis: "estimated", runs: [
-        { core: 34, judgment: 6, ship: 84, final: 84, cost: 1.49733268, prodLoc: 4358, testLoc: 1971, runtimeSeconds: 7069.072 },
-        { core: 27, judgment: 2, ship: 53, final: 72, cost: 1.26919804, prodLoc: 4299, testLoc: 2354, runtimeSeconds: 6081.513 },
-        { core: 32, judgment: 8, ship: 85, final: 85, cost: 1.51417856, prodLoc: 4049, testLoc: 2096, runtimeSeconds: 6835.049 },
-        { core: 37, judgment: 8, ship: 90, final: 90, cost: 1.32136996, prodLoc: 4025, testLoc: 2787, runtimeSeconds: 7607.496 },
-        { core: 33, judgment: 7, ship: 85, final: 85, cost: 1.50868784, prodLoc: 4575, testLoc: 2409, runtimeSeconds: 8304.006 }
+        { id: "luna-xhigh-01", core: 34, judgment: 6, ship: 84, final: 84, cost: 1.49733268, prodLoc: 4358, testLoc: 1971, runtimeSeconds: 7069.072 },
+        { id: "luna-xhigh-02", core: 27, judgment: 2, ship: 53, final: 72, cost: 1.26919804, prodLoc: 4299, testLoc: 2354, runtimeSeconds: 6081.513 },
+        { id: "luna-xhigh-03", core: 32, judgment: 8, ship: 85, final: 85, cost: 1.51417856, prodLoc: 4049, testLoc: 2096, runtimeSeconds: 6835.049 },
+        { id: "luna-xhigh-04", core: 37, judgment: 8, ship: 90, final: 90, cost: 1.32136996, prodLoc: 4025, testLoc: 2787, runtimeSeconds: 7607.496 },
+        { id: "luna-xhigh-05", core: 33, judgment: 7, ship: 85, final: 85, cost: 1.50868784, prodLoc: 4575, testLoc: 2409, runtimeSeconds: 8304.006 }
       ]},
       { id: "gpt-5-5-xhigh", model: "GPT-5.5", effort: "xhigh", harness: "Codex CLI", costBasis: "estimated", runs: [
-        { core: 38, judgment: 8, ship: 92, final: 92, cost: 25.330898, prodLoc: 4113, testLoc: 3730, runtimeSeconds: 6244.312 },
-        { core: 37, judgment: 7, ship: 90, final: 90, cost: 28.353816, prodLoc: 5107, testLoc: 3400, runtimeSeconds: 6228.025 },
-        { core: 37, judgment: 9, ship: 90, final: 90, cost: 25.0279232, prodLoc: 3881, testLoc: 3371, runtimeSeconds: 5532.854 },
-        { core: 36, judgment: 7, ship: 88, final: 88, cost: 29.670377, prodLoc: 4438, testLoc: 3569, runtimeSeconds: 6143.979 },
-        { core: 37, judgment: 7, ship: 90, final: 90, cost: 27.565092, prodLoc: 4499, testLoc: 3817, runtimeSeconds: 5873.881 }
+        { id: "gpt-5-5-xhigh-01", core: 38, judgment: 8, ship: 92, final: 92, cost: 25.330898, prodLoc: 4113, testLoc: 3730, runtimeSeconds: 6244.312 },
+        { id: "gpt-5-5-xhigh-02", core: 37, judgment: 7, ship: 90, final: 90, cost: 28.353816, prodLoc: 5107, testLoc: 3400, runtimeSeconds: 6228.025 },
+        { id: "gpt-5-5-xhigh-03", core: 37, judgment: 9, ship: 90, final: 90, cost: 25.0279232, prodLoc: 3881, testLoc: 3371, runtimeSeconds: 5532.854 },
+        { id: "gpt-5-5-xhigh-04", core: 36, judgment: 7, ship: 88, final: 88, cost: 29.670377, prodLoc: 4438, testLoc: 3569, runtimeSeconds: 6143.979 },
+        { id: "gpt-5-5-xhigh-05", core: 37, judgment: 7, ship: 90, final: 90, cost: 27.565092, prodLoc: 4499, testLoc: 3817, runtimeSeconds: 5873.881 }
       ]},
       { id: "claude-opus5-high", model: "Claude Opus 5", effort: "high", harness: "Claude Code", costBasis: "estimated", runs: [
-        { core: 38, judgment: 9, ship: 91, final: 91, cost: 43.9582735, prodLoc: 4466, testLoc: 6384, runtimeSeconds: 7006.813 },
-        { core: 39, judgment: 10, ship: 94, final: 94, cost: 51.3476205, prodLoc: 4393, testLoc: 6463, runtimeSeconds: 7835.688 }
+        { id: "claude-opus5-high-01", core: 38, judgment: 9, ship: 91, final: 91, cost: 43.9582735, prodLoc: 4466, testLoc: 6384, runtimeSeconds: 7006.813 },
+        { id: "claude-opus5-high-02", core: 39, judgment: 10, ship: 94, final: 94, cost: 51.3476205, prodLoc: 4393, testLoc: 6463, runtimeSeconds: 7835.688 }
       ]},
       { id: "meta-muse-spark-1-3-high", model: "Meta Muse Spark 1.3", effort: "high", harness: "OpenCode", note: "one completed run", costBasis: "recorded", runs: [
-        { core: 29, judgment: 3, ship: 63, final: 74, cost: 53.60925695, prodLoc: 6506, testLoc: 2824, runtimeSeconds: 34003.452 }
+        { id: "meta-muse-spark-1-3-high-01", core: 29, judgment: 3, ship: 63, final: 74, cost: 53.60925695, prodLoc: 6506, testLoc: 2824, runtimeSeconds: 34003.452 }
       ]},
       { id: "grok-4-6-xhigh", model: "Grok 4.6", effort: "xhigh", harness: "OpenCode", costBasis: "recorded", runs: [
-        { core: 36, judgment: 7, ship: 88, final: 89, cost: 13.615378, prodLoc: 3966, testLoc: 5561, runtimeSeconds: 7437.198 },
-        { core: 38, judgment: 8, ship: 92, final: 92, cost: 15.750724, prodLoc: 4363, testLoc: 6120, runtimeSeconds: 7808.612 },
-        { core: 38, judgment: 8, ship: 92, final: 92, cost: 14.714076, prodLoc: 4504, testLoc: 5481, runtimeSeconds: 7465.480 },
-        { core: 38, judgment: 8, ship: 92, final: 92, cost: 13.419836, prodLoc: 4111, testLoc: 6138, runtimeSeconds: 6839.449 },
-        { core: 38, judgment: 8, ship: 92, final: 92, cost: 16.051764, prodLoc: 4063, testLoc: 5883, runtimeSeconds: 7273.704 }
+        { id: "grok-4-6-xhigh-01", core: 36, judgment: 7, ship: 88, final: 89, cost: 13.615378, prodLoc: 3966, testLoc: 5561, runtimeSeconds: 7437.198 },
+        { id: "grok-4-6-xhigh-02", core: 38, judgment: 8, ship: 92, final: 92, cost: 15.750724, prodLoc: 4363, testLoc: 6120, runtimeSeconds: 7808.612 },
+        { id: "grok-4-6-xhigh-03", core: 38, judgment: 8, ship: 92, final: 92, cost: 14.714076, prodLoc: 4504, testLoc: 5481, runtimeSeconds: 7465.480 },
+        { id: "grok-4-6-xhigh-04", core: 38, judgment: 8, ship: 92, final: 92, cost: 13.419836, prodLoc: 4111, testLoc: 6138, runtimeSeconds: 6839.449 },
+        { id: "grok-4-6-xhigh-05", core: 38, judgment: 8, ship: 92, final: 92, cost: 16.051764, prodLoc: 4063, testLoc: 5883, runtimeSeconds: 7273.704 }
       ]},
       { id: "qwen3-8-max-xhigh", model: "Qwen3.8 Max", effort: "xhigh", harness: "OpenCode", costBasis: "recorded", runs: [
-        { core: 36, judgment: 7, ship: 88, final: 88, cost: 25.335136, prodLoc: 5022, testLoc: 7231, runtimeSeconds: 14113.187 },
-        { core: 37, judgment: 7, ship: 90, final: 90, cost: 32.87703, prodLoc: 4241, testLoc: 7839, runtimeSeconds: 17295.346 },
-        { core: 37, judgment: 8, ship: 90, final: 90, cost: 21.272902, prodLoc: 3908, testLoc: 8057, runtimeSeconds: 12499.362 },
-        { core: 38, judgment: 10, ship: 92, final: 92, cost: 25.340130, prodLoc: 4228, testLoc: 6884, runtimeSeconds: 17701.061 },
-        { core: 31, judgment: 6, ship: 79, final: 79, cost: 22.930122, prodLoc: 4498, testLoc: 8242, runtimeSeconds: 14409.507 }
+        { id: "qwen3-8-max-xhigh-01", core: 36, judgment: 7, ship: 88, final: 88, cost: 25.335136, prodLoc: 5022, testLoc: 7231, runtimeSeconds: 14113.187 },
+        { id: "qwen3-8-max-xhigh-02", core: 37, judgment: 7, ship: 90, final: 90, cost: 32.87703, prodLoc: 4241, testLoc: 7839, runtimeSeconds: 17295.346 },
+        { id: "qwen3-8-max-xhigh-03", core: 37, judgment: 8, ship: 90, final: 90, cost: 21.272902, prodLoc: 3908, testLoc: 8057, runtimeSeconds: 12499.362 },
+        { id: "qwen3-8-max-xhigh-04", core: 38, judgment: 10, ship: 92, final: 92, cost: 25.340130, prodLoc: 4228, testLoc: 6884, runtimeSeconds: 17701.061 },
+        { id: "qwen3-8-max-xhigh-05", core: 31, judgment: 6, ship: 79, final: 79, cost: 22.930122, prodLoc: 4498, testLoc: 8242, runtimeSeconds: 14409.507 }
       ]},
       { id: "deepseek-v4-pro-0813-max", model: "DeepSeek V4 Pro 0813", effort: "max", harness: "OpenCode", costBasis: "recorded", runs: [
-        { core: 37, judgment: 7, ship: 89, final: 89, cost: 8.8672634644, prodLoc: 4401, testLoc: 6404, runtimeSeconds: 16182.974 },
-        { core: 34, judgment: 6, ship: 86, final: 86, cost: 11.8627569984, prodLoc: 4980, testLoc: 7476, runtimeSeconds: 17808.035 },
-        { core: 36, judgment: 7, ship: 89, final: 89, cost: 8.1164173992, prodLoc: 4061, testLoc: 5621, runtimeSeconds: 15538.234 },
-        { core: 34, judgment: 6, ship: 85, final: 85, cost: 8.9149719516, prodLoc: 3776, testLoc: 6523, runtimeSeconds: 14455.151 },
-        { core: 34, judgment: 6, ship: 85, final: 85, cost: 8.8618497396, prodLoc: 4441, testLoc: 6544, runtimeSeconds: 14820.618 }
+        { id: "deepseek-v4-pro-0813-max-01", core: 37, judgment: 7, ship: 89, final: 89, cost: 8.8672634644, prodLoc: 4401, testLoc: 6404, runtimeSeconds: 16182.974 },
+        { id: "deepseek-v4-pro-0813-max-02", core: 34, judgment: 6, ship: 86, final: 86, cost: 11.8627569984, prodLoc: 4980, testLoc: 7476, runtimeSeconds: 17808.035 },
+        { id: "deepseek-v4-pro-0813-max-03", core: 36, judgment: 7, ship: 89, final: 89, cost: 8.1164173992, prodLoc: 4061, testLoc: 5621, runtimeSeconds: 15538.234 },
+        { id: "deepseek-v4-pro-0813-max-04", core: 34, judgment: 6, ship: 85, final: 85, cost: 8.9149719516, prodLoc: 3776, testLoc: 6523, runtimeSeconds: 14455.151 },
+        { id: "deepseek-v4-pro-0813-max-05", core: 34, judgment: 6, ship: 85, final: 85, cost: 8.8618497396, prodLoc: 4441, testLoc: 6544, runtimeSeconds: 14820.618 }
       ]},
       { id: "kimi-k3-max", model: "Kimi K3", effort: "max", harness: "OpenCode", costBasis: "recorded", runs: [
-        { core: 35, judgment: 6, ship: 65, final: 86, cost: 28.3970382, prodLoc: 4523, testLoc: 5077, runtimeSeconds: 18154.259 },
-        { core: 35, judgment: 6, ship: 80, final: 87, cost: 29.2349007, prodLoc: 4380, testLoc: 6495, runtimeSeconds: 11773.765 },
-        { core: 37, judgment: 7, ship: 80, final: 90, cost: 34.8926628, prodLoc: 4224, testLoc: 5524, runtimeSeconds: 16952.786 },
-        { core: 38, judgment: 8, ship: 92, final: 92, cost: 26.7207903, prodLoc: 3906, testLoc: 4488, runtimeSeconds: 15458.209 },
-        { core: 36, judgment: 7, ship: 82, final: 89, cost: 34.2625524, prodLoc: 4158, testLoc: 7225, runtimeSeconds: 21657.114 }
+        { id: "kimi-k3-max-01", core: 35, judgment: 6, ship: 65, final: 86, cost: 28.3970382, prodLoc: 4523, testLoc: 5077, runtimeSeconds: 18154.259 },
+        { id: "kimi-k3-max-02", core: 35, judgment: 6, ship: 80, final: 87, cost: 29.2349007, prodLoc: 4380, testLoc: 6495, runtimeSeconds: 11773.765 },
+        { id: "kimi-k3-max-03", core: 37, judgment: 7, ship: 80, final: 90, cost: 34.8926628, prodLoc: 4224, testLoc: 5524, runtimeSeconds: 16952.786 },
+        { id: "kimi-k3-max-04", core: 38, judgment: 8, ship: 92, final: 92, cost: 26.7207903, prodLoc: 3906, testLoc: 4488, runtimeSeconds: 15458.209 },
+        { id: "kimi-k3-max-05", core: 36, judgment: 7, ship: 82, final: 89, cost: 34.2625524, prodLoc: 4158, testLoc: 7225, runtimeSeconds: 21657.114 }
       ]},
       { id: "glm-5-3-high", model: "GLM 5.3", effort: "high", harness: "OpenCode", costBasis: "recorded", runs: [
-        { core: 39, judgment: 10, ship: 94, final: 94, cost: 19.97824696, prodLoc: 4051, testLoc: 7847, runtimeSeconds: 15325.748 },
-        { core: 33, judgment: 6, ship: 73, final: 84, cost: 28.99834436, prodLoc: 4611, testLoc: 6750, runtimeSeconds: 25586.511 },
-        { core: 33, judgment: 7, ship: 83, final: 83, cost: 20.96308116, prodLoc: 4426, testLoc: 6185, runtimeSeconds: 24009.376 },
-        { core: 35, judgment: 7, ship: 87, final: 87, cost: 19.17027792, prodLoc: 4571, testLoc: 7270, runtimeSeconds: 16308.524 },
-        { core: 37, judgment: 8, ship: 91, final: 91, cost: 25.91980916, prodLoc: 4638, testLoc: 7188, runtimeSeconds: 15751.579 }
+        { id: "glm-5-3-high-01", core: 39, judgment: 10, ship: 94, final: 94, cost: 19.97824696, prodLoc: 4051, testLoc: 7847, runtimeSeconds: 15325.748 },
+        { id: "glm-5-3-high-02", core: 33, judgment: 6, ship: 73, final: 84, cost: 28.99834436, prodLoc: 4611, testLoc: 6750, runtimeSeconds: 25586.511 },
+        { id: "glm-5-3-high-03", core: 33, judgment: 7, ship: 83, final: 83, cost: 20.96308116, prodLoc: 4426, testLoc: 6185, runtimeSeconds: 24009.376 },
+        { id: "glm-5-3-high-04", core: 35, judgment: 7, ship: 87, final: 87, cost: 19.17027792, prodLoc: 4571, testLoc: 7270, runtimeSeconds: 16308.524 },
+        { id: "glm-5-3-high-05", core: 37, judgment: 8, ship: 91, final: 91, cost: 25.91980916, prodLoc: 4638, testLoc: 7188, runtimeSeconds: 15751.579 }
       ]},
       { id: "ox-alpha-high", model: "GLM-5.3 Flash", effort: "high", harness: "OpenCode", note: "tested as OX Alpha", costBasis: "estimated", runs: [
-        { core: 33, judgment: 5, ship: 83, final: 83, cost: 1.57765055, prodLoc: 3639, testLoc: 4728, runtimeSeconds: 11858.610 },
-        { core: 34, judgment: 6, ship: 85, final: 85, cost: 2.15980364, prodLoc: 4215, testLoc: 4285, runtimeSeconds: 13896.104 },
-        { core: 36, judgment: 7, ship: 88, final: 88, cost: 2.00844863, prodLoc: 4043, testLoc: 5047, runtimeSeconds: 14223.488 },
-        { core: 36, judgment: 8, ship: 90, final: 90, cost: 3.26859137, prodLoc: 4509, testLoc: 5198, runtimeSeconds: 19951.879 }
+        { id: "ox-alpha-high-01", core: 33, judgment: 5, ship: 83, final: 83, cost: 1.57765055, prodLoc: 3639, testLoc: 4728, runtimeSeconds: 11858.610 },
+        { id: "ox-alpha-high-02", core: 34, judgment: 6, ship: 85, final: 85, cost: 2.15980364, prodLoc: 4215, testLoc: 4285, runtimeSeconds: 13896.104 },
+        { id: "ox-alpha-high-03", core: 36, judgment: 7, ship: 88, final: 88, cost: 2.00844863, prodLoc: 4043, testLoc: 5047, runtimeSeconds: 14223.488 },
+        { id: "ox-alpha-high-04", core: 36, judgment: 8, ship: 90, final: 90, cost: 3.26859137, prodLoc: 4509, testLoc: 5198, runtimeSeconds: 19951.879 }
       ]},
       { id: "ox-alpha-max", model: "GLM-5.3 Flash", effort: "max", harness: "OpenCode", note: "tested as OX Alpha", costBasis: "estimated", runs: [
-        { core: 36, judgment: 7, ship: 88, final: 88, cost: 3.01278388, prodLoc: 4923, testLoc: 6767, runtimeSeconds: 17543.251 },
-        { core: 31, judgment: 6, ship: 78, final: 78, cost: 2.91000512, prodLoc: 4373, testLoc: 6328, runtimeSeconds: 21429.440 },
-        { core: 35, judgment: 8, ship: 85, final: 85, cost: 2.89893437, prodLoc: 4851, testLoc: 6480, runtimeSeconds: 18683.854 },
-        { core: 34, judgment: 6, ship: 85, final: 85, cost: 5.00680112, prodLoc: 4848, testLoc: 7764, runtimeSeconds: 29602.973 }
+        { id: "ox-alpha-max-01", core: 36, judgment: 7, ship: 88, final: 88, cost: 3.01278388, prodLoc: 4923, testLoc: 6767, runtimeSeconds: 17543.251 },
+        { id: "ox-alpha-max-02", core: 31, judgment: 6, ship: 78, final: 78, cost: 2.91000512, prodLoc: 4373, testLoc: 6328, runtimeSeconds: 21429.440 },
+        { id: "ox-alpha-max-03", core: 35, judgment: 8, ship: 85, final: 85, cost: 2.89893437, prodLoc: 4851, testLoc: 6480, runtimeSeconds: 18683.854 },
+        { id: "ox-alpha-max-04", core: 34, judgment: 6, ship: 85, final: 85, cost: 5.00680112, prodLoc: 4848, testLoc: 7764, runtimeSeconds: 29602.973 }
       ]}
     ];
 
     const openCodeComparisonRuns = {
       "sol-high": [
-        { core: 39, judgment: 10, ship: 94, final: 94, cost: 24.4504256, prodLoc: 3711, testLoc: 3120 },
-        { core: 39, judgment: 10, ship: 94, final: 94, cost: 23.4725696, prodLoc: 3749, testLoc: 3302 },
-        { core: 39, judgment: 8, ship: 92, final: 92, cost: 20.6072168, prodLoc: 3767, testLoc: 2926 },
-        { core: 39, judgment: 10, ship: 92, final: 94, cost: 27.5053312, prodLoc: 3602, testLoc: 3153 },
-        { core: 35, judgment: 6, ship: 86, final: 86, cost: 23.1812448, prodLoc: 3732, testLoc: 2208 }
+        { id: "sol-high-opencode-01", core: 39, judgment: 10, ship: 94, final: 94, cost: 24.4504256, prodLoc: 3711, testLoc: 3120 },
+        { id: "sol-high-opencode-02", core: 39, judgment: 10, ship: 94, final: 94, cost: 23.4725696, prodLoc: 3749, testLoc: 3302 },
+        { id: "sol-high-opencode-03", core: 39, judgment: 8, ship: 92, final: 92, cost: 20.6072168, prodLoc: 3767, testLoc: 2926 },
+        { id: "sol-high-opencode-04", core: 39, judgment: 10, ship: 92, final: 94, cost: 27.5053312, prodLoc: 3602, testLoc: 3153 },
+        { id: "sol-high-opencode-05", core: 35, judgment: 6, ship: 86, final: 86, cost: 23.1812448, prodLoc: 3732, testLoc: 2208 }
       ],
       "sol-medium": [
-        { core: 37, judgment: 9, ship: 91, final: 91, cost: 14.795532, prodLoc: 3653, testLoc: 2457 },
-        { core: 38, judgment: 6, ship: 90, final: 90, cost: 11.9190416, prodLoc: 3159, testLoc: 2218 },
-        { core: 35, judgment: 6, ship: 86, final: 86, cost: 11.3764896, prodLoc: 3236, testLoc: 1958 },
-        { core: 38, judgment: 9, ship: 92, final: 92, cost: 14.6033432, prodLoc: 3421, testLoc: 2143 },
-        { core: 38, judgment: 10, ship: 94, final: 93, cost: 18.4984568, prodLoc: 3622, testLoc: 2457 }
+        { id: "sol-medium-opencode-01", core: 37, judgment: 9, ship: 91, final: 91, cost: 14.795532, prodLoc: 3653, testLoc: 2457 },
+        { id: "sol-medium-opencode-02", core: 38, judgment: 6, ship: 90, final: 90, cost: 11.9190416, prodLoc: 3159, testLoc: 2218 },
+        { id: "sol-medium-opencode-03", core: 35, judgment: 6, ship: 86, final: 86, cost: 11.3764896, prodLoc: 3236, testLoc: 1958 },
+        { id: "sol-medium-opencode-04", core: 38, judgment: 9, ship: 92, final: 92, cost: 14.6033432, prodLoc: 3421, testLoc: 2143 },
+        { id: "sol-medium-opencode-05", core: 38, judgment: 10, ship: 94, final: 93, cost: 18.4984568, prodLoc: 3622, testLoc: 2457 }
       ],
       "terra-xhigh": [
-        { core: 38, judgment: 8, ship: 92, final: 92, cost: 10.2720672, prodLoc: 3869, testLoc: 2600 },
-        { core: 37, judgment: 6, ship: 88, final: 88, cost: 10.1158672, prodLoc: 4670, testLoc: 2027 },
-        { core: 38, judgment: 8, ship: 92, final: 92, cost: 15.2694072, prodLoc: 4296, testLoc: 3022 },
-        { core: 37, judgment: 6, ship: 88, final: 88, cost: 11.5010004, prodLoc: 4134, testLoc: 2881 },
-        { core: 38, judgment: 10, ship: 92, final: 92, cost: 13.465206, prodLoc: 3804, testLoc: 2931 }
+        { id: "terra-xhigh-opencode-01", core: 38, judgment: 8, ship: 92, final: 92, cost: 10.2720672, prodLoc: 3869, testLoc: 2600 },
+        { id: "terra-xhigh-opencode-02", core: 37, judgment: 6, ship: 88, final: 88, cost: 10.1158672, prodLoc: 4670, testLoc: 2027 },
+        { id: "terra-xhigh-opencode-03", core: 38, judgment: 8, ship: 92, final: 92, cost: 15.2694072, prodLoc: 4296, testLoc: 3022 },
+        { id: "terra-xhigh-opencode-04", core: 37, judgment: 6, ship: 88, final: 88, cost: 11.5010004, prodLoc: 4134, testLoc: 2881 },
+        { id: "terra-xhigh-opencode-05", core: 38, judgment: 10, ship: 92, final: 92, cost: 13.465206, prodLoc: 3804, testLoc: 2931 }
       ],
       "luna-xhigh": [
-        { core: 37, judgment: 7, ship: 88, final: 90, cost: 1.91348088, prodLoc: 4049, testLoc: 2289 },
-        { core: 38, judgment: 9, ship: 92, final: 92, cost: 2.5525378, prodLoc: 4037, testLoc: 2748 },
-        { core: 36, judgment: 7, ship: 88, final: 88, cost: 2.5369668, prodLoc: 4045, testLoc: 2784 },
-        { core: 34, judgment: 7, ship: 86, final: 86, cost: 2.94645808, prodLoc: 4546, testLoc: 2640 },
-        { core: 38, judgment: 8, ship: 88, final: 92, cost: 2.74792032, prodLoc: 4540, testLoc: 2776 }
+        { id: "luna-xhigh-opencode-01", core: 37, judgment: 7, ship: 88, final: 90, cost: 1.91348088, prodLoc: 4049, testLoc: 2289 },
+        { id: "luna-xhigh-opencode-02", core: 38, judgment: 9, ship: 92, final: 92, cost: 2.5525378, prodLoc: 4037, testLoc: 2748 },
+        { id: "luna-xhigh-opencode-03", core: 36, judgment: 7, ship: 88, final: 88, cost: 2.5369668, prodLoc: 4045, testLoc: 2784 },
+        { id: "luna-xhigh-opencode-04", core: 34, judgment: 7, ship: 86, final: 86, cost: 2.94645808, prodLoc: 4546, testLoc: 2640 },
+        { id: "luna-xhigh-opencode-05", core: 38, judgment: 8, ship: 88, final: 92, cost: 2.74792032, prodLoc: 4540, testLoc: 2776 }
       ]
     };
 
     const delegatedLunaComparisonRuns = [
-      { core: 38, judgment: 10, ship: 91, final: 92, cost: 4.78635984, prodLoc: 4527, testLoc: 3156 },
-      { core: 37, judgment: 8, ship: 89, final: 90, cost: 3.72739876, prodLoc: 4664, testLoc: 3022 },
-      { core: 35, judgment: 7, ship: 86, final: 86, cost: 4.35629836, prodLoc: 4708, testLoc: 2981 },
-      { core: 37, judgment: 8, ship: 90, final: 90, cost: 4.23067324, prodLoc: 3927, testLoc: 2609 },
-      { core: 38, judgment: 7, ship: 91, final: 91, cost: 3.63040512, prodLoc: 4127, testLoc: 2583 }
+      { id: "luna-xhigh-delegated-01", core: 38, judgment: 10, ship: 91, final: 92, cost: 4.78635984, prodLoc: 4527, testLoc: 3156 },
+      { id: "luna-xhigh-delegated-02", core: 37, judgment: 8, ship: 89, final: 90, cost: 3.72739876, prodLoc: 4664, testLoc: 3022 },
+      { id: "luna-xhigh-delegated-03", core: 35, judgment: 7, ship: 86, final: 86, cost: 4.35629836, prodLoc: 4708, testLoc: 2981 },
+      { id: "luna-xhigh-delegated-04", core: 37, judgment: 8, ship: 90, final: 90, cost: 4.23067324, prodLoc: 3927, testLoc: 2609 },
+      { id: "luna-xhigh-delegated-05", core: 38, judgment: 7, ship: 91, final: 91, cost: 3.63040512, prodLoc: 4127, testLoc: 2583 }
     ];
 
     const modelSubagentCounts = {
@@ -377,7 +379,7 @@
   </script>
   <script src="icons.js"></script>
   <script src="findings-data.js?v=findings-20260906"></script>
-  <script src="findings.js?v=expiry-note-20260906"></script>
-  <script src="results.js?v=expiry-wording-20260906"></script>
+  <script src="findings.js?v=source-archive-be3005f"></script>
+  <script src="results.js?v=source-archive-be3005f"></script>
 </body>
 </html>
