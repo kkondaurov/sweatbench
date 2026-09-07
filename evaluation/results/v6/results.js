@@ -389,9 +389,10 @@ function refreshComparison() {
 
 const methodAnchors = new Set(["overview", "scores", "sample", "costs", "code-time", "sources"]);
 const findingAnchors = new Set(["findings-overview", "findings-expiry", ...familyFindings.map(item => `findings-${item.id}`)]);
+const interventionAnchors = new Set(["intervention-results", "intervention-instruction", "intervention-code", "intervention-failures", "intervention-conclusion", "intervention-sources"]);
 function activateView() {
   const hash = location.hash.slice(1);
-  const view = methodAnchors.has(hash) || hash === "method" ? "method" : findingAnchors.has(hash) || hash === "findings" ? "findings" : hash === "harness" ? "harness" : "models";
+  const view = methodAnchors.has(hash) || hash === "method" ? "method" : findingAnchors.has(hash) || hash === "findings" ? "findings" : interventionAnchors.has(hash) || hash === "intervention" ? "intervention" : hash === "harness" ? "harness" : "models";
   document.querySelectorAll(".view-tab").forEach(tab => {
     const selected = tab.dataset.view === view;
     tab.setAttribute("aria-selected", String(selected));
@@ -399,7 +400,8 @@ function activateView() {
     document.getElementById(`${tab.dataset.view}-view`).hidden = !selected;
   });
   if (view === "models") requestAnimationFrame(drawChart);
-  if (methodAnchors.has(hash) || findingAnchors.has(hash)) requestAnimationFrame(() => document.getElementById(hash).scrollIntoView({ block: "start" }));
+  if (methodAnchors.has(hash) || findingAnchors.has(hash) || interventionAnchors.has(hash)) requestAnimationFrame(() => document.getElementById(hash).scrollIntoView({ block: "start" }));
+  if (hash === "intervention") requestAnimationFrame(() => document.getElementById("intervention-title").scrollIntoView({ block: "start" }));
   if (hash === "findings") requestAnimationFrame(() => document.getElementById("findings-title").scrollIntoView({ block: "start" }));
   if (hash === "method") requestAnimationFrame(() => {
     const heading = document.getElementById("method-title");
@@ -439,4 +441,4 @@ new ResizeObserver(() => { cancelAnimationFrame(resizeFrame); resizeFrame = requ
 document.getElementById("models-count").textContent = rows.reduce((count,row) => count + row.runs.length, 0);
 document.getElementById("sample-summary").textContent = `${rows.length} configurations · ${rows.reduce((count,row) => count + row.runs.length, 0)} completed runs`;
 document.querySelectorAll("[data-source-archive]").forEach(link => { link.href = sourceArchiveBaseUrl; });
-renderFindings(); renderIcons(); renderTable(); renderSelection(); renderHarnessComparison(); activateView();
+renderFindings(); renderIntervention(); renderIcons(); renderTable(); renderSelection(); renderHarnessComparison(); activateView();

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Sweat Bench tests how coding agents maintain a hotel-deposit application through seven changes in requirements. Compare their results, cost, runtime and code size.">
   <title>Sweat Bench v6 - Completed Results</title>
-  <link rel="stylesheet" href="results.css?v=source-archive-be3005f">
+  <link rel="stylesheet" href="results.css?v=intervention-20260907">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to results</a>
@@ -16,7 +16,7 @@
         <p class="subtitle">How well do coding agents handle a product that keeps changing?</p>
       </div>
       <div class="header-right">
-        <span class="updated">Updated <time datetime="2026-09-05">5 Sep 2026</time></span>
+        <span class="updated">Updated <time datetime="2026-09-07">7 Sep 2026</time></span>
         <a class="icon-button" href="accepted-runs.json" download title="Download run data" aria-label="Download run data"><i data-icon="Download"></i></a>
         <a class="icon-button" href="https://github.com/kkondaurov/sweatbench" title="Repository" aria-label="Repository"><i data-icon="CodeXml"></i></a>
       </div>
@@ -25,6 +25,7 @@
     <nav class="view-tabs" role="tablist" aria-label="Results view">
       <button id="models-tab" class="view-tab" role="tab" aria-selected="true" aria-controls="models-view" data-view="models">Models <span id="models-count" class="tab-count">73</span></button>
       <button id="harness-tab" class="view-tab" role="tab" aria-selected="false" aria-controls="harness-view" data-view="harness" tabindex="-1">Harnesses <span class="tab-count">45</span></button>
+      <button id="intervention-tab" class="view-tab" role="tab" aria-selected="false" aria-controls="intervention-view" data-view="intervention" tabindex="-1">Intervention <span class="tab-count">4</span></button>
       <button id="findings-tab" class="view-tab" role="tab" aria-selected="false" aria-controls="findings-view" data-view="findings" tabindex="-1">Findings</button>
       <button id="method-tab" class="view-tab" role="tab" aria-selected="false" aria-controls="method-view" data-view="method" tabindex="-1">Method</button>
     </nav>
@@ -102,6 +103,60 @@
           <tbody id="audit-body"></tbody>
         </table></div>
       </details>
+    </section>
+
+    <section id="intervention-view" class="view-panel" role="tabpanel" aria-labelledby="intervention-tab" hidden>
+      <div class="section-heading overview-heading"><div><h2 id="intervention-title">Asking Astra for readable Elixir</h2><p class="section-note">Four new runs · One per reasoning effort · 7 Sep 2026</p></div><a class="text-button" href="intervention-runs.json" download>Run data <i data-icon="Download"></i></a></div>
+      <div class="intervention-intro method-copy">
+        <p>In v6, Astra built GroupStay, a hotel-deposit application, through seven changing requests. Its earlier implementations were compact, but several failed when upgrading an old database or restarting the server. We repeated the task with a request for clear, idiomatic Elixir at every milestone. The instruction said nothing about those bugs.</p>
+        <p><strong>All four new runs earned all 39 Core and 10 Maintenance points.</strong> Five of the twelve earlier runs had done so. The new applications also contain more production code. The comparison below follows both the results and the implementation choices behind them.</p>
+      </div>
+      <section id="intervention-results" class="comparison-section">
+        <div class="section-heading"><div><h3>Results by reasoning effort</h3><p class="section-note">Earlier runs: average scores and runtime; median cost and code size. Smaller figures show observed ranges.</p></div></div>
+        <div class="table-wrap"><table class="intervention-results-table">
+          <thead><tr><th scope="col">Astra / condition</th><th scope="col">Core <span>out of 39</span></th><th scope="col">Maintenance <span>out of 10</span></th><th scope="col">Sweeps</th><th scope="col">Runtime</th><th scope="col">Cost <span>per run</span></th><th scope="col">Production <span>lines of code</span></th><th scope="col">Tests <span>lines of code</span></th></tr></thead>
+          <tbody id="intervention-results-body"></tbody>
+        </table></div>
+        <p class="section-note intervention-table-note">The instruction rows are individual runs, not averages. Costs are API-equivalent. A sweep earns every Core and Maintenance point. These four runs are separate from Models, Harnesses and the original Findings review.</p>
+      </section>
+      <div class="method-layout findings-layout">
+        <nav class="method-nav" aria-label="Intervention sections"><a href="#intervention-results">Results</a><a href="#intervention-instruction">The instruction</a><a href="#intervention-code">Code structure</a><a href="#intervention-failures">Earlier failure modes</a><a href="#intervention-conclusion">What this tells us</a><a href="#intervention-sources">Sources</a></nav>
+        <div class="method-copy findings-copy">
+          <section id="intervention-instruction"><h3>The instruction</h3>
+            <blockquote><p id="intervention-instruction-text"></p></blockquote>
+            <p>This text was appended to the normal request at all seven milestones. Each milestone still began a fresh model session. The agent inherited its own repository and tests, but could not see earlier benchmark runs, future requirements, the private tests or their results.</p>
+            <p>The requirements and deterministic scoring remain v6. Astra used the same Codex CLI version (0.153.4), runner and Docker image as the earlier Astra runs, with the same per-container limits of two CPUs and 4 GiB of memory. The shared host VM had more capacity for this campaign, so runtime is not a controlled comparison of the instruction alone.</p>
+          </section>
+          <section id="intervention-code"><h3>Code structure</h3>
+            <p>The new code gives more responsibilities their own names and modules. Low separates booking policy, payment history and room-funding backfill. High separates reservation commands from the durable record of each request, then divides finance into state collection, journal entries and reports. These divisions survive the later milestones instead of being folded back into one large module.</p>
+            <p>The documentation often explains a rule that matters to the implementation. Low's <a data-intervention-code="v6-readable-astra-low-01/milestone-7/lib/group_stay/operations.ex#L1">Operations module</a> describes why a request, its effects and its saved response share one transaction. X-High's <a data-intervention-code="v6-readable-astra-xhigh-01/milestone-7/lib/group_stay/reservations/operation.ex#L1">request parser</a> explains why revision checks must precede some other validation. High's <a data-intervention-code="v6-readable-astra-high-01/milestone-7/lib/group_stay/finance.ex#L1">finance module</a> gives the reader an account of how reporting begins and later periods close.</p>
+            <p>The largest production file is 288–403 lines in the new runs, compared with 506–843 in the earlier ones. More code is spread across smaller units. That is a visible change in organization, not a quality score: high still has a 1,456-line persistence test, and low's migration calls application helpers that future edits could change.</p>
+            <div class="table-wrap"><table class="audit-table"><thead><tr><th>Effort</th><th>Production code <span>vs earlier median</span></th><th>Cost <span>vs earlier median</span></th><th>Largest production file <span>lines</span></th></tr></thead><tbody id="intervention-structure-body"></tbody></table></div>
+          </section>
+          <section id="intervention-failures"><h3>Earlier failure modes</h3>
+            <h4>Reading rooms from an older database</h4>
+            <p>Milestone 4 adds accounting for individual rooms. Its database migration must read the bookings created by milestone 3 and assign their existing funding to rooms. Four baseline runs misread the stored room list: the database contained JSON strings inside another JSON array, but the migration expected room objects after a single decode.</p>
+            <p>The new runs avoid that mismatch in three ways. Low uses <a data-intervention-code="v6-readable-astra-low-01/milestone-4/lib/group_stay/room_accounting/backfill.ex#L14">Ecto's typed loader</a>, which reads the representation its schema wrote. Medium and high use embedded room records, whose stored JSON matches their migration's single decode. X-High stores <a data-intervention-code="v6-readable-astra-xhigh-01/milestone-1/priv/repo/migrations/20260907000000_create_reservations.exs#L23">rooms as separate database rows</a>, so there is no nested room JSON to decode.</p>
+            <p>Their own upgrade tests still construct old data rather than launch the old application. The benchmark supplies that additional check: it creates bookings through the actual earlier version, upgrades the database, and checks the later behavior. All four pass. They are preserving their own history; they are not required to import databases from other runs.</p>
+            <h4>Returning a saved response after a restart</h4>
+            <p>A partner can send the same payment or reporting request more than once. GroupStay must return its original answer without applying the operation again, even after the server restarts. Six baseline runs failed while rebuilding that saved answer. They converted JSON keys into Elixir atoms whose existence depended on another module having loaded first.</p>
+            <p>Low and X-High remove that dependency by <a data-intervention-code="v6-readable-astra-xhigh-01/milestone-7/lib/group_stay/operations.ex#L27">returning the saved JSON directly</a>. Medium and high instead keep an explicit list of response keys in the decoding module itself. The decoder no longer depends on whether finance code has already run.</p>
+            <p><strong>High provides the clearest example of a test catching an incomplete response definition.</strong> At milestone 6, its new reporting test retried a request and failed because <code>starts_on</code> was missing from that list. The agent added it, kept the <a data-intervention-code="v6-readable-astra-high-01/milestone-6/test/group_stay_web/controllers/daily_finance_report_test.exs#L28">exact-response retry assertion</a>, and passed its tests. With the explicit list, a forgotten field failed during an ordinary test instead of depending on what happened to be loaded after a restart.</p>
+            <p>Medium also replaced a load-dependent decoder with an explicit key map during milestone 3, but no recorded failure prompted that edit. Low and X-High used direct JSON responses from the start of durable storage. The evidence therefore supports different routes to a correct implementation, not one repeated repair.</p>
+            <h4>What their tests establish</h4>
+            <p>Low and medium's finance tests restart database connections inside the same running Elixir VM. High starts fresh processes for earlier operation types, but its finance tests also use connection restarts. X-High extends <a data-intervention-code="v6-readable-astra-xhigh-01/milestone-7/test/group_stay/operations_restart_test.exs#L83">fresh-process tests</a> through reporting and period close. The private evaluator independently restarts the server and retries saved reporting requests before any report is read; all four pass those checks.</p>
+          </section>
+          <section id="intervention-conclusion"><h3>What this tells us</h3>
+            <p><strong>The passes have concrete implementation explanations.</strong> The stored room data and its reader agree, and saved responses no longer depend on finance-module loading. High's trajectory also shows a new field being caught by a test and added to the response decoder before delivery.</p>
+            <p>That does not tell us how much credit belongs to the instruction. Earlier successful runs already used direct JSON responses, embedded rooms or explicit key maps. The baseline X-High runs also swept all three attempts, and some baseline tests caught the old defects more directly than the new tests did.</p>
+            <p>This pilot produced more deliberately organized code and four successful implementations, at higher API-equivalent cost. It is a promising result for the instruction, but one run per effort against historical controls cannot establish that it makes Astra more reliable. A larger comparison with new runs both with and without the instruction would test that claim.</p>
+          </section>
+          <section id="intervention-sources"><h3>Sources and accounting</h3>
+            <p>All seven accepted snapshots for each new run are in the <a data-intervention-archive href="https://github.com/kkondaurov/sweatbench-runs">source archive</a>, with file hashes and provenance. The <a href="intervention-runs.json">intervention dataset</a> records per-milestone scores, runtime, token usage and costs. The <a href="ASTRA_INTERVENTION.md">trajectory review</a> links the implementation evidence; the <a href="ASTRA_TRAJECTORIES.md">earlier Astra review</a> describes the historical controls. Raw session logs remain private.</p>
+            <p>Costs use the same Astra API rates as the baseline: $10 per million uncached input tokens, $1 per million cached input tokens and $50 per million output tokens. Reasoning tokens are already part of output. The audit found seven main sessions per run, no descendant sessions, no cache writes and no requests above the long-context threshold. Runtime counts agent work, not private evaluation. Code size includes comments and blank lines; production covers <code>lib/</code> and database migrations, and tests cover <code>test/</code>.</p>
+          </section>
+        </div>
+      </div>
     </section>
 
     <section id="findings-view" class="view-panel" role="tabpanel" aria-labelledby="findings-tab" hidden>
@@ -380,6 +435,8 @@
   <script src="icons.js"></script>
   <script src="findings-data.js?v=findings-20260906"></script>
   <script src="findings.js?v=source-archive-be3005f"></script>
-  <script src="results.js?v=source-archive-be3005f"></script>
+  <script src="intervention-data.js?v=intervention-20260907"></script>
+  <script src="intervention.js?v=intervention-20260907"></script>
+  <script src="results.js?v=intervention-20260907"></script>
 </body>
 </html>

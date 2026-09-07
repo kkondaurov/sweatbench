@@ -47,7 +47,7 @@ h3 { font-size: 17px; font-weight: 650; }
 .updated time { display: block; color: var(--ink); }
 .icon-button { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; color: var(--muted); border: 1px solid var(--line); border-radius: 5px; background: var(--surface); }
 .icon-button:hover { color: var(--ink); background: var(--soft); }
-.view-tabs { display: flex; gap: 28px; border-bottom: 1px solid var(--line); }
+.view-tabs { display: flex; gap: 28px; border-bottom: 1px solid var(--line); overflow-x: auto; }
 .view-tab { padding: 12px 0 15px; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; font-size: 13px; font-weight: 600; white-space: nowrap; }
 .view-tab[aria-selected="true"] { color: var(--accent); border-color: var(--accent); }
 .tab-count { font-size: 11px; font-variant-numeric: tabular-nums; padding: 2px 5px; background: var(--soft); border-radius: 3px; margin-left: 4px; }
@@ -214,6 +214,22 @@ td:first-child { text-align: left; }
 .findings-copy .family-finding { margin-bottom: 52px; }
 .findings-copy .finding-meta { margin-top: 10px; font-size: 13px; line-height: 1.8; }
 .findings-copy .evidence-note { font-size: 13px; margin: 14px 0; }
+.intervention-intro { max-width: 880px; }
+.intervention-intro strong { color: var(--ink); font-weight: 600; }
+.intervention-results-table { min-width: 980px; margin-top: 18px; }
+.intervention-results-table th:first-child { width: 220px; }
+.intervention-results-table tbody th { text-align: left; font-weight: 400; }
+.intervention-results-table tbody th strong { color: var(--ink); font-size: 14px; }
+.intervention-results-table tbody th span { font-size: 13px; }
+.intervention-results-table tbody th small { display: block; margin-top: 5px; font-size: 12px; }
+.intervention-results-table td { white-space: nowrap; }
+.intervention-range { display: block; color: var(--muted); font-size: 11px; margin-top: 5px; }
+.intervention-baseline > * { border-top: 2px solid var(--line); background: var(--soft); }
+.intervention-treatment > th { box-shadow: inset 2px 0 var(--astra); }
+.intervention-table-note { margin-top: 14px; max-width: 950px; line-height: 1.65; }
+#intervention-view h4 { font-size: 16px; margin-top: 26px; color: var(--ink); }
+#intervention-title, #intervention-results { scroll-margin-top: 24px; }
+#intervention-view .audit-table { margin-top: 22px; }
 .finding-run-table { min-width: 540px; table-layout: fixed; }
 .finding-run-table th:first-child { width: 100px; text-align: left; }
 .finding-run-table th:nth-child(2) { width: 55px; }

@@ -3,6 +3,11 @@
 This directory contains the public results for the frozen v6 benchmark.
 
 - `index.html` is a self-contained interactive dashboard.
+- The Intervention tab compares four new Astra readable-Elixir instruction runs with the
+  twelve earlier Astra runs. It remains separate from the original 98-run dataset.
+  `intervention-runs.json` contains the audited measurements; `build_intervention.py`
+  validates accounting and generates `intervention-data.js`. `ASTRA_INTERVENTION.md`
+  explains the instruction, source changes, test evidence and limits of the comparison.
 - The Findings tab groups the 73 model-view trajectories into 13 model families. Its curated
   explanations are in `findings.js`; `findings-data.js` is a portable extract of run scores and
   failed check memberships, generated from `accepted-runs.json` by `build_findings.py`.
@@ -22,6 +27,7 @@ Run the verifier from the repository root:
 ```bash
 python3 evaluation/results/v6/analyze.py
 python3 evaluation/results/v6/build_findings.py --check
+python3 evaluation/results/v6/build_intervention.py --check
 ```
 
 The dataset has two views. `models` contains 73 model-comparison trajectories. `harness` contains
@@ -59,5 +65,10 @@ machine-local source paths are not published.
 Dashboard run IDs are copied from `accepted-runs.json`, matched by `group` and public `sample`,
 not reconstructed from legacy `label` values. The 20 Codex runs shared by Models and Harnesses
 reuse the same run objects and source links. Findings uses the accepted IDs in `findings-data.js`.
-`sourceArchiveBaseUrl` in `results.js` controls all dashboard archive links. It is pinned to
+`sourceArchiveBaseUrl` in `results.js` controls the baseline dashboard archive links. It is pinned to
 archive commit `be3005fa4092a75107d627e51bf9e9ee1f8474de`, as are the source links in the reports.
+
+The four intervention trajectories have their own [source collection](https://github.com/kkondaurov/sweatbench-runs/tree/90627782faa8382cd9af5007450550cd75a6d9fe/v6/interventions/readable-elixir),
+with 28 snapshots. Its pin is recorded in `intervention-runs.json`; the original archive
+and data are unchanged. All 28 source checkpoint, report and accepted log hashes were
+verified before publication, and usage reconciled against the recorded main sessions.
