@@ -226,6 +226,12 @@ td:first-child { text-align: left; }
 .intervention-range { display: block; color: var(--muted); font-size: 11px; margin-top: 5px; }
 .intervention-baseline > * { border-top: 2px solid var(--line); background: var(--soft); }
 .intervention-treatment > th { box-shadow: inset 2px 0 var(--astra); }
+.intervention-run-toggle { display: flex; align-items: center; gap: 8px; width: 100%; padding: 0; text-align: left; }
+.intervention-run-toggle > span { min-width: 0; }
+.intervention-run-toggle > span > span { display: block; }
+.intervention-run-toggle[aria-expanded="true"] .icon { transform: rotate(90deg); }
+.intervention-run > th { padding-left: 36px; }
+.intervention-run .summary-number { font-size: 13px; font-weight: 400; }
 .intervention-table-note { margin-top: 14px; max-width: 950px; line-height: 1.65; }
 #intervention-view h4 { font-size: 16px; margin-top: 26px; color: var(--ink); }
 #intervention-title, #intervention-results { scroll-margin-top: 24px; }

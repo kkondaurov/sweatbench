@@ -1,9 +1,9 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "id": "readable-elixir",
-  "published_at": "2026-09-07",
-  "source_archive": "https://github.com/kkondaurov/sweatbench-runs/tree/16dbf0451f11a928ee01dcdaf8727d5d8ee3db3b/v6/interventions/readable-elixir",
-  "source_archive_index_sha256": "52dca9229e47a44de887158bd97cc60cd45c011f60684d18d80b06471c2a1445",
+  "published_at": "2026-09-08",
+  "source_archive": "https://github.com/kkondaurov/sweatbench-runs/tree/c3d1120c3ef49744efef6693aa5ee1ec6158bfc9/v6/interventions/readable-elixir",
+  "source_archive_index_sha256": "21d09d7d58f76bb11d56f2a32ca4997e75e9e029de9eb52c19690e3e67020040",
   "models": {
     "astra": {
       "name": "GPT-6 Astra",
@@ -64,7 +64,7 @@
     "v6-astra-xhigh-03"
   ],
   "cost_note": "API-equivalent cost at the same model-specific rates as the historical baseline. Input includes cache reads; reasoning is included in output. No cache writes, long-context requests or descendant sessions were recorded.",
-  "comparison_note": "One intervention run per model and effort. Historical controls: three per Astra effort, five per Sol effort; neither randomized nor concurrent. Astra retains the same CLI, runner and container image. Host VM capacity increased from 6 CPUs / 14 GiB to 8 CPUs / 18 GiB, with candidate limits unchanged. Sol controls used native macOS and Codex CLI 0.149.0-alpha.4.3 (runs 1-3) or 0.150.0-alpha.8 (runs 4-5); the intervention uses CLI 0.153.4 in Docker. Sol CLI, OS, isolation and resource limits differ alongside the instruction. Source review does not alter deterministic scores.",
+  "comparison_note": "Three intervention runs per model and effort. Historical controls: three per Astra effort, five per Sol effort; neither randomized nor concurrent. Astra retains the same CLI, runner and container image. Host VM capacity increased from 6 CPUs / 14 GiB to 8 CPUs / 18 GiB, with candidate limits unchanged. Sol controls used native macOS and Codex CLI 0.149.0-alpha.4.3 (runs 1-3) or 0.150.0-alpha.8 (runs 4-5); the intervention uses CLI 0.153.4 in Docker. Sol CLI, OS, isolation and resource limits differ alongside the instruction. Source review does not alter deterministic scores.",
   "runs": [
     {
       "id": "v6-readable-astra-low-01",
@@ -581,6 +581,1048 @@
         "session_count": 7,
         "descendant_sessions": 0,
         "max_request_input_tokens": 89326
+      }
+    },
+    {
+      "id": "v6-readable-astra-low-02",
+      "model": "GPT-6 Astra",
+      "family": "astra",
+      "effort": "low",
+      "sample": 2,
+      "baseline_group": "astra-low",
+      "completed_at": "2026-09-07T17:19:19.756709+00:00",
+      "core": 38,
+      "maintenance": 9,
+      "scenarios_ship": 92,
+      "scenarios_final": 92,
+      "final_families": [
+        {
+          "id": "deposit-pricing",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-acceptance",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cancellation-settlement",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "batch-protocol-validation",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "rescheduling",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-core",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "policy-versioning",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "hotel-credit-lifecycle",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "refund-method-gate",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-economics",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m2-migration",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "durable-idempotency",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-durability",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m3-restart",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "room-funding-allocation",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "partial-cancellation-settlement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-reduction",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "chargeback-reclassification",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "entitlement-clawback-shortfall",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "ledger-conservation-contract",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-statement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m4-migration",
+          "stage": 4,
+          "track": "core",
+          "status": "failed",
+          "failing_members": [
+            "system:payment-reduction-upgrade"
+          ]
+        },
+        {
+          "id": "transfer-mechanics",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "multi-group-occ",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cross-group-correction-provenance",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transferred-credit-settlement",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "statement-evolution",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-invariance-isolation",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m5-migration",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-correctness",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "reporting-inception",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-effective-dating",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-determinism",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-atomicity",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m6-finance-upgrade",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-immutability",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "late-adjustment-posting",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-contract",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m7-close-upgrade",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r1-policy-history",
+          "stage": 2,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r2-room-history",
+          "stage": 4,
+          "track": "judgment",
+          "status": "failed",
+          "failing_members": [
+            "system:room-history-upgrade"
+          ]
+        },
+        {
+          "id": "judgment-r3-payment-history",
+          "stage": 5,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r4-projection-history",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r5-close-history",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c1-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c2-late-cross-property-chargeback",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c3-transfer-shortfall-absorption",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c4-reporting-replay-purity",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c5-double-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        }
+      ],
+      "cost": 14.257574,
+      "cost_basis": "api-equivalent",
+      "prod_loc": 2177,
+      "test_loc": 2564,
+      "runtime_seconds": 3015.926,
+      "subagents": 0,
+      "structure": {
+        "production_files": 28,
+        "production_loc_measured": 2177,
+        "test_files": 14,
+        "test_loc_measured": 2564,
+        "largest_production_file": "lib/group_stay/reservations.ex",
+        "largest_production_file_loc": 352,
+        "largest_production_share": 0.16169039963252183,
+        "largest_test_file": "test/group_stay/room_accounting_test.exs",
+        "largest_test_file_loc": 434,
+        "migration_files": 7,
+        "ecto_schema_declarations": 6,
+        "repo_transaction_calls": 4,
+        "ecto_multi_mentions": 0
+      },
+      "milestones": [
+        {
+          "milestone": 1,
+          "runtime_seconds": 421.134,
+          "scenarios_passed": 12,
+          "scenarios_total": 12,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "3382927866e2c4c2c4a7bc622bdb2a0d7cd1be27d674ad153a5bb1b70513ef50",
+          "snapshot_sha256": "f3fd480b6dabd03d5e048e52ecd4b9645d6b0aae47cdc0cf2b5ffd3745b0b4d1",
+          "candidate_commit": "cb791d2ff8764d99f491e106ae2eb990ac2c9f2c",
+          "cost": 1.530094,
+          "max_request_input_tokens": 44786,
+          "input_tokens": 689445,
+          "cached_input_tokens": 653184,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 10286,
+          "reasoning_output_tokens": 1387
+        },
+        {
+          "milestone": 2,
+          "runtime_seconds": 338.392,
+          "scenarios_passed": 24,
+          "scenarios_total": 24,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "8733637e6ac9454ecda347fd7c610cb20c38ba3b36e17bf75b731eb47b9f1fdf",
+          "snapshot_sha256": "1829e32d61898b2bf19daa6efb6c77904daf781f36b068de704996449777e471",
+          "candidate_commit": "69421cf1b588bada0622b0106154ee8f9286151c",
+          "cost": 1.60323,
+          "max_request_input_tokens": 45753,
+          "input_tokens": 658294,
+          "cached_input_tokens": 602240,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 8809,
+          "reasoning_output_tokens": 304
+        },
+        {
+          "milestone": 3,
+          "runtime_seconds": 354.353,
+          "scenarios_passed": 30,
+          "scenarios_total": 30,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "f6d2d359e97d8e4db56f555c5abcd7aec0404e9562035cecc2e5b68b9b8ab82b",
+          "snapshot_sha256": "b3f4e751359fbdfbac64962d16e1a6182b1a064e8f0532a9246b1655a1d6dd95",
+          "candidate_commit": "a541ac9c9b76892d237f97cb82e8a0231e030f03",
+          "cost": 1.850154,
+          "max_request_input_tokens": 59462,
+          "input_tokens": 904973,
+          "cached_input_tokens": 846464,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 8372,
+          "reasoning_output_tokens": 870
+        },
+        {
+          "milestone": 4,
+          "runtime_seconds": 824.593,
+          "scenarios_passed": 50,
+          "scenarios_total": 52,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "b11ac24cab5ef0803ad90e7bddc4ee720ce125649582360d0c27dd09e975011f",
+          "snapshot_sha256": "60da220eafa872d319325362a03aef282f712acc9ef4efbf423faeaaf89abdae",
+          "candidate_commit": "20b8e39df90189dad58124188bbaff40fd89bc7b",
+          "cost": 3.712152,
+          "max_request_input_tokens": 88871,
+          "input_tokens": 1629803,
+          "cached_input_tokens": 1521792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 22205,
+          "reasoning_output_tokens": 3146
+        },
+        {
+          "milestone": 5,
+          "runtime_seconds": 329.005,
+          "scenarios_passed": 63,
+          "scenarios_total": 63,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "f523a23dab2084cb8331af34c3f61d6690361bf71b536b1595c035f6139286ea",
+          "snapshot_sha256": "d737823eb4786881939cdebbf832d65539b27d00bdf28a9e307fd9bb68e1b9c9",
+          "candidate_commit": "ff953596cb0a671c7717d31b97bd9563b27a38d8",
+          "cost": 1.724906,
+          "max_request_input_tokens": 64972,
+          "input_tokens": 808427,
+          "cached_input_tokens": 752896,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 8334,
+          "reasoning_output_tokens": 570
+        },
+        {
+          "milestone": 6,
+          "runtime_seconds": 446.22,
+          "scenarios_passed": 75,
+          "scenarios_total": 75,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "a2d0a4f51587a7949a3460877bc9faa9b812e4c6953260d773b939ba2373d321",
+          "snapshot_sha256": "5b34cb0e9a11b366d82b2b84722cdfeb97eba62e8d89715a2c421ce8f5396731",
+          "candidate_commit": "7628a01228396489f9def082f770c1522f0009fb",
+          "cost": 2.127286,
+          "max_request_input_tokens": 62418,
+          "input_tokens": 1108766,
+          "cached_input_tokens": 1054336,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 10573,
+          "reasoning_output_tokens": 1312
+        },
+        {
+          "milestone": 7,
+          "runtime_seconds": 302.229,
+          "scenarios_passed": 85,
+          "scenarios_total": 85,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "4ebccd5980a3a9177e71dd961bed560950eaf801f7807cf957ef5b636c3e805f",
+          "snapshot_sha256": "afee691a79f6144f1294ee299dc97d757d06e67d428d9485d35fc4c6c80066b2",
+          "candidate_commit": "ab3e5ac04654c7b45592ab5774c819c00a6aa1af",
+          "cost": 1.709752,
+          "max_request_input_tokens": 59986,
+          "input_tokens": 858251,
+          "cached_input_tokens": 803712,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 7213,
+          "reasoning_output_tokens": 879
+        }
+      ],
+      "usage": {
+        "input_tokens": 6657959,
+        "cached_input_tokens": 6234624,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 75792,
+        "reasoning_output_tokens": 8468,
+        "session_count": 7,
+        "descendant_sessions": 0,
+        "max_request_input_tokens": 88871
+      }
+    },
+    {
+      "id": "v6-readable-astra-low-03",
+      "model": "GPT-6 Astra",
+      "family": "astra",
+      "effort": "low",
+      "sample": 3,
+      "baseline_group": "astra-low",
+      "completed_at": "2026-09-07T20:32:26.922575+00:00",
+      "core": 38,
+      "maintenance": 9,
+      "scenarios_ship": 92,
+      "scenarios_final": 92,
+      "final_families": [
+        {
+          "id": "deposit-pricing",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-acceptance",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cancellation-settlement",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "batch-protocol-validation",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "rescheduling",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-core",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "policy-versioning",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "hotel-credit-lifecycle",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "refund-method-gate",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-economics",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m2-migration",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "durable-idempotency",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-durability",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m3-restart",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "room-funding-allocation",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "partial-cancellation-settlement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-reduction",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "chargeback-reclassification",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "entitlement-clawback-shortfall",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "ledger-conservation-contract",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-statement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m4-migration",
+          "stage": 4,
+          "track": "core",
+          "status": "failed",
+          "failing_members": [
+            "system:payment-reduction-upgrade"
+          ]
+        },
+        {
+          "id": "transfer-mechanics",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "multi-group-occ",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cross-group-correction-provenance",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transferred-credit-settlement",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "statement-evolution",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-invariance-isolation",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m5-migration",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-correctness",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "reporting-inception",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-effective-dating",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-determinism",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-atomicity",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m6-finance-upgrade",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-immutability",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "late-adjustment-posting",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-contract",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m7-close-upgrade",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r1-policy-history",
+          "stage": 2,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r2-room-history",
+          "stage": 4,
+          "track": "judgment",
+          "status": "failed",
+          "failing_members": [
+            "system:room-history-upgrade"
+          ]
+        },
+        {
+          "id": "judgment-r3-payment-history",
+          "stage": 5,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r4-projection-history",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r5-close-history",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c1-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c2-late-cross-property-chargeback",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c3-transfer-shortfall-absorption",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c4-reporting-replay-purity",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c5-double-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        }
+      ],
+      "cost": 13.580514,
+      "cost_basis": "api-equivalent",
+      "prod_loc": 2408,
+      "test_loc": 2785,
+      "runtime_seconds": 3177.204,
+      "subagents": 0,
+      "structure": {
+        "production_files": 27,
+        "production_loc_measured": 2408,
+        "test_files": 15,
+        "test_loc_measured": 2785,
+        "largest_production_file": "lib/group_stay/accounting.ex",
+        "largest_production_file_loc": 380,
+        "largest_production_share": 0.15780730897009967,
+        "largest_test_file": "test/group_stay/operations_durability_test.exs",
+        "largest_test_file_loc": 444,
+        "migration_files": 7,
+        "ecto_schema_declarations": 5,
+        "repo_transaction_calls": 4,
+        "ecto_multi_mentions": 0
+      },
+      "milestones": [
+        {
+          "milestone": 1,
+          "runtime_seconds": 266.507,
+          "scenarios_passed": 12,
+          "scenarios_total": 12,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "7ffc83f307cac417dd12881d9232d031e75c12a7f857695054d96930b1a9fc18",
+          "snapshot_sha256": "ec9f5e9163b822b57363941a766b05854dc2300c6fc42fbfd9393465cdba916e",
+          "candidate_commit": "e7b4119f7257b42c12fb40d1d41ee3df173aa00a",
+          "cost": 0.941768,
+          "max_request_input_tokens": 35075,
+          "input_tokens": 339283,
+          "cached_input_tokens": 311168,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6989,
+          "reasoning_output_tokens": 216
+        },
+        {
+          "milestone": 2,
+          "runtime_seconds": 367.169,
+          "scenarios_passed": 24,
+          "scenarios_total": 24,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "a83825ed99ab0e5de20b4f897f3f07fa5ee8a03d9ebabefa6e0ba9bf6bafa842",
+          "snapshot_sha256": "22d05ea61abf8e333097a86f435c8ccf24548d25054cf32a29f70f09042b00a8",
+          "candidate_commit": "8928c5d6962a8d6901a5bcac0d631febb42c414e",
+          "cost": 1.351408,
+          "max_request_input_tokens": 47678,
+          "input_tokens": 456396,
+          "cached_input_tokens": 412928,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 10076,
+          "reasoning_output_tokens": 299
+        },
+        {
+          "milestone": 3,
+          "runtime_seconds": 453.519,
+          "scenarios_passed": 30,
+          "scenarios_total": 30,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "4d48448913f5f6cd2c517b186b471637af65e0151542521be4d3b490e858da56",
+          "snapshot_sha256": "53eb6f2b5118abaa73a552ab977f5f83e85f01da51e144878b11aeb8859504ed",
+          "candidate_commit": "7d9158a3a7e386cd79a01af7a2297d269837990e",
+          "cost": 2.31861,
+          "max_request_input_tokens": 58305,
+          "input_tokens": 1375039,
+          "cached_input_tokens": 1323520,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 9598,
+          "reasoning_output_tokens": 1447
+        },
+        {
+          "milestone": 4,
+          "runtime_seconds": 659.242,
+          "scenarios_passed": 50,
+          "scenarios_total": 52,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "354816f8c2d58b3ac04a543e52c2a984ca97989d5461ea6a718480312156afda",
+          "snapshot_sha256": "20e2332b6a0d55dc9dfce8c48336a6a6d1faea391aaebc06dd7fc75795737790",
+          "candidate_commit": "716e1b7df5107e52a42190461045212a3ffc06b2",
+          "cost": 2.707834,
+          "max_request_input_tokens": 78912,
+          "input_tokens": 1158553,
+          "cached_input_tokens": 1087744,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 18240,
+          "reasoning_output_tokens": 2290
+        },
+        {
+          "milestone": 5,
+          "runtime_seconds": 709.585,
+          "scenarios_passed": 63,
+          "scenarios_total": 63,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "1e9761a67c4b944a5a8ffa6053a70cf5d91d34c792697525c69898669d0c492b",
+          "snapshot_sha256": "2b71f63677dbd67dfaf7aa387b840c476cde66e3647f3a7582d24479ec496858",
+          "candidate_commit": "492fb57a7c33c7e33ac63ef837e731d2ffd20036",
+          "cost": 2.886038,
+          "max_request_input_tokens": 76381,
+          "input_tokens": 1365275,
+          "cached_input_tokens": 1296768,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 18084,
+          "reasoning_output_tokens": 5430
+        },
+        {
+          "milestone": 6,
+          "runtime_seconds": 391.969,
+          "scenarios_passed": 75,
+          "scenarios_total": 75,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "b9cbc5389a701cc77748bd8562e58aa1cdb1651a1d6e83532d39a125677e7e59",
+          "snapshot_sha256": "df92638609720247ab8ee75eb8fc7d11f9af5d4e9b31f08880fa2476a8f546da",
+          "candidate_commit": "2b845518808e780db3d71d7f5cd63f729aa88578",
+          "cost": 1.701718,
+          "max_request_input_tokens": 59329,
+          "input_tokens": 777288,
+          "cached_input_tokens": 730368,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 10043,
+          "reasoning_output_tokens": 574
+        },
+        {
+          "milestone": 7,
+          "runtime_seconds": 329.213,
+          "scenarios_passed": 85,
+          "scenarios_total": 85,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "06160232abd7b8ac0a73f8e60a5d60f5e7b8e8ec6871451cc2363a500daad852",
+          "snapshot_sha256": "f372886868f140c1e9f61761c40bb13a89dc59a66a85bf56fca4d167c3d89b09",
+          "candidate_commit": "113016285b5e09db2669f7177eede81b17dcbc14",
+          "cost": 1.673138,
+          "max_request_input_tokens": 63539,
+          "input_tokens": 758559,
+          "cached_input_tokens": 704128,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 8494,
+          "reasoning_output_tokens": 758
+        }
+      ],
+      "usage": {
+        "input_tokens": 6230393,
+        "cached_input_tokens": 5866624,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 81524,
+        "reasoning_output_tokens": 11014,
+        "session_count": 7,
+        "descendant_sessions": 0,
+        "max_request_input_tokens": 78912
       }
     },
     {
@@ -1101,6 +2143,1040 @@
       }
     },
     {
+      "id": "v6-readable-astra-medium-02",
+      "model": "GPT-6 Astra",
+      "family": "astra",
+      "effort": "medium",
+      "sample": 2,
+      "baseline_group": "astra-medium",
+      "completed_at": "2026-09-07T16:27:14.988118+00:00",
+      "core": 39,
+      "maintenance": 10,
+      "scenarios_ship": 94,
+      "scenarios_final": 94,
+      "final_families": [
+        {
+          "id": "deposit-pricing",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-acceptance",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cancellation-settlement",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "batch-protocol-validation",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "rescheduling",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-core",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "policy-versioning",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "hotel-credit-lifecycle",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "refund-method-gate",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-economics",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m2-migration",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "durable-idempotency",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-durability",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m3-restart",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "room-funding-allocation",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "partial-cancellation-settlement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-reduction",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "chargeback-reclassification",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "entitlement-clawback-shortfall",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "ledger-conservation-contract",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-statement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m4-migration",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-mechanics",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "multi-group-occ",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cross-group-correction-provenance",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transferred-credit-settlement",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "statement-evolution",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-invariance-isolation",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m5-migration",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-correctness",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "reporting-inception",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-effective-dating",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-determinism",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-atomicity",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m6-finance-upgrade",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-immutability",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "late-adjustment-posting",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-contract",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m7-close-upgrade",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r1-policy-history",
+          "stage": 2,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r2-room-history",
+          "stage": 4,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r3-payment-history",
+          "stage": 5,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r4-projection-history",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r5-close-history",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c1-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c2-late-cross-property-chargeback",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c3-transfer-shortfall-absorption",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c4-reporting-replay-purity",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c5-double-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        }
+      ],
+      "cost": 16.6357,
+      "cost_basis": "api-equivalent",
+      "prod_loc": 2643,
+      "test_loc": 3415,
+      "runtime_seconds": 3878.6530000000002,
+      "subagents": 0,
+      "structure": {
+        "production_files": 33,
+        "production_loc_measured": 2643,
+        "test_files": 15,
+        "test_loc_measured": 3415,
+        "largest_production_file": "lib/group_stay/reservations.ex",
+        "largest_production_file_loc": 434,
+        "largest_production_share": 0.164207340143776,
+        "largest_test_file": "test/group_stay/durable_operations_test.exs",
+        "largest_test_file_loc": 556,
+        "migration_files": 7,
+        "ecto_schema_declarations": 7,
+        "repo_transaction_calls": 4,
+        "ecto_multi_mentions": 0
+      },
+      "milestones": [
+        {
+          "milestone": 1,
+          "runtime_seconds": 340.653,
+          "scenarios_passed": 12,
+          "scenarios_total": 12,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "3b1b296fd12e618abc897b69658a13cdb566797d174bacdb6d31e8259d3dc57f",
+          "snapshot_sha256": "ad390e3e0bbc84ac4d6cbb4eb66fcfc749eb5739ef0ebe6870b9b06710a44690",
+          "candidate_commit": "604900e466e8b8855e2777130cc02c8c3c8d399b",
+          "cost": 1.098712,
+          "max_request_input_tokens": 38983,
+          "input_tokens": 359498,
+          "cached_input_tokens": 330752,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 9610,
+          "reasoning_output_tokens": 601
+        },
+        {
+          "milestone": 2,
+          "runtime_seconds": 503.957,
+          "scenarios_passed": 24,
+          "scenarios_total": 24,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "e47635da8b341d4b400e73fa17ca422dc0fb713c7da62a526df8f708817a03d5",
+          "snapshot_sha256": "1692b414964078ef1148b026a20b596b2ea8499772a659132c0f69bf4b8f6209",
+          "candidate_commit": "e25dd83ad9411c71c46edfd714bf851cb9927022",
+          "cost": 2.021838,
+          "max_request_input_tokens": 58256,
+          "input_tokens": 842374,
+          "cached_input_tokens": 787328,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 13681,
+          "reasoning_output_tokens": 1959
+        },
+        {
+          "milestone": 3,
+          "runtime_seconds": 602.618,
+          "scenarios_passed": 30,
+          "scenarios_total": 30,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "7ad7b323945666add94276931d8f8dfd7d00b965078287c68e01740c2e12c4fb",
+          "snapshot_sha256": "5194418fe4784b2583612f9ab2310c8b9297b4a68170181433971375aacd98a8",
+          "candidate_commit": "8f40dd33bf673dbb877e2ec4f21fb6e0641b0c9d",
+          "cost": 3.296772,
+          "max_request_input_tokens": 90500,
+          "input_tokens": 1810796,
+          "cached_input_tokens": 1727232,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 14678,
+          "reasoning_output_tokens": 3726
+        },
+        {
+          "milestone": 4,
+          "runtime_seconds": 775.115,
+          "scenarios_passed": 52,
+          "scenarios_total": 52,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "ed023e10fa85d896f26add3766e8e9ffd0d87b93e31b5d52bf7d7437f3aeaed9",
+          "snapshot_sha256": "29103beba5d42d928f3c9a81436b83a7ff58c72b0f5773b43d596c79938a1733",
+          "candidate_commit": "8d699b1b2afc4cd119e403cd0f8fbf3191d21950",
+          "cost": 2.823984,
+          "max_request_input_tokens": 80421,
+          "input_tokens": 1012869,
+          "cached_input_tokens": 937984,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 22743,
+          "reasoning_output_tokens": 2943
+        },
+        {
+          "milestone": 5,
+          "runtime_seconds": 746.822,
+          "scenarios_passed": 63,
+          "scenarios_total": 63,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "b05e9659418e5451fdc81113898bffd3c70f1740a3bbb41c27a5d551ac5c939e",
+          "snapshot_sha256": "b13dcf9257f3d63ded944c11d06b208297a2974d1f0adf991ddae40105733f78",
+          "candidate_commit": "204f6a9248619d4c0c2c77cdfd7aad1e8aca0b3c",
+          "cost": 3.036368,
+          "max_request_input_tokens": 85717,
+          "input_tokens": 1290583,
+          "cached_input_tokens": 1210368,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 20477,
+          "reasoning_output_tokens": 5757
+        },
+        {
+          "milestone": 6,
+          "runtime_seconds": 517.3,
+          "scenarios_passed": 75,
+          "scenarios_total": 75,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "6eab14e8fff1d080d856563f7eb50f39383fa16236b702830e8a297c29683cc9",
+          "snapshot_sha256": "5c053a10cb26f4bfc232a4e5f9a31f2dc15cf1ea5bd8e2310b1c655d6a75fced",
+          "candidate_commit": "f042b506f92f8526bbb66ad577d44f3bb6a4201e",
+          "cost": 2.538234,
+          "max_request_input_tokens": 76925,
+          "input_tokens": 1219226,
+          "cached_input_tokens": 1150464,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 14003,
+          "reasoning_output_tokens": 2541
+        },
+        {
+          "milestone": 7,
+          "runtime_seconds": 392.188,
+          "scenarios_passed": 85,
+          "scenarios_total": 85,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "13187cace64bb2b112b866afd095607aaf29f12dbcbff35100da5ba5d16dad2a",
+          "snapshot_sha256": "559e2df41af140d28e65dc8618682065acf63ad15c52d824f34e7ce862cdb253",
+          "candidate_commit": "b74fbfec13d5ecd5d40afe7b1ae2966fd5927547",
+          "cost": 1.819792,
+          "max_request_input_tokens": 60877,
+          "input_tokens": 857868,
+          "cached_input_tokens": 808832,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 10412,
+          "reasoning_output_tokens": 1215
+        }
+      ],
+      "usage": {
+        "input_tokens": 7393214,
+        "cached_input_tokens": 6952960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 105604,
+        "reasoning_output_tokens": 18742,
+        "session_count": 7,
+        "descendant_sessions": 0,
+        "max_request_input_tokens": 90500
+      }
+    },
+    {
+      "id": "v6-readable-astra-medium-03",
+      "model": "GPT-6 Astra",
+      "family": "astra",
+      "effort": "medium",
+      "sample": 3,
+      "baseline_group": "astra-medium",
+      "completed_at": "2026-09-07T20:23:25.527107+00:00",
+      "core": 39,
+      "maintenance": 10,
+      "scenarios_ship": 94,
+      "scenarios_final": 94,
+      "final_families": [
+        {
+          "id": "deposit-pricing",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-acceptance",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cancellation-settlement",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "batch-protocol-validation",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "rescheduling",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-core",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "policy-versioning",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "hotel-credit-lifecycle",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "refund-method-gate",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-economics",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m2-migration",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "durable-idempotency",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-durability",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m3-restart",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "room-funding-allocation",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "partial-cancellation-settlement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-reduction",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "chargeback-reclassification",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "entitlement-clawback-shortfall",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "ledger-conservation-contract",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-statement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m4-migration",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-mechanics",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "multi-group-occ",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cross-group-correction-provenance",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transferred-credit-settlement",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "statement-evolution",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-invariance-isolation",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m5-migration",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-correctness",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "reporting-inception",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-effective-dating",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-determinism",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-atomicity",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m6-finance-upgrade",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-immutability",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "late-adjustment-posting",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-contract",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m7-close-upgrade",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r1-policy-history",
+          "stage": 2,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r2-room-history",
+          "stage": 4,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r3-payment-history",
+          "stage": 5,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r4-projection-history",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r5-close-history",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c1-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c2-late-cross-property-chargeback",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c3-transfer-shortfall-absorption",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c4-reporting-replay-purity",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c5-double-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        }
+      ],
+      "cost": 15.191232,
+      "cost_basis": "api-equivalent",
+      "prod_loc": 2662,
+      "test_loc": 3034,
+      "runtime_seconds": 3511.7690000000002,
+      "subagents": 0,
+      "structure": {
+        "production_files": 31,
+        "production_loc_measured": 2662,
+        "test_files": 15,
+        "test_loc_measured": 3034,
+        "largest_production_file": "lib/group_stay/finance_reporting.ex",
+        "largest_production_file_loc": 375,
+        "largest_production_share": 0.14087152516904583,
+        "largest_test_file": "test/group_stay_web/controllers/partner_controller_test.exs",
+        "largest_test_file_loc": 635,
+        "migration_files": 7,
+        "ecto_schema_declarations": 12,
+        "repo_transaction_calls": 4,
+        "ecto_multi_mentions": 0
+      },
+      "milestones": [
+        {
+          "milestone": 1,
+          "runtime_seconds": 318.707,
+          "scenarios_passed": 12,
+          "scenarios_total": 12,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "fa02d847e01f49581893c2dc441defbe2e1b777cf89f045f7e052ddf7e49f195",
+          "snapshot_sha256": "b1b31f395877b08170015129a19480daf6874cd1248e4c9a89e217051a381309",
+          "candidate_commit": "ba64df33d77166f271e43fc7469367bdbd94e033",
+          "cost": 1.060512,
+          "max_request_input_tokens": 37766,
+          "input_tokens": 350776,
+          "cached_input_tokens": 319872,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 8632,
+          "reasoning_output_tokens": 613
+        },
+        {
+          "milestone": 2,
+          "runtime_seconds": 355.621,
+          "scenarios_passed": 24,
+          "scenarios_total": 24,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "d80455ed4864c5a15a677423ed655afdcdb301a836f323c0389a7cd618322d75",
+          "snapshot_sha256": "1ad01dac1d31c69bbf4d4dc19fe5de7d0fb9499000c0a3f22fd4298971023e42",
+          "candidate_commit": "0d3810184291cf32fa80e4ad667ea6c5af30d4e3",
+          "cost": 1.353832,
+          "max_request_input_tokens": 45753,
+          "input_tokens": 533365,
+          "cached_input_tokens": 493952,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 9315,
+          "reasoning_output_tokens": 356
+        },
+        {
+          "milestone": 3,
+          "runtime_seconds": 612.368,
+          "scenarios_passed": 30,
+          "scenarios_total": 30,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "d6194f4ff29c5ac44947fa0ec7a9e44f3563d5e8956fd6069e6034edca03e0d8",
+          "snapshot_sha256": "1b14fb4a9f4edbb391ef802522aed095d557731d6bee9717ab67e401219b3586",
+          "candidate_commit": "3602c32ea3d2e7e2ef6af5503b8d43c36465a7d0",
+          "cost": 3.788898,
+          "max_request_input_tokens": 78937,
+          "input_tokens": 2477174,
+          "cached_input_tokens": 2402688,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 12827,
+          "reasoning_output_tokens": 3167
+        },
+        {
+          "milestone": 4,
+          "runtime_seconds": 746.028,
+          "scenarios_passed": 52,
+          "scenarios_total": 52,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "5ebc9a6c3f20e77e415f2cd3a29794c83442c3d144487ae421b8aace6a3ac9bd",
+          "snapshot_sha256": "8daf1c55bf40ab21b5ad70753ada880da4c2a0d4923e929c89361c1afe4a81dd",
+          "candidate_commit": "42498d7c2787f9feeed7639ad435a7832ee1ebb1",
+          "cost": 3.0507,
+          "max_request_input_tokens": 83615,
+          "input_tokens": 1318057,
+          "cached_input_tokens": 1242880,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 21121,
+          "reasoning_output_tokens": 2418
+        },
+        {
+          "milestone": 5,
+          "runtime_seconds": 724.512,
+          "scenarios_passed": 63,
+          "scenarios_total": 63,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "b1239a1716629f7f45da7811404be2c717b41b006d08fddf8da3bebca5d893a4",
+          "snapshot_sha256": "5aa0a5e495a50cc119bf0be844c044701846834767f450204296d4a0c7126853",
+          "candidate_commit": "be3a159086b6e4a3fd39baa7ee66adfc859c6d5a",
+          "cost": 2.550026,
+          "max_request_input_tokens": 76911,
+          "input_tokens": 925818,
+          "cached_input_tokens": 851456,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 19099,
+          "reasoning_output_tokens": 5255
+        },
+        {
+          "milestone": 6,
+          "runtime_seconds": 413.052,
+          "scenarios_passed": 75,
+          "scenarios_total": 75,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "3bbde3c150bb7450be2e0397d03f9f41f6e20bd79ee321c051eb302c10e067e6",
+          "snapshot_sha256": "cfa78bc5d704f40ad25581b159e4cb7f3fd492cb26bc416d513f40c4d446a064",
+          "candidate_commit": "1c479f8b569030b2c7c7c37589b9d79b63d549a6",
+          "cost": 1.648956,
+          "max_request_input_tokens": 61358,
+          "input_tokens": 627245,
+          "cached_input_tokens": 575616,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 11141,
+          "reasoning_output_tokens": 1356
+        },
+        {
+          "milestone": 7,
+          "runtime_seconds": 341.481,
+          "scenarios_passed": 85,
+          "scenarios_total": 85,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "79f04ba0f84a04dbdd085cbbff7e5df75a44a69a52297a53af0cc70f79ad0b0e",
+          "snapshot_sha256": "f4605e183ee8f3e5abb1b9070a7f477fb8709ef1af3ae2fcdd5aed5de77dea5b",
+          "candidate_commit": "38c19a19f879066f1afb3ffb44c6c5bd4e5da28a",
+          "cost": 1.738308,
+          "max_request_input_tokens": 60401,
+          "input_tokens": 811333,
+          "cached_input_tokens": 756608,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 8689,
+          "reasoning_output_tokens": 603
+        }
+      ],
+      "usage": {
+        "input_tokens": 7043768,
+        "cached_input_tokens": 6643072,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 90824,
+        "reasoning_output_tokens": 13768,
+        "session_count": 7,
+        "descendant_sessions": 0,
+        "max_request_input_tokens": 83615
+      }
+    },
+    {
       "id": "v6-readable-astra-high-01",
       "model": "GPT-6 Astra",
       "family": "astra",
@@ -1618,6 +3694,1040 @@
       }
     },
     {
+      "id": "v6-readable-astra-high-02",
+      "model": "GPT-6 Astra",
+      "family": "astra",
+      "effort": "high",
+      "sample": 2,
+      "baseline_group": "astra-high",
+      "completed_at": "2026-09-07T16:56:57.425113+00:00",
+      "core": 39,
+      "maintenance": 10,
+      "scenarios_ship": 94,
+      "scenarios_final": 94,
+      "final_families": [
+        {
+          "id": "deposit-pricing",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-acceptance",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cancellation-settlement",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "batch-protocol-validation",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "rescheduling",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-core",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "policy-versioning",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "hotel-credit-lifecycle",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "refund-method-gate",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-economics",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m2-migration",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "durable-idempotency",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-durability",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m3-restart",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "room-funding-allocation",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "partial-cancellation-settlement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-reduction",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "chargeback-reclassification",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "entitlement-clawback-shortfall",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "ledger-conservation-contract",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-statement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m4-migration",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-mechanics",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "multi-group-occ",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cross-group-correction-provenance",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transferred-credit-settlement",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "statement-evolution",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-invariance-isolation",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m5-migration",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-correctness",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "reporting-inception",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-effective-dating",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-determinism",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-atomicity",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m6-finance-upgrade",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-immutability",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "late-adjustment-posting",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-contract",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m7-close-upgrade",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r1-policy-history",
+          "stage": 2,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r2-room-history",
+          "stage": 4,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r3-payment-history",
+          "stage": 5,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r4-projection-history",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r5-close-history",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c1-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c2-late-cross-property-chargeback",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c3-transfer-shortfall-absorption",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c4-reporting-replay-purity",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c5-double-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        }
+      ],
+      "cost": 24.39244,
+      "cost_basis": "api-equivalent",
+      "prod_loc": 2615,
+      "test_loc": 5197,
+      "runtime_seconds": 5646.853,
+      "subagents": 0,
+      "structure": {
+        "production_files": 43,
+        "production_loc_measured": 2615,
+        "test_files": 14,
+        "test_loc_measured": 5197,
+        "largest_production_file": "lib/group_stay/finance_reporting.ex",
+        "largest_production_file_loc": 294,
+        "largest_production_share": 0.1124282982791587,
+        "largest_test_file": "test/group_stay/reservations/persistence_test.exs",
+        "largest_test_file_loc": 1607,
+        "migration_files": 7,
+        "ecto_schema_declarations": 10,
+        "repo_transaction_calls": 4,
+        "ecto_multi_mentions": 0
+      },
+      "milestones": [
+        {
+          "milestone": 1,
+          "runtime_seconds": 675.689,
+          "scenarios_passed": 12,
+          "scenarios_total": 12,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "d29476bdab5c9dfa1a7f510adb6f2dd7b248ddae948cc60fcb4660080f556a51",
+          "snapshot_sha256": "54aaee44861bac8f086889f6a91a5e7ff92be44b3a82cf05f50c13660f9a89c5",
+          "candidate_commit": "8de39679e94cd5595497fd1b17b1b53b9c8d858d",
+          "cost": 2.17668,
+          "max_request_input_tokens": 63943,
+          "input_tokens": 676610,
+          "cached_input_tokens": 622080,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 20186,
+          "reasoning_output_tokens": 4205
+        },
+        {
+          "milestone": 2,
+          "runtime_seconds": 953.637,
+          "scenarios_passed": 24,
+          "scenarios_total": 24,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "792cfbec374b190a883cad758a127bc3fb2a5af619f1f8ef2e0e94c5d9cc8556",
+          "snapshot_sha256": "011f04c5c73fce511f975d68efd8b8f843ef1c53d074b8f90a4cac318a1e9506",
+          "candidate_commit": "99368bb445b2566b7e38c1d0024abc89abe53bb9",
+          "cost": 5.000772,
+          "max_request_input_tokens": 116057,
+          "input_tokens": 2723977,
+          "cached_input_tokens": 2611072,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 25213,
+          "reasoning_output_tokens": 6139
+        },
+        {
+          "milestone": 3,
+          "runtime_seconds": 746.112,
+          "scenarios_passed": 30,
+          "scenarios_total": 30,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "235c46105f986ab8ad0eb5bf1c7be9796f99428a936cce7d44e2857dc3f97bec",
+          "snapshot_sha256": "888a4c3f0f019ade9ae98abd2fd1f7cdebaf7209df3e46eb3dae6a84ec314990",
+          "candidate_commit": "ef27ee775b9c68be657263e2b9a1d0b2ccd5bf3a",
+          "cost": 3.797302,
+          "max_request_input_tokens": 94851,
+          "input_tokens": 2009663,
+          "cached_input_tokens": 1921792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 19936,
+          "reasoning_output_tokens": 6080
+        },
+        {
+          "milestone": 4,
+          "runtime_seconds": 1116.497,
+          "scenarios_passed": 52,
+          "scenarios_total": 52,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "3119ff89fb382809aa829fbf9dec94b1369c64983db4edb4923844884c670447",
+          "snapshot_sha256": "ac4ae6063c06a87b51b1856793158fdbdb84a7b4ec1e79fbb787ddc4bb84df4c",
+          "candidate_commit": "2777f6eecc1a9e6a92035c649c94f1c5fe0ffb99",
+          "cost": 3.995912,
+          "max_request_input_tokens": 103780,
+          "input_tokens": 1486675,
+          "cached_input_tokens": 1388032,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 32429,
+          "reasoning_output_tokens": 7783
+        },
+        {
+          "milestone": 5,
+          "runtime_seconds": 684.897,
+          "scenarios_passed": 63,
+          "scenarios_total": 63,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "5a89ff8641384c1b8aaf18796dafee00a46e12838bcae4ef282e2842dbea254f",
+          "snapshot_sha256": "db40eaca6ea59399352995b6faf295e01ef558fa61d84446ac3020c85168d463",
+          "candidate_commit": "fbd86501497349602e008a2f3f4f4bd1125a2587",
+          "cost": 2.995836,
+          "max_request_input_tokens": 86847,
+          "input_tokens": 1357589,
+          "cached_input_tokens": 1280256,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 18845,
+          "reasoning_output_tokens": 3735
+        },
+        {
+          "milestone": 6,
+          "runtime_seconds": 818.355,
+          "scenarios_passed": 75,
+          "scenarios_total": 75,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "9784d487843e5ec6551abbf90372779a6735fcbfa708cef5df17f829236b63b5",
+          "snapshot_sha256": "e2ba590957aef4f410a0efeaa82787a3393e2392a9db4b5a9cdcd959004c6fa9",
+          "candidate_commit": "3f07d5c7971c24b32215c5f4840527405cc4f54f",
+          "cost": 3.013492,
+          "max_request_input_tokens": 88892,
+          "input_tokens": 1239773,
+          "cached_input_tokens": 1157632,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 20689,
+          "reasoning_output_tokens": 4268
+        },
+        {
+          "milestone": 7,
+          "runtime_seconds": 651.666,
+          "scenarios_passed": 85,
+          "scenarios_total": 85,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "8f39a247b92a9ad691ac204d8eaf678db2bcd9383059596a827390d89d4f4d21",
+          "snapshot_sha256": "c3b5fb7df5741003fc015ffffc8cb9050e117c8836cee3d4cec00832e384af70",
+          "candidate_commit": "db88a86811c987093135a754a426be336c0d4fb8",
+          "cost": 3.412446,
+          "max_request_input_tokens": 98144,
+          "input_tokens": 1592519,
+          "cached_input_tokens": 1487616,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 17516,
+          "reasoning_output_tokens": 2984
+        }
+      ],
+      "usage": {
+        "input_tokens": 11086806,
+        "cached_input_tokens": 10468480,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 154814,
+        "reasoning_output_tokens": 35194,
+        "session_count": 7,
+        "descendant_sessions": 0,
+        "max_request_input_tokens": 116057
+      }
+    },
+    {
+      "id": "v6-readable-astra-high-03",
+      "model": "GPT-6 Astra",
+      "family": "astra",
+      "effort": "high",
+      "sample": 3,
+      "baseline_group": "astra-high",
+      "completed_at": "2026-09-07T20:31:18.428522+00:00",
+      "core": 39,
+      "maintenance": 10,
+      "scenarios_ship": 94,
+      "scenarios_final": 94,
+      "final_families": [
+        {
+          "id": "deposit-pricing",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-acceptance",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cancellation-settlement",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "batch-protocol-validation",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "rescheduling",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-core",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "policy-versioning",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "hotel-credit-lifecycle",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "refund-method-gate",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-economics",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m2-migration",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "durable-idempotency",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-durability",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m3-restart",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "room-funding-allocation",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "partial-cancellation-settlement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-reduction",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "chargeback-reclassification",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "entitlement-clawback-shortfall",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "ledger-conservation-contract",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-statement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m4-migration",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-mechanics",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "multi-group-occ",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cross-group-correction-provenance",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transferred-credit-settlement",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "statement-evolution",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-invariance-isolation",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m5-migration",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-correctness",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "reporting-inception",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-effective-dating",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-determinism",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-atomicity",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m6-finance-upgrade",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-immutability",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "late-adjustment-posting",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-contract",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m7-close-upgrade",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r1-policy-history",
+          "stage": 2,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r2-room-history",
+          "stage": 4,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r3-payment-history",
+          "stage": 5,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r4-projection-history",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r5-close-history",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c1-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c2-late-cross-property-chargeback",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c3-transfer-shortfall-absorption",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c4-reporting-replay-purity",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c5-double-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        }
+      ],
+      "cost": 22.332262,
+      "cost_basis": "api-equivalent",
+      "prod_loc": 2685,
+      "test_loc": 4866,
+      "runtime_seconds": 5523.732,
+      "subagents": 0,
+      "structure": {
+        "production_files": 47,
+        "production_loc_measured": 2685,
+        "test_files": 13,
+        "test_loc_measured": 4866,
+        "largest_production_file": "lib/group_stay/reservations.ex",
+        "largest_production_file_loc": 269,
+        "largest_production_share": 0.10018621973929237,
+        "largest_test_file": "test/group_stay/reservations_persistence_test.exs",
+        "largest_test_file_loc": 1262,
+        "migration_files": 7,
+        "ecto_schema_declarations": 10,
+        "repo_transaction_calls": 2,
+        "ecto_multi_mentions": 0
+      },
+      "milestones": [
+        {
+          "milestone": 1,
+          "runtime_seconds": 548.936,
+          "scenarios_passed": 12,
+          "scenarios_total": 12,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "9896d5040c219890f68c77ac1d53510a244da3d2849b4702802d603da7e589e1",
+          "snapshot_sha256": "fd003e008d6acd76c141d4bfeb06c3440372c54bacc132b1b03d183cb6b639ae",
+          "candidate_commit": "6eb18a14822f5b88330dd65ab2c306b6ec6aa7e0",
+          "cost": 1.908716,
+          "max_request_input_tokens": 57198,
+          "input_tokens": 699254,
+          "cached_input_tokens": 651136,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 15528,
+          "reasoning_output_tokens": 2184
+        },
+        {
+          "milestone": 2,
+          "runtime_seconds": 1155.779,
+          "scenarios_passed": 24,
+          "scenarios_total": 24,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "2704645bcc9f3c72efd11933e9a2c1b4dfd8af4ee5777ba2041c95354041994d",
+          "snapshot_sha256": "1394ea0e200f01af8c444f08a65c10f3f2f8cbad3971dff225511bb13a9b41fc",
+          "candidate_commit": "fa5b57af0d0ae38d2fb9637843a72d416c078f4f",
+          "cost": 4.784186,
+          "max_request_input_tokens": 111453,
+          "input_tokens": 2318663,
+          "cached_input_tokens": 2210816,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 29898,
+          "reasoning_output_tokens": 7410
+        },
+        {
+          "milestone": 3,
+          "runtime_seconds": 522.059,
+          "scenarios_passed": 30,
+          "scenarios_total": 30,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "b192669cb769e128e1ee0c9d616701dc19e88a06cc7ce9fcb597ecc8ae216cc8",
+          "snapshot_sha256": "f0f3fa39920047d0a32cfcb75776683626059c8432bbfff291408e360bcf60c5",
+          "candidate_commit": "8615f24a686873c15c44002797f903229177cc2e",
+          "cost": 2.345904,
+          "max_request_input_tokens": 72216,
+          "input_tokens": 1113215,
+          "cached_input_tokens": 1049344,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 13157,
+          "reasoning_output_tokens": 2773
+        },
+        {
+          "milestone": 4,
+          "runtime_seconds": 1140.588,
+          "scenarios_passed": 52,
+          "scenarios_total": 52,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "1e62f8e794e3cc29e22dbd8c21571461bd2f40d737eb5772c6b82c6c72b1fec3",
+          "snapshot_sha256": "538bb19590c4a2bb00fe67f0e286de802807e5abd2d8bd92f0ca826085a9db1d",
+          "candidate_commit": "687580a328a3d3ddd3dfa84e48dfa6e7e1dc5d16",
+          "cost": 4.105934,
+          "max_request_input_tokens": 101590,
+          "input_tokens": 1620278,
+          "cached_input_tokens": 1522944,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 32193,
+          "reasoning_output_tokens": 8116
+        },
+        {
+          "milestone": 5,
+          "runtime_seconds": 739.613,
+          "scenarios_passed": 63,
+          "scenarios_total": 63,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "01a0bb7c73c6f18dc74f38c4ee204bba6fe1ed4f6a332eca60e6132972dcb1ef",
+          "snapshot_sha256": "69bfa26caf7c6b0f188fc74016bc89741e58a9a36c49dd971aeb625fe46e45a0",
+          "candidate_commit": "10d080a2c985b1fb94c6a0b9610b96553cbb9b03",
+          "cost": 3.016638,
+          "max_request_input_tokens": 89622,
+          "input_tokens": 1310139,
+          "cached_input_tokens": 1228928,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 19512,
+          "reasoning_output_tokens": 3178
+        },
+        {
+          "milestone": 6,
+          "runtime_seconds": 794.532,
+          "scenarios_passed": 75,
+          "scenarios_total": 75,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "cd1d8aab12530acfd7a126690578c1d3123d988a9db7eed043b04619f334511f",
+          "snapshot_sha256": "fec3b16c07fa6022ce3e5f9aeecc100e7c4cde675fe234ae5342eb6b385f5cc4",
+          "candidate_commit": "43d5a7cce0614778945ea21553bd7c962cad58dd",
+          "cost": 3.331394,
+          "max_request_input_tokens": 102343,
+          "input_tokens": 1411934,
+          "cached_input_tokens": 1318144,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 21507,
+          "reasoning_output_tokens": 4769
+        },
+        {
+          "milestone": 7,
+          "runtime_seconds": 622.225,
+          "scenarios_passed": 85,
+          "scenarios_total": 85,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "7c1840d5c50adb1f80d31d6cf55c501ab08e9ef871ba911fd7c9838563e65ffa",
+          "snapshot_sha256": "00f9885e69747f45d279b9bffb954100720d29e00416729edc8bebcc6c7ae356",
+          "candidate_commit": "787c9306a519c891fe7be764676c9f4ee6ca95a6",
+          "cost": 2.83949,
+          "max_request_input_tokens": 88606,
+          "input_tokens": 1357389,
+          "cached_input_tokens": 1276800,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 15136,
+          "reasoning_output_tokens": 2873
+        }
+      ],
+      "usage": {
+        "input_tokens": 9830872,
+        "cached_input_tokens": 9258112,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 146931,
+        "reasoning_output_tokens": 31303,
+        "session_count": 7,
+        "descendant_sessions": 0,
+        "max_request_input_tokens": 111453
+      }
+    },
+    {
       "id": "v6-readable-astra-xhigh-01",
       "model": "GPT-6 Astra",
       "family": "astra",
@@ -2132,6 +5242,1040 @@
         "session_count": 7,
         "descendant_sessions": 0,
         "max_request_input_tokens": 131926
+      }
+    },
+    {
+      "id": "v6-readable-astra-xhigh-02",
+      "model": "GPT-6 Astra",
+      "family": "astra",
+      "effort": "xhigh",
+      "sample": 2,
+      "baseline_group": "astra-xhigh",
+      "completed_at": "2026-09-07T17:26:46.831252+00:00",
+      "core": 39,
+      "maintenance": 10,
+      "scenarios_ship": 94,
+      "scenarios_final": 94,
+      "final_families": [
+        {
+          "id": "deposit-pricing",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-acceptance",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cancellation-settlement",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "batch-protocol-validation",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "rescheduling",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-core",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "policy-versioning",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "hotel-credit-lifecycle",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "refund-method-gate",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-economics",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m2-migration",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "durable-idempotency",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-durability",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m3-restart",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "room-funding-allocation",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "partial-cancellation-settlement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-reduction",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "chargeback-reclassification",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "entitlement-clawback-shortfall",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "ledger-conservation-contract",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-statement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m4-migration",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-mechanics",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "multi-group-occ",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cross-group-correction-provenance",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transferred-credit-settlement",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "statement-evolution",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-invariance-isolation",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m5-migration",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-correctness",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "reporting-inception",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-effective-dating",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-determinism",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-atomicity",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m6-finance-upgrade",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-immutability",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "late-adjustment-posting",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-contract",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m7-close-upgrade",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r1-policy-history",
+          "stage": 2,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r2-room-history",
+          "stage": 4,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r3-payment-history",
+          "stage": 5,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r4-projection-history",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r5-close-history",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c1-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c2-late-cross-property-chargeback",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c3-transfer-shortfall-absorption",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c4-reporting-replay-purity",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c5-double-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        }
+      ],
+      "cost": 32.154688,
+      "cost_basis": "api-equivalent",
+      "prod_loc": 2808,
+      "test_loc": 6118,
+      "runtime_seconds": 7439.603,
+      "subagents": 0,
+      "structure": {
+        "production_files": 49,
+        "production_loc_measured": 2808,
+        "test_files": 32,
+        "test_loc_measured": 6118,
+        "largest_production_file": "priv/repo/migrations/20260907000003_add_room_accounting.exs",
+        "largest_production_file_loc": 291,
+        "largest_production_share": 0.10363247863247864,
+        "largest_test_file": "test/group_stay_web/controllers/partner_api_test.exs",
+        "largest_test_file_loc": 610,
+        "migration_files": 7,
+        "ecto_schema_declarations": 11,
+        "repo_transaction_calls": 4,
+        "ecto_multi_mentions": 0
+      },
+      "milestones": [
+        {
+          "milestone": 1,
+          "runtime_seconds": 1022.14,
+          "scenarios_passed": 12,
+          "scenarios_total": 12,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "816612c6cb54515d35c3cc83d07b204bdb381bb99984d79f1b2723376e195e86",
+          "snapshot_sha256": "59b4416a072d48cc1d5735bb68470f2fbfb2faa75d80dc559d2f6043eba9fa1e",
+          "candidate_commit": "86a9723e9b2e61da325fabf1b6d5051695cdb493",
+          "cost": 3.791096,
+          "max_request_input_tokens": 92561,
+          "input_tokens": 1494382,
+          "cached_input_tokens": 1406336,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 30086,
+          "reasoning_output_tokens": 8419
+        },
+        {
+          "milestone": 2,
+          "runtime_seconds": 1202.749,
+          "scenarios_passed": 24,
+          "scenarios_total": 24,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "36fafab583c732dad3512964f144dd0844e90d575fad2932f043e8548c6ebed3",
+          "snapshot_sha256": "377bd7cb1c6f7c5b3526becd12386efb889c52262c10cf2600202576587d124e",
+          "candidate_commit": "2b38e746571ad0132c51619d8b26e131a71eb527",
+          "cost": 5.228644,
+          "max_request_input_tokens": 122347,
+          "input_tokens": 2406614,
+          "cached_input_tokens": 2290944,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 35620,
+          "reasoning_output_tokens": 7443
+        },
+        {
+          "milestone": 3,
+          "runtime_seconds": 800.6,
+          "scenarios_passed": 30,
+          "scenarios_total": 30,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "5777e8477c0f12dc78c9510f0646ad9ea64366d36e6c9b89d2c17d6ebe667533",
+          "snapshot_sha256": "21c3683651f297919b4a7e1b235d223c705384b826c54ac7688f756c878a726a",
+          "candidate_commit": "4986d556b70d69797e7eb77501f6ca9fe1230fc3",
+          "cost": 3.63425,
+          "max_request_input_tokens": 102437,
+          "input_tokens": 1602346,
+          "cached_input_tokens": 1507840,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 23627,
+          "reasoning_output_tokens": 6300
+        },
+        {
+          "milestone": 4,
+          "runtime_seconds": 1383.981,
+          "scenarios_passed": 52,
+          "scenarios_total": 52,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "62f96b3add69af07b759ef83e30e44b5761ee8890b855ead0eeba1b9e906c085",
+          "snapshot_sha256": "ff79056b9c4da5501c3a63c0e9049b2f564fbceb09b527c992835c59de20aace",
+          "candidate_commit": "b52a4047d999778e0ef81ac74f196f39a986a4a9",
+          "cost": 7.00119,
+          "max_request_input_tokens": 132168,
+          "input_tokens": 2903548,
+          "cached_input_tokens": 2674560,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 40735,
+          "reasoning_output_tokens": 9284
+        },
+        {
+          "milestone": 5,
+          "runtime_seconds": 992.182,
+          "scenarios_passed": 63,
+          "scenarios_total": 63,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "e65d320d6d08e34b25df9bfc9fa5a8bec33754147eb9edced205e2fd13d91e28",
+          "snapshot_sha256": "1f50236b86fb7e7715b2f88d86942325483f50e7ac6a15fc0036feb747135e92",
+          "candidate_commit": "a9fd2c665d1d7bb7f22266b8e9a2375605565aa8",
+          "cost": 3.58507,
+          "max_request_input_tokens": 105576,
+          "input_tokens": 1523091,
+          "cached_input_tokens": 1432960,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 25016,
+          "reasoning_output_tokens": 4471
+        },
+        {
+          "milestone": 6,
+          "runtime_seconds": 1150.036,
+          "scenarios_passed": 75,
+          "scenarios_total": 75,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "fb2888cee1d7d320de2543f0f96a9cf9f236997b5ce9faaafbb7a6ba75059d6b",
+          "snapshot_sha256": "8303c897169a5b366475602356652a4304c0c03ff34ffed1dcea1ff219af2fde",
+          "candidate_commit": "cbc106d9c237cb4c1ff7d42706d10db88a0975d9",
+          "cost": 4.887186,
+          "max_request_input_tokens": 123005,
+          "input_tokens": 2194071,
+          "cached_input_tokens": 2075136,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 32454,
+          "reasoning_output_tokens": 8473
+        },
+        {
+          "milestone": 7,
+          "runtime_seconds": 887.915,
+          "scenarios_passed": 85,
+          "scenarios_total": 85,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "083a2ca0d5e1aaa5f4bd309d140728d85e2e2f74d72b6700703c60b5e0f43131",
+          "snapshot_sha256": "80bee6d636d43296fe7f628d7ea05bb8259599f764fff0c974e818a1f0bd8d1e",
+          "candidate_commit": "e37890a54f7753a711d80b35b087e44f85c8545b",
+          "cost": 4.027252,
+          "max_request_input_tokens": 120926,
+          "input_tokens": 1733598,
+          "cached_input_tokens": 1617792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 25028,
+          "reasoning_output_tokens": 5848
+        }
+      ],
+      "usage": {
+        "input_tokens": 13857650,
+        "cached_input_tokens": 13005568,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 212566,
+        "reasoning_output_tokens": 50238,
+        "session_count": 7,
+        "descendant_sessions": 0,
+        "max_request_input_tokens": 132168
+      }
+    },
+    {
+      "id": "v6-readable-astra-xhigh-03",
+      "model": "GPT-6 Astra",
+      "family": "astra",
+      "effort": "xhigh",
+      "sample": 3,
+      "baseline_group": "astra-xhigh",
+      "completed_at": "2026-09-07T19:37:43.095494+00:00",
+      "core": 39,
+      "maintenance": 10,
+      "scenarios_ship": 94,
+      "scenarios_final": 94,
+      "final_families": [
+        {
+          "id": "deposit-pricing",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-acceptance",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cancellation-settlement",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "batch-protocol-validation",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "rescheduling",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-core",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "policy-versioning",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "hotel-credit-lifecycle",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "refund-method-gate",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-economics",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m2-migration",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "durable-idempotency",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-durability",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m3-restart",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "room-funding-allocation",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "partial-cancellation-settlement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-reduction",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "chargeback-reclassification",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "entitlement-clawback-shortfall",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "ledger-conservation-contract",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-statement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m4-migration",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-mechanics",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "multi-group-occ",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cross-group-correction-provenance",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transferred-credit-settlement",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "statement-evolution",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-invariance-isolation",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m5-migration",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-correctness",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "reporting-inception",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-effective-dating",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-determinism",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-atomicity",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m6-finance-upgrade",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-immutability",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "late-adjustment-posting",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-contract",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m7-close-upgrade",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r1-policy-history",
+          "stage": 2,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r2-room-history",
+          "stage": 4,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r3-payment-history",
+          "stage": 5,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r4-projection-history",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r5-close-history",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c1-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c2-late-cross-property-chargeback",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c3-transfer-shortfall-absorption",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c4-reporting-replay-purity",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c5-double-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        }
+      ],
+      "cost": 33.013062,
+      "cost_basis": "api-equivalent",
+      "prod_loc": 3144,
+      "test_loc": 6666,
+      "runtime_seconds": 7741.999,
+      "subagents": 0,
+      "structure": {
+        "production_files": 50,
+        "production_loc_measured": 3144,
+        "test_files": 19,
+        "test_loc_measured": 6666,
+        "largest_production_file": "lib/group_stay/reservations.ex",
+        "largest_production_file_loc": 356,
+        "largest_production_share": 0.11323155216284987,
+        "largest_test_file": "test/group_stay_web/controllers/partner_batch_controller_test.exs",
+        "largest_test_file_loc": 718,
+        "migration_files": 7,
+        "ecto_schema_declarations": 11,
+        "repo_transaction_calls": 0,
+        "ecto_multi_mentions": 0
+      },
+      "milestones": [
+        {
+          "milestone": 1,
+          "runtime_seconds": 1332.572,
+          "scenarios_passed": 12,
+          "scenarios_total": 12,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "5202be88d996aa78db099cf8e15dcf78e83cd3f4b219ead0744257181e7153d9",
+          "snapshot_sha256": "39433d217c4dead03eeb93b675023cf62e3153261a2def76967ada5c11c031db",
+          "candidate_commit": "8064f9b1e5d133052fa74b282d9a4def5c5d13c6",
+          "cost": 6.374876,
+          "max_request_input_tokens": 129351,
+          "input_tokens": 3427999,
+          "cached_input_tokens": 3303296,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 36491,
+          "reasoning_output_tokens": 12071
+        },
+        {
+          "milestone": 2,
+          "runtime_seconds": 955.21,
+          "scenarios_passed": 24,
+          "scenarios_total": 24,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "aa061db752f3a8129b5482809377fc84d3a847b9d5d80c0110a1622fc1823db9",
+          "snapshot_sha256": "e03bb9986eaa4508c137c835b29e98b20c270d22c95ff8ed6353411a8415fd8e",
+          "candidate_commit": "3e40876accdc65bd5e6813aaf6768c201f7d609d",
+          "cost": 3.549624,
+          "max_request_input_tokens": 98425,
+          "input_tokens": 1329043,
+          "cached_input_tokens": 1238784,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 28165,
+          "reasoning_output_tokens": 4495
+        },
+        {
+          "milestone": 3,
+          "runtime_seconds": 1047.387,
+          "scenarios_passed": 30,
+          "scenarios_total": 30,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "2f77c9ea3ca3f37f4c8f3bf84199654affcf7240757acb8a7dacc6ab96ee38af",
+          "snapshot_sha256": "fa35bdccf4f91cd7234954b195f344cf2f53184c19adffe004c736cd2e677b77",
+          "candidate_commit": "3db84dedcc5251641afbc2417181ec081e72a5c4",
+          "cost": 4.713796,
+          "max_request_input_tokens": 116239,
+          "input_tokens": 1967025,
+          "cached_input_tokens": 1827456,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 29813,
+          "reasoning_output_tokens": 10763
+        },
+        {
+          "milestone": 4,
+          "runtime_seconds": 1385.891,
+          "scenarios_passed": 52,
+          "scenarios_total": 52,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "b63c62b4649822c2494e4974c83b76706db18494aadf87ecd77d4fbc0062a5e5",
+          "snapshot_sha256": "0f7176fc977a5d56413edfc65882e6f15afeb5fbb28d2ab5ace52759e99a9513",
+          "candidate_commit": "ccf2c5e89493dee5518430465e58ea8c59ebfe04",
+          "cost": 5.475244,
+          "max_request_input_tokens": 124656,
+          "input_tokens": 2446737,
+          "cached_input_tokens": 2328064,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 39209,
+          "reasoning_output_tokens": 8122
+        },
+        {
+          "milestone": 5,
+          "runtime_seconds": 846.203,
+          "scenarios_passed": 63,
+          "scenarios_total": 63,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "1040e891ff7a38a1a29c9e36e91669841a5c8d8b95e06c61480421e95d0d26a6",
+          "snapshot_sha256": "d16a9ad2518c61c442e70dc0950afb03d8dca6ca1745590a3347bdd801b25c89",
+          "candidate_commit": "3b154a4993bc43853bfea0edb21df873cd70422b",
+          "cost": 3.66661,
+          "max_request_input_tokens": 110298,
+          "input_tokens": 1471999,
+          "cached_input_tokens": 1365120,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 24654,
+          "reasoning_output_tokens": 4255
+        },
+        {
+          "milestone": 6,
+          "runtime_seconds": 1084.366,
+          "scenarios_passed": 75,
+          "scenarios_total": 75,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "5aa2e17f93ed9eeae5cd7f60249310c17464d81fcbc878152050e4221abac0ac",
+          "snapshot_sha256": "1db2fb83c4c672db05f781da162b23f9d0dad035e4405ac4a50d4c9d21729933",
+          "candidate_commit": "4dc9639926b8a8a222f6dd0665b4a63dd7a956ca",
+          "cost": 4.705672,
+          "max_request_input_tokens": 124604,
+          "input_tokens": 2165859,
+          "cached_input_tokens": 2049152,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 29789,
+          "reasoning_output_tokens": 7133
+        },
+        {
+          "milestone": 7,
+          "runtime_seconds": 1090.37,
+          "scenarios_passed": 85,
+          "scenarios_total": 85,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "47c15d5b2cb929c2480877c2e6bedfd6ae56b9ca4274bfc668259266056f903c",
+          "snapshot_sha256": "4c88e59573068c4503b5319e2ad8efde821221a127b41b4c4829388300676945",
+          "candidate_commit": "e66149688af456e5c55eb54df3d997e965499b58",
+          "cost": 4.52724,
+          "max_request_input_tokens": 123116,
+          "input_tokens": 1959831,
+          "cached_input_tokens": 1841280,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 30009,
+          "reasoning_output_tokens": 7379
+        }
+      ],
+      "usage": {
+        "input_tokens": 14768493,
+        "cached_input_tokens": 13953152,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 218130,
+        "reasoning_output_tokens": 54218,
+        "session_count": 7,
+        "descendant_sessions": 0,
+        "max_request_input_tokens": 129351
       }
     },
     {
@@ -2658,6 +6802,1050 @@
       }
     },
     {
+      "id": "v6-readable-sol-medium-02",
+      "model": "GPT-5.6 Sol",
+      "family": "sol",
+      "effort": "medium",
+      "sample": 2,
+      "baseline_group": "sol-medium",
+      "completed_at": "2026-09-07T18:57:17.519493+00:00",
+      "core": 37,
+      "maintenance": 7,
+      "scenarios_ship": 90,
+      "scenarios_final": 90,
+      "final_families": [
+        {
+          "id": "deposit-pricing",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-acceptance",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cancellation-settlement",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "batch-protocol-validation",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "rescheduling",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-core",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "policy-versioning",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "hotel-credit-lifecycle",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "refund-method-gate",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-economics",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m2-migration",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "durable-idempotency",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-durability",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m3-restart",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "room-funding-allocation",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "partial-cancellation-settlement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-reduction",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "chargeback-reclassification",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "entitlement-clawback-shortfall",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "ledger-conservation-contract",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-statement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m4-migration",
+          "stage": 4,
+          "track": "core",
+          "status": "failed",
+          "failing_members": [
+            "system:payment-reduction-upgrade"
+          ]
+        },
+        {
+          "id": "transfer-mechanics",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "multi-group-occ",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cross-group-correction-provenance",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transferred-credit-settlement",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "statement-evolution",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-invariance-isolation",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m5-migration",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-correctness",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "reporting-inception",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-effective-dating",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-determinism",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-atomicity",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m6-finance-upgrade",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-immutability",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "late-adjustment-posting",
+          "stage": 7,
+          "track": "core",
+          "status": "failed",
+          "failing_members": [
+            "GroupStay.Private.PeriodCloseTest::test a late application restores liability without rewriting a closed credit expiry"
+          ]
+        },
+        {
+          "id": "finance-close-contract",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m7-close-upgrade",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r1-policy-history",
+          "stage": 2,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r2-room-history",
+          "stage": 4,
+          "track": "judgment",
+          "status": "failed",
+          "failing_members": [
+            "system:room-history-upgrade"
+          ]
+        },
+        {
+          "id": "judgment-r3-payment-history",
+          "stage": 5,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r4-projection-history",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r5-close-history",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c1-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "failed",
+          "failing_members": [
+            "GroupStay.Private.PeriodCloseTest::test a late application restores liability without rewriting a closed credit expiry"
+          ]
+        },
+        {
+          "id": "judgment-c2-late-cross-property-chargeback",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c3-transfer-shortfall-absorption",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c4-reporting-replay-purity",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c5-double-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "failed",
+          "failing_members": [
+            "GroupStay.Private.JudgmentCompositionSevenTest::test revived expired credit can be consumed without rewriting or netting its history"
+          ]
+        }
+      ],
+      "cost": 11.2565608,
+      "cost_basis": "api-equivalent",
+      "prod_loc": 3708,
+      "test_loc": 2350,
+      "runtime_seconds": 5768.271,
+      "subagents": 0,
+      "structure": {
+        "production_files": 43,
+        "production_loc_measured": 3708,
+        "test_files": 11,
+        "test_loc_measured": 2350,
+        "largest_production_file": "lib/group_stay/partner_operations.ex",
+        "largest_production_file_loc": 975,
+        "largest_production_share": 0.26294498381877024,
+        "largest_test_file": "test/group_stay_web/controllers/partner_api_test.exs",
+        "largest_test_file_loc": 446,
+        "migration_files": 7,
+        "ecto_schema_declarations": 14,
+        "repo_transaction_calls": 1,
+        "ecto_multi_mentions": 0
+      },
+      "milestones": [
+        {
+          "milestone": 1,
+          "runtime_seconds": 722.949,
+          "scenarios_passed": 12,
+          "scenarios_total": 12,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "32a696ace9a4b44dc2b1328cb31ea3b9caec968d8545bd68c2a155f54d1ab705",
+          "snapshot_sha256": "4ec7d7e84d9eb5b6ea39725aa8778f9fbd8900eacdeb79c2584ee578761df9eb",
+          "candidate_commit": "43cf4e19fa3e5c790131af724bbad46b92e2fb94",
+          "cost": 1.0014112,
+          "max_request_input_tokens": 48701,
+          "input_tokens": 1130797,
+          "cached_input_tokens": 1087488,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 19659,
+          "reasoning_output_tokens": 5732
+        },
+        {
+          "milestone": 2,
+          "runtime_seconds": 707.756,
+          "scenarios_passed": 24,
+          "scenarios_total": 24,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "823cd6014f3874212906f2206922b4a8a40213284e2a14b7f172b2bac8899985",
+          "snapshot_sha256": "055eac03bf4f992fdc1a8bab0e8c2ec7ea8d02e1b3b8abcb70affd10d42442c7",
+          "candidate_commit": "2bf6a0605c2c9dcefa54df9209817c49402dd4ff",
+          "cost": 1.4105744,
+          "max_request_input_tokens": 57155,
+          "input_tokens": 1853322,
+          "cached_input_tokens": 1768576,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 18208,
+          "reasoning_output_tokens": 4429
+        },
+        {
+          "milestone": 3,
+          "runtime_seconds": 495.226,
+          "scenarios_passed": 30,
+          "scenarios_total": 30,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "876c060c438fa468b393cf57d06aaa462a8d4a090ee87711504a82f88ad5bd8a",
+          "snapshot_sha256": "57b76831d15794a7a2c26b99b33898305b407bd6f09be977e028d0a48f9782fd",
+          "candidate_commit": "8a4c64bdb2d83db91da862b36cb2a3a67d71e00b",
+          "cost": 1.026044,
+          "max_request_input_tokens": 60694,
+          "input_tokens": 1320189,
+          "cached_input_tokens": 1249920,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 12250,
+          "reasoning_output_tokens": 4813
+        },
+        {
+          "milestone": 4,
+          "runtime_seconds": 1268.779,
+          "scenarios_passed": 50,
+          "scenarios_total": 52,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "40669c9dd6c29f946d0e7ee84026de7ddf20ace72ee288e83be24d3a9ca0c540",
+          "snapshot_sha256": "0d10727513cbfd459ced5d5bdb75df5b8bde91cc463c34041dbe8e1f3b041249",
+          "candidate_commit": "42511bfadfad6912779fee5a76624a4f8ee12e77",
+          "cost": 2.2240192000000003,
+          "max_request_input_tokens": 90582,
+          "input_tokens": 2958892,
+          "cached_input_tokens": 2868608,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 35772,
+          "reasoning_output_tokens": 9283
+        },
+        {
+          "milestone": 5,
+          "runtime_seconds": 1012.406,
+          "scenarios_passed": 63,
+          "scenarios_total": 63,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "b8105e359f862b8de5f569c09c90515972ea452e545700b18914e1134a6418c9",
+          "snapshot_sha256": "7a9a8fd3883fb9785dcd8f2e87724d2cdcbbd88df9cf36f655b6fd8899003998",
+          "candidate_commit": "796080fae05f65944c97002e6dffd1f582d21325",
+          "cost": 2.3082792000000003,
+          "max_request_input_tokens": 94203,
+          "input_tokens": 3591332,
+          "cached_input_tokens": 3499008,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 26969,
+          "reasoning_output_tokens": 9712
+        },
+        {
+          "milestone": 6,
+          "runtime_seconds": 1024.057,
+          "scenarios_passed": 75,
+          "scenarios_total": 75,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "8739410970b2931d34835bf048ede257ffd8b3f33155eb0fbb2d0d944bacd322",
+          "snapshot_sha256": "bad1aef40150efb5a197f4fc66944255e89e1b3bbe3b1855abb5159d135b843a",
+          "candidate_commit": "06b9a74629e80f3adb6397bf27f4f6a5f4fe87d2",
+          "cost": 2.244644,
+          "max_request_input_tokens": 95558,
+          "input_tokens": 3407785,
+          "cached_input_tokens": 3314560,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 27296,
+          "reasoning_output_tokens": 10803
+        },
+        {
+          "milestone": 7,
+          "runtime_seconds": 537.098,
+          "scenarios_passed": 83,
+          "scenarios_total": 85,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "a7a61981e46fc7d664eb635a095d5f6d7c29556d0ddf0d29eb5d8fe33f77c307",
+          "snapshot_sha256": "bbd4544a1783449bb64af5cb8f651b23f4af29a3e392f127871dd9b828b15d82",
+          "candidate_commit": "59cbd8d6df5f654fe373bb64c68862f8148d74cb",
+          "cost": 1.0415888,
+          "max_request_input_tokens": 65961,
+          "input_tokens": 1338625,
+          "cached_input_tokens": 1275392,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 13925,
+          "reasoning_output_tokens": 5120
+        }
+      ],
+      "usage": {
+        "input_tokens": 15600942,
+        "cached_input_tokens": 15063552,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 154079,
+        "reasoning_output_tokens": 49892,
+        "session_count": 7,
+        "descendant_sessions": 0,
+        "max_request_input_tokens": 95558
+      }
+    },
+    {
+      "id": "v6-readable-sol-medium-03",
+      "model": "GPT-5.6 Sol",
+      "family": "sol",
+      "effort": "medium",
+      "sample": 3,
+      "baseline_group": "sol-medium",
+      "completed_at": "2026-09-07T22:10:34.277776+00:00",
+      "core": 39,
+      "maintenance": 10,
+      "scenarios_ship": 94,
+      "scenarios_final": 94,
+      "final_families": [
+        {
+          "id": "deposit-pricing",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-acceptance",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cancellation-settlement",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "batch-protocol-validation",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "rescheduling",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-core",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "policy-versioning",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "hotel-credit-lifecycle",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "refund-method-gate",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-economics",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m2-migration",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "durable-idempotency",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-durability",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m3-restart",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "room-funding-allocation",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "partial-cancellation-settlement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-reduction",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "chargeback-reclassification",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "entitlement-clawback-shortfall",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "ledger-conservation-contract",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-statement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m4-migration",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-mechanics",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "multi-group-occ",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cross-group-correction-provenance",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transferred-credit-settlement",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "statement-evolution",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-invariance-isolation",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m5-migration",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-correctness",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "reporting-inception",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-effective-dating",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-determinism",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-atomicity",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m6-finance-upgrade",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-immutability",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "late-adjustment-posting",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-contract",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m7-close-upgrade",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r1-policy-history",
+          "stage": 2,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r2-room-history",
+          "stage": 4,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r3-payment-history",
+          "stage": 5,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r4-projection-history",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r5-close-history",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c1-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c2-late-cross-property-chargeback",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c3-transfer-shortfall-absorption",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c4-reporting-replay-purity",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c5-double-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        }
+      ],
+      "cost": 10.6248264,
+      "cost_basis": "api-equivalent",
+      "prod_loc": 3549,
+      "test_loc": 1949,
+      "runtime_seconds": 5852.223,
+      "subagents": 0,
+      "structure": {
+        "production_files": 45,
+        "production_loc_measured": 3549,
+        "test_files": 11,
+        "test_loc_measured": 1949,
+        "largest_production_file": "lib/group_stay/deposits.ex",
+        "largest_production_file_loc": 1355,
+        "largest_production_share": 0.3817976894899972,
+        "largest_test_file": "test/group_stay_web/controllers/cancellation_economics_test.exs",
+        "largest_test_file_loc": 342,
+        "migration_files": 7,
+        "ecto_schema_declarations": 16,
+        "repo_transaction_calls": 1,
+        "ecto_multi_mentions": 0
+      },
+      "milestones": [
+        {
+          "milestone": 1,
+          "runtime_seconds": 685.998,
+          "scenarios_passed": 12,
+          "scenarios_total": 12,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "cc6e25dbc612c3e02b76275b9c43e8894249d7c95d9a505ac232366b6f2ed8e7",
+          "snapshot_sha256": "e6488184e87bac9b33573133b7e2fc437521a9df6d857b081fd955f50400e6aa",
+          "candidate_commit": "e008534f436a03656181c758ff2b489804c97121",
+          "cost": 0.963288,
+          "max_request_input_tokens": 49774,
+          "input_tokens": 832965,
+          "cached_input_tokens": 760320,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 18429,
+          "reasoning_output_tokens": 4531
+        },
+        {
+          "milestone": 2,
+          "runtime_seconds": 626.238,
+          "scenarios_passed": 24,
+          "scenarios_total": 24,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "ca61b4f519c355ea9b7f88b565716e2ab2aca30602dec66cb4c2c9bdc0fcdfff",
+          "snapshot_sha256": "46f119b431794c4c2381b121bc5d46b835a66196703f72cb7e816559fc0c4c0b",
+          "candidate_commit": "d20ff8d96e2eef508385bda8746866f92075bb7a",
+          "cost": 0.8886824,
+          "max_request_input_tokens": 51416,
+          "input_tokens": 980438,
+          "cached_input_tokens": 935936,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 16815,
+          "reasoning_output_tokens": 3830
+        },
+        {
+          "milestone": 3,
+          "runtime_seconds": 573.065,
+          "scenarios_passed": 30,
+          "scenarios_total": 30,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "66a1c1f98eca2532373c0d1575edacec4d894a80d080555d76c83a3bd38d7d70",
+          "snapshot_sha256": "2d49a60f1a0a204a11831771f974d04335d67fd6135c663399ac3d65e1c0aa39",
+          "candidate_commit": "bdac358bfbd418bdeb73f1af014c88b05f32cf91",
+          "cost": 1.2031872000000001,
+          "max_request_input_tokens": 68659,
+          "input_tokens": 1661219,
+          "cached_input_tokens": 1595008,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 15017,
+          "reasoning_output_tokens": 6063
+        },
+        {
+          "milestone": 4,
+          "runtime_seconds": 1584.425,
+          "scenarios_passed": 52,
+          "scenarios_total": 52,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "37f250f8d989b4b44fd37b559efb9aeb7c65081045e00765e48e53696ee0f99b",
+          "snapshot_sha256": "6b6ed294d4d21ccb184dc71e37cd537d452bc2a0ba76e208d8a2c0e706e7129e",
+          "candidate_commit": "c3d74977652a8b1b97e27de9d5614fe36c633b90",
+          "cost": 2.845676,
+          "max_request_input_tokens": 91072,
+          "input_tokens": 3436230,
+          "cached_input_tokens": 3267840,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 43249,
+          "reasoning_output_tokens": 8622
+        },
+        {
+          "milestone": 5,
+          "runtime_seconds": 924.157,
+          "scenarios_passed": 63,
+          "scenarios_total": 63,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "b84671c37498b3faef40735c5b945c6e9cdcd92fd225e3d8bfb7da9c32ca34bf",
+          "snapshot_sha256": "c63c1ef07961053fac600f2031bba64aafd6f4129f2de7e497dbe4c88067e174",
+          "candidate_commit": "245feee0c9d3ccf4c1234a895b0183f3a2c8c9a0",
+          "cost": 1.7837,
+          "max_request_input_tokens": 92753,
+          "input_tokens": 2322730,
+          "cached_input_tokens": 2224000,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 24959,
+          "reasoning_output_tokens": 7424
+        },
+        {
+          "milestone": 6,
+          "runtime_seconds": 919.342,
+          "scenarios_passed": 75,
+          "scenarios_total": 75,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "7d7ce78a07ceec6dff29633e9fb726ed4eda2fd79edb4065d66226041595b14e",
+          "snapshot_sha256": "9c108ef64e7a7dda7077f5bc7cbe9e9a328900d7cc36cf7b0d37c9e37561c5e5",
+          "candidate_commit": "3c0e164e29f4a819fd309327a9f7202b49994279",
+          "cost": 1.8220184,
+          "max_request_input_tokens": 99432,
+          "input_tokens": 2323122,
+          "cached_input_tokens": 2219136,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 25921,
+          "reasoning_output_tokens": 10359
+        },
+        {
+          "milestone": 7,
+          "runtime_seconds": 538.998,
+          "scenarios_passed": 85,
+          "scenarios_total": 85,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "7e7bbd1cc751918b10cf5018b2f9c7c6379d3903004898d0cc303d9114956902",
+          "snapshot_sha256": "e0a3560a10a2bfcc86deedeeee5a57916fb7b7d3726b2f8b11d1a504d0c9ae0a",
+          "candidate_commit": "c62dd1c0ebdb0b4e4675849725474d387f85dc14",
+          "cost": 1.1182744,
+          "max_request_input_tokens": 69736,
+          "input_tokens": 1503733,
+          "cached_input_tokens": 1439616,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 14298,
+          "reasoning_output_tokens": 5308
+        }
+      ],
+      "usage": {
+        "input_tokens": 13060437,
+        "cached_input_tokens": 12441856,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 158688,
+        "reasoning_output_tokens": 46137,
+        "session_count": 7,
+        "descendant_sessions": 0,
+        "max_request_input_tokens": 99432
+      }
+    },
+    {
       "id": "v6-readable-sol-high-01",
       "model": "GPT-5.6 Sol",
       "family": "sol",
@@ -3172,6 +8360,1047 @@
         "session_count": 7,
         "descendant_sessions": 0,
         "max_request_input_tokens": 143575
+      }
+    },
+    {
+      "id": "v6-readable-sol-high-02",
+      "model": "GPT-5.6 Sol",
+      "family": "sol",
+      "effort": "high",
+      "sample": 2,
+      "baseline_group": "sol-high",
+      "completed_at": "2026-09-07T19:23:09.043519+00:00",
+      "core": 37,
+      "maintenance": 10,
+      "scenarios_ship": 92,
+      "scenarios_final": 92,
+      "final_families": [
+        {
+          "id": "deposit-pricing",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-acceptance",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cancellation-settlement",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "batch-protocol-validation",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "rescheduling",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-core",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "policy-versioning",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "hotel-credit-lifecycle",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "refund-method-gate",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-economics",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m2-migration",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "durable-idempotency",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-durability",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m3-restart",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "room-funding-allocation",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "partial-cancellation-settlement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-reduction",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "chargeback-reclassification",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "entitlement-clawback-shortfall",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "ledger-conservation-contract",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-statement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m4-migration",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-mechanics",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "multi-group-occ",
+          "stage": 5,
+          "track": "core",
+          "status": "failed",
+          "failing_members": [
+            "GroupStay.Private.DepositTransferTest::test corrections bump every group whose funding they change while guarding the origin"
+          ]
+        },
+        {
+          "id": "cross-group-correction-provenance",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transferred-credit-settlement",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "statement-evolution",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-invariance-isolation",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m5-migration",
+          "stage": 5,
+          "track": "core",
+          "status": "failed",
+          "failing_members": [
+            "system:transfer-upgrade"
+          ]
+        },
+        {
+          "id": "finance-report-correctness",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "reporting-inception",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-effective-dating",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-determinism",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-atomicity",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m6-finance-upgrade",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-immutability",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "late-adjustment-posting",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-contract",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m7-close-upgrade",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r1-policy-history",
+          "stage": 2,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r2-room-history",
+          "stage": 4,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r3-payment-history",
+          "stage": 5,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r4-projection-history",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r5-close-history",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c1-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c2-late-cross-property-chargeback",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c3-transfer-shortfall-absorption",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c4-reporting-replay-purity",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c5-double-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        }
+      ],
+      "cost": 16.4580688,
+      "cost_basis": "api-equivalent",
+      "prod_loc": 4410,
+      "test_loc": 2804,
+      "runtime_seconds": 8651.205,
+      "subagents": 0,
+      "structure": {
+        "production_files": 46,
+        "production_loc_measured": 4410,
+        "test_files": 11,
+        "test_loc_measured": 2804,
+        "largest_production_file": "lib/group_stay/partner_operations.ex",
+        "largest_production_file_loc": 1044,
+        "largest_production_share": 0.23673469387755103,
+        "largest_test_file": "test/group_stay_web/controllers/cancellation_economics_test.exs",
+        "largest_test_file_loc": 532,
+        "migration_files": 7,
+        "ecto_schema_declarations": 15,
+        "repo_transaction_calls": 1,
+        "ecto_multi_mentions": 0
+      },
+      "milestones": [
+        {
+          "milestone": 1,
+          "runtime_seconds": 1315.054,
+          "scenarios_passed": 12,
+          "scenarios_total": 12,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "b52be710e19d90cb0c4444724fa94ef74c530c89e91f64acac1c8fabc7f75ea9",
+          "snapshot_sha256": "46757f2782fd8a45ddb3b910f0f70d2eb60eef64dc1281bb752e81046ee77122",
+          "candidate_commit": "fac9178794c9be1183058a44fc9928fdc890be26",
+          "cost": 1.67772,
+          "max_request_input_tokens": 67353,
+          "input_tokens": 2078047,
+          "cached_input_tokens": 2007680,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 29659,
+          "reasoning_output_tokens": 12916
+        },
+        {
+          "milestone": 2,
+          "runtime_seconds": 1069.309,
+          "scenarios_passed": 24,
+          "scenarios_total": 24,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "048e1498c98fd484322498ce89661054913adc72bf030ea41883df8e59e869fe",
+          "snapshot_sha256": "3e74892ab9a2dae70b17dd4086d620a5f0fea2a52c548fc8a8cbf5bb8f72bab3",
+          "candidate_commit": "61aec6510ee0e9dc670fcf1a7561f5466d0916f1",
+          "cost": 1.7568992,
+          "max_request_input_tokens": 84157,
+          "input_tokens": 2184649,
+          "cached_input_tokens": 2101888,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 29255,
+          "reasoning_output_tokens": 10096
+        },
+        {
+          "milestone": 3,
+          "runtime_seconds": 917.545,
+          "scenarios_passed": 30,
+          "scenarios_total": 30,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "b8914690e726eed96c06c84f8873541a87049f20b248ce14814cab591725637f",
+          "snapshot_sha256": "c65da84bf4f8105c44d599e30b59c7f094743786569bd96b171d77a41053f99e",
+          "candidate_commit": "43c67e438ab5f72a668103ded507baefe720801e",
+          "cost": 2.0855688,
+          "max_request_input_tokens": 84055,
+          "input_tokens": 3264681,
+          "cached_input_tokens": 3173632,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 22596,
+          "reasoning_output_tokens": 9460
+        },
+        {
+          "milestone": 4,
+          "runtime_seconds": 1830.117,
+          "scenarios_passed": 52,
+          "scenarios_total": 52,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "7c2a2b428d4aa2a31c985597c59b195d7156210930d822c48cf48196977bea87",
+          "snapshot_sha256": "d385498feec7fef40d08d02bc25a6656b8960cc215025126462b48d82a1e61e1",
+          "candidate_commit": "22cf6ec042153b34eacb6fd71c7f69ee77129159",
+          "cost": 3.2034336,
+          "max_request_input_tokens": 121026,
+          "input_tokens": 4273408,
+          "cached_input_tokens": 4134144,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 49636,
+          "reasoning_output_tokens": 15624
+        },
+        {
+          "milestone": 5,
+          "runtime_seconds": 1243.4,
+          "scenarios_passed": 61,
+          "scenarios_total": 63,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "8ced956a0b9f8ee330ff5d560d3876ab37f9fb4aaec5da79f0f23ad3907bb17f",
+          "snapshot_sha256": "b810008f598b7c75f7f94dccdafc59e29573d4cf3e85615e8c30a6e3adb091c4",
+          "candidate_commit": "7eb991c9a213268e3c198f5f7de01cf52831d3b1",
+          "cost": 3.079732,
+          "max_request_input_tokens": 102518,
+          "input_tokens": 3927525,
+          "cached_input_tokens": 3697280,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 33992,
+          "reasoning_output_tokens": 15441
+        },
+        {
+          "milestone": 6,
+          "runtime_seconds": 1457.904,
+          "scenarios_passed": 74,
+          "scenarios_total": 75,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "ad5fcbb49de964bf74aa835b09e31b953cf3565b04d05ce78e6ec5e981b4eb77",
+          "snapshot_sha256": "01276781f2ee438d84fdd9870c8136a9ddd5710a4873e48cf2d6068f952cc045",
+          "candidate_commit": "887a54b18d24abcf4f163ab468db52a46e7b6f4b",
+          "cost": 3.0168976,
+          "max_request_input_tokens": 113278,
+          "input_tokens": 4398572,
+          "cached_input_tokens": 4254464,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 36934,
+          "reasoning_output_tokens": 16019
+        },
+        {
+          "milestone": 7,
+          "runtime_seconds": 817.876,
+          "scenarios_passed": 84,
+          "scenarios_total": 85,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "82d945d6f448d5a72780a683284fa02605496bf128b9193de03beb3b1eaeaa76",
+          "snapshot_sha256": "bc37d83b911ce3c28b022258f1a4bcd5689ca0d487e7ea6d9e93d762795327e7",
+          "candidate_commit": "cb25ef4d181c1c8955e77fd08abccca8dffe67da",
+          "cost": 1.6378176,
+          "max_request_input_tokens": 104600,
+          "input_tokens": 2111970,
+          "cached_input_tokens": 2013184,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 21870,
+          "reasoning_output_tokens": 10343
+        }
+      ],
+      "usage": {
+        "input_tokens": 22238852,
+        "cached_input_tokens": 21382272,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 223942,
+        "reasoning_output_tokens": 89899,
+        "session_count": 7,
+        "descendant_sessions": 0,
+        "max_request_input_tokens": 121026
+      }
+    },
+    {
+      "id": "v6-readable-sol-high-03",
+      "model": "GPT-5.6 Sol",
+      "family": "sol",
+      "effort": "high",
+      "sample": 3,
+      "baseline_group": "sol-high",
+      "completed_at": "2026-09-07T22:46:21.548524+00:00",
+      "core": 38,
+      "maintenance": 10,
+      "scenarios_ship": 92,
+      "scenarios_final": 92,
+      "final_families": [
+        {
+          "id": "deposit-pricing",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-acceptance",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cancellation-settlement",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "batch-protocol-validation",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "rescheduling",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-core",
+          "stage": 1,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "policy-versioning",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "hotel-credit-lifecycle",
+          "stage": 2,
+          "track": "core",
+          "status": "failed",
+          "failing_members": [
+            "GroupStay.Private.HotelCreditTest::test credit consumes earliest expiry first and restored credit keeps its origin",
+            "GroupStay.Private.HotelCreditTest::test equal-expiry lots are consumed by source operation identifier"
+          ]
+        },
+        {
+          "id": "refund-method-gate",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-economics",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m2-migration",
+          "stage": 2,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "durable-idempotency",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "occ-durability",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m3-restart",
+          "stage": 3,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "room-funding-allocation",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "partial-cancellation-settlement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-reduction",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "chargeback-reclassification",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "entitlement-clawback-shortfall",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "ledger-conservation-contract",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "payment-statement",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m4-migration",
+          "stage": 4,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-mechanics",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "multi-group-occ",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "cross-group-correction-provenance",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transferred-credit-settlement",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "statement-evolution",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "transfer-invariance-isolation",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m5-migration",
+          "stage": 5,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-correctness",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "reporting-inception",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-effective-dating",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-determinism",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-report-atomicity",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m6-finance-upgrade",
+          "stage": 6,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-immutability",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "late-adjustment-posting",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "finance-close-contract",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "m7-close-upgrade",
+          "stage": 7,
+          "track": "core",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r1-policy-history",
+          "stage": 2,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r2-room-history",
+          "stage": 4,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r3-payment-history",
+          "stage": 5,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r4-projection-history",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-r5-close-history",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c1-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c2-late-cross-property-chargeback",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c3-transfer-shortfall-absorption",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c4-reporting-replay-purity",
+          "stage": 6,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        },
+        {
+          "id": "judgment-c5-double-revival",
+          "stage": 7,
+          "track": "judgment",
+          "status": "passed",
+          "failing_members": []
+        }
+      ],
+      "cost": 18.3495768,
+      "cost_basis": "api-equivalent",
+      "prod_loc": 4679,
+      "test_loc": 2578,
+      "runtime_seconds": 8466.469000000001,
+      "subagents": 0,
+      "structure": {
+        "production_files": 48,
+        "production_loc_measured": 4679,
+        "test_files": 11,
+        "test_loc_measured": 2578,
+        "largest_production_file": "lib/group_stay/reservations/operation_processor.ex",
+        "largest_production_file_loc": 986,
+        "largest_production_share": 0.2107287882026074,
+        "largest_test_file": "test/group_stay_web/controllers/partner_api_test.exs",
+        "largest_test_file_loc": 470,
+        "migration_files": 7,
+        "ecto_schema_declarations": 14,
+        "repo_transaction_calls": 1,
+        "ecto_multi_mentions": 0
+      },
+      "milestones": [
+        {
+          "milestone": 1,
+          "runtime_seconds": 876.28,
+          "scenarios_passed": 12,
+          "scenarios_total": 12,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "cafa48256eeedf7d670905b9f5c10184cb2eaa493fdbd05a28e1f1a58361305e",
+          "snapshot_sha256": "7dbe6983fa13befaae45161ce187096e67e2a6331efd3a7d8ee4a3a78075cc36",
+          "candidate_commit": "86b93b31c6c11fc79ab12bd4f1042e39d0871ed5",
+          "cost": 1.186308,
+          "max_request_input_tokens": 58482,
+          "input_tokens": 1291157,
+          "cached_input_tokens": 1235200,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 23420,
+          "reasoning_output_tokens": 7670
+        },
+        {
+          "milestone": 2,
+          "runtime_seconds": 850.806,
+          "scenarios_passed": 22,
+          "scenarios_total": 24,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "b48e76f236f2143647717be6bbcb5ab2005bd125b5cedf8a3b3abc06f9bc425f",
+          "snapshot_sha256": "9d8196591f074adff9f3bb4876479283959b8e835b8a4a3ff12052d239e87def",
+          "candidate_commit": "bceb9e0494dfe700966f4c37d610ef399bb327ec",
+          "cost": 1.2851296,
+          "max_request_input_tokens": 75661,
+          "input_tokens": 1360874,
+          "cached_input_tokens": 1281024,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 22666,
+          "reasoning_output_tokens": 7414
+        },
+        {
+          "milestone": 3,
+          "runtime_seconds": 706.099,
+          "scenarios_passed": 28,
+          "scenarios_total": 30,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "276b1ad5ab0eea6e0d511a7ed92d1cfc968c0f365471d9e91aefeb6b56d7ee02",
+          "snapshot_sha256": "dd3c7ab516ca3e404926babcc0fa34d61d78c5028f7ce67c3dd3bfc3b2feb503",
+          "candidate_commit": "9a5c471a440bad8c6898537ca7775609eb682ce1",
+          "cost": 1.7700984000000002,
+          "max_request_input_tokens": 70554,
+          "input_tokens": 2879184,
+          "cached_input_tokens": 2802816,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 17175,
+          "reasoning_output_tokens": 7588
+        },
+        {
+          "milestone": 4,
+          "runtime_seconds": 1849.441,
+          "scenarios_passed": 50,
+          "scenarios_total": 52,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "28d8344823dffd8ed1712a3273b6aac4bccc08aa2c158cdaa76d958488a868d1",
+          "snapshot_sha256": "2fe9b877f874cc35bc5f23bbae6922160bbbddd56f107cc740ce2ce06ebe23b0",
+          "candidate_commit": "fb0a901eb1db1efbdb79b72da743c695ef8ef9ec",
+          "cost": 3.6461208,
+          "max_request_input_tokens": 118473,
+          "input_tokens": 4894892,
+          "cached_input_tokens": 4705152,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 50255,
+          "reasoning_output_tokens": 18642
+        },
+        {
+          "milestone": 5,
+          "runtime_seconds": 1303.068,
+          "scenarios_passed": 61,
+          "scenarios_total": 63,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "2cad6a5eb6ddf75b66d98699c88bad8f4e51c4c7ab94d3f22a26e2d87e7d73c4",
+          "snapshot_sha256": "1c4b97a310e1f6820e1d361a2758ae287abd56a62620d009f5c92da43942d19e",
+          "candidate_commit": "d724b3487b6296bbc5c9a546845a622f62e02c6a",
+          "cost": 3.750044,
+          "max_request_input_tokens": 115896,
+          "input_tokens": 6087088,
+          "cached_input_tokens": 5914880,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 34763,
+          "reasoning_output_tokens": 14429
+        },
+        {
+          "milestone": 6,
+          "runtime_seconds": 1804.75,
+          "scenarios_passed": 73,
+          "scenarios_total": 75,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "ab603247b6fcdde6d98735dbdb7799206ea43e56ae8a03be2078fd794c9b9d60",
+          "snapshot_sha256": "6a816aa7b9f40ab99aba8cd9c3772d9d746e4dae8f61e36f23ef0e6d020d296d",
+          "candidate_commit": "163757ed56581f329cd309750e0b6f26f3518edf",
+          "cost": 4.428188,
+          "max_request_input_tokens": 136235,
+          "input_tokens": 7299853,
+          "cached_input_tokens": 7159040,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 50066,
+          "reasoning_output_tokens": 21898
+        },
+        {
+          "milestone": 7,
+          "runtime_seconds": 1076.025,
+          "scenarios_passed": 83,
+          "scenarios_total": 85,
+          "agent_attempts": 1,
+          "integrity_status": "passed",
+          "report_sha256": "92427e0ac71149285ec09e93aede9fe637000c0f8d86713824494399f8c2e907",
+          "snapshot_sha256": "7d55e8acf0cb1075bf46bfcc4ca9f4c420d0885e51d4ebeb1f6554a315d4d219",
+          "candidate_commit": "8597c911802138808b4404f60ea9d9f4f4088bd3",
+          "cost": 2.283688,
+          "max_request_input_tokens": 99592,
+          "input_tokens": 2215797,
+          "cached_input_tokens": 1993600,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 29873,
+          "reasoning_output_tokens": 12244
+        }
+      ],
+      "usage": {
+        "input_tokens": 26028845,
+        "cached_input_tokens": 25091712,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 228218,
+        "reasoning_output_tokens": 89885,
+        "session_count": 7,
+        "descendant_sessions": 0,
+        "max_request_input_tokens": 136235
       }
     }
   ]

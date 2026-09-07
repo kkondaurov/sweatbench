@@ -1,4 +1,4 @@
-"""Validate the separately published instruction pilot and its browser data."""
+"""Validate the separate instruction experiment and its browser data."""
 import argparse
 import hashlib
 import json
@@ -17,7 +17,7 @@ RATES = {
 
 def validated_data():
     data = json.loads((ROOT / 'intervention-runs.json').read_text())
-    assert data['schema_version'] == 2
+    assert data['schema_version'] == 3
     assert re.fullmatch(r'https://github.com/kkondaurov/sweatbench-runs/tree/[a-f0-9]{40}/v6/interventions/readable-elixir', data['source_archive'])
     assert re.fullmatch(r'[a-f0-9]{64}', data['source_archive_index_sha256'])
     baseline_bytes = (ROOT / 'accepted-runs.json').read_bytes()
@@ -31,14 +31,15 @@ def validated_data():
     assert set(data['baseline_ids']) == {r['id'] for r in controls}
     assert hashlib.sha256((data['instruction'] + '\n').encode()).hexdigest() == data['instruction_sha256']
     assert data['benchmark_commit'] == '5fda9a09255529b027cadf836c0c16c867a039e5'
-    assert [(r['family'], r['effort']) for r in data['runs']] == CONFIGURATIONS
-    assert len({r['id'] for r in data['runs']}) == 6
+    expected = [(family, effort, sample) for family, effort in CONFIGURATIONS for sample in (1, 2, 3)]
+    assert [(r['family'], r['effort'], r['sample']) for r in data['runs']] == expected
+    assert len({r['id'] for r in data['runs']}) == 18
     assert not ({r['id'] for r in data['runs']} & {r['id'] for r in baseline['runs']})
     fields = ('input_tokens', 'cached_input_tokens', 'cache_write_input_tokens',
               'output_tokens', 'reasoning_output_tokens')
     for run in data['runs']:
         family = run['family']
-        assert run['id'] == f"v6-readable-{family}-{run['effort']}-01" and run['sample'] == 1
+        assert run['id'] == f"v6-readable-{family}-{run['effort']}-{run['sample']:02}"
         assert run['baseline_group'] == f"{family}-{run['effort']}"
         model = data['models'][family]
         assert run['model'] == model['name']
@@ -98,4 +99,4 @@ if __name__ == '__main__':
         assert path.read_text() == output, 'intervention-data.js is stale'
     else:
         path.write_text(output)
-    print('Intervention validated: 6 separate runs, 42 milestones, 22 historical controls; scores, usage and costs reconcile.')
+    print('Intervention validated: 18 separate runs, 126 milestones, 22 historical controls; scores, usage and costs reconcile.')
