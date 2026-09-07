@@ -3,8 +3,8 @@
 This directory contains the public results for the frozen v6 benchmark.
 
 - `index.html` is a self-contained interactive dashboard.
-- The Intervention tab compares four new Astra readable-Elixir instruction runs with the
-  twelve earlier Astra runs. It remains separate from the original 98-run dataset.
+- The Intervention tab compares six readable-Elixir instruction runs, four Astra and two Sol,
+  with twelve earlier Astra and ten earlier Sol runs. It remains separate from the original 98-run dataset.
   `intervention-runs.json` contains the audited measurements; `build_intervention.py`
   validates accounting and generates `intervention-data.js`. `ASTRA_INTERVENTION.md`
   explains the instruction, source changes, test evidence and limits of the comparison.
@@ -68,7 +68,10 @@ reuse the same run objects and source links. Findings uses the accepted IDs in `
 `sourceArchiveBaseUrl` in `results.js` controls the baseline dashboard archive links. It is pinned to
 archive commit `be3005fa4092a75107d627e51bf9e9ee1f8474de`, as are the source links in the reports.
 
-The four intervention trajectories have their own [source collection](https://github.com/kkondaurov/sweatbench-runs/tree/90627782faa8382cd9af5007450550cd75a6d9fe/v6/interventions/readable-elixir),
-with 28 snapshots. Its pin is recorded in `intervention-runs.json`; the original archive
-and data are unchanged. All 28 source checkpoint, report and accepted log hashes were
+The six intervention trajectories have their own [source collection](https://github.com/kkondaurov/sweatbench-runs/tree/16dbf0451f11a928ee01dcdaf8727d5d8ee3db3b/v6/interventions/readable-elixir),
+with 42 snapshots. Its pin is recorded in `intervention-runs.json`; the original archive
+and data are unchanged. All 42 source checkpoint, report and accepted log hashes were
 verified before publication, and usage reconciled against the recorded main sessions.
+Five runs sweep; Sol Medium finishes with 38 Core and 8 Maintenance points. The comparison
+retains model-specific token rates and separate historical environments: Sol controls used
+older native macOS CLIs, while the six intervention runs used CLI 0.153.4 in Docker.

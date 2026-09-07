@@ -25,7 +25,40 @@ class InterventionDataTests(unittest.TestCase):
                 return builder.validated_data()
 
     def test_audited_release(self):
-        self.assertEqual(len(self.validate()['runs']), 4)
+        self.assertEqual(len(self.validate()['runs']), 6)
+
+    def test_sol_rates_are_not_astra_rates(self):
+        self.data['models']['sol']['rates_per_million'] = self.data['models']['astra']['rates_per_million']
+        with self.assertRaises(AssertionError):
+            self.validate()
+
+    def test_sol_failure_is_preserved(self):
+        run = self.validate()['runs'][4]
+        self.assertEqual((run['core'], run['maintenance'], run['scenarios_final']), (38, 8, 92))
+        self.assertEqual(sum(f['status'] == 'failed' for f in run['final_families']), 3)
+        self.data['runs'][4]['core'] = 39
+        with self.assertRaises(AssertionError):
+            self.validate()
+
+    def test_missing_sol_baseline_is_rejected(self):
+        self.data['baseline_ids'].remove('sol-medium-01')
+        with self.assertRaises(AssertionError):
+            self.validate()
+
+    def test_baseline_group_must_match_model_and_effort(self):
+        self.data['runs'][4]['baseline_group'] = 'astra-medium'
+        with self.assertRaises(AssertionError):
+            self.validate()
+
+    def test_duplicate_failed_family_is_rejected(self):
+        self.data['runs'][4]['final_families'][0] = self.data['runs'][4]['final_families'][1]
+        with self.assertRaises(AssertionError):
+            self.validate()
+
+    def test_family_definition_must_match_frozen_benchmark(self):
+        self.data['runs'][4]['final_families'][0]['id'] = 'invented-check'
+        with self.assertRaises(AssertionError):
+            self.validate()
 
     def test_wrong_cost_is_rejected(self):
         self.data['runs'][0]['cost'] += 1

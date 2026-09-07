@@ -19,18 +19,21 @@ function renderIntervention() {
   };
   document.getElementById("intervention-results-body").innerHTML = data.runs.map(run => {
     const baseline = summaries.find(row => row.id === run.baseline_group);
-    const sourceLinks = baseline.runs.map((r, index) => `<a href="${sourceArchiveBaseUrl}/${r.id}" title="Baseline ${run.effort} run ${index + 1} source">${index + 1}</a>`).join(" · ");
+    const sourceLinks = baseline.runs.map((r, index) => `<a href="${sourceArchiveBaseUrl}/${r.id}" title="Baseline ${run.model} ${run.effort} run ${index + 1} source">${index + 1}</a>`).join(" · ");
     const effort = run.effort === "xhigh" ? "X-High" : run.effort[0].toUpperCase() + run.effort.slice(1);
-    return `<tr class="intervention-baseline"><th scope="row"><strong>${effort}</strong><span>Earlier runs · 3</span><small>Source ${sourceLinks}</small></th>
+    const label = `${run.family === "astra" ? "Astra" : "Sol"} ${effort}`;
+    const count = baseline.runs.length;
+    const swept = run.core === 39 && run.maintenance === 10;
+    return `<tr class="intervention-baseline"><th scope="row"><strong>${label}</strong><span>Earlier runs · ${count}</span><small>Source ${sourceLinks}</small></th>
       ${baselineCell(baseline.runs, "core", mean, score, "Core out of 39")}
       ${baselineCell(baseline.runs, "judgment", mean, score, "Maintenance out of 10")}
-      ${cell(`${baseline.sweeps} of 3`, "Sweeps")}
+      ${cell(`${baseline.sweeps} of ${count}`, "Sweeps")}
       ${baselineCell(baseline.runs, "runtimeSeconds", mean, duration, "Runtime")}
       ${baselineCell(baseline.runs, "cost", median, money, "Cost per run")}
       ${baselineCell(baseline.runs, "prodLoc", median, integer, "Production lines")}
       ${baselineCell(baseline.runs, "testLoc", median, integer, "Test lines")}
-    </tr><tr class="intervention-treatment"><th scope="row"><strong>${effort}</strong><span>With instruction · Run 1</span><small>${interventionSourceLink(run, "Source")}</small></th>
-      ${cell(score(run.core), "Core out of 39")}${cell(score(run.maintenance), "Maintenance out of 10")}${cell("1 of 1", "Sweeps")}
+    </tr><tr class="intervention-treatment"><th scope="row"><strong>${label}</strong><span>With instruction · Run 1</span><small>${interventionSourceLink(run, "Source")}</small></th>
+      ${cell(score(run.core), "Core out of 39")}${cell(score(run.maintenance), "Maintenance out of 10")}${cell(`${swept ? 1 : 0} of 1`, "Sweeps")}
       ${cell(duration(run.runtime_seconds), "Runtime")}${cell(money(run.cost), "Cost per run")}${cell(integer(run.prod_loc), "Production lines")}${cell(integer(run.test_loc), "Test lines")}
     </tr>`;
   }).join("");
@@ -39,7 +42,8 @@ function renderIntervention() {
     const control = summaries.find(row => row.id === run.baseline_group);
     const productionChange = (run.prod_loc / control.medianProdLoc - 1) * 100;
     const costChange = (run.cost / control.medianCost - 1) * 100;
-    return `<tr><th scope="row">${effort === "xhigh" ? "X-High" : effort[0].toUpperCase() + effort.slice(1)}</th><td>+${Math.round(productionChange)}%</td><td>+${Math.round(costChange)}%</td><td>${integer(run.structure.largest_production_file_loc)}</td></tr>`;
+    const signed = value => `${value >= 0 ? "+" : ""}${Math.round(value)}%`;
+    return `<tr><th scope="row">${run.family === "astra" ? "Astra" : "Sol"} ${effort === "xhigh" ? "X-High" : effort[0].toUpperCase() + effort.slice(1)}</th><td>${signed(productionChange)}</td><td>${signed(costChange)}</td><td>${integer(run.structure.largest_production_file_loc)}</td></tr>`;
   }).join("");
   renderIcons(document.getElementById("intervention-view"));
 }

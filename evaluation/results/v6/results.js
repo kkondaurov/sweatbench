@@ -389,7 +389,7 @@ function refreshComparison() {
 
 const methodAnchors = new Set(["overview", "scores", "sample", "costs", "code-time", "sources"]);
 const findingAnchors = new Set(["findings-overview", "findings-expiry", ...familyFindings.map(item => `findings-${item.id}`)]);
-const interventionAnchors = new Set(["intervention-results", "intervention-instruction", "intervention-code", "intervention-failures", "intervention-conclusion", "intervention-sources"]);
+const interventionAnchors = new Set(["intervention-results", "intervention-instruction", "intervention-code", "intervention-failures", "intervention-sol", "intervention-conclusion", "intervention-sources"]);
 function activateView() {
   const hash = location.hash.slice(1);
   const view = methodAnchors.has(hash) || hash === "method" ? "method" : findingAnchors.has(hash) || hash === "findings" ? "findings" : interventionAnchors.has(hash) || hash === "intervention" ? "intervention" : hash === "harness" ? "harness" : "models";
