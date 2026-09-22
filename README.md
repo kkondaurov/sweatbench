@@ -13,7 +13,7 @@ sample count, and whether cost is recorded or estimated.
 - [Dashboard source](evaluation/results/v6/index.html)
 - [Full retrospective](evaluation/results/v6/RETROSPECTIVE.md)
 - [Accepted-run dataset](evaluation/results/v6/accepted-runs.json)
-- [Generated applications: all 99 runs and seven milestones](https://github.com/kkondaurov/sweatbench-runs/tree/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6)
+- [Generated applications: all 99 runs and seven milestones](https://github.com/kkondaurov/sweatbench-runs/tree/7605229c431ed4651afe1f172e6a3cae6ba89a42/v6)
 - [Human review guide](REVIEW_GUIDE.md)
 - [Disclosure policy](DISCLOSURE.md)
 
@@ -186,7 +186,7 @@ outside the candidate workspace. OpenCode can also be placed inside the included
 - `evaluation/results/v6/`: frozen dashboard, retrospective, accepted data, and verifier.
 
 Candidate-generated applications are published in the separate
-[run source archive](https://github.com/kkondaurov/sweatbench-runs/tree/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6), using the dashboard's
+[run source archive](https://github.com/kkondaurov/sweatbench-runs/tree/7605229c431ed4651afe1f172e6a3cae6ba89a42/v6), using the dashboard's
 run IDs and numbering. Every accepted run includes all seven milestone snapshots. Raw model
 sessions, dependencies, build output and runtime databases are not part of the source release.
 
