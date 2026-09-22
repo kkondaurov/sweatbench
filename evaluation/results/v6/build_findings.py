@@ -37,7 +37,7 @@ if __name__ == "__main__":
     if args.check:
         if target.read_text() != expected:
             raise SystemExit("Findings evidence differs from the accepted dataset")
-        print("Findings evidence verified: all 73 model-view runs and failed family outcomes.")
+        print("Findings evidence verified: all model-view runs and failed family outcomes.")
     else:
         target.write_text(expected)
         print("Wrote", target)

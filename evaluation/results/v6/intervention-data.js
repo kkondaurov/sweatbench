@@ -39,7 +39,7 @@ const readabilityIntervention = {
   "container_cpus": 2,
   "container_memory_mib": 4096,
   "baseline_dataset": "accepted-runs.json",
-  "baseline_sha256": "1deb5f27754f8de1adc7c8f1f02554fcc2bb40bdc222611d3f0e3562a6042e78",
+  "baseline_sha256": "53b004fec23fec8b6483b9370493d8450388938709db5f3e09d8a7163c0b9e6c",
   "baseline_ids": [
     "sol-high-01",
     "sol-high-02",

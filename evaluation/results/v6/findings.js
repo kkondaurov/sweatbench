@@ -76,13 +76,15 @@ const familyFindings = [
     ]
   },
   {
-    id: "grok", name: "Grok 4.6", nav: "Grok",
-    groups: ["grok-4-6-xhigh"],
-    setup: "OpenCode · Five xhigh runs",
+    id: "grok", name: "Grok 4.6 and 4.7", nav: "Grok",
+    groups: ["grok-4-6-xhigh", "grok-4-7-xhigh"],
+    runLabels: { "grok-4-6-xhigh": "4.6", "grok-4-7-xhigh": "4.7" },
+    setup: "OpenCode · Five Grok 4.6 xhigh runs and one Grok 4.7 xhigh run",
     paragraphs: [
-      "<strong>Four of five runs passed everything except the late-recorded credit cases.</strong> All five failed to correct the current report when a valid use of credit was recorded after its expiry report had closed. Four left the closing amount of credit owed at zero instead of 300 cents. Run 1 changed the opening balance instead of adding the required correction.",
-      "This one omission cost three points: the basic case appears in both Core and Maintenance, and a second Maintenance case uses the restored credit. It accounts for all the lost points in runs 2 through 5.",
-      "Run 1 also assigned old cash payments to the wrong rooms during an upgrade. Later, a payment reduction involving two groups produced the wrong outstanding deposit. Across the five runs, median recorded cost was $14.71 and average runtime was 2h 03m."
+      "<strong>Both versions missed a correction for credit use recorded after a reporting period closed.</strong> Credit had been used while it was valid, but the application learned about it only after a closed report had marked it expired. The old report must stay unchanged; the next open report must restore the amount of credit owed. Four Grok 4.6 runs and the Grok 4.7 run left that amount at zero instead of 300 cents. Grok 4.6 run 1 changed the opening balance instead of adding the correction.",
+      "Four of the five Grok 4.6 runs passed everything outside these late-credit cases. The basic case counts toward both Core and Maintenance, and a second Maintenance case uses the restored credit. This omission accounts for all three lost points in runs 2 through 5. Run 1 also assigned old cash payments to the wrong rooms during an upgrade and returned the wrong outstanding deposit after a payment reduction involving two groups.",
+      "<strong>Grok 4.7 also used inconsistent expiry dates.</strong> It stored the first unavailable day in <a href=\"#findings-expiry\">expires_on</a>, then its reporting code added another day before recording expiry. Reports therefore showed the expiry one day late. This affected the credit-date checks and several reporting checks. Two longer tests stopped at the missing initial expiry entry, before they could check closed-history preservation or later credit use.",
+      "The Grok 4.7 run finished at 35 Core and 7 Maintenance, taking 3h 49m and costing $36.52 in recorded API charges. The five Grok 4.6 runs averaged 37.6 Core and 7.8 Maintenance, with a median cost of $14.71 and average runtime of 2h 03m. The single 4.7 sample, run with OpenCode 1.18.31, does not establish a general difference between the models."
     ]
   },
   {
@@ -184,7 +186,8 @@ function renderFindings() {
     nav.insertAdjacentHTML("beforeend", `<a href="#findings-${item.id}">${item.nav}</a>`);
     const runRows = runs.map(run => {
       const failures = run.final_failed_families;
-      return `<tr><th scope="row" title="${escapeFinding(run.id)}">${escapeFinding(run.effort)} ${String(run.sample).padStart(2, "0")}${runSourceLink(run.id)}</th><td>${run.core_final}</td><td>${run.maintenance_final}</td><td>${failures.length ? `<ul>${failures.map(id => `<li title="${escapeFinding(id)}">${escapeFinding(checkName(id))}</li>`).join("")}</ul>` : "None"}</td></tr>`;
+      const label = [item.runLabels?.[run.group], run.effort, String(run.sample).padStart(2, "0")].filter(Boolean).join(" ");
+      return `<tr><th scope="row" title="${escapeFinding(run.id)}">${escapeFinding(label)}${runSourceLink(run.id)}</th><td>${run.core_final}</td><td>${run.maintenance_final}</td><td>${failures.length ? `<ul>${failures.map(id => `<li title="${escapeFinding(id)}">${escapeFinding(checkName(id))}</li>`).join("")}</ul>` : "None"}</td></tr>`;
     }).join("");
     content.insertAdjacentHTML("beforeend", `<section id="findings-${item.id}" class="family-finding">
       <h3>${item.name}</h3><p class="finding-meta">${runs.length} completed ${runs.length === 1 ? "run" : "runs"} · ${sweeps} ${sweeps === 1 ? "sweep" : "sweeps"}<br>${item.setup}</p>

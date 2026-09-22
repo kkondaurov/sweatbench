@@ -12,8 +12,8 @@ from pathlib import Path
 
 
 DATASET = Path(__file__).with_name("accepted-runs.json")
-EXPECTED_ACCEPTED = 98
-EXPECTED_MODEL_VIEW = 73
+EXPECTED_ACCEPTED = 99
+EXPECTED_MODEL_VIEW = 74
 EXPECTED_HARNESS_VIEW = 25
 NUMERIC_TOLERANCE = 1e-9
 

@@ -13,7 +13,7 @@ sample count, and whether cost is recorded or estimated.
 - [Dashboard source](evaluation/results/v6/index.html)
 - [Full retrospective](evaluation/results/v6/RETROSPECTIVE.md)
 - [Accepted-run dataset](evaluation/results/v6/accepted-runs.json)
-- [Generated applications: all 98 runs and seven milestones](https://github.com/kkondaurov/sweatbench-runs/tree/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6)
+- [Generated applications: all 99 runs and seven milestones](https://github.com/kkondaurov/sweatbench-runs/tree/be3005fa4092a75107d627e51bf9e9ee1f8474de/v6)
 - [Human review guide](REVIEW_GUIDE.md)
 - [Disclosure policy](DISCLOSURE.md)
 
@@ -96,7 +96,7 @@ for diagnosis; they are not collapsed into one synthetic score.
 
 ## Reference results
 
-The model-comparison view contains 73 completed trajectories. Every listed trajectory completed all
+The model-comparison view contains 74 completed trajectories. Every listed trajectory completed all
 seven milestones and passed the benchmark's integrity checks. Low-scoring valid runs are included;
 incomplete, invalid, and infrastructure-debug attempts are not model results and are excluded.
 
@@ -114,6 +114,7 @@ incomplete, invalid, and infrastructure-debug attempts are not model results and
 | Claude Opus 5 high, Claude Code | 2 | 38.5 | 9.5 | 1/2 | $47.65 |
 | Meta Muse Spark 1.3 high, OpenCode | 1 | 29.0 | 3.0 | 0/1 | $53.61 |
 | Grok 4.6 xhigh, OpenCode | 5 | 37.6 | 7.8 | 0/5 | $14.71 |
+| Grok 4.7 xhigh, OpenCode | 1 | 35.0 | 7.0 | 0/1 | $36.52 |
 | Qwen3.8 Max xhigh, OpenCode | 5 | 35.8 | 7.6 | 0/5 | $25.34 |
 | DeepSeek V4 Pro 0813 max, OpenCode | 5 | 35.0 | 6.4 | 0/5 | $8.87 |
 | Kimi K3 max, OpenCode | 5 | 36.2 | 6.8 | 0/5 | $29.23 |
