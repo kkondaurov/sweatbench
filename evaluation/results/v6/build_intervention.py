@@ -23,7 +23,7 @@ def validated_data():
     baseline_bytes = (ROOT / 'accepted-runs.json').read_bytes()
     assert hashlib.sha256(baseline_bytes).hexdigest() == data['baseline_sha256']
     baseline = json.loads(baseline_bytes)
-    assert len(baseline['runs']) == 99
+    assert len(baseline['runs']) == 102
     family_definitions = {f['family']: (f['track'], f['stage']) for f in baseline['families_model_view']}
     groups = {f'{family}-{effort}' for family, effort in CONFIGURATIONS}
     controls = [r for r in baseline['runs'] if r['group'] in groups]

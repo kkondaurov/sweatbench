@@ -1,6 +1,6 @@
 "use strict";
 
-const sourceArchiveBaseUrl = "https://github.com/kkondaurov/sweatbench-runs/tree/7605229c431ed4651afe1f172e6a3cae6ba89a42/v6";
+const sourceArchiveBaseUrl = "https://github.com/kkondaurov/sweatbench-runs/tree/003583cf9a6f895786a43921a5ed9ff52ee85e2c/v6";
 const runSourceLink = id => `<a class="run-source" href="${sourceArchiveBaseUrl}/${encodeURIComponent(id)}" title="All seven milestone snapshots">Source <i data-icon="ArrowUpRight"></i></a>`;
 
 const mean = values => values.reduce((sum, value) => sum + value, 0) / values.length;
@@ -19,7 +19,7 @@ const duration = seconds => {
   return hours ? `${hours}h ${String(minutes % 60).padStart(2, "0")}m` : `${minutes}m`;
 };
 const family = row => row.model === "GPT-6 Astra" ? "astra" : row.harness === "Codex CLI" ? "codex" : row.harness === "Claude Code" ? "claude" : "opencode";
-const shortName = row => `${row.model.replace(/^GPT-(?:5\.6|6) /, "").replace(/^Meta /, "").replace(/^Claude /, "").replace(/ Pro 0813/, " Pro")} ${row.effort}`;
+const shortName = row => `${row.model.replace(/^GPT-(5\.6|6) Luna$/, "Luna $1").replace(/^GPT-(?:5\.6|6) /, "").replace(/^Meta /, "").replace(/^Claude /, "").replace(/ Pro 0813/, " Pro")} ${row.effort}`;
 const estimateClass = row => row.costBasis === "estimated" ? "cost-estimate" : "";
 const costBasisLabel = row => row.costBasis === "estimated" ? "API-equivalent" : "Recorded spend";
 

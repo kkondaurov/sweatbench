@@ -13,7 +13,7 @@ sample count, and whether cost is recorded or estimated.
 - [Dashboard source](evaluation/results/v6/index.html)
 - [Full retrospective](evaluation/results/v6/RETROSPECTIVE.md)
 - [Accepted-run dataset](evaluation/results/v6/accepted-runs.json)
-- [Generated applications: all 99 runs and seven milestones](https://github.com/kkondaurov/sweatbench-runs/tree/7605229c431ed4651afe1f172e6a3cae6ba89a42/v6)
+- [Generated applications: all 102 runs and seven milestones](https://github.com/kkondaurov/sweatbench-runs/tree/003583cf9a6f895786a43921a5ed9ff52ee85e2c/v6)
 - [Human review guide](REVIEW_GUIDE.md)
 - [Disclosure policy](DISCLOSURE.md)
 
@@ -96,7 +96,7 @@ for diagnosis; they are not collapsed into one synthetic score.
 
 ## Reference results
 
-The model-comparison view contains 74 completed trajectories. Every listed trajectory completed all
+The model-comparison view contains 77 completed trajectories. Every listed trajectory completed all
 seven milestones and passed the benchmark's integrity checks. Low-scoring valid runs are included;
 incomplete, invalid, and infrastructure-debug attempts are not model results and are excluded.
 
@@ -106,6 +106,7 @@ incomplete, invalid, and infrastructure-debug attempts are not model results and
 | GPT-6 Astra medium, Codex CLI | 3 | 38.3 | 7.3 | 0/3 | $15.24 |
 | GPT-6 Astra high, Codex CLI | 3 | 38.7 | 8.3 | 1/3 | $19.04 |
 | GPT-6 Astra X-High, Codex CLI | 3 | 39.0 | 10.0 | 3/3 | $28.71 |
+| GPT-6 Luna xhigh, Codex CLI | 3 | 35.7 | 7.3 | 0/3 | $0.58 |
 | GPT-5.6 Sol high, Codex CLI | 5 | 38.8 | 9.6 | 4/5 | $22.37 |
 | GPT-5.6 Sol medium, Codex CLI | 5 | 38.2 | 8.8 | 2/5 | $13.90 |
 | GPT-5.6 Terra xhigh, Codex CLI | 5 | 36.6 | 7.0 | 0/5 | $9.96 |
@@ -129,6 +130,8 @@ not a reliability estimate. Astra low, medium, high and X-High have three runs e
 0.153.4, newer than the earlier GPT cohort. Their costs are standard API-equivalent costs,
 not additional subscription charges. X-High runs 2 and 3 resumed after provider-capacity errors;
 their costs and runtimes include the discarded attempts but exclude stopped time.
+GPT-6 Luna uses Codex CLI 0.155.1 with delegation disabled; its three runs cost
+$0.49-$0.59 each at the published API rates. [Trajectory review](evaluation/results/v6/LUNA6_REVIEW.md).
 
 An additional 25 accepted trajectories form a controlled harness view: the same four GPT-5.6
 model/effort configurations under OpenCode, plus a Codex Luna condition explicitly instructed to
@@ -186,7 +189,7 @@ outside the candidate workspace. OpenCode can also be placed inside the included
 - `evaluation/results/v6/`: frozen dashboard, retrospective, accepted data, and verifier.
 
 Candidate-generated applications are published in the separate
-[run source archive](https://github.com/kkondaurov/sweatbench-runs/tree/7605229c431ed4651afe1f172e6a3cae6ba89a42/v6), using the dashboard's
+[run source archive](https://github.com/kkondaurov/sweatbench-runs/tree/003583cf9a6f895786a43921a5ed9ff52ee85e2c/v6), using the dashboard's
 run IDs and numbering. Every accepted run includes all seven milestone snapshots. Raw model
 sessions, dependencies, build output and runtime databases are not part of the source release.
 

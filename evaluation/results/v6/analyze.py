@@ -12,8 +12,8 @@ from pathlib import Path
 
 
 DATASET = Path(__file__).with_name("accepted-runs.json")
-EXPECTED_ACCEPTED = 99
-EXPECTED_MODEL_VIEW = 74
+EXPECTED_ACCEPTED = 102
+EXPECTED_MODEL_VIEW = 77
 EXPECTED_HARNESS_VIEW = 25
 NUMERIC_TOLERANCE = 1e-9
 
@@ -80,10 +80,11 @@ def validate(data: dict) -> list[dict]:
             errors.append(f"{run.get('id')}: cost is negative")
         if run.get("subagents", -1) < 0:
             errors.append(f"{run.get('id')}: subagent count is negative")
-        if run.get("group", "").startswith("astra-"):
+        if run.get("group", "").startswith("astra-") or run.get("group") == "luna6-xhigh":
             usage = run["usage"]
-            expected_cost = ((usage["input_tokens"] - usage["cached_input_tokens"]) * 10
-                             + usage["cached_input_tokens"] + usage["output_tokens"] * 50) / 1e6
+            input_rate, cache_rate, output_rate = (0.10, 0.01, 0.50) if run["group"] == "luna6-xhigh" else (10, 1, 50)
+            expected_cost = ((usage["input_tokens"] - usage["cached_input_tokens"]) * input_rate
+                             + usage["cached_input_tokens"] * cache_rate + usage["output_tokens"] * output_rate) / 1e6
             execution = run["execution"]
             attempts = execution["milestones"] + execution.get("interrupted_attempts", [])
             if not close(run["cost"], expected_cost) or not close(run["cost"], sum(m["cost"] for m in attempts)):

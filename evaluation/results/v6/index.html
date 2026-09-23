@@ -16,14 +16,14 @@
         <p class="subtitle">How well do coding agents handle a product that keeps changing?</p>
       </div>
       <div class="header-right">
-        <span class="updated">Updated <time datetime="2026-09-22">22 Sep 2026</time></span>
+        <span class="updated">Updated <time datetime="2026-09-23">23 Sep 2026</time></span>
         <a class="icon-button" href="accepted-runs.json" download title="Download run data" aria-label="Download run data"><i data-icon="Download"></i></a>
         <a class="icon-button" href="https://github.com/kkondaurov/sweatbench" title="Repository" aria-label="Repository"><i data-icon="CodeXml"></i></a>
       </div>
     </header>
 
     <nav class="view-tabs" role="tablist" aria-label="Results view">
-      <button id="models-tab" class="view-tab" role="tab" aria-selected="true" aria-controls="models-view" data-view="models">Models <span id="models-count" class="tab-count">74</span></button>
+      <button id="models-tab" class="view-tab" role="tab" aria-selected="true" aria-controls="models-view" data-view="models">Models <span id="models-count" class="tab-count">77</span></button>
       <button id="harness-tab" class="view-tab" role="tab" aria-selected="false" aria-controls="harness-view" data-view="harness" tabindex="-1">Harnesses <span class="tab-count">45</span></button>
       <button id="intervention-tab" class="view-tab" role="tab" aria-selected="false" aria-controls="intervention-view" data-view="intervention" tabindex="-1">Intervention <span class="tab-count">18</span></button>
       <button id="findings-tab" class="view-tab" role="tab" aria-selected="false" aria-controls="findings-view" data-view="findings" tabindex="-1">Findings</button>
@@ -32,7 +32,7 @@
 
     <section id="models-view" class="view-panel" role="tabpanel" aria-labelledby="models-tab">
       <div class="section-heading overview-heading">
-        <div><h2>Model comparison</h2><p class="section-note"><span id="sample-summary">19 configurations · 74 completed runs</span><span class="note-separator"> / </span>1–5 runs per configuration</p></div>
+        <div><h2>Model comparison</h2><p class="section-note"><span id="sample-summary">20 configurations · 77 completed runs</span><span class="note-separator"> / </span>1–5 runs per configuration</p></div>
         <div class="chart-controls">
           <div class="segmented" role="group" aria-label="Chart score">
             <button data-score="core" aria-pressed="true">Core</button>
@@ -47,7 +47,7 @@
           <div class="chart-footer">
             <div class="plot-legend" aria-label="Model family and harness legend">
               <span><b class="legend-symbol astra"></b>Astra · Codex</span>
-              <span><b class="legend-symbol codex"></b>Earlier GPT · Codex</span>
+              <span><b class="legend-symbol codex"></b>Other GPT · Codex</span>
               <span><b class="legend-symbol opencode"></b>OpenCode</span>
               <span><b class="legend-symbol claude"></b>Claude Code</span>
             </div>
@@ -187,15 +187,15 @@
     </section>
 
     <section id="findings-view" class="view-panel" role="tabpanel" aria-labelledby="findings-tab" hidden>
-      <div class="section-heading overview-heading"><div><h2 id="findings-title">Where the implementations failed</h2><p class="section-note">74 completed runs · 13 model families · Reviewed through 22 Sep 2026</p></div></div>
+      <div class="section-heading overview-heading"><div><h2 id="findings-title">Where the implementations failed</h2><p class="section-note">77 completed runs · 13 model families · Reviewed through 23 Sep 2026</p></div></div>
       <div class="method-layout findings-layout">
         <nav id="findings-nav" class="method-nav" aria-label="Findings sections"><a href="#findings-overview">About these findings</a></nav>
         <div class="method-copy findings-copy">
           <section id="findings-overview">
             <p>Sweat Bench tests how coding agents handle software that changes over time. Each agent builds GroupStay, a fictional application for managing hotel deposits for group reservations. Over seven milestones, it adds bookings, payments, cancellations, hotel credit, transfers and financial reports. Every new version has to keep the earlier features working and preserve the records they created.</p>
             <p>Each run is a separate attempt at that sequence. The agent writes the code and its own tests. After each milestone, the benchmark tests the application, including what happens when the server restarts or a new version opens a database created by an earlier one.</p>
-            <p>To understand the results, we went back through the code, tests and session logs from all 74 completed runs in the Models tab. We looked for mistakes that recurred across runs, tests that caught them before delivery, and cases where one bug caused several checks to fail. The sections below follow each model family through those successes and failures.</p>
-            <p class="findings-source-note">The review covers small samples across 13 model families and several coding tools; the separate Harnesses experiments are excluded. Scores come from the <a href="accepted-runs.json">accepted dataset</a>. All seven code snapshots for each run are in the <a data-source-archive href="https://github.com/kkondaurov/sweatbench-runs/tree/7605229c431ed4651afe1f172e6a3cae6ba89a42/v6">source archive</a>; raw session logs remain private. <a href="#scores">Scoring details</a> · <a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/RETROSPECTIVE.md">Earlier retrospective</a></p>
+            <p>To understand the results, we went back through the code, tests and session logs from all 77 completed runs in the Models tab. We looked for mistakes that recurred across runs, tests that caught them before delivery, and cases where one bug caused several checks to fail. The sections below follow each model family through those successes and failures.</p>
+            <p class="findings-source-note">The review covers small samples across 13 model families and several coding tools; the separate Harnesses experiments are excluded. Scores come from the <a href="accepted-runs.json">accepted dataset</a>. All seven code snapshots for each run are in the <a data-source-archive href="https://github.com/kkondaurov/sweatbench-runs/tree/003583cf9a6f895786a43921a5ed9ff52ee85e2c/v6">source archive</a>; raw session logs remain private. <a href="#scores">Scoring details</a> · <a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/RETROSPECTIVE.md">Earlier retrospective</a></p>
           </section>
           <div id="family-findings"></div>
           <section id="findings-expiry">
@@ -203,7 +203,7 @@
             <p>The <a href="https://github.com/kkondaurov/sweatbench/blob/8fb61cfe5811b6d5534d2c6014058190cb616d80/candidate/requests/02-cancellation-economics.md#issuing-credit-on-cancellation">milestone-2 request</a> described hotel credit this way:</p>
             <blockquote><p>The lot is available through the date 365 days after cancellation and expires the following day.</p></blockquote>
             <p>The tests expect <code>expires_on</code> to mean the last usable day; some implementations used the first unavailable day. Both describe the same usable period, but the wording leaves the field's meaning ambiguous. <a href="https://github.com/kkondaurov/sweatbench/blob/8fb61cfe5811b6d5534d2c6014058190cb616d80/candidate/requests/06-daily-finance-report.md#L92-L94">Milestone 6</a> made the last-usable-day meaning explicit. Scores retain the original evaluations.</p>
-            <p class="expiry-runs">These 30 completed Models runs returned the first unavailable day in their final version: <a href="#findings-sol">Sol</a> medium 4; <a href="#findings-luna">Luna</a> xhigh 2, 4, 5; <a href="#findings-terra">Terra</a> xhigh 1–4; <a href="#findings-gpt55">GPT-5.5</a> xhigh 3, 4; <a href="#findings-opus">Opus</a> high 1; <a href="#findings-muse">Muse Spark</a> high 1; <a href="#findings-grok">Grok 4.7</a> xhigh 1; <a href="#findings-qwen">Qwen</a> xhigh 1, 3, 4; <a href="#findings-deepseek">DeepSeek</a> max 1, 4, 5; <a href="#findings-kimi">Kimi</a> max 1; <a href="#findings-glm">GLM 5.3</a> high 2–4; <a href="#findings-flash">GLM-5.3 Flash</a> high 1–3 and max 1–4.</p>
+            <p class="expiry-runs">These 30 completed Models runs returned the first unavailable day in their final version: <a href="#findings-sol">Sol</a> medium 4; <a href="#findings-luna">GPT-5.6 Luna</a> xhigh 2, 4, 5; <a href="#findings-terra">Terra</a> xhigh 1–4; <a href="#findings-gpt55">GPT-5.5</a> xhigh 3, 4; <a href="#findings-opus">Opus</a> high 1; <a href="#findings-muse">Muse Spark</a> high 1; <a href="#findings-grok">Grok 4.7</a> xhigh 1; <a href="#findings-qwen">Qwen</a> xhigh 1, 3, 4; <a href="#findings-deepseek">DeepSeek</a> max 1, 4, 5; <a href="#findings-kimi">Kimi</a> max 1; <a href="#findings-glm">GLM 5.3</a> high 2–4; <a href="#findings-flash">GLM-5.3 Flash</a> high 1–3 and max 1–4.</p>
           </section>
         </div>
       </div>
@@ -219,7 +219,7 @@
             <p>The application is GroupStay, a fictional service that manages hotel deposits for group reservations. It starts with bookings, payments and cancellations, then adds hotel credit, durable retries, room-level accounting, transfers, daily finance reports and period close. The agent writes a Phoenix/Elixir application backed by SQLite, starting from a service skeleton.</p>
             <p>The sequence matters. A way of storing payments that works at launch may be inadequate once individual rooms can be cancelled or money moved between reservations. A report may show the right balance today but change incorrectly when a late adjustment arrives. The benchmark checks whether the agent carries those earlier decisions through the later changes.</p>
             <p>Each milestone starts a fresh model session with the repository, current request, accumulated documentation and any tests the agent has written. It cannot see future requests or the evaluator's tests and results. After the agent finishes, the evaluator checks the HTTP API, restarts the application, and tests upgrades using databases from earlier milestones. The code and documents left in the repository are what the next session inherits.</p>
-            <p>The <a href="https://github.com/kkondaurov/sweatbench#benchmark-design">repository README</a> describes all seven milestones and links to the requests. The <a data-source-archive href="https://github.com/kkondaurov/sweatbench-runs/tree/7605229c431ed4651afe1f172e6a3cae6ba89a42/v6">source archive</a> contains the generated applications at every milestone for all 99 accepted runs.</p>
+            <p>The <a href="https://github.com/kkondaurov/sweatbench#benchmark-design">repository README</a> describes all seven milestones and links to the requests. The <a data-source-archive href="https://github.com/kkondaurov/sweatbench-runs/tree/003583cf9a6f895786a43921a5ed9ff52ee85e2c/v6">source archive</a> contains the generated applications at every milestone for all 102 accepted runs.</p>
           </section>
           <section id="scores"><h3>Scoring</h3>
             <dl class="definitions">
@@ -231,8 +231,8 @@
             </dl>
           </section>
           <section id="sample"><h3>The runs</h3>
-            <p>The Models view includes <span id="method-model-count">74</span> runs that completed all seven milestones and passed the benchmark's integrity checks. Runs with low scores are included. Unfinished runs and runs with invalid evaluations are excluded. Each configuration has between one and five runs, so small differences in averages may not hold up with more samples. Chart ranges show the lowest and highest observed values, not confidence intervals.</p>
-            <p>A model runs through a coding tool, or harness, which also affects the result. Astra uses Codex CLI 0.153.4; earlier GPT runs used an older Codex version. The twelve Astra runs shown here, three each at low, medium, high and X-High, used the standard v6 handoff prompts and launched no subagents. Opus 5 uses Claude Code 2.1.243 with customizations disabled. Grok 4.7 uses OpenCode 1.18.31. Muse Spark uses OpenCode 1.18.27; the harness comparison uses OpenCode 1.18.0.</p>
+            <p>The Models view includes <span id="method-model-count">77</span> runs that completed all seven milestones and passed the benchmark's integrity checks. Runs with low scores are included. Unfinished runs and runs with invalid evaluations are excluded. Each configuration has between one and five runs, so small differences in averages may not hold up with more samples. Chart ranges show the lowest and highest observed values, not confidence intervals.</p>
+            <p>A model runs through a coding tool, or harness, which also affects the result. Astra uses Codex CLI 0.153.4; GPT-6 Luna uses 0.155.1; earlier GPT runs used an older Codex version. The twelve Astra runs and three GPT-6 Luna runs used the standard v6 handoff prompts and launched no subagents. GPT-6 Luna had delegation disabled and no readability intervention. Opus 5 uses Claude Code 2.1.243 with customizations disabled. Grok 4.7 uses OpenCode 1.18.31. Muse Spark uses OpenCode 1.18.27; the harness comparison uses OpenCode 1.18.0.</p>
             <p>Astra X-High runs 2 and 3 stopped on provider-capacity errors, then completed after restarting the interrupted milestone from the last accepted snapshot. No evaluation feedback was supplied. Their costs and runtimes include the discarded attempts; the time between stopping and restarting is excluded. The <a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/ASTRA_TRAJECTORIES.md">Astra results</a> document both resumptions.</p>
             <p>The Harnesses view includes 20 of the Codex runs from the Models view, 20 additional OpenCode runs and five Luna runs with the delegation instruction. There are 45 runs in that view, but 20 also appear in Models.</p>
           </section>
@@ -243,6 +243,7 @@
             <p>Codex includes cache reads in its total input count; OpenCode reports them separately. The calculations account for that difference. As an agent's conversation grows, repeatedly sending its history can become expensive even at cached rates: cache reads account for roughly $12–14 per Kimi run and $13–22 per GLM 5.3 run.</p>
             <details><summary>Model-specific accounting</summary>
               <p>GLM-5.3 Flash was tested as OX Alpha, a free preview. Its displayed costs apply the announced production rates to that preview usage. The two Opus subscription runs recorded $43.96 and $51.35 in API-equivalent usage. The OpenCode harness comparison used a subscription login and incurred no additional inference charges.</p>
+              <p>GPT-6 Luna uses $0.10 per million uncached input tokens, $0.01 per million cached input tokens and $0.50 per million output tokens. All 21 milestone sessions reconcile with their CLI usage totals. The largest request contained 175,697 input tokens; no long-context charges, cache writes or subagent sessions were recorded.</p>
               <p>Muse Spark's $53.61 charge includes two automatic continuations after it reached the turn-length limit. DeepSeek run 2 includes $0.32 for a repeated review that made no code changes.</p>
             </details>
           </section>
@@ -252,9 +253,9 @@
             <p><strong>Subagents</strong> counts distinct agents started by the candidate. Built-in workers such as Codex's automatic reviewer are excluded from that count, but their token usage is included in the cost.</p>
           </section>
           <section id="sources"><h3>Data and sources</h3>
-            <div class="source-links"><a href="accepted-runs.json">Run dataset <i data-icon="Download"></i></a><a data-source-archive href="https://github.com/kkondaurov/sweatbench-runs/tree/7605229c431ed4651afe1f172e6a3cae6ba89a42/v6">Source archive <i data-icon="ArrowUpRight"></i></a><a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/analyze.py">Data verifier <i data-icon="ArrowUpRight"></i></a><a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/RETROSPECTIVE.md">Retrospective <i data-icon="ArrowUpRight"></i></a></div>
+            <div class="source-links"><a href="accepted-runs.json">Run dataset <i data-icon="Download"></i></a><a data-source-archive href="https://github.com/kkondaurov/sweatbench-runs/tree/003583cf9a6f895786a43921a5ed9ff52ee85e2c/v6">Source archive <i data-icon="ArrowUpRight"></i></a><a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/analyze.py">Data verifier <i data-icon="ArrowUpRight"></i></a><a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/RETROSPECTIVE.md">Retrospective <i data-icon="ArrowUpRight"></i></a></div>
             <p>The archive includes a README and seven milestone snapshots for each accepted run. The 20 Codex runs shared by Models and Harnesses link to the same sources. Raw session logs remain private.</p>
-            <p>Official pricing: <a href="https://developers.openai.com/api/docs/models/gpt-6-astra">Astra</a> (checked 5 Sep 2026), <a href="https://developers.openai.com/api/docs/models/gpt-5.5">GPT-5.5</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-sol">Sol</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-terra">Terra</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-luna">Luna</a>, <a href="https://openrouter.ai/meta/muse-spark-1.3">Muse Spark</a>, <a href="https://docs.x.ai/developers/models/grok-4.6">Grok 4.6</a>, <a href="https://openrouter.ai/x-ai/grok-4.7">Grok 4.7</a>, <a href="https://openrouter.ai/qwen/qwen3.8-max">Qwen</a>, <a href="https://openrouter.ai/deepseek/deepseek-v4-pro-0813">DeepSeek</a>, <a href="https://z.ai/blog/glm-5.3-flash">GLM-5.3 Flash</a>.</p>
+            <p>Official pricing: <a href="https://developers.openai.com/api/docs/models/gpt-6-astra">Astra</a> (checked 5 Sep 2026), <a href="https://developers.openai.com/api/docs/models/gpt-5.5">GPT-5.5</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-sol">Sol</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-terra">Terra</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-luna">Luna 5.6</a>, <a href="https://developers.openai.com/api/docs/pricing">Luna 6</a> (checked 23 Sep 2026), <a href="https://openrouter.ai/meta/muse-spark-1.3">Muse Spark</a>, <a href="https://docs.x.ai/developers/models/grok-4.6">Grok 4.6</a>, <a href="https://openrouter.ai/x-ai/grok-4.7">Grok 4.7</a>, <a href="https://openrouter.ai/qwen/qwen3.8-max">Qwen</a>, <a href="https://openrouter.ai/deepseek/deepseek-v4-pro-0813">DeepSeek</a>, <a href="https://z.ai/blog/glm-5.3-flash">GLM-5.3 Flash</a>.</p>
           </section>
         </div>
       </div>
@@ -284,6 +285,11 @@
         { id: "v6-astra-xhigh-01", core: 39, judgment: 10, ship: 94, final: 94, cost: 27.134116, prodLoc: 2613, testLoc: 5879, runtimeSeconds: 7239.645 },
         { id: "v6-astra-xhigh-02", core: 39, judgment: 10, ship: 94, final: 94, cost: 30.436272, prodLoc: 2486, testLoc: 6142, runtimeSeconds: 9685.866 },
         { id: "v6-astra-xhigh-03", core: 39, judgment: 10, ship: 94, final: 94, cost: 28.705118, prodLoc: 2385, testLoc: 5733, runtimeSeconds: 8452.138 }
+      ]},
+      { id: "luna6-xhigh", model: "GPT-6 Luna", effort: "xhigh", harness: "Codex CLI", costBasis: "estimated", runs: [
+        {"id": "luna6-xhigh-01", "core": 35, "judgment": 7, "ship": 86, "final": 86, "cost": 0.59033024, "prodLoc": 3852, "testLoc": 2882, "runtimeSeconds": 7729.94, "subagents": 0},
+        {"id": "luna6-xhigh-02", "core": 38, "judgment": 8, "ship": 92, "final": 92, "cost": 0.49425402, "prodLoc": 4122, "testLoc": 2435, "runtimeSeconds": 6626.537, "subagents": 0},
+        {"id": "luna6-xhigh-03", "core": 34, "judgment": 7, "ship": 85, "final": 85, "cost": 0.57556836, "prodLoc": 4017, "testLoc": 2814, "runtimeSeconds": 7416.779, "subagents": 0}
       ]},
       { id: "sol-high", model: "GPT-5.6 Sol", effort: "high", harness: "Codex CLI", costBasis: "estimated", runs: [
         { id: "sol-high-01", core: 39, judgment: 10, ship: 94, final: 94, cost: 25.21380832, prodLoc: 3308, testLoc: 2989, runtimeSeconds: 6390.519 },
@@ -423,6 +429,7 @@
       "astra-medium": [0, 0, 0],
       "astra-high": [0, 0, 0],
       "astra-xhigh": [0, 0, 0],
+      "luna6-xhigh": [0, 0, 0],
       "sol-high": [6, 5, 8, 3, 0],
       "sol-medium": [0, 4, 12, 2, 4],
       "terra-xhigh": [0, 0, 0, 3, 0],
@@ -464,10 +471,10 @@
 
   </script>
   <script src="icons.js"></script>
-  <script src="findings-data.js?v=findings-20260906"></script>
-  <script src="findings.js?v=grok47-20260922"></script>
-  <script src="intervention-data.js?v=readable-elixir-20260908"></script>
+  <script src="findings-data.js?v=luna6-20260923"></script>
+  <script src="findings.js?v=luna6-20260923"></script>
+  <script src="intervention-data.js?v=baseline-20260923"></script>
   <script src="intervention.js?v=readable-elixir-20260908"></script>
-  <script src="results.js?v=readable-elixir-20260907"></script>
+  <script src="results.js?v=luna6-20260923"></script>
 </body>
 </html>
