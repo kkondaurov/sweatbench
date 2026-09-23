@@ -23,7 +23,7 @@
     </header>
 
     <nav class="view-tabs" role="tablist" aria-label="Results view">
-      <button id="models-tab" class="view-tab" role="tab" aria-selected="true" aria-controls="models-view" data-view="models">Models <span id="models-count" class="tab-count">77</span></button>
+      <button id="models-tab" class="view-tab" role="tab" aria-selected="true" aria-controls="models-view" data-view="models">Models <span id="models-count" class="tab-count">78</span></button>
       <button id="harness-tab" class="view-tab" role="tab" aria-selected="false" aria-controls="harness-view" data-view="harness" tabindex="-1">Harnesses <span class="tab-count">45</span></button>
       <button id="intervention-tab" class="view-tab" role="tab" aria-selected="false" aria-controls="intervention-view" data-view="intervention" tabindex="-1">Intervention <span class="tab-count">18</span></button>
       <button id="findings-tab" class="view-tab" role="tab" aria-selected="false" aria-controls="findings-view" data-view="findings" tabindex="-1">Findings</button>
@@ -32,7 +32,7 @@
 
     <section id="models-view" class="view-panel" role="tabpanel" aria-labelledby="models-tab">
       <div class="section-heading overview-heading">
-        <div><h2>Model comparison</h2><p class="section-note"><span id="sample-summary">20 configurations · 77 completed runs</span><span class="note-separator"> / </span>1–5 runs per configuration</p></div>
+        <div><h2>Model comparison</h2><p class="section-note"><span id="sample-summary">21 configurations · 78 completed runs</span><span class="note-separator"> / </span>1–5 runs per configuration</p></div>
         <div class="chart-controls">
           <div class="segmented" role="group" aria-label="Chart score">
             <button data-score="core" aria-pressed="true">Core</button>
@@ -187,14 +187,14 @@
     </section>
 
     <section id="findings-view" class="view-panel" role="tabpanel" aria-labelledby="findings-tab" hidden>
-      <div class="section-heading overview-heading"><div><h2 id="findings-title">Where the implementations failed</h2><p class="section-note">77 completed runs · 13 model families · Reviewed through 23 Sep 2026</p></div></div>
+      <div class="section-heading overview-heading"><div><h2 id="findings-title">Where the implementations failed</h2><p class="section-note">77 reviewed runs · 13 model families · Reviewed through 23 Sep 2026</p></div></div>
       <div class="method-layout findings-layout">
         <nav id="findings-nav" class="method-nav" aria-label="Findings sections"><a href="#findings-overview">About these findings</a></nav>
         <div class="method-copy findings-copy">
           <section id="findings-overview">
             <p>Sweat Bench tests how coding agents handle software that changes over time. Each agent builds GroupStay, a fictional application for managing hotel deposits for group reservations. Over seven milestones, it adds bookings, payments, cancellations, hotel credit, transfers and financial reports. Every new version has to keep the earlier features working and preserve the records they created.</p>
             <p>Each run is a separate attempt at that sequence. The agent writes the code and its own tests. After each milestone, the benchmark tests the application, including what happens when the server restarts or a new version opens a database created by an earlier one.</p>
-            <p>To understand the results, we went back through the code, tests and session logs from all 77 completed runs in the Models tab. We looked for mistakes that recurred across runs, tests that caught them before delivery, and cases where one bug caused several checks to fail. The sections below follow each model family through those successes and failures.</p>
+            <p>To understand the results, we went back through the code, tests and session logs from 77 completed runs in the Models tab. We looked for mistakes that recurred across runs, tests that caught them before delivery, and cases where one bug caused several checks to fail. The newly added Opus 5.5 run is included in the scores, but has not received this qualitative review. The sections below follow the reviewed model families through those successes and failures.</p>
             <p class="findings-source-note">The review covers small samples across 13 model families and several coding tools; the separate Harnesses experiments are excluded. Scores come from the <a href="accepted-runs.json">accepted dataset</a>. All seven code snapshots for each run are in the <a data-source-archive href="https://github.com/kkondaurov/sweatbench-runs/tree/003583cf9a6f895786a43921a5ed9ff52ee85e2c/v6">source archive</a>; raw session logs remain private. <a href="#scores">Scoring details</a> · <a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/RETROSPECTIVE.md">Earlier retrospective</a></p>
           </section>
           <div id="family-findings"></div>
@@ -219,7 +219,7 @@
             <p>The application is GroupStay, a fictional service that manages hotel deposits for group reservations. It starts with bookings, payments and cancellations, then adds hotel credit, durable retries, room-level accounting, transfers, daily finance reports and period close. The agent writes a Phoenix/Elixir application backed by SQLite, starting from a service skeleton.</p>
             <p>The sequence matters. A way of storing payments that works at launch may be inadequate once individual rooms can be cancelled or money moved between reservations. A report may show the right balance today but change incorrectly when a late adjustment arrives. The benchmark checks whether the agent carries those earlier decisions through the later changes.</p>
             <p>Each milestone starts a fresh model session with the repository, current request, accumulated documentation and any tests the agent has written. It cannot see future requests or the evaluator's tests and results. After the agent finishes, the evaluator checks the HTTP API, restarts the application, and tests upgrades using databases from earlier milestones. The code and documents left in the repository are what the next session inherits.</p>
-            <p>The <a href="https://github.com/kkondaurov/sweatbench#benchmark-design">repository README</a> describes all seven milestones and links to the requests. The <a data-source-archive href="https://github.com/kkondaurov/sweatbench-runs/tree/003583cf9a6f895786a43921a5ed9ff52ee85e2c/v6">source archive</a> contains the generated applications at every milestone for all 102 accepted runs.</p>
+            <p>The <a href="https://github.com/kkondaurov/sweatbench#benchmark-design">repository README</a> describes all seven milestones and links to the requests. The <a data-source-archive href="https://github.com/kkondaurov/sweatbench-runs/tree/003583cf9a6f895786a43921a5ed9ff52ee85e2c/v6">source archive</a> contains the generated applications at every milestone for all 103 accepted runs.</p>
           </section>
           <section id="scores"><h3>Scoring</h3>
             <dl class="definitions">
@@ -231,8 +231,8 @@
             </dl>
           </section>
           <section id="sample"><h3>The runs</h3>
-            <p>The Models view includes <span id="method-model-count">77</span> runs that completed all seven milestones and passed the benchmark's integrity checks. Runs with low scores are included. Unfinished runs and runs with invalid evaluations are excluded. Each configuration has between one and five runs, so small differences in averages may not hold up with more samples. Chart ranges show the lowest and highest observed values, not confidence intervals.</p>
-            <p>A model runs through a coding tool, or harness, which also affects the result. Astra uses Codex CLI 0.153.4; GPT-6 Luna uses 0.155.1; earlier GPT runs used an older Codex version. The twelve Astra runs and three GPT-6 Luna runs used the standard v6 handoff prompts and launched no subagents. GPT-6 Luna had delegation disabled and no readability intervention. Opus 5 uses Claude Code 2.1.243 with customizations disabled. Grok 4.7 uses OpenCode 1.18.31. Muse Spark uses OpenCode 1.18.27; the harness comparison uses OpenCode 1.18.0.</p>
+            <p>The Models view includes <span id="method-model-count">78</span> runs that completed all seven milestones and passed the benchmark's integrity checks. Runs with low scores are included. Unfinished runs and runs with invalid evaluations are excluded. Each configuration has between one and five runs, so small differences in averages may not hold up with more samples. Chart ranges show the lowest and highest observed values, not confidence intervals.</p>
+            <p>A model runs through a coding tool, or harness, which also affects the result. Astra uses Codex CLI 0.153.4; GPT-6 Luna uses 0.155.1; earlier GPT runs used an older Codex version. The twelve Astra runs and three GPT-6 Luna runs used the standard v6 handoff prompts and launched no subagents. GPT-6 Luna had delegation disabled and no readability intervention. Opus 5 uses Claude Code 2.1.243 with customizations disabled; Opus 5.5 uses Claude Code 2.1.280 with high effort, the same frozen v6 task, handoff and endogenous candidate tests, and no subagents. Grok 4.7 uses OpenCode 1.18.31. Muse Spark uses OpenCode 1.18.27; the harness comparison uses OpenCode 1.18.0.</p>
             <p>Astra X-High runs 2 and 3 stopped on provider-capacity errors, then completed after restarting the interrupted milestone from the last accepted snapshot. No evaluation feedback was supplied. Their costs and runtimes include the discarded attempts; the time between stopping and restarting is excluded. The <a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/ASTRA_TRAJECTORIES.md">Astra results</a> document both resumptions.</p>
             <p>The Harnesses view includes 20 of the Codex runs from the Models view, 20 additional OpenCode runs and five Luna runs with the delegation instruction. There are 45 runs in that view, but 20 also appear in Models.</p>
           </section>
@@ -242,7 +242,7 @@
             <p>In the Astra runs shown here, the largest request contained 123,779 input tokens, below the 272K threshold for long-context pricing, and no cache-write tokens were recorded. GPT-5.5's recorded context window was 258,400 tokens. Some older logs lack enough detail to reconstruct per-request surcharges or cache-write charges, so those estimates use standard rates.</p>
             <p>Codex includes cache reads in its total input count; OpenCode reports them separately. The calculations account for that difference. As an agent's conversation grows, repeatedly sending its history can become expensive even at cached rates: cache reads account for roughly $12–14 per Kimi run and $13–22 per GLM 5.3 run.</p>
             <details><summary>Model-specific accounting</summary>
-              <p>GLM-5.3 Flash was tested as OX Alpha, a free preview. Its displayed costs apply the announced production rates to that preview usage. The two Opus subscription runs recorded $43.96 and $51.35 in API-equivalent usage. The OpenCode harness comparison used a subscription login and incurred no additional inference charges.</p>
+              <p>GLM-5.3 Flash was tested as OX Alpha, a free preview. Its displayed costs apply the announced production rates to that preview usage. The two Opus 5 subscription runs recorded $43.96 and $51.35 in API-equivalent usage. The Opus 5.5 subscription run recorded $21.26 in API-equivalent usage, including one-hour cache writes and cache reads; usage credits were off. The OpenCode harness comparison used a subscription login and incurred no additional inference charges.</p>
               <p>GPT-6 Luna uses $0.10 per million uncached input tokens, $0.01 per million cached input tokens and $0.50 per million output tokens. All 21 milestone sessions reconcile with their CLI usage totals. The largest request contained 175,697 input tokens; no long-context charges, cache writes or subagent sessions were recorded.</p>
               <p>Muse Spark's $53.61 charge includes two automatic continuations after it reached the turn-length limit. DeepSeek run 2 includes $0.32 for a repeated review that made no code changes.</p>
             </details>
@@ -255,7 +255,7 @@
           <section id="sources"><h3>Data and sources</h3>
             <div class="source-links"><a href="accepted-runs.json">Run dataset <i data-icon="Download"></i></a><a data-source-archive href="https://github.com/kkondaurov/sweatbench-runs/tree/003583cf9a6f895786a43921a5ed9ff52ee85e2c/v6">Source archive <i data-icon="ArrowUpRight"></i></a><a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/analyze.py">Data verifier <i data-icon="ArrowUpRight"></i></a><a href="https://github.com/kkondaurov/sweatbench/blob/main/evaluation/results/v6/RETROSPECTIVE.md">Retrospective <i data-icon="ArrowUpRight"></i></a></div>
             <p>The archive includes a README and seven milestone snapshots for each accepted run. The 20 Codex runs shared by Models and Harnesses link to the same sources. Raw session logs remain private.</p>
-            <p>Official pricing: <a href="https://developers.openai.com/api/docs/models/gpt-6-astra">Astra</a> (checked 5 Sep 2026), <a href="https://developers.openai.com/api/docs/models/gpt-5.5">GPT-5.5</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-sol">Sol</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-terra">Terra</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-luna">Luna 5.6</a>, <a href="https://developers.openai.com/api/docs/pricing">Luna 6</a> (checked 23 Sep 2026), <a href="https://openrouter.ai/meta/muse-spark-1.3">Muse Spark</a>, <a href="https://docs.x.ai/developers/models/grok-4.6">Grok 4.6</a>, <a href="https://openrouter.ai/x-ai/grok-4.7">Grok 4.7</a>, <a href="https://openrouter.ai/qwen/qwen3.8-max">Qwen</a>, <a href="https://openrouter.ai/deepseek/deepseek-v4-pro-0813">DeepSeek</a>, <a href="https://z.ai/blog/glm-5.3-flash">GLM-5.3 Flash</a>.</p>
+            <p>Official pricing: <a href="https://developers.openai.com/api/docs/models/gpt-6-astra">Astra</a> (checked 5 Sep 2026), <a href="https://developers.openai.com/api/docs/models/gpt-5.5">GPT-5.5</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-sol">Sol</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-terra">Terra</a>, <a href="https://developers.openai.com/api/docs/models/gpt-5.6-luna">Luna 5.6</a>, <a href="https://developers.openai.com/api/docs/pricing">Luna 6</a> (checked 23 Sep 2026), <a href="https://platform.claude.com/docs/en/models/opus-5-5/overview">Opus 5.5</a> (checked 23 Sep 2026), <a href="https://openrouter.ai/meta/muse-spark-1.3">Muse Spark</a>, <a href="https://docs.x.ai/developers/models/grok-4.6">Grok 4.6</a>, <a href="https://openrouter.ai/x-ai/grok-4.7">Grok 4.7</a>, <a href="https://openrouter.ai/qwen/qwen3.8-max">Qwen</a>, <a href="https://openrouter.ai/deepseek/deepseek-v4-pro-0813">DeepSeek</a>, <a href="https://z.ai/blog/glm-5.3-flash">GLM-5.3 Flash</a>.</p>
           </section>
         </div>
       </div>
@@ -329,6 +329,9 @@
       { id: "claude-opus5-high", model: "Claude Opus 5", effort: "high", harness: "Claude Code", costBasis: "estimated", runs: [
         { id: "claude-opus5-high-01", core: 38, judgment: 9, ship: 91, final: 91, cost: 43.9582735, prodLoc: 4466, testLoc: 6384, runtimeSeconds: 7006.813 },
         { id: "claude-opus5-high-02", core: 39, judgment: 10, ship: 94, final: 94, cost: 51.3476205, prodLoc: 4393, testLoc: 6463, runtimeSeconds: 7835.688 }
+      ]},
+      { id: "claude-opus55-high", model: "Claude Opus 5.5", effort: "high", harness: "Claude Code", note: "one completed run", costBasis: "estimated", runs: [
+        { id: "claude-opus55-high-01", core: 38, judgment: 10, ship: 92, final: 92, cost: 21.2574908, prodLoc: 3580, testLoc: 6520, runtimeSeconds: 4280.666 }
       ]},
       { id: "meta-muse-spark-1-3-high", model: "Meta Muse Spark 1.3", effort: "high", harness: "OpenCode", note: "one completed run", costBasis: "recorded", runs: [
         { id: "meta-muse-spark-1-3-high-01", core: 29, judgment: 3, ship: 63, final: 74, cost: 53.60925695, prodLoc: 6506, testLoc: 2824, runtimeSeconds: 34003.452 }
@@ -436,6 +439,7 @@
       "luna-xhigh": [0, 0, 0, 0, 0],
       "gpt-5-5-xhigh": [0, 0, 0, 0, 0],
       "claude-opus5-high": [0, 0],
+      "claude-opus55-high": [0],
       "meta-muse-spark-1-3-high": [0],
       "grok-4-6-xhigh": [0, 0, 0, 0, 0],
       "grok-4-7-xhigh": [0],

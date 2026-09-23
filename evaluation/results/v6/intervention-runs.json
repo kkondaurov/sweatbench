@@ -38,7 +38,7 @@
   "container_cpus": 2,
   "container_memory_mib": 4096,
   "baseline_dataset": "accepted-runs.json",
-  "baseline_sha256": "4dbd6e9422d604e40c1f129d651e4cf9ccddc8601b6c6a4478e24aadd91ac3bc",
+  "baseline_sha256": "0f0966e5706899a1a8957168e1f12283055673dfc2ebac479bed32fbf2aeab5e",
   "baseline_ids": [
     "sol-high-01",
     "sol-high-02",

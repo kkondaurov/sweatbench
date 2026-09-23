@@ -1,7 +1,7 @@
 {
   "benchmark_commit": "5fda9a09255529b027cadf836c0c16c867a039e5",
-  "accepted_runs": 102,
-  "model_view_runs": 77,
+  "accepted_runs": 103,
+  "model_view_runs": 78,
   "additional_harness_runs": 25,
   "runs": [
     {
@@ -33644,6 +33644,1224 @@
         298
       ],
       "id": "claude-opus5-high-02"
+    },
+    {
+      "group": "claude-opus55-high",
+      "display": "Claude Opus 5.5 high / Claude Code",
+      "view": "models",
+      "sample": 1,
+      "label": "v6-claude-opus55-high-02",
+      "model": "claude-opus-5-5",
+      "effort": "high",
+      "harness": "claude",
+      "protocol": "handoff",
+      "candidate_tests": "endogenous",
+      "prompt_suffix": null,
+      "core_ship": 38,
+      "core_final": 38,
+      "maintenance_ship": 10,
+      "maintenance_final": 10,
+      "scenarios_ship": 92,
+      "scenarios_final": 92,
+      "prefix_depth": 1,
+      "regression_episodes": 0,
+      "final_failed_families": [
+        "hotel-credit-lifecycle"
+      ],
+      "ship_failed_families": [
+        "hotel-credit-lifecycle"
+      ],
+      "final_family_failures": {
+        "hotel-credit-lifecycle": [
+          "GroupStay.Private.HotelCreditTest::test credit consumes earliest expiry first and restored credit keeps its origin",
+          "GroupStay.Private.HotelCreditTest::test equal-expiry lots are consumed by source operation identifier"
+        ]
+      },
+      "ship_family_failures": {
+        "hotel-credit-lifecycle": [
+          "GroupStay.Private.HotelCreditTest::test credit consumes earliest expiry first and restored credit keeps its origin",
+          "GroupStay.Private.HotelCreditTest::test equal-expiry lots are consumed by source operation identifier"
+        ]
+      },
+      "family_timeline": [
+        {
+          "milestone": 1,
+          "families": [
+            {
+              "id": "deposit-pricing",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "payment-acceptance",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "cancellation-settlement",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "batch-protocol-validation",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "rescheduling",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "occ-core",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            }
+          ]
+        },
+        {
+          "milestone": 2,
+          "families": [
+            {
+              "id": "deposit-pricing",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "payment-acceptance",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "cancellation-settlement",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "batch-protocol-validation",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "rescheduling",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "occ-core",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "policy-versioning",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "hotel-credit-lifecycle",
+              "stage": 2,
+              "track": "core",
+              "status": "failed",
+              "failing_members": [
+                "GroupStay.Private.HotelCreditTest::test credit consumes earliest expiry first and restored credit keeps its origin",
+                "GroupStay.Private.HotelCreditTest::test equal-expiry lots are consumed by source operation identifier"
+              ]
+            },
+            {
+              "id": "refund-method-gate",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "occ-economics",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m2-migration",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            }
+          ]
+        },
+        {
+          "milestone": 3,
+          "families": [
+            {
+              "id": "deposit-pricing",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "payment-acceptance",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "cancellation-settlement",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "batch-protocol-validation",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "rescheduling",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "occ-core",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "policy-versioning",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "hotel-credit-lifecycle",
+              "stage": 2,
+              "track": "core",
+              "status": "failed",
+              "failing_members": [
+                "GroupStay.Private.HotelCreditTest::test credit consumes earliest expiry first and restored credit keeps its origin",
+                "GroupStay.Private.HotelCreditTest::test equal-expiry lots are consumed by source operation identifier"
+              ]
+            },
+            {
+              "id": "refund-method-gate",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "occ-economics",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m2-migration",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "durable-idempotency",
+              "stage": 3,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "occ-durability",
+              "stage": 3,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m3-restart",
+              "stage": 3,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            }
+          ]
+        },
+        {
+          "milestone": 4,
+          "families": [
+            {
+              "id": "deposit-pricing",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "payment-acceptance",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "cancellation-settlement",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "batch-protocol-validation",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "rescheduling",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "occ-core",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "policy-versioning",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "hotel-credit-lifecycle",
+              "stage": 2,
+              "track": "core",
+              "status": "failed",
+              "failing_members": [
+                "GroupStay.Private.HotelCreditTest::test credit consumes earliest expiry first and restored credit keeps its origin",
+                "GroupStay.Private.HotelCreditTest::test equal-expiry lots are consumed by source operation identifier"
+              ]
+            },
+            {
+              "id": "refund-method-gate",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "occ-economics",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m2-migration",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "durable-idempotency",
+              "stage": 3,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "occ-durability",
+              "stage": 3,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m3-restart",
+              "stage": 3,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "room-funding-allocation",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "partial-cancellation-settlement",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "payment-reduction",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "chargeback-reclassification",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "entitlement-clawback-shortfall",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "ledger-conservation-contract",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "payment-statement",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m4-migration",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            }
+          ]
+        },
+        {
+          "milestone": 5,
+          "families": [
+            {
+              "id": "deposit-pricing",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "payment-acceptance",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "cancellation-settlement",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "batch-protocol-validation",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "rescheduling",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "occ-core",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "policy-versioning",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "hotel-credit-lifecycle",
+              "stage": 2,
+              "track": "core",
+              "status": "failed",
+              "failing_members": [
+                "GroupStay.Private.HotelCreditTest::test credit consumes earliest expiry first and restored credit keeps its origin",
+                "GroupStay.Private.HotelCreditTest::test equal-expiry lots are consumed by source operation identifier"
+              ]
+            },
+            {
+              "id": "refund-method-gate",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "occ-economics",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m2-migration",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "durable-idempotency",
+              "stage": 3,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "occ-durability",
+              "stage": 3,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m3-restart",
+              "stage": 3,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "room-funding-allocation",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "partial-cancellation-settlement",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "payment-reduction",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "chargeback-reclassification",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "entitlement-clawback-shortfall",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "ledger-conservation-contract",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "payment-statement",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m4-migration",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "transfer-mechanics",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "multi-group-occ",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "cross-group-correction-provenance",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "transferred-credit-settlement",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "statement-evolution",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "transfer-invariance-isolation",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m5-migration",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            }
+          ]
+        },
+        {
+          "milestone": 6,
+          "families": [
+            {
+              "id": "deposit-pricing",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "payment-acceptance",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "cancellation-settlement",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "batch-protocol-validation",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "rescheduling",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "occ-core",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "policy-versioning",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "hotel-credit-lifecycle",
+              "stage": 2,
+              "track": "core",
+              "status": "failed",
+              "failing_members": [
+                "GroupStay.Private.HotelCreditTest::test credit consumes earliest expiry first and restored credit keeps its origin",
+                "GroupStay.Private.HotelCreditTest::test equal-expiry lots are consumed by source operation identifier"
+              ]
+            },
+            {
+              "id": "refund-method-gate",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "occ-economics",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m2-migration",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "durable-idempotency",
+              "stage": 3,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "occ-durability",
+              "stage": 3,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m3-restart",
+              "stage": 3,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "room-funding-allocation",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "partial-cancellation-settlement",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "payment-reduction",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "chargeback-reclassification",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "entitlement-clawback-shortfall",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "ledger-conservation-contract",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "payment-statement",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m4-migration",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "transfer-mechanics",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "multi-group-occ",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "cross-group-correction-provenance",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "transferred-credit-settlement",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "statement-evolution",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "transfer-invariance-isolation",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m5-migration",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "finance-report-correctness",
+              "stage": 6,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "reporting-inception",
+              "stage": 6,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "finance-effective-dating",
+              "stage": 6,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "finance-report-determinism",
+              "stage": 6,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "finance-report-atomicity",
+              "stage": 6,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m6-finance-upgrade",
+              "stage": 6,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            }
+          ]
+        },
+        {
+          "milestone": 7,
+          "families": [
+            {
+              "id": "deposit-pricing",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "payment-acceptance",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "cancellation-settlement",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "batch-protocol-validation",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "rescheduling",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "occ-core",
+              "stage": 1,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "policy-versioning",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "hotel-credit-lifecycle",
+              "stage": 2,
+              "track": "core",
+              "status": "failed",
+              "failing_members": [
+                "GroupStay.Private.HotelCreditTest::test credit consumes earliest expiry first and restored credit keeps its origin",
+                "GroupStay.Private.HotelCreditTest::test equal-expiry lots are consumed by source operation identifier"
+              ]
+            },
+            {
+              "id": "refund-method-gate",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "occ-economics",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m2-migration",
+              "stage": 2,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "durable-idempotency",
+              "stage": 3,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "occ-durability",
+              "stage": 3,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m3-restart",
+              "stage": 3,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "room-funding-allocation",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "partial-cancellation-settlement",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "payment-reduction",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "chargeback-reclassification",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "entitlement-clawback-shortfall",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "ledger-conservation-contract",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "payment-statement",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m4-migration",
+              "stage": 4,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "transfer-mechanics",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "multi-group-occ",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "cross-group-correction-provenance",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "transferred-credit-settlement",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "statement-evolution",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "transfer-invariance-isolation",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m5-migration",
+              "stage": 5,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "finance-report-correctness",
+              "stage": 6,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "reporting-inception",
+              "stage": 6,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "finance-effective-dating",
+              "stage": 6,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "finance-report-determinism",
+              "stage": 6,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "finance-report-atomicity",
+              "stage": 6,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m6-finance-upgrade",
+              "stage": 6,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "finance-close-immutability",
+              "stage": 7,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "late-adjustment-posting",
+              "stage": 7,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "finance-close-contract",
+              "stage": 7,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            },
+            {
+              "id": "m7-close-upgrade",
+              "stage": 7,
+              "track": "core",
+              "status": "passed",
+              "failing_members": []
+            }
+          ]
+        }
+      ],
+      "cost": 21.2574908,
+      "cost_basis": "estimated",
+      "prod_loc": 3580,
+      "test_loc": 6520,
+      "subagents": 0,
+      "runtime_seconds": 4280.666,
+      "structure": {
+        "production_files": 45,
+        "production_loc_measured": 3580,
+        "test_files": 21,
+        "test_loc_measured": 6520,
+        "largest_production_file": "lib/group_stay/partner_operations.ex",
+        "largest_production_file_loc": 1189,
+        "largest_production_share": 0.33212290502793296,
+        "largest_test_file": "test/group_stay_web/controllers/finance_report_test.exs",
+        "largest_test_file_loc": 866,
+        "migration_files": 7,
+        "ecto_schema_declarations": 10,
+        "repo_transaction_calls": 1,
+        "ecto_multi_mentions": 0
+      },
+      "candidate_test_declarations": 239,
+      "candidate_test_declarations_by_milestone": [
+        58,
+        99,
+        119,
+        166,
+        189,
+        219,
+        239
+      ],
+      "id": "claude-opus55-high-01"
     },
     {
       "group": "grok-4-6-xhigh",
@@ -130459,6 +131677,49 @@
       "most_common_final_failure_signature_count": 1
     },
     {
+      "group": "claude-opus55-high",
+      "display": "Claude Opus 5.5 high / Claude Code",
+      "view": "models",
+      "n": 1,
+      "mean_core": 38.0,
+      "core_standard_deviation": 0.0,
+      "range_core": [
+        38,
+        38
+      ],
+      "mean_maintenance": 10.0,
+      "maintenance_standard_deviation": 0.0,
+      "range_maintenance": [
+        10,
+        10
+      ],
+      "sweeps": 0,
+      "sweep_rate": 0.0,
+      "sweep_rate_wilson_95": [
+        0.0,
+        0.7934506856227626
+      ],
+      "median_cost": 21.2574908,
+      "mean_cost": 21.2574908,
+      "cost_basis": "estimated",
+      "mean_runtime_hours": 1.189073888888889,
+      "median_prod_loc": 3580,
+      "median_test_loc": 6520,
+      "mean_subagents": 0.0,
+      "median_production_files": 45,
+      "median_test_files": 21,
+      "median_candidate_test_declarations": 239,
+      "median_largest_production_share": 0.33212290502793296,
+      "median_migrations": 7,
+      "mean_ship_to_final_recovery": 0.0,
+      "mean_regression_episodes": 0.0,
+      "prefix_depths": {
+        "1": 1
+      },
+      "unique_final_failure_signatures": 1,
+      "most_common_final_failure_signature_count": 1
+    },
+    {
       "group": "grok-4-6-xhigh",
       "display": "Grok 4.6 xhigh / OpenCode",
       "view": "models",
@@ -131325,6 +132586,14 @@
       "median_cost": 12.29647
     },
     {
+      "group": "claude-opus55-high",
+      "display": "Claude Opus 5.5 high / Claude Code",
+      "n": 1,
+      "mean_core": 38.0,
+      "mean_maintenance": 10.0,
+      "median_cost": 21.2574908
+    },
+    {
       "group": "sol-high",
       "display": "GPT-5.6 Sol high / Codex CLI",
       "n": 5,
@@ -131381,6 +132650,14 @@
       "mean_core": 38.666666666666664,
       "mean_maintenance": 9.0,
       "median_cost": 12.29647
+    },
+    {
+      "group": "claude-opus55-high",
+      "display": "Claude Opus 5.5 high / Claude Code",
+      "n": 1,
+      "mean_core": 38.0,
+      "mean_maintenance": 10.0,
+      "median_cost": 21.2574908
     },
     {
       "group": "sol-high",
@@ -131441,6 +132718,14 @@
       "median_cost": 12.29647
     },
     {
+      "group": "claude-opus55-high",
+      "display": "Claude Opus 5.5 high / Claude Code",
+      "n": 1,
+      "mean_core": 38.0,
+      "mean_maintenance": 10.0,
+      "median_cost": 21.2574908
+    },
+    {
       "group": "sol-high",
       "display": "GPT-5.6 Sol high / Codex CLI",
       "n": 5,
@@ -131487,7 +132772,7 @@
       "stage": 1,
       "track": "core",
       "failed_runs": 2,
-      "failure_rate": 0.0196078431372549,
+      "failure_rate": 0.019417475728155338,
       "by_group": {
         "sol-medium": 1,
         "luna-xhigh": 1
@@ -131521,14 +132806,15 @@
       "family": "hotel-credit-lifecycle",
       "stage": 2,
       "track": "core",
-      "failed_runs": 42,
-      "failure_rate": 0.4117647058823529,
+      "failed_runs": 43,
+      "failure_rate": 0.4174757281553398,
       "by_group": {
         "sol-medium": 1,
         "terra-xhigh": 4,
         "luna-xhigh": 4,
         "gpt-5-5-xhigh": 2,
         "claude-opus5-high": 1,
+        "claude-opus55-high": 1,
         "qwen3-8-max-xhigh": 3,
         "deepseek-v4-pro-0813-max": 4,
         "kimi-k3-max": 1,
@@ -131564,7 +132850,7 @@
       "stage": 2,
       "track": "core",
       "failed_runs": 2,
-      "failure_rate": 0.0196078431372549,
+      "failure_rate": 0.019417475728155338,
       "by_group": {
         "luna-xhigh": 1,
         "kimi-k3-max": 1
@@ -131575,7 +132861,7 @@
       "stage": 3,
       "track": "core",
       "failed_runs": 1,
-      "failure_rate": 0.00980392156862745,
+      "failure_rate": 0.009708737864077669,
       "by_group": {
         "luna-xhigh": 1
       }
@@ -131593,7 +132879,7 @@
       "stage": 3,
       "track": "core",
       "failed_runs": 2,
-      "failure_rate": 0.0196078431372549,
+      "failure_rate": 0.019417475728155338,
       "by_group": {
         "luna-xhigh": 1,
         "kimi-k3-max": 1
@@ -131604,7 +132890,7 @@
       "stage": 4,
       "track": "core",
       "failed_runs": 2,
-      "failure_rate": 0.0196078431372549,
+      "failure_rate": 0.019417475728155338,
       "by_group": {
         "luna-xhigh": 1,
         "glm-5-3-high": 1
@@ -131615,7 +132901,7 @@
       "stage": 4,
       "track": "core",
       "failed_runs": 1,
-      "failure_rate": 0.00980392156862745,
+      "failure_rate": 0.009708737864077669,
       "by_group": {
         "meta-muse-spark-1-3-high": 1
       }
@@ -131625,7 +132911,7 @@
       "stage": 4,
       "track": "core",
       "failed_runs": 4,
-      "failure_rate": 0.0392156862745098,
+      "failure_rate": 0.038834951456310676,
       "by_group": {
         "terra-xhigh": 1,
         "luna-xhigh": 1,
@@ -131638,7 +132924,7 @@
       "stage": 4,
       "track": "core",
       "failed_runs": 5,
-      "failure_rate": 0.049019607843137254,
+      "failure_rate": 0.04854368932038835,
       "by_group": {
         "luna-xhigh": 1,
         "qwen3-8-max-xhigh": 1,
@@ -131651,7 +132937,7 @@
       "stage": 4,
       "track": "core",
       "failed_runs": 4,
-      "failure_rate": 0.0392156862745098,
+      "failure_rate": 0.038834951456310676,
       "by_group": {
         "qwen3-8-max-xhigh": 1,
         "ox-alpha-max": 2,
@@ -131671,7 +132957,7 @@
       "stage": 4,
       "track": "core",
       "failed_runs": 4,
-      "failure_rate": 0.0392156862745098,
+      "failure_rate": 0.038834951456310676,
       "by_group": {
         "qwen3-8-max-xhigh": 1,
         "ox-alpha-high": 1,
@@ -131684,7 +132970,7 @@
       "stage": 4,
       "track": "core",
       "failed_runs": 34,
-      "failure_rate": 0.3333333333333333,
+      "failure_rate": 0.3300970873786408,
       "by_group": {
         "terra-xhigh": 1,
         "luna-xhigh": 2,
@@ -131710,7 +132996,7 @@
       "stage": 5,
       "track": "core",
       "failed_runs": 1,
-      "failure_rate": 0.00980392156862745,
+      "failure_rate": 0.009708737864077669,
       "by_group": {
         "glm-5-3-high": 1
       }
@@ -131720,7 +133006,7 @@
       "stage": 5,
       "track": "core",
       "failed_runs": 6,
-      "failure_rate": 0.058823529411764705,
+      "failure_rate": 0.05825242718446602,
       "by_group": {
         "luna-xhigh": 1,
         "deepseek-v4-pro-0813-max": 1,
@@ -131735,7 +133021,7 @@
       "stage": 5,
       "track": "core",
       "failed_runs": 2,
-      "failure_rate": 0.0196078431372549,
+      "failure_rate": 0.019417475728155338,
       "by_group": {
         "luna-xhigh": 1,
         "grok-4-6-xhigh": 1
@@ -131770,7 +133056,7 @@
       "stage": 5,
       "track": "core",
       "failed_runs": 8,
-      "failure_rate": 0.0784313725490196,
+      "failure_rate": 0.07766990291262135,
       "by_group": {
         "terra-xhigh": 1,
         "luna-xhigh": 2,
@@ -131784,7 +133070,7 @@
       "stage": 6,
       "track": "core",
       "failed_runs": 10,
-      "failure_rate": 0.09803921568627451,
+      "failure_rate": 0.0970873786407767,
       "by_group": {
         "luna-xhigh": 3,
         "qwen3-8-max-xhigh": 1,
@@ -131808,7 +133094,7 @@
       "stage": 6,
       "track": "core",
       "failed_runs": 6,
-      "failure_rate": 0.058823529411764705,
+      "failure_rate": 0.05825242718446602,
       "by_group": {
         "luna-xhigh": 2,
         "qwen3-8-max-xhigh": 1,
@@ -131821,7 +133107,7 @@
       "stage": 6,
       "track": "core",
       "failed_runs": 20,
-      "failure_rate": 0.19607843137254902,
+      "failure_rate": 0.1941747572815534,
       "by_group": {
         "luna-xhigh": 3,
         "qwen3-8-max-xhigh": 1,
@@ -131849,7 +133135,7 @@
       "stage": 6,
       "track": "core",
       "failed_runs": 5,
-      "failure_rate": 0.049019607843137254,
+      "failure_rate": 0.04854368932038835,
       "by_group": {
         "luna-xhigh": 1,
         "kimi-k3-max": 1,
@@ -131863,7 +133149,7 @@
       "stage": 7,
       "track": "core",
       "failed_runs": 12,
-      "failure_rate": 0.11764705882352941,
+      "failure_rate": 0.11650485436893204,
       "by_group": {
         "deepseek-v4-pro-0813-max": 2,
         "glm-5-3-high": 2,
@@ -131880,7 +133166,7 @@
       "stage": 7,
       "track": "core",
       "failed_runs": 66,
-      "failure_rate": 0.6470588235294118,
+      "failure_rate": 0.6407766990291263,
       "by_group": {
         "sol-high": 1,
         "sol-medium": 2,
@@ -131916,7 +133202,7 @@
       "stage": 7,
       "track": "core",
       "failed_runs": 3,
-      "failure_rate": 0.029411764705882353,
+      "failure_rate": 0.02912621359223301,
       "by_group": {
         "luna-xhigh": 1,
         "glm-5-3-high": 1,
@@ -131928,7 +133214,7 @@
       "stage": 2,
       "track": "judgment",
       "failed_runs": 2,
-      "failure_rate": 0.0196078431372549,
+      "failure_rate": 0.019417475728155338,
       "by_group": {
         "luna-xhigh": 1,
         "kimi-k3-max": 1
@@ -131939,7 +133225,7 @@
       "stage": 4,
       "track": "judgment",
       "failed_runs": 32,
-      "failure_rate": 0.3137254901960784,
+      "failure_rate": 0.3106796116504854,
       "by_group": {
         "terra-xhigh": 1,
         "luna-xhigh": 2,
@@ -131965,7 +133251,7 @@
       "stage": 5,
       "track": "judgment",
       "failed_runs": 9,
-      "failure_rate": 0.08823529411764706,
+      "failure_rate": 0.08737864077669903,
       "by_group": {
         "terra-xhigh": 2,
         "luna-xhigh": 1,
@@ -131980,7 +133266,7 @@
       "stage": 6,
       "track": "judgment",
       "failed_runs": 28,
-      "failure_rate": 0.27450980392156865,
+      "failure_rate": 0.27184466019417475,
       "by_group": {
         "sol-medium": 1,
         "luna-xhigh": 1,
@@ -132006,7 +133292,7 @@
       "stage": 7,
       "track": "judgment",
       "failed_runs": 19,
-      "failure_rate": 0.18627450980392157,
+      "failure_rate": 0.18446601941747573,
       "by_group": {
         "sol-medium": 1,
         "terra-xhigh": 2,
@@ -132027,7 +133313,7 @@
       "stage": 7,
       "track": "judgment",
       "failed_runs": 64,
-      "failure_rate": 0.6274509803921569,
+      "failure_rate": 0.6213592233009708,
       "by_group": {
         "sol-high": 1,
         "sol-medium": 2,
@@ -132063,7 +133349,7 @@
       "stage": 6,
       "track": "judgment",
       "failed_runs": 14,
-      "failure_rate": 0.13725490196078433,
+      "failure_rate": 0.13592233009708737,
       "by_group": {
         "luna-xhigh": 3,
         "claude-opus5-high": 1,
@@ -132090,7 +133376,7 @@
       "stage": 7,
       "track": "judgment",
       "failed_runs": 67,
-      "failure_rate": 0.6568627450980392,
+      "failure_rate": 0.6504854368932039,
       "by_group": {
         "sol-high": 1,
         "sol-medium": 2,
@@ -132144,7 +133430,7 @@
       "stage": 1,
       "track": "core",
       "failed_runs": 2,
-      "failure_rate": 0.025974025974025976,
+      "failure_rate": 0.02564102564102564,
       "by_group": {
         "sol-medium": 1,
         "luna-xhigh": 1
@@ -132178,14 +133464,15 @@
       "family": "hotel-credit-lifecycle",
       "stage": 2,
       "track": "core",
-      "failed_runs": 32,
-      "failure_rate": 0.4155844155844156,
+      "failed_runs": 33,
+      "failure_rate": 0.4230769230769231,
       "by_group": {
         "sol-medium": 1,
         "terra-xhigh": 4,
         "luna-xhigh": 4,
         "gpt-5-5-xhigh": 2,
         "claude-opus5-high": 1,
+        "claude-opus55-high": 1,
         "qwen3-8-max-xhigh": 3,
         "deepseek-v4-pro-0813-max": 4,
         "kimi-k3-max": 1,
@@ -132217,7 +133504,7 @@
       "stage": 2,
       "track": "core",
       "failed_runs": 2,
-      "failure_rate": 0.025974025974025976,
+      "failure_rate": 0.02564102564102564,
       "by_group": {
         "luna-xhigh": 1,
         "kimi-k3-max": 1
@@ -132228,7 +133515,7 @@
       "stage": 3,
       "track": "core",
       "failed_runs": 1,
-      "failure_rate": 0.012987012987012988,
+      "failure_rate": 0.01282051282051282,
       "by_group": {
         "luna-xhigh": 1
       }
@@ -132246,7 +133533,7 @@
       "stage": 3,
       "track": "core",
       "failed_runs": 2,
-      "failure_rate": 0.025974025974025976,
+      "failure_rate": 0.02564102564102564,
       "by_group": {
         "luna-xhigh": 1,
         "kimi-k3-max": 1
@@ -132257,7 +133544,7 @@
       "stage": 4,
       "track": "core",
       "failed_runs": 2,
-      "failure_rate": 0.025974025974025976,
+      "failure_rate": 0.02564102564102564,
       "by_group": {
         "luna-xhigh": 1,
         "glm-5-3-high": 1
@@ -132268,7 +133555,7 @@
       "stage": 4,
       "track": "core",
       "failed_runs": 1,
-      "failure_rate": 0.012987012987012988,
+      "failure_rate": 0.01282051282051282,
       "by_group": {
         "meta-muse-spark-1-3-high": 1
       }
@@ -132278,7 +133565,7 @@
       "stage": 4,
       "track": "core",
       "failed_runs": 3,
-      "failure_rate": 0.03896103896103896,
+      "failure_rate": 0.038461538461538464,
       "by_group": {
         "terra-xhigh": 1,
         "luna-xhigh": 1,
@@ -132290,7 +133577,7 @@
       "stage": 4,
       "track": "core",
       "failed_runs": 5,
-      "failure_rate": 0.06493506493506493,
+      "failure_rate": 0.0641025641025641,
       "by_group": {
         "luna-xhigh": 1,
         "qwen3-8-max-xhigh": 1,
@@ -132303,7 +133590,7 @@
       "stage": 4,
       "track": "core",
       "failed_runs": 4,
-      "failure_rate": 0.05194805194805195,
+      "failure_rate": 0.05128205128205128,
       "by_group": {
         "qwen3-8-max-xhigh": 1,
         "ox-alpha-max": 2,
@@ -132323,7 +133610,7 @@
       "stage": 4,
       "track": "core",
       "failed_runs": 4,
-      "failure_rate": 0.05194805194805195,
+      "failure_rate": 0.05128205128205128,
       "by_group": {
         "qwen3-8-max-xhigh": 1,
         "ox-alpha-high": 1,
@@ -132336,7 +133623,7 @@
       "stage": 4,
       "track": "core",
       "failed_runs": 30,
-      "failure_rate": 0.38961038961038963,
+      "failure_rate": 0.38461538461538464,
       "by_group": {
         "terra-xhigh": 1,
         "luna-xhigh": 2,
@@ -132359,7 +133646,7 @@
       "stage": 5,
       "track": "core",
       "failed_runs": 1,
-      "failure_rate": 0.012987012987012988,
+      "failure_rate": 0.01282051282051282,
       "by_group": {
         "glm-5-3-high": 1
       }
@@ -132369,7 +133656,7 @@
       "stage": 5,
       "track": "core",
       "failed_runs": 5,
-      "failure_rate": 0.06493506493506493,
+      "failure_rate": 0.0641025641025641,
       "by_group": {
         "luna-xhigh": 1,
         "deepseek-v4-pro-0813-max": 1,
@@ -132383,7 +133670,7 @@
       "stage": 5,
       "track": "core",
       "failed_runs": 2,
-      "failure_rate": 0.025974025974025976,
+      "failure_rate": 0.02564102564102564,
       "by_group": {
         "luna-xhigh": 1,
         "grok-4-6-xhigh": 1
@@ -132418,7 +133705,7 @@
       "stage": 5,
       "track": "core",
       "failed_runs": 5,
-      "failure_rate": 0.06493506493506493,
+      "failure_rate": 0.0641025641025641,
       "by_group": {
         "terra-xhigh": 1,
         "luna-xhigh": 2,
@@ -132430,7 +133717,7 @@
       "stage": 6,
       "track": "core",
       "failed_runs": 8,
-      "failure_rate": 0.1038961038961039,
+      "failure_rate": 0.10256410256410256,
       "by_group": {
         "luna-xhigh": 3,
         "qwen3-8-max-xhigh": 1,
@@ -132452,7 +133739,7 @@
       "stage": 6,
       "track": "core",
       "failed_runs": 6,
-      "failure_rate": 0.07792207792207792,
+      "failure_rate": 0.07692307692307693,
       "by_group": {
         "luna-xhigh": 2,
         "qwen3-8-max-xhigh": 1,
@@ -132465,7 +133752,7 @@
       "stage": 6,
       "track": "core",
       "failed_runs": 17,
-      "failure_rate": 0.22077922077922077,
+      "failure_rate": 0.21794871794871795,
       "by_group": {
         "luna-xhigh": 3,
         "qwen3-8-max-xhigh": 1,
@@ -132490,7 +133777,7 @@
       "stage": 6,
       "track": "core",
       "failed_runs": 4,
-      "failure_rate": 0.05194805194805195,
+      "failure_rate": 0.05128205128205128,
       "by_group": {
         "luna-xhigh": 1,
         "kimi-k3-max": 1,
@@ -132503,7 +133790,7 @@
       "stage": 7,
       "track": "core",
       "failed_runs": 9,
-      "failure_rate": 0.11688311688311688,
+      "failure_rate": 0.11538461538461539,
       "by_group": {
         "deepseek-v4-pro-0813-max": 2,
         "glm-5-3-high": 2,
@@ -132517,7 +133804,7 @@
       "stage": 7,
       "track": "core",
       "failed_runs": 53,
-      "failure_rate": 0.6883116883116883,
+      "failure_rate": 0.6794871794871795,
       "by_group": {
         "sol-high": 1,
         "sol-medium": 2,
@@ -132549,7 +133836,7 @@
       "stage": 7,
       "track": "core",
       "failed_runs": 2,
-      "failure_rate": 0.025974025974025976,
+      "failure_rate": 0.02564102564102564,
       "by_group": {
         "luna-xhigh": 1,
         "glm-5-3-high": 1
@@ -132560,7 +133847,7 @@
       "stage": 2,
       "track": "judgment",
       "failed_runs": 2,
-      "failure_rate": 0.025974025974025976,
+      "failure_rate": 0.02564102564102564,
       "by_group": {
         "luna-xhigh": 1,
         "kimi-k3-max": 1
@@ -132571,7 +133858,7 @@
       "stage": 4,
       "track": "judgment",
       "failed_runs": 28,
-      "failure_rate": 0.36363636363636365,
+      "failure_rate": 0.358974358974359,
       "by_group": {
         "terra-xhigh": 1,
         "luna-xhigh": 2,
@@ -132594,7 +133881,7 @@
       "stage": 5,
       "track": "judgment",
       "failed_runs": 6,
-      "failure_rate": 0.07792207792207792,
+      "failure_rate": 0.07692307692307693,
       "by_group": {
         "terra-xhigh": 2,
         "luna-xhigh": 1,
@@ -132607,7 +133894,7 @@
       "stage": 6,
       "track": "judgment",
       "failed_runs": 21,
-      "failure_rate": 0.2727272727272727,
+      "failure_rate": 0.2692307692307692,
       "by_group": {
         "sol-medium": 1,
         "luna-xhigh": 1,
@@ -132629,7 +133916,7 @@
       "stage": 7,
       "track": "judgment",
       "failed_runs": 12,
-      "failure_rate": 0.15584415584415584,
+      "failure_rate": 0.15384615384615385,
       "by_group": {
         "sol-medium": 1,
         "terra-xhigh": 2,
@@ -132646,7 +133933,7 @@
       "stage": 7,
       "track": "judgment",
       "failed_runs": 51,
-      "failure_rate": 0.6623376623376623,
+      "failure_rate": 0.6538461538461539,
       "by_group": {
         "sol-high": 1,
         "sol-medium": 2,
@@ -132678,7 +133965,7 @@
       "stage": 6,
       "track": "judgment",
       "failed_runs": 12,
-      "failure_rate": 0.15584415584415584,
+      "failure_rate": 0.15384615384615385,
       "by_group": {
         "luna-xhigh": 3,
         "claude-opus5-high": 1,
@@ -132704,7 +133991,7 @@
       "stage": 7,
       "track": "judgment",
       "failed_runs": 53,
-      "failure_rate": 0.6883116883116883,
+      "failure_rate": 0.6794871794871795,
       "by_group": {
         "sol-high": 1,
         "sol-medium": 2,
@@ -132728,7 +134015,7 @@
     {
       "scenario": "GroupStay.Private.JudgmentCompositionSevenTest::test revived expired credit can be consumed without rewriting or netting its history",
       "failed_runs": 67,
-      "failure_rate": 0.6568627450980392,
+      "failure_rate": 0.6504854368932039,
       "by_group": {
         "sol-high": 1,
         "sol-medium": 2,
@@ -132754,7 +134041,7 @@
     {
       "scenario": "GroupStay.Private.PeriodCloseTest::test a late application restores liability without rewriting a closed credit expiry",
       "failed_runs": 64,
-      "failure_rate": 0.6274509803921569,
+      "failure_rate": 0.6213592233009708,
       "by_group": {
         "sol-high": 1,
         "sol-medium": 2,
@@ -132779,14 +134066,15 @@
     },
     {
       "scenario": "GroupStay.Private.HotelCreditTest::test credit consumes earliest expiry first and restored credit keeps its origin",
-      "failed_runs": 42,
-      "failure_rate": 0.4117647058823529,
+      "failed_runs": 43,
+      "failure_rate": 0.4174757281553398,
       "by_group": {
         "sol-medium": 1,
         "terra-xhigh": 4,
         "luna-xhigh": 4,
         "gpt-5-5-xhigh": 2,
         "claude-opus5-high": 1,
+        "claude-opus55-high": 1,
         "qwen3-8-max-xhigh": 3,
         "deepseek-v4-pro-0813-max": 4,
         "kimi-k3-max": 1,
@@ -132803,14 +134091,15 @@
     },
     {
       "scenario": "GroupStay.Private.HotelCreditTest::test equal-expiry lots are consumed by source operation identifier",
-      "failed_runs": 40,
-      "failure_rate": 0.39215686274509803,
+      "failed_runs": 41,
+      "failure_rate": 0.39805825242718446,
       "by_group": {
         "sol-medium": 1,
         "terra-xhigh": 4,
         "luna-xhigh": 3,
         "gpt-5-5-xhigh": 2,
         "claude-opus5-high": 1,
+        "claude-opus55-high": 1,
         "qwen3-8-max-xhigh": 3,
         "deepseek-v4-pro-0813-max": 3,
         "kimi-k3-max": 1,
@@ -132828,7 +134117,7 @@
     {
       "scenario": "system:payment-reduction-upgrade",
       "failed_runs": 34,
-      "failure_rate": 0.3333333333333333,
+      "failure_rate": 0.3300970873786408,
       "by_group": {
         "terra-xhigh": 1,
         "luna-xhigh": 2,
@@ -132852,7 +134141,7 @@
     {
       "scenario": "system:room-history-upgrade",
       "failed_runs": 32,
-      "failure_rate": 0.3137254901960784,
+      "failure_rate": 0.3106796116504854,
       "by_group": {
         "terra-xhigh": 1,
         "luna-xhigh": 2,
@@ -132876,7 +134165,7 @@
     {
       "scenario": "system:projection-history-upgrade",
       "failed_runs": 28,
-      "failure_rate": 0.27450980392156865,
+      "failure_rate": 0.27184466019417475,
       "by_group": {
         "sol-medium": 1,
         "luna-xhigh": 1,
@@ -132900,7 +134189,7 @@
     {
       "scenario": "GroupStay.Private.DailyFinanceReportTest::test unused credit expiry appears on the first day after its expiry without an operation",
       "failed_runs": 20,
-      "failure_rate": 0.19607843137254902,
+      "failure_rate": 0.1941747572815534,
       "by_group": {
         "luna-xhigh": 3,
         "qwen3-8-max-xhigh": 1,
@@ -132918,7 +134207,7 @@
     {
       "scenario": "system:close-history-upgrade",
       "failed_runs": 19,
-      "failure_rate": 0.18627450980392157,
+      "failure_rate": 0.18446601941747573,
       "by_group": {
         "sol-medium": 1,
         "terra-xhigh": 2,
@@ -132937,7 +134226,7 @@
     {
       "scenario": "GroupStay.Private.JudgmentCompositionSixTest::test restored transferred credit absorbs its original lot shortfall before availability",
       "failed_runs": 14,
-      "failure_rate": 0.13725490196078433,
+      "failure_rate": 0.13592233009708737,
       "by_group": {
         "luna-xhigh": 3,
         "claude-opus5-high": 1,
@@ -132954,7 +134243,7 @@
     {
       "scenario": "GroupStay.Private.PeriodCloseTest::test closing freezes credit expiry and classification figures through the cutoff",
       "failed_runs": 12,
-      "failure_rate": 0.11764705882352941,
+      "failure_rate": 0.11650485436893204,
       "by_group": {
         "deepseek-v4-pro-0813-max": 2,
         "glm-5-3-high": 2,
@@ -132969,7 +134258,7 @@
     {
       "scenario": "GroupStay.Private.DailyFinanceReportTest::test credit issuance and consumption reconcile the company liability",
       "failed_runs": 10,
-      "failure_rate": 0.09803921568627451,
+      "failure_rate": 0.0970873786407767,
       "by_group": {
         "luna-xhigh": 3,
         "qwen3-8-max-xhigh": 1,
@@ -132983,7 +134272,7 @@
     {
       "scenario": "GroupStay.Private.PeriodCloseTest::test same-batch close ordering separates an ordinary movement from a late one",
       "failed_runs": 9,
-      "failure_rate": 0.08823529411764706,
+      "failure_rate": 0.08737864077669903,
       "by_group": {
         "luna-xhigh": 2,
         "qwen3-8-max-xhigh": 1,
@@ -132996,7 +134285,7 @@
     {
       "scenario": "system:payment-history-upgrade",
       "failed_runs": 9,
-      "failure_rate": 0.08823529411764706,
+      "failure_rate": 0.08737864077669903,
       "by_group": {
         "terra-xhigh": 2,
         "luna-xhigh": 1,
@@ -133009,7 +134298,7 @@
     {
       "scenario": "system:transfer-upgrade",
       "failed_runs": 8,
-      "failure_rate": 0.0784313725490196,
+      "failure_rate": 0.07766990291262135,
       "by_group": {
         "terra-xhigh": 1,
         "luna-xhigh": 2,
@@ -133021,7 +134310,7 @@
     {
       "scenario": "GroupStay.Private.DailyFinanceReportTest::test a chargeback reports signed reversal classifications without inventing held cash",
       "failed_runs": 6,
-      "failure_rate": 0.058823529411764705,
+      "failure_rate": 0.05825242718446602,
       "by_group": {
         "luna-xhigh": 2,
         "qwen3-8-max-xhigh": 1,
@@ -133032,7 +134321,7 @@
     {
       "scenario": "GroupStay.Private.PeriodCloseTest::test an adjustment keeps its first-open posting date across later closes",
       "failed_runs": 6,
-      "failure_rate": 0.058823529411764705,
+      "failure_rate": 0.05825242718446602,
       "by_group": {
         "luna-xhigh": 2,
         "qwen3-8-max-xhigh": 1,
@@ -133043,7 +134332,7 @@
     {
       "scenario": "GroupStay.Private.DepositTransferTest::test corrections bump every group whose funding they change while guarding the origin",
       "failed_runs": 5,
-      "failure_rate": 0.049019607843137254,
+      "failure_rate": 0.04854368932038835,
       "by_group": {
         "deepseek-v4-pro-0813-max": 1,
         "kimi-k3-max": 1,
@@ -133055,7 +134344,7 @@
     {
       "scenario": "system:finance-reporting-upgrade",
       "failed_runs": 5,
-      "failure_rate": 0.049019607843137254,
+      "failure_rate": 0.04854368932038835,
       "by_group": {
         "luna-xhigh": 1,
         "kimi-k3-max": 1,
@@ -133067,7 +134356,7 @@
     {
       "scenario": "GroupStay.Private.ChargebackTest::test cumulative-difference attribution exposes only the spent entitlement as shortfall",
       "failed_runs": 4,
-      "failure_rate": 0.0392156862745098,
+      "failure_rate": 0.038834951456310676,
       "by_group": {
         "qwen3-8-max-xhigh": 1,
         "ox-alpha-max": 2,
@@ -133077,7 +134366,7 @@
     {
       "scenario": "GroupStay.Private.ChargebackTest::test one partially reduced payment can be clawed from several lots without rewriting history",
       "failed_runs": 4,
-      "failure_rate": 0.0392156862745098,
+      "failure_rate": 0.038834951456310676,
       "by_group": {
         "qwen3-8-max-xhigh": 1,
         "ox-alpha-max": 2,
@@ -133087,7 +134376,7 @@
     {
       "scenario": "GroupStay.Private.ChargebackTest::test refunded and converted portions are reclassified without replaying settlement",
       "failed_runs": 4,
-      "failure_rate": 0.0392156862745098,
+      "failure_rate": 0.038834951456310676,
       "by_group": {
         "qwen3-8-max-xhigh": 1,
         "ox-alpha-max": 2,
@@ -133097,7 +134386,7 @@
     {
       "scenario": "GroupStay.Private.PaymentStatementTest::test a payment statement reconciles every cash disposition with group and ledger views",
       "failed_runs": 4,
-      "failure_rate": 0.0392156862745098,
+      "failure_rate": 0.038834951456310676,
       "by_group": {
         "qwen3-8-max-xhigh": 1,
         "ox-alpha-high": 1,
@@ -133108,7 +134397,7 @@
     {
       "scenario": "GroupStay.Private.PeriodCloseTest::test an old-dated payment posts as a visible late adjustment on the first open day",
       "failed_runs": 3,
-      "failure_rate": 0.029411764705882353,
+      "failure_rate": 0.02912621359223301,
       "by_group": {
         "ox-alpha-max": 2,
         "meta-muse-spark-1-3-high": 1
@@ -133117,7 +134406,7 @@
     {
       "scenario": "system:finance-close-upgrade",
       "failed_runs": 3,
-      "failure_rate": 0.029411764705882353,
+      "failure_rate": 0.02912621359223301,
       "by_group": {
         "luna-xhigh": 1,
         "glm-5-3-high": 1,
@@ -133127,7 +134416,7 @@
     {
       "scenario": "GroupStay.Private.ChargebackTest::test non-refundable consumption removes the active-credit shortfall cap",
       "failed_runs": 2,
-      "failure_rate": 0.0196078431372549,
+      "failure_rate": 0.019417475728155338,
       "by_group": {
         "qwen3-8-max-xhigh": 1,
         "ox-alpha-max": 1
@@ -133136,7 +134425,7 @@
     {
       "scenario": "GroupStay.Private.ComposedRoomAccountingTest::test partial cancellation reallocates around cancelled rooms and can exhaust a group",
       "failed_runs": 2,
-      "failure_rate": 0.0196078431372549,
+      "failure_rate": 0.019417475728155338,
       "by_group": {
         "luna-xhigh": 1,
         "glm-5-3-high": 1
@@ -133145,7 +134434,7 @@
     {
       "scenario": "GroupStay.Private.PaymentReductionTest::test a payment retains reducible provenance after one funded room is settled",
       "failed_runs": 2,
-      "failure_rate": 0.0196078431372549,
+      "failure_rate": 0.019417475728155338,
       "by_group": {
         "luna-xhigh": 1,
         "meta-muse-spark-1-3-high": 1
@@ -133154,7 +134443,7 @@
     {
       "scenario": "GroupStay.Private.PaymentReductionTest::test reduction errors distinguish existence, permanence, amount, and capacity",
       "failed_runs": 2,
-      "failure_rate": 0.0196078431372549,
+      "failure_rate": 0.019417475728155338,
       "by_group": {
         "terra-xhigh": 1,
         "sol-medium-opencode": 1
@@ -133163,7 +134452,7 @@
     {
       "scenario": "system:idempotency-restart",
       "failed_runs": 2,
-      "failure_rate": 0.0196078431372549,
+      "failure_rate": 0.019417475728155338,
       "by_group": {
         "luna-xhigh": 1,
         "kimi-k3-max": 1
@@ -133172,7 +134461,7 @@
     {
       "scenario": "system:policy-history-upgrade",
       "failed_runs": 2,
-      "failure_rate": 0.0196078431372549,
+      "failure_rate": 0.019417475728155338,
       "by_group": {
         "luna-xhigh": 1,
         "kimi-k3-max": 1
@@ -133181,7 +134470,7 @@
     {
       "scenario": "system:policy-upgrade",
       "failed_runs": 2,
-      "failure_rate": 0.0196078431372549,
+      "failure_rate": 0.019417475728155338,
       "by_group": {
         "luna-xhigh": 1,
         "kimi-k3-max": 1
@@ -133190,7 +134479,7 @@
     {
       "scenario": "GroupStay.Private.ChargebackTest::test a chargeback composes with reductions and reopens held deposit",
       "failed_runs": 1,
-      "failure_rate": 0.00980392156862745,
+      "failure_rate": 0.009708737864077669,
       "by_group": {
         "luna-xhigh": 1
       }
@@ -133198,7 +134487,7 @@
     {
       "scenario": "GroupStay.Private.ComposedDurabilityTest::test retries preserve cancellation and credit side effects",
       "failed_runs": 1,
-      "failure_rate": 0.00980392156862745,
+      "failure_rate": 0.009708737864077669,
       "by_group": {
         "luna-xhigh": 1
       }
@@ -133206,7 +134495,7 @@
     {
       "scenario": "GroupStay.Private.DepositTransferTest::test a chargeback reclassifies one payment across groups without touching other funding",
       "failed_runs": 1,
-      "failure_rate": 0.00980392156862745,
+      "failure_rate": 0.009708737864077669,
       "by_group": {
         "luna-xhigh": 1
       }
@@ -133214,7 +134503,7 @@
     {
       "scenario": "GroupStay.Private.DepositTransferTest::test a reduction follows one payment across groups in reverse allocation order",
       "failed_runs": 1,
-      "failure_rate": 0.00980392156862745,
+      "failure_rate": 0.009708737864077669,
       "by_group": {
         "grok-4-6-xhigh": 1
       }
@@ -133222,7 +134511,7 @@
     {
       "scenario": "GroupStay.Private.DepositTransferTest::test a transfer guards both groups and advances both revisions exactly once",
       "failed_runs": 1,
-      "failure_rate": 0.00980392156862745,
+      "failure_rate": 0.009708737864077669,
       "by_group": {
         "luna-xhigh": 1
       }
@@ -133230,7 +134519,7 @@
     {
       "scenario": "GroupStay.Private.DepositTransferTest::test transfers draw held funding in reverse allocation order and fill destination rooms in order",
       "failed_runs": 1,
-      "failure_rate": 0.00980392156862745,
+      "failure_rate": 0.009708737864077669,
       "by_group": {
         "glm-5-3-high": 1
       }
@@ -133238,7 +134527,7 @@
     {
       "scenario": "GroupStay.Private.LaunchDepositApiTest::test a rejected operation has no partial effect and later operations continue",
       "failed_runs": 1,
-      "failure_rate": 0.00980392156862745,
+      "failure_rate": 0.009708737864077669,
       "by_group": {
         "sol-medium": 1
       }
@@ -133246,7 +134535,7 @@
     {
       "scenario": "GroupStay.Private.LaunchDepositApiTest::test an unknown operation is rejected and does not stop the batch",
       "failed_runs": 1,
-      "failure_rate": 0.00980392156862745,
+      "failure_rate": 0.009708737864077669,
       "by_group": {
         "luna-xhigh": 1
       }
@@ -133254,7 +134543,7 @@
     {
       "scenario": "GroupStay.Private.PartialRoomCancellationTest::test partial settlement returns only the selected rooms' cash and credit",
       "failed_runs": 1,
-      "failure_rate": 0.00980392156862745,
+      "failure_rate": 0.009708737864077669,
       "by_group": {
         "meta-muse-spark-1-3-high": 1
       }
@@ -133262,7 +134551,7 @@
     {
       "scenario": "GroupStay.Private.PaymentReductionTest::test settled cash is immovable and exhaustion is not a group-state error",
       "failed_runs": 1,
-      "failure_rate": 0.00980392156862745,
+      "failure_rate": 0.009708737864077669,
       "by_group": {
         "luna-xhigh": 1
       }
@@ -133272,7 +134561,7 @@
     {
       "scenario": "GroupStay.Private.JudgmentCompositionSevenTest::test revived expired credit can be consumed without rewriting or netting its history",
       "failed_runs": 53,
-      "failure_rate": 0.6883116883116883,
+      "failure_rate": 0.6794871794871795,
       "by_group": {
         "sol-high": 1,
         "sol-medium": 2,
@@ -133294,7 +134583,7 @@
     {
       "scenario": "GroupStay.Private.PeriodCloseTest::test a late application restores liability without rewriting a closed credit expiry",
       "failed_runs": 51,
-      "failure_rate": 0.6623376623376623,
+      "failure_rate": 0.6538461538461539,
       "by_group": {
         "sol-high": 1,
         "sol-medium": 2,
@@ -133315,14 +134604,15 @@
     },
     {
       "scenario": "GroupStay.Private.HotelCreditTest::test credit consumes earliest expiry first and restored credit keeps its origin",
-      "failed_runs": 32,
-      "failure_rate": 0.4155844155844156,
+      "failed_runs": 33,
+      "failure_rate": 0.4230769230769231,
       "by_group": {
         "sol-medium": 1,
         "terra-xhigh": 4,
         "luna-xhigh": 4,
         "gpt-5-5-xhigh": 2,
         "claude-opus5-high": 1,
+        "claude-opus55-high": 1,
         "qwen3-8-max-xhigh": 3,
         "deepseek-v4-pro-0813-max": 4,
         "kimi-k3-max": 1,
@@ -133335,14 +134625,15 @@
     },
     {
       "scenario": "GroupStay.Private.HotelCreditTest::test equal-expiry lots are consumed by source operation identifier",
-      "failed_runs": 30,
-      "failure_rate": 0.38961038961038963,
+      "failed_runs": 31,
+      "failure_rate": 0.3974358974358974,
       "by_group": {
         "sol-medium": 1,
         "terra-xhigh": 4,
         "luna-xhigh": 3,
         "gpt-5-5-xhigh": 2,
         "claude-opus5-high": 1,
+        "claude-opus55-high": 1,
         "qwen3-8-max-xhigh": 3,
         "deepseek-v4-pro-0813-max": 3,
         "kimi-k3-max": 1,
@@ -133356,7 +134647,7 @@
     {
       "scenario": "system:payment-reduction-upgrade",
       "failed_runs": 30,
-      "failure_rate": 0.38961038961038963,
+      "failure_rate": 0.38461538461538464,
       "by_group": {
         "terra-xhigh": 1,
         "luna-xhigh": 2,
@@ -133377,7 +134668,7 @@
     {
       "scenario": "system:room-history-upgrade",
       "failed_runs": 28,
-      "failure_rate": 0.36363636363636365,
+      "failure_rate": 0.358974358974359,
       "by_group": {
         "terra-xhigh": 1,
         "luna-xhigh": 2,
@@ -133398,7 +134689,7 @@
     {
       "scenario": "system:projection-history-upgrade",
       "failed_runs": 21,
-      "failure_rate": 0.2727272727272727,
+      "failure_rate": 0.2692307692307692,
       "by_group": {
         "sol-medium": 1,
         "luna-xhigh": 1,
@@ -133418,7 +134709,7 @@
     {
       "scenario": "GroupStay.Private.DailyFinanceReportTest::test unused credit expiry appears on the first day after its expiry without an operation",
       "failed_runs": 17,
-      "failure_rate": 0.22077922077922077,
+      "failure_rate": 0.21794871794871795,
       "by_group": {
         "luna-xhigh": 3,
         "qwen3-8-max-xhigh": 1,
@@ -133433,7 +134724,7 @@
     {
       "scenario": "GroupStay.Private.JudgmentCompositionSixTest::test restored transferred credit absorbs its original lot shortfall before availability",
       "failed_runs": 12,
-      "failure_rate": 0.15584415584415584,
+      "failure_rate": 0.15384615384615385,
       "by_group": {
         "luna-xhigh": 3,
         "claude-opus5-high": 1,
@@ -133449,7 +134740,7 @@
     {
       "scenario": "system:close-history-upgrade",
       "failed_runs": 12,
-      "failure_rate": 0.15584415584415584,
+      "failure_rate": 0.15384615384615385,
       "by_group": {
         "sol-medium": 1,
         "terra-xhigh": 2,
@@ -133464,7 +134755,7 @@
     {
       "scenario": "GroupStay.Private.PeriodCloseTest::test closing freezes credit expiry and classification figures through the cutoff",
       "failed_runs": 9,
-      "failure_rate": 0.11688311688311688,
+      "failure_rate": 0.11538461538461539,
       "by_group": {
         "deepseek-v4-pro-0813-max": 2,
         "glm-5-3-high": 2,
@@ -133476,7 +134767,7 @@
     {
       "scenario": "GroupStay.Private.PeriodCloseTest::test same-batch close ordering separates an ordinary movement from a late one",
       "failed_runs": 9,
-      "failure_rate": 0.11688311688311688,
+      "failure_rate": 0.11538461538461539,
       "by_group": {
         "luna-xhigh": 2,
         "qwen3-8-max-xhigh": 1,
@@ -133489,7 +134780,7 @@
     {
       "scenario": "GroupStay.Private.DailyFinanceReportTest::test credit issuance and consumption reconcile the company liability",
       "failed_runs": 8,
-      "failure_rate": 0.1038961038961039,
+      "failure_rate": 0.10256410256410256,
       "by_group": {
         "luna-xhigh": 3,
         "qwen3-8-max-xhigh": 1,
@@ -133501,7 +134792,7 @@
     {
       "scenario": "GroupStay.Private.DailyFinanceReportTest::test a chargeback reports signed reversal classifications without inventing held cash",
       "failed_runs": 6,
-      "failure_rate": 0.07792207792207792,
+      "failure_rate": 0.07692307692307693,
       "by_group": {
         "luna-xhigh": 2,
         "qwen3-8-max-xhigh": 1,
@@ -133512,7 +134803,7 @@
     {
       "scenario": "GroupStay.Private.PeriodCloseTest::test an adjustment keeps its first-open posting date across later closes",
       "failed_runs": 6,
-      "failure_rate": 0.07792207792207792,
+      "failure_rate": 0.07692307692307693,
       "by_group": {
         "luna-xhigh": 2,
         "qwen3-8-max-xhigh": 1,
@@ -133523,7 +134814,7 @@
     {
       "scenario": "system:payment-history-upgrade",
       "failed_runs": 6,
-      "failure_rate": 0.07792207792207792,
+      "failure_rate": 0.07692307692307693,
       "by_group": {
         "terra-xhigh": 2,
         "luna-xhigh": 1,
@@ -133534,7 +134825,7 @@
     {
       "scenario": "system:transfer-upgrade",
       "failed_runs": 5,
-      "failure_rate": 0.06493506493506493,
+      "failure_rate": 0.0641025641025641,
       "by_group": {
         "terra-xhigh": 1,
         "luna-xhigh": 2,
@@ -133544,7 +134835,7 @@
     {
       "scenario": "GroupStay.Private.ChargebackTest::test cumulative-difference attribution exposes only the spent entitlement as shortfall",
       "failed_runs": 4,
-      "failure_rate": 0.05194805194805195,
+      "failure_rate": 0.05128205128205128,
       "by_group": {
         "qwen3-8-max-xhigh": 1,
         "ox-alpha-max": 2,
@@ -133554,7 +134845,7 @@
     {
       "scenario": "GroupStay.Private.ChargebackTest::test one partially reduced payment can be clawed from several lots without rewriting history",
       "failed_runs": 4,
-      "failure_rate": 0.05194805194805195,
+      "failure_rate": 0.05128205128205128,
       "by_group": {
         "qwen3-8-max-xhigh": 1,
         "ox-alpha-max": 2,
@@ -133564,7 +134855,7 @@
     {
       "scenario": "GroupStay.Private.ChargebackTest::test refunded and converted portions are reclassified without replaying settlement",
       "failed_runs": 4,
-      "failure_rate": 0.05194805194805195,
+      "failure_rate": 0.05128205128205128,
       "by_group": {
         "qwen3-8-max-xhigh": 1,
         "ox-alpha-max": 2,
@@ -133574,7 +134865,7 @@
     {
       "scenario": "GroupStay.Private.DepositTransferTest::test corrections bump every group whose funding they change while guarding the origin",
       "failed_runs": 4,
-      "failure_rate": 0.05194805194805195,
+      "failure_rate": 0.05128205128205128,
       "by_group": {
         "deepseek-v4-pro-0813-max": 1,
         "kimi-k3-max": 1,
@@ -133585,7 +134876,7 @@
     {
       "scenario": "GroupStay.Private.PaymentStatementTest::test a payment statement reconciles every cash disposition with group and ledger views",
       "failed_runs": 4,
-      "failure_rate": 0.05194805194805195,
+      "failure_rate": 0.05128205128205128,
       "by_group": {
         "qwen3-8-max-xhigh": 1,
         "ox-alpha-high": 1,
@@ -133596,7 +134887,7 @@
     {
       "scenario": "system:finance-reporting-upgrade",
       "failed_runs": 4,
-      "failure_rate": 0.05194805194805195,
+      "failure_rate": 0.05128205128205128,
       "by_group": {
         "luna-xhigh": 1,
         "kimi-k3-max": 1,
@@ -133607,7 +134898,7 @@
     {
       "scenario": "GroupStay.Private.PeriodCloseTest::test an old-dated payment posts as a visible late adjustment on the first open day",
       "failed_runs": 3,
-      "failure_rate": 0.03896103896103896,
+      "failure_rate": 0.038461538461538464,
       "by_group": {
         "ox-alpha-max": 2,
         "meta-muse-spark-1-3-high": 1
@@ -133616,7 +134907,7 @@
     {
       "scenario": "GroupStay.Private.ChargebackTest::test non-refundable consumption removes the active-credit shortfall cap",
       "failed_runs": 2,
-      "failure_rate": 0.025974025974025976,
+      "failure_rate": 0.02564102564102564,
       "by_group": {
         "qwen3-8-max-xhigh": 1,
         "ox-alpha-max": 1
@@ -133625,7 +134916,7 @@
     {
       "scenario": "GroupStay.Private.ComposedRoomAccountingTest::test partial cancellation reallocates around cancelled rooms and can exhaust a group",
       "failed_runs": 2,
-      "failure_rate": 0.025974025974025976,
+      "failure_rate": 0.02564102564102564,
       "by_group": {
         "luna-xhigh": 1,
         "glm-5-3-high": 1
@@ -133634,7 +134925,7 @@
     {
       "scenario": "GroupStay.Private.PaymentReductionTest::test a payment retains reducible provenance after one funded room is settled",
       "failed_runs": 2,
-      "failure_rate": 0.025974025974025976,
+      "failure_rate": 0.02564102564102564,
       "by_group": {
         "luna-xhigh": 1,
         "meta-muse-spark-1-3-high": 1
@@ -133643,7 +134934,7 @@
     {
       "scenario": "system:finance-close-upgrade",
       "failed_runs": 2,
-      "failure_rate": 0.025974025974025976,
+      "failure_rate": 0.02564102564102564,
       "by_group": {
         "luna-xhigh": 1,
         "glm-5-3-high": 1
@@ -133652,7 +134943,7 @@
     {
       "scenario": "system:idempotency-restart",
       "failed_runs": 2,
-      "failure_rate": 0.025974025974025976,
+      "failure_rate": 0.02564102564102564,
       "by_group": {
         "luna-xhigh": 1,
         "kimi-k3-max": 1
@@ -133661,7 +134952,7 @@
     {
       "scenario": "system:policy-history-upgrade",
       "failed_runs": 2,
-      "failure_rate": 0.025974025974025976,
+      "failure_rate": 0.02564102564102564,
       "by_group": {
         "luna-xhigh": 1,
         "kimi-k3-max": 1
@@ -133670,7 +134961,7 @@
     {
       "scenario": "system:policy-upgrade",
       "failed_runs": 2,
-      "failure_rate": 0.025974025974025976,
+      "failure_rate": 0.02564102564102564,
       "by_group": {
         "luna-xhigh": 1,
         "kimi-k3-max": 1
@@ -133679,7 +134970,7 @@
     {
       "scenario": "GroupStay.Private.ChargebackTest::test a chargeback composes with reductions and reopens held deposit",
       "failed_runs": 1,
-      "failure_rate": 0.012987012987012988,
+      "failure_rate": 0.01282051282051282,
       "by_group": {
         "luna-xhigh": 1
       }
@@ -133687,7 +134978,7 @@
     {
       "scenario": "GroupStay.Private.ComposedDurabilityTest::test retries preserve cancellation and credit side effects",
       "failed_runs": 1,
-      "failure_rate": 0.012987012987012988,
+      "failure_rate": 0.01282051282051282,
       "by_group": {
         "luna-xhigh": 1
       }
@@ -133695,7 +134986,7 @@
     {
       "scenario": "GroupStay.Private.DepositTransferTest::test a chargeback reclassifies one payment across groups without touching other funding",
       "failed_runs": 1,
-      "failure_rate": 0.012987012987012988,
+      "failure_rate": 0.01282051282051282,
       "by_group": {
         "luna-xhigh": 1
       }
@@ -133703,7 +134994,7 @@
     {
       "scenario": "GroupStay.Private.DepositTransferTest::test a reduction follows one payment across groups in reverse allocation order",
       "failed_runs": 1,
-      "failure_rate": 0.012987012987012988,
+      "failure_rate": 0.01282051282051282,
       "by_group": {
         "grok-4-6-xhigh": 1
       }
@@ -133711,7 +135002,7 @@
     {
       "scenario": "GroupStay.Private.DepositTransferTest::test a transfer guards both groups and advances both revisions exactly once",
       "failed_runs": 1,
-      "failure_rate": 0.012987012987012988,
+      "failure_rate": 0.01282051282051282,
       "by_group": {
         "luna-xhigh": 1
       }
@@ -133719,7 +135010,7 @@
     {
       "scenario": "GroupStay.Private.DepositTransferTest::test transfers draw held funding in reverse allocation order and fill destination rooms in order",
       "failed_runs": 1,
-      "failure_rate": 0.012987012987012988,
+      "failure_rate": 0.01282051282051282,
       "by_group": {
         "glm-5-3-high": 1
       }
@@ -133727,7 +135018,7 @@
     {
       "scenario": "GroupStay.Private.LaunchDepositApiTest::test a rejected operation has no partial effect and later operations continue",
       "failed_runs": 1,
-      "failure_rate": 0.012987012987012988,
+      "failure_rate": 0.01282051282051282,
       "by_group": {
         "sol-medium": 1
       }
@@ -133735,7 +135026,7 @@
     {
       "scenario": "GroupStay.Private.LaunchDepositApiTest::test an unknown operation is rejected and does not stop the batch",
       "failed_runs": 1,
-      "failure_rate": 0.012987012987012988,
+      "failure_rate": 0.01282051282051282,
       "by_group": {
         "luna-xhigh": 1
       }
@@ -133743,7 +135034,7 @@
     {
       "scenario": "GroupStay.Private.PartialRoomCancellationTest::test partial settlement returns only the selected rooms' cash and credit",
       "failed_runs": 1,
-      "failure_rate": 0.012987012987012988,
+      "failure_rate": 0.01282051282051282,
       "by_group": {
         "meta-muse-spark-1-3-high": 1
       }
@@ -133751,7 +135042,7 @@
     {
       "scenario": "GroupStay.Private.PaymentReductionTest::test reduction errors distinguish existence, permanence, amount, and capacity",
       "failed_runs": 1,
-      "failure_rate": 0.012987012987012988,
+      "failure_rate": 0.01282051282051282,
       "by_group": {
         "terra-xhigh": 1
       }
@@ -133759,7 +135050,7 @@
     {
       "scenario": "GroupStay.Private.PaymentReductionTest::test settled cash is immovable and exhaustion is not a group-state error",
       "failed_runs": 1,
-      "failure_rate": 0.012987012987012988,
+      "failure_rate": 0.01282051282051282,
       "by_group": {
         "luna-xhigh": 1
       }
@@ -133897,26 +135188,18 @@
     {
       "left": "hotel-credit-lifecycle",
       "right": "judgment-c5-double-revival",
-      "left_failed": 42,
+      "left_failed": 43,
       "right_failed": 67,
       "both_failed": 36,
-      "jaccard": 0.4931506849315068
+      "jaccard": 0.4864864864864865
     },
     {
       "left": "hotel-credit-lifecycle",
       "right": "judgment-c1-revival",
-      "left_failed": 42,
+      "left_failed": 43,
       "right_failed": 64,
       "both_failed": 35,
-      "jaccard": 0.49295774647887325
-    },
-    {
-      "left": "hotel-credit-lifecycle",
-      "right": "late-adjustment-posting",
-      "left_failed": 42,
-      "right_failed": 66,
-      "both_failed": 35,
-      "jaccard": 0.4794520547945205
+      "jaccard": 0.4861111111111111
     },
     {
       "left": "finance-report-determinism",
@@ -133925,6 +135208,14 @@
       "right_failed": 14,
       "both_failed": 11,
       "jaccard": 0.4782608695652174
+    },
+    {
+      "left": "hotel-credit-lifecycle",
+      "right": "late-adjustment-posting",
+      "left_failed": 43,
+      "right_failed": 66,
+      "both_failed": 35,
+      "jaccard": 0.47297297297297297
     },
     {
       "left": "finance-report-correctness",
@@ -134018,9 +135309,9 @@
       "left": "finance-report-determinism",
       "right": "hotel-credit-lifecycle",
       "left_failed": 20,
-      "right_failed": 42,
+      "right_failed": 43,
       "both_failed": 15,
-      "jaccard": 0.3191489361702128
+      "jaccard": 0.3125
     },
     {
       "left": "judgment-c1-revival",
@@ -134073,18 +135364,10 @@
     {
       "left": "hotel-credit-lifecycle",
       "right": "judgment-r4-projection-history",
-      "left_failed": 42,
+      "left_failed": 43,
       "right_failed": 28,
       "both_failed": 16,
-      "jaccard": 0.2962962962962963
-    },
-    {
-      "left": "finance-close-immutability",
-      "right": "hotel-credit-lifecycle",
-      "left_failed": 12,
-      "right_failed": 42,
-      "both_failed": 12,
-      "jaccard": 0.2857142857142857
+      "jaccard": 0.2909090909090909
     },
     {
       "left": "finance-report-determinism",
@@ -134101,6 +135384,14 @@
       "right_failed": 32,
       "both_failed": 21,
       "jaccard": 0.28
+    },
+    {
+      "left": "finance-close-immutability",
+      "right": "hotel-credit-lifecycle",
+      "left_failed": 12,
+      "right_failed": 43,
+      "both_failed": 12,
+      "jaccard": 0.27906976744186046
     },
     {
       "left": "judgment-c5-double-revival",
@@ -134231,20 +135522,20 @@
       "jaccard": 0.25
     },
     {
-      "left": "hotel-credit-lifecycle",
-      "right": "m4-migration",
-      "left_failed": 42,
-      "right_failed": 34,
-      "both_failed": 15,
-      "jaccard": 0.2459016393442623
-    },
-    {
       "left": "judgment-c1-revival",
       "right": "judgment-r4-projection-history",
       "left_failed": 64,
       "right_failed": 28,
       "both_failed": 18,
       "jaccard": 0.24324324324324326
+    },
+    {
+      "left": "hotel-credit-lifecycle",
+      "right": "m4-migration",
+      "left_failed": 43,
+      "right_failed": 34,
+      "both_failed": 15,
+      "jaccard": 0.24193548387096775
     },
     {
       "left": "finance-report-determinism",
@@ -134257,10 +135548,10 @@
     {
       "left": "hotel-credit-lifecycle",
       "right": "judgment-r2-room-history",
-      "left_failed": 42,
+      "left_failed": 43,
       "right_failed": 32,
       "both_failed": 14,
-      "jaccard": 0.23333333333333334
+      "jaccard": 0.22950819672131148
     },
     {
       "left": "m5-migration",
@@ -134391,14 +135682,6 @@
       "jaccard": 0.16923076923076924
     },
     {
-      "left": "hotel-credit-lifecycle",
-      "right": "judgment-c3-transfer-shortfall-absorption",
-      "left_failed": 42,
-      "right_failed": 14,
-      "both_failed": 8,
-      "jaccard": 0.16666666666666666
-    },
-    {
       "left": "judgment-c3-transfer-shortfall-absorption",
       "right": "judgment-r4-projection-history",
       "left_failed": 14,
@@ -134472,11 +135755,11 @@
     },
     {
       "left": "hotel-credit-lifecycle",
-      "right": "judgment-r3-payment-history",
-      "left_failed": 42,
-      "right_failed": 9,
-      "both_failed": 7,
-      "jaccard": 0.1590909090909091
+      "right": "judgment-c3-transfer-shortfall-absorption",
+      "left_failed": 43,
+      "right_failed": 14,
+      "both_failed": 8,
+      "jaccard": 0.16326530612244897
     },
     {
       "left": "judgment-r2-room-history",
@@ -134493,6 +135776,14 @@
       "right_failed": 3,
       "both_failed": 3,
       "jaccard": 0.15789473684210525
+    },
+    {
+      "left": "hotel-credit-lifecycle",
+      "right": "judgment-r3-payment-history",
+      "left_failed": 43,
+      "right_failed": 9,
+      "both_failed": 7,
+      "jaccard": 0.15555555555555556
     },
     {
       "left": "chargeback-reclassification",
@@ -134647,14 +135938,6 @@
       "jaccard": 0.14285714285714285
     },
     {
-      "left": "hotel-credit-lifecycle",
-      "right": "m5-migration",
-      "left_failed": 42,
-      "right_failed": 8,
-      "both_failed": 6,
-      "jaccard": 0.13636363636363635
-    },
-    {
       "left": "chargeback-reclassification",
       "right": "finance-report-determinism",
       "left_failed": 5,
@@ -134677,6 +135960,14 @@
       "right_failed": 66,
       "both_failed": 9,
       "jaccard": 0.13432835820895522
+    },
+    {
+      "left": "hotel-credit-lifecycle",
+      "right": "m5-migration",
+      "left_failed": 43,
+      "right_failed": 8,
+      "both_failed": 6,
+      "jaccard": 0.13333333333333333
     },
     {
       "left": "judgment-r4-projection-history",
@@ -134703,14 +135994,6 @@
       "jaccard": 0.13043478260869565
     },
     {
-      "left": "hotel-credit-lifecycle",
-      "right": "judgment-r5-close-history",
-      "left_failed": 42,
-      "right_failed": 19,
-      "both_failed": 7,
-      "jaccard": 0.12962962962962962
-    },
-    {
       "left": "finance-close-immutability",
       "right": "judgment-r2-room-history",
       "left_failed": 12,
@@ -134725,6 +136008,14 @@
       "right_failed": 34,
       "both_failed": 5,
       "jaccard": 0.1282051282051282
+    },
+    {
+      "left": "hotel-credit-lifecycle",
+      "right": "judgment-r5-close-history",
+      "left_failed": 43,
+      "right_failed": 19,
+      "both_failed": 7,
+      "jaccard": 0.12727272727272726
     },
     {
       "left": "chargeback-reclassification",
@@ -135103,19 +136394,19 @@
       "jaccard": 0.09523809523809523
     },
     {
-      "left": "chargeback-reclassification",
-      "right": "hotel-credit-lifecycle",
-      "left_failed": 5,
-      "right_failed": 42,
-      "both_failed": 4,
-      "jaccard": 0.09302325581395349
-    },
-    {
       "left": "finance-effective-dating",
       "right": "late-adjustment-posting",
       "left_failed": 6,
       "right_failed": 66,
       "both_failed": 6,
+      "jaccard": 0.09090909090909091
+    },
+    {
+      "left": "chargeback-reclassification",
+      "right": "hotel-credit-lifecycle",
+      "left_failed": 5,
+      "right_failed": 43,
+      "both_failed": 4,
       "jaccard": 0.09090909090909091
     },
     {
@@ -135239,14 +136530,6 @@
       "jaccard": 0.08571428571428572
     },
     {
-      "left": "finance-report-correctness",
-      "right": "hotel-credit-lifecycle",
-      "left_failed": 10,
-      "right_failed": 42,
-      "both_failed": 4,
-      "jaccard": 0.08333333333333333
-    },
-    {
       "left": "chargeback-reclassification",
       "right": "m4-migration",
       "left_failed": 5,
@@ -135301,6 +136584,14 @@
       "right_failed": 4,
       "both_failed": 1,
       "jaccard": 0.08333333333333333
+    },
+    {
+      "left": "finance-report-correctness",
+      "right": "hotel-credit-lifecycle",
+      "left_failed": 10,
+      "right_failed": 43,
+      "both_failed": 4,
+      "jaccard": 0.08163265306122448
     },
     {
       "left": "judgment-r2-room-history",
@@ -135463,22 +136754,6 @@
       "jaccard": 0.07142857142857142
     },
     {
-      "left": "entitlement-clawback-shortfall",
-      "right": "hotel-credit-lifecycle",
-      "left_failed": 4,
-      "right_failed": 42,
-      "both_failed": 3,
-      "jaccard": 0.06976744186046512
-    },
-    {
-      "left": "hotel-credit-lifecycle",
-      "right": "payment-reduction",
-      "left_failed": 42,
-      "right_failed": 4,
-      "both_failed": 3,
-      "jaccard": 0.06976744186046512
-    },
-    {
       "left": "finance-close-immutability",
       "right": "judgment-r5-close-history",
       "left_failed": 12,
@@ -135487,18 +136762,26 @@
       "jaccard": 0.06896551724137931
     },
     {
-      "left": "hotel-credit-lifecycle",
-      "right": "m6-finance-upgrade",
-      "left_failed": 42,
-      "right_failed": 5,
+      "left": "entitlement-clawback-shortfall",
+      "right": "hotel-credit-lifecycle",
+      "left_failed": 4,
+      "right_failed": 43,
       "both_failed": 3,
       "jaccard": 0.06818181818181818
     },
     {
       "left": "hotel-credit-lifecycle",
-      "right": "multi-group-occ",
-      "left_failed": 42,
-      "right_failed": 6,
+      "right": "payment-reduction",
+      "left_failed": 43,
+      "right_failed": 4,
+      "both_failed": 3,
+      "jaccard": 0.06818181818181818
+    },
+    {
+      "left": "hotel-credit-lifecycle",
+      "right": "m6-finance-upgrade",
+      "left_failed": 43,
+      "right_failed": 5,
       "both_failed": 3,
       "jaccard": 0.06666666666666667
     },
@@ -135549,6 +136832,14 @@
       "right_failed": 2,
       "both_failed": 1,
       "jaccard": 0.06666666666666667
+    },
+    {
+      "left": "hotel-credit-lifecycle",
+      "right": "multi-group-occ",
+      "left_failed": 43,
+      "right_failed": 6,
+      "both_failed": 3,
+      "jaccard": 0.06521739130434782
     },
     {
       "left": "judgment-c3-transfer-shortfall-absorption",
@@ -135863,14 +137154,6 @@
       "jaccard": 0.047619047619047616
     },
     {
-      "left": "hotel-credit-lifecycle",
-      "right": "m7-close-upgrade",
-      "left_failed": 42,
-      "right_failed": 3,
-      "both_failed": 2,
-      "jaccard": 0.046511627906976744
-    },
-    {
       "left": "entitlement-clawback-shortfall",
       "right": "judgment-c1-revival",
       "left_failed": 4,
@@ -135896,9 +137179,9 @@
     },
     {
       "left": "hotel-credit-lifecycle",
-      "right": "payment-statement",
-      "left_failed": 42,
-      "right_failed": 4,
+      "right": "m7-close-upgrade",
+      "left_failed": 43,
+      "right_failed": 3,
       "both_failed": 2,
       "jaccard": 0.045454545454545456
     },
@@ -135935,6 +137218,14 @@
       "jaccard": 0.04477611940298507
     },
     {
+      "left": "hotel-credit-lifecycle",
+      "right": "payment-statement",
+      "left_failed": 43,
+      "right_failed": 4,
+      "both_failed": 2,
+      "jaccard": 0.044444444444444446
+    },
+    {
       "left": "judgment-c5-double-revival",
       "right": "payment-reduction",
       "left_failed": 67,
@@ -135943,20 +137234,20 @@
       "jaccard": 0.04411764705882353
     },
     {
-      "left": "finance-effective-dating",
-      "right": "hotel-credit-lifecycle",
-      "left_failed": 6,
-      "right_failed": 42,
-      "both_failed": 2,
-      "jaccard": 0.043478260869565216
-    },
-    {
       "left": "chargeback-reclassification",
       "right": "judgment-r5-close-history",
       "left_failed": 5,
       "right_failed": 19,
       "both_failed": 1,
       "jaccard": 0.043478260869565216
+    },
+    {
+      "left": "finance-effective-dating",
+      "right": "hotel-credit-lifecycle",
+      "left_failed": 6,
+      "right_failed": 43,
+      "both_failed": 2,
+      "jaccard": 0.0425531914893617
     },
     {
       "left": "finance-effective-dating",
@@ -136266,73 +137557,73 @@
       "left": "durable-idempotency",
       "right": "hotel-credit-lifecycle",
       "left_failed": 1,
-      "right_failed": 42,
+      "right_failed": 43,
       "both_failed": 1,
-      "jaccard": 0.023809523809523808
+      "jaccard": 0.023255813953488372
     },
     {
       "left": "hotel-credit-lifecycle",
       "right": "partial-cancellation-settlement",
-      "left_failed": 42,
+      "left_failed": 43,
       "right_failed": 1,
       "both_failed": 1,
-      "jaccard": 0.023809523809523808
+      "jaccard": 0.023255813953488372
     },
     {
       "left": "hotel-credit-lifecycle",
       "right": "transfer-mechanics",
-      "left_failed": 42,
+      "left_failed": 43,
       "right_failed": 1,
       "both_failed": 1,
-      "jaccard": 0.023809523809523808
+      "jaccard": 0.023255813953488372
     },
     {
       "left": "batch-protocol-validation",
       "right": "hotel-credit-lifecycle",
       "left_failed": 2,
-      "right_failed": 42,
+      "right_failed": 43,
       "both_failed": 1,
-      "jaccard": 0.023255813953488372
+      "jaccard": 0.022727272727272728
     },
     {
       "left": "cross-group-correction-provenance",
       "right": "hotel-credit-lifecycle",
       "left_failed": 2,
-      "right_failed": 42,
+      "right_failed": 43,
       "both_failed": 1,
-      "jaccard": 0.023255813953488372
+      "jaccard": 0.022727272727272728
     },
     {
       "left": "hotel-credit-lifecycle",
       "right": "judgment-r1-policy-history",
-      "left_failed": 42,
+      "left_failed": 43,
       "right_failed": 2,
       "both_failed": 1,
-      "jaccard": 0.023255813953488372
+      "jaccard": 0.022727272727272728
     },
     {
       "left": "hotel-credit-lifecycle",
       "right": "m2-migration",
-      "left_failed": 42,
+      "left_failed": 43,
       "right_failed": 2,
       "both_failed": 1,
-      "jaccard": 0.023255813953488372
+      "jaccard": 0.022727272727272728
     },
     {
       "left": "hotel-credit-lifecycle",
       "right": "m3-restart",
-      "left_failed": 42,
+      "left_failed": 43,
       "right_failed": 2,
       "both_failed": 1,
-      "jaccard": 0.023255813953488372
+      "jaccard": 0.022727272727272728
     },
     {
       "left": "hotel-credit-lifecycle",
       "right": "room-funding-allocation",
-      "left_failed": 42,
+      "left_failed": 43,
       "right_failed": 2,
       "both_failed": 1,
-      "jaccard": 0.023255813953488372
+      "jaccard": 0.022727272727272728
     },
     {
       "left": "durable-idempotency",
@@ -136507,10 +137798,10 @@
     {
       "left": "hotel-credit-lifecycle",
       "right": "judgment-c1-revival",
-      "left_failed": 32,
+      "left_failed": 33,
       "right_failed": 51,
       "both_failed": 28,
-      "jaccard": 0.509090909090909
+      "jaccard": 0.5
     },
     {
       "left": "finance-effective-dating",
@@ -136563,18 +137854,18 @@
     {
       "left": "hotel-credit-lifecycle",
       "right": "judgment-c5-double-revival",
-      "left_failed": 32,
+      "left_failed": 33,
       "right_failed": 53,
       "both_failed": 28,
-      "jaccard": 0.49122807017543857
+      "jaccard": 0.4827586206896552
     },
     {
       "left": "hotel-credit-lifecycle",
       "right": "late-adjustment-posting",
-      "left_failed": 32,
+      "left_failed": 33,
       "right_failed": 53,
       "both_failed": 28,
-      "jaccard": 0.49122807017543857
+      "jaccard": 0.4827586206896552
     },
     {
       "left": "finance-report-correctness",
@@ -136746,14 +138037,6 @@
     },
     {
       "left": "finance-report-determinism",
-      "right": "hotel-credit-lifecycle",
-      "left_failed": 17,
-      "right_failed": 32,
-      "both_failed": 12,
-      "jaccard": 0.32432432432432434
-    },
-    {
-      "left": "finance-report-determinism",
       "right": "judgment-c5-double-revival",
       "left_failed": 17,
       "right_failed": 53,
@@ -136769,12 +138052,20 @@
       "jaccard": 0.32075471698113206
     },
     {
+      "left": "finance-report-determinism",
+      "right": "hotel-credit-lifecycle",
+      "left_failed": 17,
+      "right_failed": 33,
+      "both_failed": 12,
+      "jaccard": 0.3157894736842105
+    },
+    {
       "left": "hotel-credit-lifecycle",
       "right": "m4-migration",
-      "left_failed": 32,
+      "left_failed": 33,
       "right_failed": 30,
       "both_failed": 15,
-      "jaccard": 0.3191489361702128
+      "jaccard": 0.3125
     },
     {
       "left": "judgment-r4-projection-history",
@@ -136811,18 +138102,10 @@
     {
       "left": "hotel-credit-lifecycle",
       "right": "judgment-r2-room-history",
-      "left_failed": 32,
+      "left_failed": 33,
       "right_failed": 28,
       "both_failed": 14,
-      "jaccard": 0.30434782608695654
-    },
-    {
-      "left": "hotel-credit-lifecycle",
-      "right": "judgment-r4-projection-history",
-      "left_failed": 32,
-      "right_failed": 21,
-      "both_failed": 12,
-      "jaccard": 0.2926829268292683
+      "jaccard": 0.2978723404255319
     },
     {
       "left": "judgment-r2-room-history",
@@ -136831,6 +138114,14 @@
       "right_failed": 21,
       "both_failed": 11,
       "jaccard": 0.2894736842105263
+    },
+    {
+      "left": "hotel-credit-lifecycle",
+      "right": "judgment-r4-projection-history",
+      "left_failed": 33,
+      "right_failed": 21,
+      "both_failed": 12,
+      "jaccard": 0.2857142857142857
     },
     {
       "left": "finance-report-determinism",
@@ -136860,9 +138151,9 @@
       "left": "finance-close-immutability",
       "right": "hotel-credit-lifecycle",
       "left_failed": 9,
-      "right_failed": 32,
+      "right_failed": 33,
       "both_failed": 9,
-      "jaccard": 0.28125
+      "jaccard": 0.2727272727272727
     },
     {
       "left": "judgment-c5-double-revival",
@@ -137051,10 +138342,10 @@
     {
       "left": "hotel-credit-lifecycle",
       "right": "judgment-c3-transfer-shortfall-absorption",
-      "left_failed": 32,
+      "left_failed": 33,
       "right_failed": 12,
       "both_failed": 7,
-      "jaccard": 0.1891891891891892
+      "jaccard": 0.18421052631578946
     },
     {
       "left": "finance-close-immutability",
@@ -137321,14 +138612,6 @@
       "jaccard": 0.15151515151515152
     },
     {
-      "left": "hotel-credit-lifecycle",
-      "right": "judgment-r3-payment-history",
-      "left_failed": 32,
-      "right_failed": 6,
-      "both_failed": 5,
-      "jaccard": 0.15151515151515152
-    },
-    {
       "left": "finance-report-correctness",
       "right": "judgment-c5-double-revival",
       "left_failed": 8,
@@ -137343,6 +138626,14 @@
       "right_failed": 53,
       "both_failed": 8,
       "jaccard": 0.1509433962264151
+    },
+    {
+      "left": "hotel-credit-lifecycle",
+      "right": "judgment-r3-payment-history",
+      "left_failed": 33,
+      "right_failed": 6,
+      "both_failed": 5,
+      "jaccard": 0.14705882352941177
     },
     {
       "left": "judgment-c3-transfer-shortfall-absorption",
@@ -137593,27 +138884,27 @@
       "jaccard": 0.125
     },
     {
-      "left": "chargeback-reclassification",
-      "right": "hotel-credit-lifecycle",
-      "left_failed": 5,
-      "right_failed": 32,
-      "both_failed": 4,
-      "jaccard": 0.12121212121212122
-    },
-    {
-      "left": "hotel-credit-lifecycle",
-      "right": "m5-migration",
-      "left_failed": 32,
-      "right_failed": 5,
-      "both_failed": 4,
-      "jaccard": 0.12121212121212122
-    },
-    {
       "left": "judgment-c1-revival",
       "right": "judgment-r3-payment-history",
       "left_failed": 51,
       "right_failed": 6,
       "both_failed": 6,
+      "jaccard": 0.11764705882352941
+    },
+    {
+      "left": "chargeback-reclassification",
+      "right": "hotel-credit-lifecycle",
+      "left_failed": 5,
+      "right_failed": 33,
+      "both_failed": 4,
+      "jaccard": 0.11764705882352941
+    },
+    {
+      "left": "hotel-credit-lifecycle",
+      "right": "m5-migration",
+      "left_failed": 33,
+      "right_failed": 5,
+      "both_failed": 4,
       "jaccard": 0.11764705882352941
     },
     {
@@ -137809,14 +139100,6 @@
       "jaccard": 0.1016949152542373
     },
     {
-      "left": "hotel-credit-lifecycle",
-      "right": "judgment-r5-close-history",
-      "left_failed": 32,
-      "right_failed": 12,
-      "both_failed": 4,
-      "jaccard": 0.1
-    },
-    {
       "left": "chargeback-reclassification",
       "right": "finance-effective-dating",
       "left_failed": 5,
@@ -137871,6 +139154,14 @@
       "right_failed": 5,
       "both_failed": 5,
       "jaccard": 0.09803921568627451
+    },
+    {
+      "left": "hotel-credit-lifecycle",
+      "right": "judgment-r5-close-history",
+      "left_failed": 33,
+      "right_failed": 12,
+      "both_failed": 4,
+      "jaccard": 0.0975609756097561
     },
     {
       "left": "entitlement-clawback-shortfall",
@@ -137955,24 +139246,8 @@
     {
       "left": "hotel-credit-lifecycle",
       "right": "payment-reduction",
-      "left_failed": 32,
+      "left_failed": 33,
       "right_failed": 3,
-      "both_failed": 3,
-      "jaccard": 0.09375
-    },
-    {
-      "left": "entitlement-clawback-shortfall",
-      "right": "hotel-credit-lifecycle",
-      "left_failed": 4,
-      "right_failed": 32,
-      "both_failed": 3,
-      "jaccard": 0.09090909090909091
-    },
-    {
-      "left": "hotel-credit-lifecycle",
-      "right": "m6-finance-upgrade",
-      "left_failed": 32,
-      "right_failed": 4,
       "both_failed": 3,
       "jaccard": 0.09090909090909091
     },
@@ -138025,12 +139300,28 @@
       "jaccard": 0.09090909090909091
     },
     {
-      "left": "hotel-credit-lifecycle",
-      "right": "multi-group-occ",
-      "left_failed": 32,
-      "right_failed": 5,
+      "left": "entitlement-clawback-shortfall",
+      "right": "hotel-credit-lifecycle",
+      "left_failed": 4,
+      "right_failed": 33,
       "both_failed": 3,
       "jaccard": 0.08823529411764706
+    },
+    {
+      "left": "hotel-credit-lifecycle",
+      "right": "m6-finance-upgrade",
+      "left_failed": 33,
+      "right_failed": 4,
+      "both_failed": 3,
+      "jaccard": 0.08823529411764706
+    },
+    {
+      "left": "hotel-credit-lifecycle",
+      "right": "multi-group-occ",
+      "left_failed": 33,
+      "right_failed": 5,
+      "both_failed": 3,
+      "jaccard": 0.08571428571428572
     },
     {
       "left": "judgment-r4-projection-history",
@@ -138097,20 +139388,20 @@
       "jaccard": 0.08333333333333333
     },
     {
-      "left": "finance-report-correctness",
-      "right": "hotel-credit-lifecycle",
-      "left_failed": 8,
-      "right_failed": 32,
-      "both_failed": 3,
-      "jaccard": 0.08108108108108109
-    },
-    {
       "left": "finance-effective-dating",
       "right": "judgment-r4-projection-history",
       "left_failed": 6,
       "right_failed": 21,
       "both_failed": 2,
       "jaccard": 0.08
+    },
+    {
+      "left": "finance-report-correctness",
+      "right": "hotel-credit-lifecycle",
+      "left_failed": 8,
+      "right_failed": 33,
+      "both_failed": 3,
+      "jaccard": 0.07894736842105263
     },
     {
       "left": "judgment-c1-revival",
@@ -138385,14 +139676,6 @@
       "jaccard": 0.06451612903225806
     },
     {
-      "left": "hotel-credit-lifecycle",
-      "right": "m7-close-upgrade",
-      "left_failed": 32,
-      "right_failed": 2,
-      "both_failed": 2,
-      "jaccard": 0.0625
-    },
-    {
       "left": "m4-migration",
       "right": "m6-finance-upgrade",
       "left_failed": 30,
@@ -138425,6 +139708,14 @@
       "jaccard": 0.0625
     },
     {
+      "left": "hotel-credit-lifecycle",
+      "right": "m7-close-upgrade",
+      "left_failed": 33,
+      "right_failed": 2,
+      "both_failed": 2,
+      "jaccard": 0.06060606060606061
+    },
+    {
       "left": "m4-migration",
       "right": "m5-migration",
       "left_failed": 30,
@@ -138438,14 +139729,6 @@
       "left_failed": 51,
       "right_failed": 3,
       "both_failed": 3,
-      "jaccard": 0.058823529411764705
-    },
-    {
-      "left": "hotel-credit-lifecycle",
-      "right": "payment-statement",
-      "left_failed": 32,
-      "right_failed": 4,
-      "both_failed": 2,
       "jaccard": 0.058823529411764705
     },
     {
@@ -138481,6 +139764,14 @@
       "jaccard": 0.057692307692307696
     },
     {
+      "left": "hotel-credit-lifecycle",
+      "right": "payment-statement",
+      "left_failed": 33,
+      "right_failed": 4,
+      "both_failed": 2,
+      "jaccard": 0.05714285714285714
+    },
+    {
       "left": "judgment-c5-double-revival",
       "right": "payment-reduction",
       "left_failed": 53,
@@ -138495,14 +139786,6 @@
       "right_failed": 3,
       "both_failed": 3,
       "jaccard": 0.05660377358490566
-    },
-    {
-      "left": "finance-effective-dating",
-      "right": "hotel-credit-lifecycle",
-      "left_failed": 6,
-      "right_failed": 32,
-      "both_failed": 2,
-      "jaccard": 0.05555555555555555
     },
     {
       "left": "batch-protocol-validation",
@@ -138535,6 +139818,14 @@
       "right_failed": 2,
       "both_failed": 1,
       "jaccard": 0.05555555555555555
+    },
+    {
+      "left": "finance-effective-dating",
+      "right": "hotel-credit-lifecycle",
+      "left_failed": 6,
+      "right_failed": 33,
+      "both_failed": 2,
+      "jaccard": 0.05405405405405406
     },
     {
       "left": "finance-report-correctness",
@@ -138873,30 +140164,6 @@
       "jaccard": 0.03225806451612903
     },
     {
-      "left": "durable-idempotency",
-      "right": "hotel-credit-lifecycle",
-      "left_failed": 1,
-      "right_failed": 32,
-      "both_failed": 1,
-      "jaccard": 0.03125
-    },
-    {
-      "left": "hotel-credit-lifecycle",
-      "right": "partial-cancellation-settlement",
-      "left_failed": 32,
-      "right_failed": 1,
-      "both_failed": 1,
-      "jaccard": 0.03125
-    },
-    {
-      "left": "hotel-credit-lifecycle",
-      "right": "transfer-mechanics",
-      "left_failed": 32,
-      "right_failed": 1,
-      "both_failed": 1,
-      "jaccard": 0.03125
-    },
-    {
       "left": "m4-migration",
       "right": "payment-reduction",
       "left_failed": 30,
@@ -138905,52 +140172,76 @@
       "jaccard": 0.03125
     },
     {
+      "left": "durable-idempotency",
+      "right": "hotel-credit-lifecycle",
+      "left_failed": 1,
+      "right_failed": 33,
+      "both_failed": 1,
+      "jaccard": 0.030303030303030304
+    },
+    {
+      "left": "hotel-credit-lifecycle",
+      "right": "partial-cancellation-settlement",
+      "left_failed": 33,
+      "right_failed": 1,
+      "both_failed": 1,
+      "jaccard": 0.030303030303030304
+    },
+    {
+      "left": "hotel-credit-lifecycle",
+      "right": "transfer-mechanics",
+      "left_failed": 33,
+      "right_failed": 1,
+      "both_failed": 1,
+      "jaccard": 0.030303030303030304
+    },
+    {
       "left": "batch-protocol-validation",
       "right": "hotel-credit-lifecycle",
       "left_failed": 2,
-      "right_failed": 32,
+      "right_failed": 33,
       "both_failed": 1,
-      "jaccard": 0.030303030303030304
+      "jaccard": 0.029411764705882353
     },
     {
       "left": "cross-group-correction-provenance",
       "right": "hotel-credit-lifecycle",
       "left_failed": 2,
-      "right_failed": 32,
+      "right_failed": 33,
       "both_failed": 1,
-      "jaccard": 0.030303030303030304
+      "jaccard": 0.029411764705882353
     },
     {
       "left": "hotel-credit-lifecycle",
       "right": "judgment-r1-policy-history",
-      "left_failed": 32,
+      "left_failed": 33,
       "right_failed": 2,
       "both_failed": 1,
-      "jaccard": 0.030303030303030304
+      "jaccard": 0.029411764705882353
     },
     {
       "left": "hotel-credit-lifecycle",
       "right": "m2-migration",
-      "left_failed": 32,
+      "left_failed": 33,
       "right_failed": 2,
       "both_failed": 1,
-      "jaccard": 0.030303030303030304
+      "jaccard": 0.029411764705882353
     },
     {
       "left": "hotel-credit-lifecycle",
       "right": "m3-restart",
-      "left_failed": 32,
+      "left_failed": 33,
       "right_failed": 2,
       "both_failed": 1,
-      "jaccard": 0.030303030303030304
+      "jaccard": 0.029411764705882353
     },
     {
       "left": "hotel-credit-lifecycle",
       "right": "room-funding-allocation",
-      "left_failed": 32,
+      "left_failed": 33,
       "right_failed": 2,
       "both_failed": 1,
-      "jaccard": 0.030303030303030304
+      "jaccard": 0.029411764705882353
     },
     {
       "left": "durable-idempotency",
@@ -139056,7 +140347,7 @@
         "judgment-c5-double-revival"
       ],
       "failed_runs": 53,
-      "failure_rate": 0.6883116883116883
+      "failure_rate": 0.6794871794871795
     },
     {
       "families": [
@@ -139064,15 +140355,15 @@
         "judgment-r1-policy-history"
       ],
       "failed_runs": 2,
-      "failure_rate": 0.025974025974025976
+      "failure_rate": 0.02564102564102564
     }
   ],
   "family_outcome_geometry_model_view": {
     "families": 49,
-    "runs": 77,
+    "runs": 78,
     "distinct_observed_outcome_vectors": 30,
     "centered_matrix_rank": 28,
-    "covariance_participation_ratio": 6.770897966286624,
+    "covariance_participation_ratio": 6.726554623534098,
     "always_pass_families": 18,
     "always_fail_families": 0,
     "interpretation": "Exploratory geometry of observed family failures, not an estimate of the true number of software-engineering capabilities."
@@ -139237,6 +140528,14 @@
       "original_mean_out_of_49": 42.0,
       "revival_cluster_collapsed_mean_out_of_47": 42.0,
       "revival_cluster_removed_mean_out_of_46": 42.0
+    },
+    {
+      "group": "claude-opus55-high",
+      "display": "Claude Opus 5.5 high / Claude Code",
+      "n": 1,
+      "original_mean_out_of_49": 48.0,
+      "revival_cluster_collapsed_mean_out_of_47": 46.0,
+      "revival_cluster_removed_mean_out_of_46": 45.0
     }
   ],
   "stages_all_runs": [
@@ -139252,12 +140551,12 @@
         "payment-acceptance",
         "rescheduling"
       ],
-      "ship_pass_rate": 0.9836601307189542,
-      "final_pass_rate": 0.9967320261437909,
-      "ship_whole_stage_passes": 98,
-      "ship_whole_stage_pass_rate": 0.9607843137254902,
-      "final_whole_stage_passes": 100,
-      "final_whole_stage_pass_rate": 0.9803921568627451,
+      "ship_pass_rate": 0.9838187702265372,
+      "final_pass_rate": 0.9967637540453075,
+      "ship_whole_stage_passes": 99,
+      "ship_whole_stage_pass_rate": 0.9611650485436893,
+      "final_whole_stage_passes": 101,
+      "final_whole_stage_pass_rate": 0.9805825242718447,
       "recovery_points": 8
     },
     {
@@ -139271,12 +140570,12 @@
         "policy-versioning",
         "refund-method-gate"
       ],
-      "ship_pass_rate": 0.9019607843137255,
-      "final_pass_rate": 0.9137254901960784,
+      "ship_pass_rate": 0.9009708737864077,
+      "final_pass_rate": 0.912621359223301,
       "ship_whole_stage_passes": 59,
-      "ship_whole_stage_pass_rate": 0.5784313725490197,
+      "ship_whole_stage_pass_rate": 0.5728155339805825,
       "final_whole_stage_passes": 59,
-      "final_whole_stage_pass_rate": 0.5784313725490197,
+      "final_whole_stage_pass_rate": 0.5728155339805825,
       "recovery_points": 6
     },
     {
@@ -139286,12 +140585,12 @@
       "family_ids": [
         "judgment-r1-policy-history"
       ],
-      "ship_pass_rate": 0.9803921568627451,
-      "final_pass_rate": 0.9803921568627451,
-      "ship_whole_stage_passes": 100,
-      "ship_whole_stage_pass_rate": 0.9803921568627451,
-      "final_whole_stage_passes": 100,
-      "final_whole_stage_pass_rate": 0.9803921568627451,
+      "ship_pass_rate": 0.9805825242718447,
+      "final_pass_rate": 0.9805825242718447,
+      "ship_whole_stage_passes": 101,
+      "ship_whole_stage_pass_rate": 0.9805825242718447,
+      "final_whole_stage_passes": 101,
+      "final_whole_stage_pass_rate": 0.9805825242718447,
       "recovery_points": 0
     },
     {
@@ -139303,12 +140602,12 @@
         "m3-restart",
         "occ-durability"
       ],
-      "ship_pass_rate": 0.9771241830065359,
-      "final_pass_rate": 0.9901960784313726,
-      "ship_whole_stage_passes": 99,
-      "ship_whole_stage_pass_rate": 0.9705882352941176,
-      "final_whole_stage_passes": 99,
-      "final_whole_stage_pass_rate": 0.9705882352941176,
+      "ship_pass_rate": 0.9773462783171522,
+      "final_pass_rate": 0.9902912621359223,
+      "ship_whole_stage_passes": 100,
+      "ship_whole_stage_pass_rate": 0.970873786407767,
+      "final_whole_stage_passes": 100,
+      "final_whole_stage_pass_rate": 0.970873786407767,
       "recovery_points": 4
     },
     {
@@ -139325,12 +140624,12 @@
         "payment-statement",
         "room-funding-allocation"
       ],
-      "ship_pass_rate": 0.9166666666666666,
-      "final_pass_rate": 0.9338235294117647,
-      "ship_whole_stage_passes": 59,
-      "ship_whole_stage_pass_rate": 0.5784313725490197,
-      "final_whole_stage_passes": 62,
-      "final_whole_stage_pass_rate": 0.6078431372549019,
+      "ship_pass_rate": 0.9174757281553398,
+      "final_pass_rate": 0.9344660194174758,
+      "ship_whole_stage_passes": 60,
+      "ship_whole_stage_pass_rate": 0.5825242718446602,
+      "final_whole_stage_passes": 63,
+      "final_whole_stage_pass_rate": 0.6116504854368932,
       "recovery_points": 14
     },
     {
@@ -139340,12 +140639,12 @@
       "family_ids": [
         "judgment-r2-room-history"
       ],
-      "ship_pass_rate": 0.6862745098039216,
-      "final_pass_rate": 0.6862745098039216,
-      "ship_whole_stage_passes": 70,
-      "ship_whole_stage_pass_rate": 0.6862745098039216,
-      "final_whole_stage_passes": 70,
-      "final_whole_stage_pass_rate": 0.6862745098039216,
+      "ship_pass_rate": 0.6893203883495146,
+      "final_pass_rate": 0.6893203883495146,
+      "ship_whole_stage_passes": 71,
+      "ship_whole_stage_pass_rate": 0.6893203883495146,
+      "final_whole_stage_passes": 71,
+      "final_whole_stage_pass_rate": 0.6893203883495146,
       "recovery_points": 0
     },
     {
@@ -139361,12 +140660,12 @@
         "transfer-mechanics",
         "transferred-credit-settlement"
       ],
-      "ship_pass_rate": 0.9705882352941176,
-      "final_pass_rate": 0.9761904761904762,
-      "ship_whole_stage_passes": 88,
-      "ship_whole_stage_pass_rate": 0.8627450980392157,
-      "final_whole_stage_passes": 88,
-      "final_whole_stage_pass_rate": 0.8627450980392157,
+      "ship_pass_rate": 0.970873786407767,
+      "final_pass_rate": 0.9764216366158114,
+      "ship_whole_stage_passes": 89,
+      "ship_whole_stage_pass_rate": 0.8640776699029126,
+      "final_whole_stage_passes": 89,
+      "final_whole_stage_pass_rate": 0.8640776699029126,
       "recovery_points": 4
     },
     {
@@ -139376,12 +140675,12 @@
       "family_ids": [
         "judgment-r3-payment-history"
       ],
-      "ship_pass_rate": 0.9117647058823529,
-      "final_pass_rate": 0.9117647058823529,
-      "ship_whole_stage_passes": 93,
-      "ship_whole_stage_pass_rate": 0.9117647058823529,
-      "final_whole_stage_passes": 93,
-      "final_whole_stage_pass_rate": 0.9117647058823529,
+      "ship_pass_rate": 0.912621359223301,
+      "final_pass_rate": 0.912621359223301,
+      "ship_whole_stage_passes": 94,
+      "ship_whole_stage_pass_rate": 0.912621359223301,
+      "final_whole_stage_passes": 94,
+      "final_whole_stage_pass_rate": 0.912621359223301,
       "recovery_points": 0
     },
     {
@@ -139396,12 +140695,12 @@
         "m6-finance-upgrade",
         "reporting-inception"
       ],
-      "ship_pass_rate": 0.9117647058823529,
-      "final_pass_rate": 0.9330065359477124,
-      "ship_whole_stage_passes": 76,
-      "ship_whole_stage_pass_rate": 0.7450980392156863,
-      "final_whole_stage_passes": 78,
-      "final_whole_stage_pass_rate": 0.7647058823529411,
+      "ship_pass_rate": 0.912621359223301,
+      "final_pass_rate": 0.9336569579288025,
+      "ship_whole_stage_passes": 77,
+      "ship_whole_stage_pass_rate": 0.7475728155339806,
+      "final_whole_stage_passes": 79,
+      "final_whole_stage_pass_rate": 0.7669902912621359,
       "recovery_points": 13
     },
     {
@@ -139413,12 +140712,12 @@
         "judgment-c4-reporting-replay-purity",
         "judgment-r4-projection-history"
       ],
-      "ship_pass_rate": 0.8464052287581699,
-      "final_pass_rate": 0.8627450980392157,
-      "ship_whole_stage_passes": 64,
-      "ship_whole_stage_pass_rate": 0.6274509803921569,
-      "final_whole_stage_passes": 66,
-      "final_whole_stage_pass_rate": 0.6470588235294118,
+      "ship_pass_rate": 0.8478964401294499,
+      "final_pass_rate": 0.8640776699029126,
+      "ship_whole_stage_passes": 65,
+      "ship_whole_stage_pass_rate": 0.6310679611650486,
+      "final_whole_stage_passes": 67,
+      "final_whole_stage_pass_rate": 0.6504854368932039,
       "recovery_points": 5
     },
     {
@@ -139431,12 +140730,12 @@
         "late-adjustment-posting",
         "m7-close-upgrade"
       ],
-      "ship_pass_rate": 0.8014705882352942,
-      "final_pass_rate": 0.8014705882352942,
-      "ship_whole_stage_passes": 34,
-      "ship_whole_stage_pass_rate": 0.3333333333333333,
-      "final_whole_stage_passes": 34,
-      "final_whole_stage_pass_rate": 0.3333333333333333,
+      "ship_pass_rate": 0.8033980582524272,
+      "final_pass_rate": 0.8033980582524272,
+      "ship_whole_stage_passes": 35,
+      "ship_whole_stage_pass_rate": 0.33980582524271846,
+      "final_whole_stage_passes": 35,
+      "final_whole_stage_pass_rate": 0.33980582524271846,
       "recovery_points": 0
     },
     {
@@ -139449,12 +140748,12 @@
         "judgment-c5-double-revival",
         "judgment-r5-close-history"
       ],
-      "ship_pass_rate": 0.6323529411764706,
-      "final_pass_rate": 0.6323529411764706,
-      "ship_whole_stage_passes": 27,
-      "ship_whole_stage_pass_rate": 0.2647058823529412,
-      "final_whole_stage_passes": 27,
-      "final_whole_stage_pass_rate": 0.2647058823529412,
+      "ship_pass_rate": 0.6359223300970874,
+      "final_pass_rate": 0.6359223300970874,
+      "ship_whole_stage_passes": 28,
+      "ship_whole_stage_pass_rate": 0.27184466019417475,
+      "final_whole_stage_passes": 28,
+      "final_whole_stage_pass_rate": 0.27184466019417475,
       "recovery_points": 0
     }
   ],
@@ -139471,12 +140770,12 @@
         "payment-acceptance",
         "rescheduling"
       ],
-      "ship_pass_rate": 0.9826839826839827,
-      "final_pass_rate": 0.9956709956709957,
-      "ship_whole_stage_passes": 74,
-      "ship_whole_stage_pass_rate": 0.961038961038961,
-      "final_whole_stage_passes": 75,
-      "final_whole_stage_pass_rate": 0.974025974025974,
+      "ship_pass_rate": 0.9829059829059829,
+      "final_pass_rate": 0.9957264957264957,
+      "ship_whole_stage_passes": 75,
+      "ship_whole_stage_pass_rate": 0.9615384615384616,
+      "final_whole_stage_passes": 76,
+      "final_whole_stage_pass_rate": 0.9743589743589743,
       "recovery_points": 6
     },
     {
@@ -139490,12 +140789,12 @@
         "policy-versioning",
         "refund-method-gate"
       ],
-      "ship_pass_rate": 0.8961038961038961,
-      "final_pass_rate": 0.9116883116883117,
+      "ship_pass_rate": 0.8948717948717949,
+      "final_pass_rate": 0.9102564102564102,
       "ship_whole_stage_passes": 44,
-      "ship_whole_stage_pass_rate": 0.5714285714285714,
+      "ship_whole_stage_pass_rate": 0.5641025641025641,
       "final_whole_stage_passes": 44,
-      "final_whole_stage_pass_rate": 0.5714285714285714,
+      "final_whole_stage_pass_rate": 0.5641025641025641,
       "recovery_points": 6
     },
     {
@@ -139505,12 +140804,12 @@
       "family_ids": [
         "judgment-r1-policy-history"
       ],
-      "ship_pass_rate": 0.974025974025974,
-      "final_pass_rate": 0.974025974025974,
-      "ship_whole_stage_passes": 75,
-      "ship_whole_stage_pass_rate": 0.974025974025974,
-      "final_whole_stage_passes": 75,
-      "final_whole_stage_pass_rate": 0.974025974025974,
+      "ship_pass_rate": 0.9743589743589743,
+      "final_pass_rate": 0.9743589743589743,
+      "ship_whole_stage_passes": 76,
+      "ship_whole_stage_pass_rate": 0.9743589743589743,
+      "final_whole_stage_passes": 76,
+      "final_whole_stage_pass_rate": 0.9743589743589743,
       "recovery_points": 0
     },
     {
@@ -139522,12 +140821,12 @@
         "m3-restart",
         "occ-durability"
       ],
-      "ship_pass_rate": 0.9696969696969697,
-      "final_pass_rate": 0.987012987012987,
-      "ship_whole_stage_passes": 74,
-      "ship_whole_stage_pass_rate": 0.961038961038961,
-      "final_whole_stage_passes": 74,
-      "final_whole_stage_pass_rate": 0.961038961038961,
+      "ship_pass_rate": 0.9700854700854701,
+      "final_pass_rate": 0.9871794871794872,
+      "ship_whole_stage_passes": 75,
+      "ship_whole_stage_pass_rate": 0.9615384615384616,
+      "final_whole_stage_passes": 75,
+      "final_whole_stage_pass_rate": 0.9615384615384616,
       "recovery_points": 4
     },
     {
@@ -139544,12 +140843,12 @@
         "payment-statement",
         "room-funding-allocation"
       ],
-      "ship_pass_rate": 0.9058441558441559,
-      "final_pass_rate": 0.9204545454545454,
-      "ship_whole_stage_passes": 41,
-      "ship_whole_stage_pass_rate": 0.5324675324675324,
-      "final_whole_stage_passes": 42,
-      "final_whole_stage_pass_rate": 0.5454545454545454,
+      "ship_pass_rate": 0.907051282051282,
+      "final_pass_rate": 0.9214743589743589,
+      "ship_whole_stage_passes": 42,
+      "ship_whole_stage_pass_rate": 0.5384615384615384,
+      "final_whole_stage_passes": 43,
+      "final_whole_stage_pass_rate": 0.5512820512820513,
       "recovery_points": 9
     },
     {
@@ -139559,12 +140858,12 @@
       "family_ids": [
         "judgment-r2-room-history"
       ],
-      "ship_pass_rate": 0.6363636363636364,
-      "final_pass_rate": 0.6363636363636364,
-      "ship_whole_stage_passes": 49,
-      "ship_whole_stage_pass_rate": 0.6363636363636364,
-      "final_whole_stage_passes": 49,
-      "final_whole_stage_pass_rate": 0.6363636363636364,
+      "ship_pass_rate": 0.6410256410256411,
+      "final_pass_rate": 0.6410256410256411,
+      "ship_whole_stage_passes": 50,
+      "ship_whole_stage_pass_rate": 0.6410256410256411,
+      "final_whole_stage_passes": 50,
+      "final_whole_stage_pass_rate": 0.6410256410256411,
       "recovery_points": 0
     },
     {
@@ -139580,12 +140879,12 @@
         "transfer-mechanics",
         "transferred-credit-settlement"
       ],
-      "ship_pass_rate": 0.9684601113172542,
-      "final_pass_rate": 0.9758812615955473,
-      "ship_whole_stage_passes": 67,
-      "ship_whole_stage_pass_rate": 0.8701298701298701,
-      "final_whole_stage_passes": 67,
-      "final_whole_stage_pass_rate": 0.8701298701298701,
+      "ship_pass_rate": 0.9688644688644689,
+      "final_pass_rate": 0.9761904761904762,
+      "ship_whole_stage_passes": 68,
+      "ship_whole_stage_pass_rate": 0.8717948717948718,
+      "final_whole_stage_passes": 68,
+      "final_whole_stage_pass_rate": 0.8717948717948718,
       "recovery_points": 4
     },
     {
@@ -139595,12 +140894,12 @@
       "family_ids": [
         "judgment-r3-payment-history"
       ],
-      "ship_pass_rate": 0.922077922077922,
-      "final_pass_rate": 0.922077922077922,
-      "ship_whole_stage_passes": 71,
-      "ship_whole_stage_pass_rate": 0.922077922077922,
-      "final_whole_stage_passes": 71,
-      "final_whole_stage_pass_rate": 0.922077922077922,
+      "ship_pass_rate": 0.9230769230769231,
+      "final_pass_rate": 0.9230769230769231,
+      "ship_whole_stage_passes": 72,
+      "ship_whole_stage_pass_rate": 0.9230769230769231,
+      "final_whole_stage_passes": 72,
+      "final_whole_stage_pass_rate": 0.9230769230769231,
       "recovery_points": 0
     },
     {
@@ -139615,12 +140914,12 @@
         "m6-finance-upgrade",
         "reporting-inception"
       ],
-      "ship_pass_rate": 0.8982683982683982,
-      "final_pass_rate": 0.9242424242424242,
-      "ship_whole_stage_passes": 56,
-      "ship_whole_stage_pass_rate": 0.7272727272727273,
-      "final_whole_stage_passes": 58,
-      "final_whole_stage_pass_rate": 0.7532467532467533,
+      "ship_pass_rate": 0.8995726495726496,
+      "final_pass_rate": 0.9252136752136753,
+      "ship_whole_stage_passes": 57,
+      "ship_whole_stage_pass_rate": 0.7307692307692307,
+      "final_whole_stage_passes": 59,
+      "final_whole_stage_pass_rate": 0.7564102564102564,
       "recovery_points": 12
     },
     {
@@ -139632,12 +140931,12 @@
         "judgment-c4-reporting-replay-purity",
         "judgment-r4-projection-history"
       ],
-      "ship_pass_rate": 0.8398268398268398,
-      "final_pass_rate": 0.8571428571428571,
-      "ship_whole_stage_passes": 48,
-      "ship_whole_stage_pass_rate": 0.6233766233766234,
-      "final_whole_stage_passes": 49,
-      "final_whole_stage_pass_rate": 0.6363636363636364,
+      "ship_pass_rate": 0.8418803418803419,
+      "final_pass_rate": 0.8589743589743589,
+      "ship_whole_stage_passes": 49,
+      "ship_whole_stage_pass_rate": 0.6282051282051282,
+      "final_whole_stage_passes": 50,
+      "final_whole_stage_pass_rate": 0.6410256410256411,
       "recovery_points": 4
     },
     {
@@ -139650,12 +140949,12 @@
         "late-adjustment-posting",
         "m7-close-upgrade"
       ],
-      "ship_pass_rate": 0.7922077922077922,
-      "final_pass_rate": 0.7922077922077922,
-      "ship_whole_stage_passes": 24,
-      "ship_whole_stage_pass_rate": 0.3116883116883117,
-      "final_whole_stage_passes": 24,
-      "final_whole_stage_pass_rate": 0.3116883116883117,
+      "ship_pass_rate": 0.7948717948717948,
+      "final_pass_rate": 0.7948717948717948,
+      "ship_whole_stage_passes": 25,
+      "ship_whole_stage_pass_rate": 0.32051282051282054,
+      "final_whole_stage_passes": 25,
+      "final_whole_stage_pass_rate": 0.32051282051282054,
       "recovery_points": 0
     },
     {
@@ -139668,12 +140967,12 @@
         "judgment-c5-double-revival",
         "judgment-r5-close-history"
       ],
-      "ship_pass_rate": 0.6233766233766234,
-      "final_pass_rate": 0.6233766233766234,
-      "ship_whole_stage_passes": 18,
-      "ship_whole_stage_pass_rate": 0.23376623376623376,
-      "final_whole_stage_passes": 18,
-      "final_whole_stage_pass_rate": 0.23376623376623376,
+      "ship_pass_rate": 0.6282051282051282,
+      "final_pass_rate": 0.6282051282051282,
+      "ship_whole_stage_passes": 19,
+      "ship_whole_stage_pass_rate": 0.24358974358974358,
+      "final_whole_stage_passes": 19,
+      "final_whole_stage_pass_rate": 0.24358974358974358,
       "recovery_points": 0
     }
   ],
@@ -139681,134 +140980,134 @@
     {
       "left": "core",
       "right": "cost",
-      "n": 77,
-      "pearson": 0.2080708646138314,
-      "spearman": 0.3207639406316303
+      "n": 78,
+      "pearson": 0.21022858371187308,
+      "spearman": 0.3195687598858566
     },
     {
       "left": "core",
       "right": "runtime",
-      "n": 77,
-      "pearson": -0.5386570344956045,
-      "spearman": -0.5785499355256937
+      "n": 78,
+      "pearson": -0.5418780859911465,
+      "spearman": -0.5819768995971761
     },
     {
       "left": "core",
       "right": "production_loc",
-      "n": 77,
-      "pearson": -0.5560383042425868,
-      "spearman": -0.6047907462496799
+      "n": 78,
+      "pearson": -0.5573407577020133,
+      "spearman": -0.61270441844857
     },
     {
       "left": "core",
       "right": "test_loc",
-      "n": 77,
-      "pearson": -0.10882641445436088,
-      "spearman": -0.1906921047332926
+      "n": 78,
+      "pearson": -0.10000514460892872,
+      "spearman": -0.18363442117072068
     },
     {
       "left": "core",
       "right": "subagents",
-      "n": 77,
-      "pearson": 0.26950374545001965,
-      "spearman": 0.31260014830680855
+      "n": 78,
+      "pearson": 0.26599327884972723,
+      "spearman": 0.3084072171554236
     },
     {
       "left": "core",
       "right": "largest_production_share",
-      "n": 77,
-      "pearson": -0.20541021981869131,
-      "spearman": -0.14363180814047877
+      "n": 78,
+      "pearson": -0.20962598787513376,
+      "spearman": -0.14717673922939226
     },
     {
       "left": "core",
       "right": "production_files",
-      "n": 77,
-      "pearson": -0.2196952663179452,
-      "spearman": -0.2530024658141199
+      "n": 78,
+      "pearson": -0.20814329127742645,
+      "spearman": -0.2380211032376944
     },
     {
       "left": "core",
       "right": "test_files",
-      "n": 77,
-      "pearson": -0.07954833643948467,
-      "spearman": -0.043380359856785615
+      "n": 78,
+      "pearson": -0.06619268812095432,
+      "spearman": -0.027647122447955967
     },
     {
       "left": "core",
       "right": "candidate_test_declarations",
-      "n": 77,
-      "pearson": -0.13506516144471267,
-      "spearman": -0.09962215842680837
+      "n": 78,
+      "pearson": -0.12400966926621965,
+      "spearman": -0.08633471614430077
     },
     {
       "left": "maintenance",
       "right": "cost",
-      "n": 77,
-      "pearson": 0.1813035700053039,
-      "spearman": 0.23045038177195626
+      "n": 78,
+      "pearson": 0.18522063388840043,
+      "spearman": 0.23602180948146198
     },
     {
       "left": "maintenance",
       "right": "runtime",
-      "n": 77,
-      "pearson": -0.4212062861309992,
-      "spearman": -0.3970499909432107
+      "n": 78,
+      "pearson": -0.43044351070816445,
+      "spearman": -0.41185004996459
     },
     {
       "left": "maintenance",
       "right": "production_loc",
-      "n": 77,
-      "pearson": -0.4951395881246114,
-      "spearman": -0.5137035653129407
+      "n": 78,
+      "pearson": -0.49537053535191644,
+      "spearman": -0.5230056845176457
     },
     {
       "left": "maintenance",
       "right": "test_loc",
-      "n": 77,
-      "pearson": -0.05577191944114024,
-      "spearman": -0.1427435741156063
+      "n": 78,
+      "pearson": -0.03642477289263523,
+      "spearman": -0.12347298611533646
     },
     {
       "left": "maintenance",
       "right": "subagents",
-      "n": 77,
-      "pearson": 0.3507685629013905,
-      "spearman": 0.3130917564497856
+      "n": 78,
+      "pearson": 0.33950659289044094,
+      "spearman": 0.3032530335089409
     },
     {
       "left": "maintenance",
       "right": "largest_production_share",
-      "n": 77,
-      "pearson": -0.14479859505974998,
-      "spearman": -0.08024671950898213
+      "n": 78,
+      "pearson": -0.15461938897130278,
+      "spearman": -0.08924220677364927
     },
     {
       "left": "maintenance",
       "right": "production_files",
-      "n": 77,
-      "pearson": -0.10836750606912314,
-      "spearman": -0.1423221468601033
+      "n": 78,
+      "pearson": -0.0847026143101347,
+      "spearman": -0.11111945658368617
     },
     {
       "left": "maintenance",
       "right": "test_files",
-      "n": 77,
-      "pearson": 0.07247883098315228,
-      "spearman": 0.013670818701601143
+      "n": 78,
+      "pearson": 0.09829238387401618,
+      "spearman": 0.04409033363535557
     },
     {
       "left": "maintenance",
       "right": "candidate_test_declarations",
-      "n": 77,
-      "pearson": -0.05303293586099479,
-      "spearman": -0.05963870070233597
+      "n": 78,
+      "pearson": -0.029803887205915012,
+      "spearman": -0.03255101110016574
     }
   ],
   "core_maintenance_association_model_view": {
-    "n": 77,
-    "pearson": 0.8169713238523041,
-    "spearman": 0.8248817500550603
+    "n": 78,
+    "pearson": 0.8154472700730617,
+    "spearman": 0.82513330653897
   },
   "harness_comparisons": [
     {
@@ -140019,11 +141318,11 @@
   "validation": {
     "status": "passed",
     "population": {
-      "accepted_trajectories": 102,
-      "model_view": 77,
+      "accepted_trajectories": 103,
+      "model_view": 78,
       "additional_harness_view": 25,
-      "unique_run_ids": 102,
-      "unique_labels": 99,
+      "unique_run_ids": 103,
+      "unique_labels": 100,
       "label_scope": "experiment-scoped; run id and group/sample are the public grains"
     },
     "score_grain": {
@@ -140032,10 +141331,10 @@
       "scenarios_with_at_least_one_failure": 42
     },
     "reconciliations": {
-      "core_failed_run_family_points": 200,
+      "core_failed_run_family_points": 201,
       "maintenance_failed_run_family_points": 185,
-      "failed_run_scenarios": 387,
-      "failing_family_member_incidences": 438
+      "failed_run_scenarios": 389,
+      "failing_family_member_incidences": 440
     },
     "checks": [
       "all published runs have complete final scores",

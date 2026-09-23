@@ -13,7 +13,7 @@ sample count, and whether cost is recorded or estimated.
 - [Dashboard source](evaluation/results/v6/index.html)
 - [Full retrospective](evaluation/results/v6/RETROSPECTIVE.md)
 - [Accepted-run dataset](evaluation/results/v6/accepted-runs.json)
-- [Generated applications: all 102 runs and seven milestones](https://github.com/kkondaurov/sweatbench-runs/tree/003583cf9a6f895786a43921a5ed9ff52ee85e2c/v6)
+- [Generated applications: all 103 runs and seven milestones](https://github.com/kkondaurov/sweatbench-runs/tree/003583cf9a6f895786a43921a5ed9ff52ee85e2c/v6)
 - [Human review guide](REVIEW_GUIDE.md)
 - [Disclosure policy](DISCLOSURE.md)
 
@@ -96,7 +96,7 @@ for diagnosis; they are not collapsed into one synthetic score.
 
 ## Reference results
 
-The model-comparison view contains 77 completed trajectories. Every listed trajectory completed all
+The model-comparison view contains 78 completed trajectories. Every listed trajectory completed all
 seven milestones and passed the benchmark's integrity checks. Low-scoring valid runs are included;
 incomplete, invalid, and infrastructure-debug attempts are not model results and are excluded.
 
@@ -113,6 +113,7 @@ incomplete, invalid, and infrastructure-debug attempts are not model results and
 | GPT-5.6 Luna xhigh, Codex CLI | 5 | 32.6 | 6.2 | 0/5 | $1.50 |
 | GPT-5.5 xhigh, Codex CLI | 5 | 37.0 | 7.6 | 0/5 | $27.57 |
 | Claude Opus 5 high, Claude Code | 2 | 38.5 | 9.5 | 1/2 | $47.65 |
+| Claude Opus 5.5 high, Claude Code | 1 | 38.0 | 10.0 | 0/1 | $21.26 |
 | Meta Muse Spark 1.3 high, OpenCode | 1 | 29.0 | 3.0 | 0/1 | $53.61 |
 | Grok 4.6 xhigh, OpenCode | 5 | 37.6 | 7.8 | 0/5 | $14.71 |
 | Grok 4.7 xhigh, OpenCode | 1 | 35.0 | 7.0 | 0/1 | $36.52 |
