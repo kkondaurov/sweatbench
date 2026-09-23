@@ -62,7 +62,7 @@ Costs with `cost_basis: recorded` are provider charges captured for the complete
 The legacy data field `cost_basis: estimated` identifies API-equivalent costs, which apply the documented production token rates to recorded parent
 and descendant usage. The dashboard and retrospective describe rate snapshots and cache treatment.
 
-The [source archive](https://github.com/kkondaurov/sweatbench-runs/tree/003583cf9a6f895786a43921a5ed9ff52ee85e2c/v6) contains all 103 accepted runs,
+The [source archive](https://github.com/kkondaurov/sweatbench-runs/tree/834a7fc8a2d0719cbdec8041a970046eb5f7dc18/v6) contains all 103 accepted runs,
 with a `v6/<run.id>/README.md` and `milestone-1/` through `milestone-7/` for each run. Source links
 in Models, Harnesses and Findings open that run's directory. Raw model session logs remain private;
 machine-local source paths are not published.
@@ -71,7 +71,7 @@ Dashboard run IDs are copied from `accepted-runs.json`, matched by `group` and p
 not reconstructed from legacy `label` values. The 20 Codex runs shared by Models and Harnesses
 reuse the same run objects and source links. Findings uses the accepted IDs in `findings-data.js`.
 `sourceArchiveBaseUrl` in `results.js` controls the baseline dashboard archive links. It is pinned to
-archive commit `003583cf9a6f895786a43921a5ed9ff52ee85e2c`, as are the source links in the reports.
+archive commit `834a7fc8a2d0719cbdec8041a970046eb5f7dc18`, as are the interactive dashboard and summary links; earlier reports retain their historical source pins.
 
 The 18 intervention trajectories have their own [source collection](https://github.com/kkondaurov/sweatbench-runs/tree/c3d1120c3ef49744efef6693aa5ee1ec6158bfc9/v6/interventions/readable-elixir),
 with 126 snapshots and three runs at each model and effort. Its pin is recorded in

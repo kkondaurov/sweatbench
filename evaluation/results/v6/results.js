@@ -1,6 +1,6 @@
 "use strict";
 
-const sourceArchiveBaseUrl = "https://github.com/kkondaurov/sweatbench-runs/tree/003583cf9a6f895786a43921a5ed9ff52ee85e2c/v6";
+const sourceArchiveBaseUrl = "https://github.com/kkondaurov/sweatbench-runs/tree/834a7fc8a2d0719cbdec8041a970046eb5f7dc18/v6";
 const runSourceLink = id => `<a class="run-source" href="${sourceArchiveBaseUrl}/${encodeURIComponent(id)}" title="All seven milestone snapshots">Source <i data-icon="ArrowUpRight"></i></a>`;
 
 const mean = values => values.reduce((sum, value) => sum + value, 0) / values.length;
